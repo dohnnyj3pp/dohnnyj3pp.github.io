@@ -270,4 +270,26 @@ button:hover, .form-container .btn:hover {
         margin-top: 0;
     }
 }
-/***** End of Media Query Section *****/
+/***** End of Media Query Section *****//* Intro overlay and modal styles */
+.intro-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,0.85),rgba(0,0,0,0.95));z-index:1500;transition:opacity .6s ease,transform .6s;}
+.intro-inner{text-align:center;color:#fff;padding:2rem;max-width:880px}
+.intro-title{font-size:2.5rem;margin:0 0 .5rem}
+.intro-sub{color:var(--muted);margin-bottom:1rem}
+.site-root.hidden{display:none}
+
+/* Modal base */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);opacity:0;pointer-events:none;transition:opacity .28s ease;z-index:1400}
+.modal[aria-hidden="false"]{opacity:1;pointer-events:auto}
+.modal-content{background:var(--card);color:inherit;padding:1.25rem;border-radius:10px;max-width:900px;width:min(92%,1000px);box-shadow:0 30px 80px rgba(0,0,0,0.6);transform:translateY(8px) scale(.98);transition:transform .28s ease,opacity .2s}
+.modal[aria-hidden="false"] .modal-content{transform:translateY(0) scale(1)}
+.modal-close{position:absolute;top:16px;right:16px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit;width:36px;height:36px;border-radius:50%;cursor:pointer}
+
+/* Modal inner tweaks */
+.modal .projects-grid.modal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.modal .hero-image-modal img{max-width:320px;border-radius:8px}
+.modal .skills-list.modal-skills{display:flex;flex-wrap:wrap;gap:.5rem}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .intro-overlay,.modal,.modal-content{transition:none}
+}

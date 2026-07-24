@@ -29,32 +29,43 @@
   </header>
 
   <main>
-    <section id="home" class="hero">
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <h2>Hello — I’m Adam.</h2>
-          <p class="lead">I build web applications using HTML, CSS, JavaScript, Python and C#. I enjoy turning ideas into clean, maintainable code and delivering products that solve problems.</p>
-          <p class="cta-row">
-            <a class="btn btn-primary" href="#projects">See Projects</a>
-          </p>
-        </div>
-        <div class="hero-image">
-          <img src="images/adam2.jpg" alt="Adam Pace portrait">
-        </div>
-      </div>
-    </section>
 
-    <section id="projects" class="section">
+    <!-- Intro overlay / animated entry -->
+    <div id="intro" class="intro-overlay" aria-hidden="false">
+      <div class="intro-inner">
+        <h2 class="intro-title">Adam Pace</h2>
+        <p class="intro-sub">Full‑Stack Software Developer — building web apps with HTML, CSS, JavaScript, Python and C#.</p>
+        <button id="enterSite" class="btn btn-primary">Enter Site</button>
+      </div>
+    </div>
+
+    <!-- Site root (hidden until Enter is clicked) -->
+    <div id="site-root" class="site-root hidden">
       <div class="container">
-        <h3 class="section-title">Featured Projects</h3>
-        <div class="projects-grid">
-          <!-- Example project cards: update links/descriptions as needed -->
+        <p class="muted-note">Use the navigation to open sections as modal dialogs.</p>
+      </div>
+    </div>
+
+    <!-- Modals for sections -->
+    <div class="modal" id="modal-home" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close">×</button>
+        <h3>Home</h3>
+        <p>Hello — I’m Adam. I build web applications using HTML, CSS, JavaScript, Python and C#. I enjoy turning ideas into clean, maintainable code and delivering products that solve problems.</p>
+        <div class="hero-image-modal"><img src="images/adam2.jpg" alt="Adam Pace portrait"></div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-projects" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close">×</button>
+        <h3>Projects</h3>
+        <div class="projects-grid modal-grid">
           <article class="project-card">
             <img src="images/thumbnail1.png" alt="Project thumbnail">
             <div class="project-body">
               <h4>Project One</h4>
               <p>Responsive UI with accessible components and light UX animations.</p>
-              <p class="project-links"><a href="#" target="_blank">Live</a> · <a href="https://github.com/dohnnyj3pp" target="_blank">Code</a></p>
             </div>
           </article>
 
@@ -63,7 +74,6 @@
             <div class="project-body">
               <h4>Project Two</h4>
               <p>Full‑stack app with REST API and persistent storage.</p>
-              <p class="project-links"><a href="#" target="_blank">Live</a> · <a href="https://github.com/dohnnyj3pp" target="_blank">Code</a></p>
             </div>
           </article>
 
@@ -72,35 +82,26 @@
             <div class="project-body">
               <h4>Project Three</h4>
               <p>Automation and tooling scripts to improve developer workflow.</p>
-              <p class="project-links"><a href="#" target="_blank">Live</a> · <a href="https://github.com/dohnnyj3pp" target="_blank">Code</a></p>
             </div>
           </article>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section id="about" class="section alt">
-      <div class="container about-grid">
-        <div class="about-text">
-          <h3>About Me</h3>
-          <p>I’m a software developer with a certificate from The Tech Academy. I focus on maintainable code, thoughtful UI, and reliable backend systems. I enjoy learning new technologies and contributing to open-source projects.</p>
-          <p><strong>Education:</strong> Software Developer Boot Camp — The Tech Academy</p>
-        </div>
-        <div class="about-details">
-          <h4>Highlights</h4>
-          <ul>
-            <li>Full‑stack development: HTML, CSS, JavaScript</li>
-            <li>Backend: Python, C#, SQL</li>
-            <li>APIs, Databases, Deployment</li>
-          </ul>
-        </div>
+    <div class="modal" id="modal-about" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close">×</button>
+        <h3>About</h3>
+        <p>I’m a software developer with a certificate from The Tech Academy. I focus on maintainable code, thoughtful UI, and reliable backend systems. I enjoy learning new technologies and contributing to open-source projects.</p>
+        <p><strong>Education:</strong> Software Developer Boot Camp — The Tech Academy</p>
       </div>
-    </section>
+    </div>
 
-    <section id="skills" class="section">
-      <div class="container">
-        <h3 class="section-title">Skills</h3>
-        <div class="skills-list">
+    <div class="modal" id="modal-skills" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Close">×</button>
+        <h3>Skills</h3>
+        <div class="skills-list modal-skills">
           <span class="skill">HTML</span>
           <span class="skill">CSS</span>
           <span class="skill">JavaScript</span>
@@ -109,14 +110,7 @@
           <span class="skill">SQL</span>
         </div>
       </div>
-    </section>
-
-    <section id="contact" class="section alt">
-      <div class="container">
-        <div>
-        </div>
-      </div>
-    </section>
+    </div>
 
     <!-- Floating reservation panel (hidden by default, toggled by Contact nav button) -->
     <div class="reservation reservation-floating" id="reservationPanel" aria-hidden="true">
@@ -144,6 +138,7 @@
         </form>
       </div>
     </div>
+
   </main>
 
   <footer class="site-footer">

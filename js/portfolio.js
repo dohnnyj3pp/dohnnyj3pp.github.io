@@ -125,3 +125,62 @@
     closePanelObserver.observe(panel, { attributes:true, attributeFilter:['class'] });
   }
 })();
+// Modal handling and intro flow
+(function(){
+  // Open modal by id, manage aria-hidden and focus
+  function openModal(id){
+    var m = document.getElementById(id);
+    if(!m) return;
+    m.setAttribute('aria-hidden','false');
+    var focusable = m.querySelector('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+    if(focusable) focusable.focus();
+  }
+  function closeModal(m){
+    if(!m) return;
+    m.setAttribute('aria-hidden','true');
+  }
+
+  // Attach modal triggers from nav
+  document.querySelectorAll('.nav-list a[data-modal]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var id = a.getAttribute('data-modal');
+      if(id) openModal(id);
+    });
+  });
+
+  // Fallback: if nav links use href #home etc, map to modal ids
+  document.querySelectorAll('.nav-list a[href^="#"]').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href || href.length<=1) return;
+    var modalId = 'modal-' + href.slice(1);
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal(modalId);
+    });
+  });
+
+  // close buttons and outside clicks
+  document.querySelectorAll('.modal').forEach(function(m){
+    m.addEventListener('click', function(e){
+      if(e.target === m){ closeModal(m); }
+    });
+    var btn = m.querySelector('.modal-close');
+    if(btn) btn.addEventListener('click', function(){ closeModal(m); });
+  });
+
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ document.querySelectorAll('.modal[aria-hidden="false"]').forEach(function(m){ closeModal(m); }); } });
+
+  // Intro enter
+  var enter = document.getElementById('enterSite');
+  var intro = document.getElementById('intro');
+  var siteRoot = document.getElementById('site-root');
+  if(enter && intro && siteRoot){
+    enter.addEventListener('click', function(){
+      intro.style.opacity = '0';
+      intro.setAttribute('aria-hidden','true');
+      siteRoot.classList.remove('hidden');
+      setTimeout(function(){ intro.style.display='none'; }, 450);
+    });
+  }
+})();
