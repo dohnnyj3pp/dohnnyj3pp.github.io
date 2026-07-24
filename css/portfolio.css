@@ -74,7 +74,7 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neu
 .reservation p{color:var(--muted)}
 
 /* Floating panel positioning and transition */
-.reservation-floating{position:fixed;right:-460px;top:12%;z-index:1200;transition:right .36s cubic-bezier(.2,.9,.2,1);border-radius:12px;border:2px solid var(--submit-bg)}
+.reservation-floating{position:fixed;right:-460px;top:12%;z-index:1200;transition:right .36s cubic-bezier(.2,.9,.2,1);border-radius:12px;border:2px solid var(--submit-bg);background:var(--submit-bg)}
 .reservation-floating.active{right:1.5rem}
 
 /* Close button */

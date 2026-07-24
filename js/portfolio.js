@@ -74,11 +74,54 @@
 
 })();
 
-// On page load, scroll to bottom so the site opens at the bottom
-window.addEventListener('load', function(){
-  try{
-    window.scrollTo({ top: document.body.scrollHeight, left: 0 });
-  }catch(e){
-    window.scrollTo(0, document.body.scrollHeight);
+// Scrollspy: mark nav items active based on section in view
+(function(){
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-list a'));
+  var sectionLinks = navLinks.filter(function(a){ return a.getAttribute('href') && a.getAttribute('href').indexOf('#')===0 && a.id !== 'contact-toggle'; });
+
+  var sections = sectionLinks.map(function(a){ var id = a.getAttribute('href').slice(1); return document.getElementById(id); }).filter(Boolean);
+  var linkById = {};
+  sectionLinks.forEach(function(a){ linkById[a.getAttribute('href').slice(1)] = a; });
+
+  function clearActive(){ navLinks.forEach(function(a){ a.classList.remove('active'); }); }
+  function setActiveById(id){ clearActive(); var a = linkById[id]; if(a) a.classList.add('active'); }
+
+  // IntersectionObserver to detect section in view
+  if(window.IntersectionObserver && sections.length){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          setActiveById(entry.target.id);
+        }
+      });
+    },{ root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+    sections.forEach(function(s){ observer.observe(s); });
   }
-});
+
+  // clicking a nav link sets active (and smooth-scroll behavior for internal links)
+  navLinks.forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    if(href.indexOf('#')===0 && href.length>1){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        var target = document.getElementById(href.slice(1));
+        if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); setActiveById(target.id); }
+        // close mobile nav if open
+        var navList = document.getElementById('primary-navigation'); if(navList && navList.classList.contains('show')) navList.classList.remove('show');
+      });
+    }
+  });
+
+  // Make CONTACT toggle set active state while open
+  var contactToggle = document.getElementById('contact-toggle');
+  var panel = document.getElementById('reservationPanel');
+  if(contactToggle && panel){
+    contactToggle.addEventListener('click', function(){
+      if(panel.classList.contains('active')){ contactToggle.classList.remove('active'); }
+      else{ clearActive(); contactToggle.classList.add('active'); }
+    });
+    // when panel closes via other means, remove active from contact-toggle
+    var closePanelObserver = new MutationObserver(function(){ if(!panel.classList.contains('active')) contactToggle.classList.remove('active'); });
+    closePanelObserver.observe(panel, { attributes:true, attributeFilter:['class'] });
+  }
+})();
