@@ -19,13 +19,12 @@
       <nav class="nav" aria-label="Primary">
         <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
         <ul id="primary-navigation" class="nav-list">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="https://github.com/dohnnyj3pp" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#projects">GALLERY</a></li>
+            <li><a href="#contact">RESERVATIONS</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="https://github.com/dohnnyj3pp" target="_blank" rel="noopener">GITHUB</a></li>
+          </ul>
       </nav>
     </div>
   </header>
@@ -123,16 +122,18 @@
         </div>
 
         <form class="contact-form" action="https://formspree.io/info@learncodinganywhere.com" method="POST">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" required>
+          <input class="rsvp" name="first_name" type="text" placeholder="First Name" required>
+          <input class="rsvp" name="last_name" type="text" placeholder="Last Name" required>
+          <input class="rsvp" name="email" type="email" placeholder="Email Address" required>
+          <input class="rsvp" name="phone" type="tel" placeholder="Phone Number">
 
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
+          <div class="form-spacer">
+            <label class="terms"><input type="checkbox" name="terms" required> I accept the terms and conditions</label>
+          </div>
 
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-
-          <button type="submit" class="btn btn-primary">Send</button>
+          <div class="submit">
+            <input class="btn btn-primary" type="submit" value="Submit">
+          </div>
         </form>
       </div>
     </section>
