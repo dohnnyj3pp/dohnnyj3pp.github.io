@@ -114,27 +114,31 @@
     </section>
 
     <section id="contact" class="section alt">
-      <div class="container contact-grid">
-        <div>
-          <h3>Contact</h3>
-          <p>If you’d like to work together, send a message or connect on GitHub.</p>
-          <p><a class="btn btn-primary" href="https://github.com/dohnnyj3pp" target="_blank">View GitHub</a></p>
+      <div class="container">
+        <div class="reservation">
+          <div class="reservation-inner">
+            <h3>Reservations</h3>
+            <p class="rsvp-text">Your adventure is just around the moon. Reserve your flight today!</p>
+
+            <form class="reservation-form form-rsvp" action="https://formspree.io/info@learncodinganywhere.com" method="POST">
+              <div class="name-row">
+                <input class="rsvp" name="first_name" type="text" placeholder="First Name" required>
+                <input class="rsvp" name="last_name" type="text" placeholder="Last Name" required>
+              </div>
+
+              <input class="rsvp" name="email" type="email" placeholder="Email Address" required>
+              <input class="rsvp" name="phone" type="tel" placeholder="Phone Number">
+
+              <div class="form-spacer">
+                <label class="terms"><input type="checkbox" name="terms" required> I accept the terms and conditions</label>
+              </div>
+
+              <div class="submit">
+                <input class="rsvp-submit" type="submit" value="Submit">
+              </div>
+            </form>
+          </div>
         </div>
-
-        <form class="contact-form" action="https://formspree.io/info@learncodinganywhere.com" method="POST">
-          <input class="rsvp" name="first_name" type="text" placeholder="First Name" required>
-          <input class="rsvp" name="last_name" type="text" placeholder="Last Name" required>
-          <input class="rsvp" name="email" type="email" placeholder="Email Address" required>
-          <input class="rsvp" name="phone" type="tel" placeholder="Phone Number">
-
-          <div class="form-spacer">
-            <label class="terms"><input type="checkbox" name="terms" required> I accept the terms and conditions</label>
-          </div>
-
-          <div class="submit">
-            <input class="btn btn-primary" type="submit" value="Submit">
-          </div>
-        </form>
       </div>
     </section>
   </main>
