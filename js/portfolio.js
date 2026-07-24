@@ -35,7 +35,6 @@
     el.addEventListener('blur',  function(){ el.classList.remove('is-focused'); });
   });
 })();
-
 // Reservation panel toggle behaviour
 (function(){
   var toggle = document.getElementById('contact-toggle');
@@ -74,3 +73,12 @@
   });
 
 })();
+
+// On page load, scroll to bottom so the site opens at the bottom
+window.addEventListener('load', function(){
+  try{
+    window.scrollTo({ top: document.body.scrollHeight, left: 0 });
+  }catch(e){
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+});
