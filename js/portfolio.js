@@ -27,3 +27,11 @@
   })();
 
 })();
+// Small enhancement: add/remove focused class for inputs to enable JS-driven interactions if needed
+(function(){
+  var inputs = document.querySelectorAll('.rsvp, .contact-form input, .contact-form textarea');
+  inputs.forEach(function(el){
+    el.addEventListener('focus', function(){ el.classList.add('is-focused'); });
+    el.addEventListener('blur',  function(){ el.classList.remove('is-focused'); });
+  });
+})();
