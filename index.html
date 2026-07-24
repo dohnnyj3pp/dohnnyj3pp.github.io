@@ -24,6 +24,7 @@
             <li><a href="#contact">RESERVATIONS</a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="https://github.com/dohnnyj3pp" target="_blank" rel="noopener">GITHUB</a></li>
+            <li><a href="#" id="contact-toggle">CONTACT</a></li>
           </ul>
       </nav>
     </div>
@@ -115,32 +116,40 @@
 
     <section id="contact" class="section alt">
       <div class="container">
-        <div class="reservation">
-          <div class="reservation-inner">
-            <h3>Reservations</h3>
-            <p class="rsvp-text">Your adventure is just around the moon. Reserve your flight today!</p>
-
-            <form class="reservation-form form-rsvp" action="https://formspree.io/info@learncodinganywhere.com" method="POST">
-              <div class="name-row">
-                <input class="rsvp" name="first_name" type="text" placeholder="First Name" required>
-                <input class="rsvp" name="last_name" type="text" placeholder="Last Name" required>
-              </div>
-
-              <input class="rsvp" name="email" type="email" placeholder="Email Address" required>
-              <input class="rsvp" name="phone" type="tel" placeholder="Phone Number">
-
-              <div class="form-spacer">
-                <label class="terms"><input type="checkbox" name="terms" required> I accept the terms and conditions</label>
-              </div>
-
-              <div class="submit">
-                <input class="rsvp-submit" type="submit" value="Submit">
-              </div>
-            </form>
-          </div>
+        <div>
+          <h3>Contact</h3>
+          <p>If you'd like to get in touch, click the Contact button in the navigation — a quick reservation panel will slide in from the right.</p>
+          <p><a class="btn btn-primary" href="https://github.com/dohnnyj3pp" target="_blank">View GitHub</a></p>
         </div>
       </div>
     </section>
+
+    <!-- Floating reservation panel (hidden by default, toggled by Contact nav button) -->
+    <div class="reservation reservation-floating" id="reservationPanel" aria-hidden="true">
+      <button class="reservation-close" id="reservationClose" aria-label="Close">×</button>
+      <div class="reservation-inner">
+        <h3>Reservations</h3>
+        <p class="rsvp-text">Your adventure is just around the moon. Reserve your flight today!</p>
+
+        <form class="reservation-form form-rsvp" action="https://formspree.io/info@learncodinganywhere.com" method="POST">
+          <div class="name-row">
+            <input class="rsvp" name="first_name" type="text" placeholder="First Name" required>
+            <input class="rsvp" name="last_name" type="text" placeholder="Last Name" required>
+          </div>
+
+          <input class="rsvp" name="email" type="email" placeholder="Email Address" required>
+          <input class="rsvp" name="phone" type="tel" placeholder="Phone Number">
+
+          <div class="form-spacer">
+            <label class="terms"><input type="checkbox" name="terms" required> I accept the terms and conditions</label>
+          </div>
+
+          <div class="submit">
+            <input class="rsvp-submit" type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">

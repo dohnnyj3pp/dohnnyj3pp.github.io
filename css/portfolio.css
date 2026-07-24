@@ -5,6 +5,10 @@
   --muted:#9aa5a1;
   --teal:#00bfa6; /* accent */
   --glass: rgba(255,255,255,0.03);
+  --cyan-dark: #00a9a0;
+  --reservation-outer-1: #0f1615; /* subtle dark outer */
+  --reservation-outer-2: #0b1111;
+  --reservation-inner: #121416;
 }
 
 /* Reset and defaults */
@@ -62,25 +66,32 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neu
 /* Footer */
 .site-footer{border-top:1px solid rgba(255,255,255,0.03);padding:1rem 0;color:var(--muted);text-align:center}
 
-/* Reservation nested card — outer beige, inner white to create a popped-out effect */
-.reservation{background:linear-gradient(180deg,#efe6d3,#ecdcbf);padding:1.25rem;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.45);max-width:900px;margin:0 auto}
-.reservation-inner{background:#fff;border-radius:8px;padding:1.25rem;box-shadow:inset 0 2px 0 rgba(255,255,255,0.6),0 6px 18px rgba(0,0,0,0.08)}
-.reservation h3{margin-top:0;color:#111}
-.reservation p{color:#333}
+/* Reservation floating panel (dark-site friendly colors) */
+.reservation{background:linear-gradient(180deg,var(--reservation-outer-1),var(--reservation-outer-2));padding:1rem;border-radius:12px;box-shadow:0 18px 48px rgba(0,0,0,0.6);width:420px;max-width:calc(100% - 2rem)}
+.reservation-inner{background:var(--reservation-inner);border-radius:8px;padding:1.25rem;box-shadow:inset 0 2px 0 rgba(255,255,255,0.02),0 6px 18px rgba(0,0,0,0.25)}
+.reservation h3{margin-top:0;color:#e6eef1}
+.reservation p{color:var(--muted)}
 
-/* Form inputs inside the white inner box */
-.rsvp{display:block;width:100%;padding:.9rem;border-radius:6px;border:1px solid #d6d0c3;background:#f7f7f7;color:#222;margin-bottom:.75rem;box-shadow:inset 0 3px 0 rgba(255,255,255,0.6);transition:box-shadow .25s,transform .18s}
+/* Floating panel positioning and transition */
+.reservation-floating{position:fixed;right:-460px;top:12%;z-index:1200;transition:right .36s cubic-bezier(.2,.9,.2,1);border-radius:12px}
+.reservation-floating.active{right:1.5rem}
+
+/* Close button */
+.reservation-close{position:absolute;top:-10px;right:-10px;background:#111;color:#fff;border:0;width:36px;height:36px;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,0.5);cursor:pointer;font-size:20px}
+
+/* Form inputs inside the inner box (dark variant) */
+.rsvp{display:block;width:100%;padding:.85rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:#0d1111;color:#e6eef1;margin-bottom:.7rem;box-shadow:inset 0 3px 0 rgba(255,255,255,0.02);transition:box-shadow .25s,transform .18s}
 .rsvp:focus{outline:none;box-shadow:0 0 18px rgba(0,191,166,0.12);transform:translateY(-2px)}
 
 .name-row{display:flex;gap:.75rem}
 .name-row .rsvp{flex:1}
 
 .form-spacer{margin:.8rem 0}
-.terms{color:#444;font-size:.95rem;font-weight:600}
+.terms{color:var(--muted);font-size:.95rem;font-weight:600}
 
-/* Grey submit button with white text, raised */
-.submit input[type=submit]{background:#8D8E8F;color:#fff;padding:.8rem;border-radius:8px;border:none;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,0.25);transition:transform .12s,background .2s}
-.submit input[type=submit]:hover{background:#6F7173;transform:translateY(-3px)}
+/* Grey submit button with cyan text */
+.rsvp-submit{background:#8D8E8F;color:var(--cyan-dark);padding:.8rem;border-radius:8px;border:none;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,0.25);transition:transform .12s,background .2s}
+.rsvp-submit:hover{background:#6F7173;transform:translateY(-3px)}
 
 /* Responsive adjustments */
 @media (max-width:900px){
@@ -88,6 +99,8 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neu
   .about-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
   .name-row{flex-direction:column}
+  .reservation-floating{right:0;left:0;top:auto;bottom:0;width:100%;border-radius:12px 12px 0 0}
+  .reservation-floating.active{right:0}
 }
 
 @media (max-width:900px){
