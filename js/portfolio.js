@@ -176,11 +176,20 @@
   var intro = document.getElementById('intro');
   var siteRoot = document.getElementById('site-root');
   if(enter && intro && siteRoot){
+    // Delay sequence: show intro-inner elements after a short delay so video begins
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!reduced){
+      setTimeout(function(){ document.querySelector('.intro-inner').classList.add('show'); }, 500);
+    } else {
+      document.querySelector('.intro-inner').classList.add('show');
+    }
+
     enter.addEventListener('click', function(){
+      // hide intro with fade
       intro.style.opacity = '0';
       intro.setAttribute('aria-hidden','true');
       siteRoot.classList.remove('hidden');
-      setTimeout(function(){ intro.style.display='none'; }, 450);
+      setTimeout(function(){ intro.style.display='none'; }, 550);
     });
   }
 })();
