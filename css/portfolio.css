@@ -6,6 +6,7 @@
   --teal:#00bfa6; /* accent */
   --glass: rgba(255,255,255,0.03);
   --cyan-dark: #00a9a0;
+  --submit-bg: #8D8E8F; /* reservation submit background color */
   --reservation-outer-1: #0f1615; /* subtle dark outer */
   --reservation-outer-2: #0b1111;
   --reservation-inner: #121416;
@@ -116,7 +117,11 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neu
 
 /* Animated menu and hover interactions (adapted from project template) */
 .nav-list a{display:inline-block;padding:.6rem .9rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);box-shadow:2px 2px 10px rgba(0,0,0,0.5);transition:background .35s,color .25s,transform .18s}
-.nav-list a:hover{color:var(--teal);background:rgba(0,191,166,0.06);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.6)}
+.nav-list a:hover{color:#fff;background:var(--submit-bg);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.6)}
+
+/* Buttons hover unified to match reservation submit background */
+.btn:hover, .btn-primary:hover, .btn-ghost:hover { background: var(--submit-bg) !important; color: #fff !important; border-color: transparent !important }
+.project-links a:hover{ color: var(--submit-bg) !important; }
 
 /* Project card hover (photo overlay / scale) */
 .project-card{transition:transform .28s,box-shadow .28s}
