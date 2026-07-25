@@ -35,25 +35,54 @@
     el.addEventListener('blur',  function(){ el.classList.remove('is-focused'); });
   });
 })();
-// Reservation panel toggle behaviour
+// Reservation panel toggle behaviour (modal-style to match other modals)
 (function(){
   var toggle = document.getElementById('contact-toggle');
   var panel = document.getElementById('reservationPanel');
   var closeBtn = document.getElementById('reservationClose');
+  var backdropId = 'reservationBackdrop';
+
+  function createBackdrop(){
+    var existing = document.getElementById(backdropId);
+    if(existing) return existing;
+    var b = document.createElement('div');
+    b.id = backdropId;
+    b.className = 'modal-backdrop';
+    document.body.appendChild(b);
+    // allow click on backdrop to close
+    b.addEventListener('click', closePanel);
+    return b;
+  }
 
   function openPanel(){
-    panel.classList.add('active');
+    // ensure panel exists
+    if(!panel) return;
+    createBackdrop().classList.add('open');
+    panel.classList.add('modal');
+    // small delay to allow DOM paint then open
+    requestAnimationFrame(function(){ panel.classList.add('open'); });
     panel.setAttribute('aria-hidden','false');
+    // mark contact toggle active
+    if(toggle) toggle.classList.add('active');
+    // also set body class for modal-open (used for custom cursor if needed)
+    document.body.classList.add('has-modal-open');
   }
   function closePanel(){
-    panel.classList.remove('active');
+    if(!panel) return;
+    var b = document.getElementById(backdropId);
+    if(b) b.classList.remove('open');
+    panel.classList.remove('open');
+    // remove modal class after transition
+    setTimeout(function(){ panel.classList.remove('modal'); if(b && b.parentNode) b.parentNode.removeChild(b); }, 300);
     panel.setAttribute('aria-hidden','true');
+    if(toggle) toggle.classList.remove('active');
+    document.body.classList.remove('has-modal-open');
   }
 
   if(toggle && panel){
     toggle.addEventListener('click',function(e){
       e.preventDefault();
-      if(panel.classList.contains('active')) closePanel(); else openPanel();
+      if(panel.classList.contains('open')) closePanel(); else openPanel();
     });
   }
 
@@ -64,13 +93,7 @@
   // close when pressing Escape
   document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closePanel(); } });
 
-  // close when clicking outside the panel
-  document.addEventListener('click', function(e){
-    if(!panel.classList.contains('active')) return;
-    var inside = e.target.closest && e.target.closest('.reservation');
-    var clickedToggle = e.target.closest && e.target.closest('#contact-toggle');
-    if(!inside && !clickedToggle) closePanel();
-  });
+  // close when clicking outside the panel handled by backdrop click above
 
 })();
 
@@ -192,4 +215,53 @@
       setTimeout(function(){ intro.style.display='none'; }, 550);
     });
   }
+})();
+
+/* Custom cursor: dot + trailing ring that reacts to hover on clickable elements */
+(function(){
+  try{
+    if(('ontouchstart' in window) || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)) return; // don't enable on touch
+    var dot = document.getElementById('cursor-dot');
+    var ring = document.getElementById('cursor-ring');
+    if(!dot || !ring) return;
+
+    document.body.classList.add('custom-cursor-enabled');
+
+    var mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    var visible = false;
+    var lastMove = 0;
+
+    function onPointerMove(e){
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.transform = 'translate('+mouseX+'px, '+mouseY+'px) translate(-50%,-50%)';
+      // ensure visible
+      if(!visible){ dot.style.opacity='1'; ring.style.opacity='1'; visible=true; }
+      lastMove = Date.now();
+    }
+
+    window.addEventListener('pointermove', onPointerMove, {passive:true});
+
+    // trailing ring animation (lerp)
+    function raf(){
+      ringX += (mouseX - ringX) * 0.16;
+      ringY += (mouseY - ringY) * 0.16;
+      ring.style.transform = 'translate('+ringX+'px, '+ringY+'px) translate(-50%,-50%)';
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Hover states for clickable elements
+    var clickables = document.querySelectorAll('a, button, input[type="submit"], [role="button"]');
+    clickables.forEach(function(el){
+      el.addEventListener('pointerenter', function(){ document.body.classList.add('cursor-hover'); });
+      el.addEventListener('pointerleave', function(){ document.body.classList.remove('cursor-hover'); });
+      el.addEventListener('pointerdown', function(){ document.body.classList.add('cursor-down'); });
+      el.addEventListener('pointerup', function(){ document.body.classList.remove('cursor-down'); });
+    });
+
+    // hide when not moving for a while
+    setInterval(function(){ if(Date.now() - lastMove > 2200){ dot.style.opacity='0'; ring.style.opacity='0'; visible=false; } }, 1000);
+
+  }catch(e){ console.error('cursor init error', e); }
 })();
