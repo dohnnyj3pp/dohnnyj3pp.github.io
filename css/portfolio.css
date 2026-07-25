@@ -102,6 +102,9 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neu
   .name-row{flex-direction:column}
   .reservation-floating{right:0;left:0;top:auto;bottom:0;width:100%;border-radius:12px 12px 0 0}
   .reservation-floating.active{right:0}
+  /* Keep reservation modal as bottom drawer on small screens */
+  .reservation.modal{ left:0; right:0; bottom:0; top:auto; transform:translateY(0) scale(1); width:100%; border-radius:12px 12px 0 0; }
+  .reservation.modal.open{ transform:translateY(0) scale(1); }
 }
 
 @media (max-width:900px){
@@ -116,8 +119,16 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neu
 }
 
 /* Animated menu and hover interactions (adapted from project template) */
-.nav-list a{display:inline-block;padding:.6rem .9rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);box-shadow:2px 2px 10px rgba(0,0,0,0.5);transition:background .35s,color .25s,transform .18s}
-.nav-list a:hover{color:#fff;background:var(--submit-bg);transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.6)}
+.nav-list a{display:inline-block;padding:.6rem .9rem;border-radius:6px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);box-shadow:2px 2px 10px rgba(0,0,0,0.5);transition:color .25s,transform .18s;position:relative;overflow:hidden;z-index:1}
+.nav-list a::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,191,166,0.12) 60%);transform:translateX(-110%);transition:transform .42s cubic-bezier(.2,.9,.2,1);z-index:0;pointer-events:none}
+.nav-list a:hover::before{transform:translateX(0)}
+.nav-list a:hover{color:#fff;transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.6);border-color:transparent}
+
+/* Submit button / form CTA gets same magic hover */
+.rsvp-submit{position:relative;overflow:hidden;z-index:1}
+.rsvp-submit::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,191,166,0.12) 60%);transform:translateX(-110%);transition:transform .42s cubic-bezier(.2,.9,.2,1);z-index:0;pointer-events:none}
+.rsvp-submit:hover::before{transform:translateX(0)}
+.rsvp-submit:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,0.45)}
 
 /* Buttons hover unified to match reservation submit background */
 .btn:hover, .btn-primary:hover, .btn-ghost:hover { background: var(--submit-bg) !important; color: #fff !important; border-color: transparent !important }
@@ -146,11 +157,11 @@ button:focus{outline:2px solid var(--teal)}
 /* Custom cursor (dot + trailing ring) - only for fine pointers */
 @media (pointer: fine) and (hover: hover){
   body.custom-cursor-enabled{ cursor: none; }
-  .cursor-dot, .cursor-ring{ position:fixed; top:0; left:0; width:12px; height:12px; border-radius:50%; pointer-events:none; transform:translate(-50%,-50%) translateZ(0); z-index:2000; transition:opacity .18s ease, transform .18s ease; }
-  .cursor-dot{ background:var(--teal); box-shadow:0 6px 16px rgba(0,0,0,0.45); width:10px; height:10px; }
-  .cursor-ring{ width:40px; height:40px; border:2px solid rgba(255,255,255,0.12); background:transparent; }
-  .cursor-hover .cursor-dot{ transform:translate(-50%,-50%) scale(0.85); background:#fff; }
-  .cursor-hover .cursor-ring{ transform:translate(-50%,-50%) scale(1.15); border-color:var(--teal); }
+  .cursor-dot, .cursor-ring{ position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; transform:translate(-50%,-50%) translateZ(0); z-index:2000; transition:opacity .12s ease, transform .12s ease; opacity:0 }
+  .cursor-dot{ background:var(--teal); box-shadow:0 8px 28px rgba(0,191,166,0.22), inset 0 1px 0 rgba(255,255,255,0.06); width:10px; height:10px; }
+  .cursor-ring{ width:46px; height:46px; border:2px solid rgba(0,191,166,0.14); background:transparent; box-shadow:0 6px 20px rgba(0,0,0,0.45); }
+  body.cursor-hover .cursor-dot{ transform:translate(-50%,-50%) scale(0.9); background:#ffffff; box-shadow:0 10px 30px rgba(0,191,166,0.28), inset 0 1px 0 rgba(255,255,255,0.06); }
+  body.cursor-hover .cursor-ring{ transform:translate(-50%,-50%) scale(1.12); border-color:rgba(0,191,166,0.95); }
 }
 
 /* Reservation modal-style (match other modals) */

@@ -244,8 +244,9 @@
 
     // trailing ring animation (lerp)
     function raf(){
-      ringX += (mouseX - ringX) * 0.16;
-      ringY += (mouseY - ringY) * 0.16;
+      // quicker lerp factor for snappier trailing
+      ringX += (mouseX - ringX) * 0.32;
+      ringY += (mouseY - ringY) * 0.32;
       ring.style.transform = 'translate('+ringX+'px, '+ringY+'px) translate(-50%,-50%)';
       requestAnimationFrame(raf);
     }
@@ -260,8 +261,8 @@
       el.addEventListener('pointerup', function(){ document.body.classList.remove('cursor-down'); });
     });
 
-    // hide when not moving for a while
-    setInterval(function(){ if(Date.now() - lastMove > 2200){ dot.style.opacity='0'; ring.style.opacity='0'; visible=false; } }, 1000);
+    // hide when not moving for a short time
+    setInterval(function(){ if(Date.now() - lastMove > 1200){ dot.style.opacity='0'; ring.style.opacity='0'; visible=false; } }, 600);
 
   }catch(e){ console.error('cursor init error', e); }
 })();
