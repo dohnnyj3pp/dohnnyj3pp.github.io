@@ -35,186 +35,25 @@
     el.addEventListener('blur',  function(){ el.classList.remove('is-focused'); });
   });
 })();
-// Reservation panel toggle behaviour (modal-style to match other modals)
+
+// Intro enter (simplified for page-based navigation)
 (function(){
-  var toggle = document.getElementById('contact-toggle');
-  var panel = document.getElementById('reservationPanel');
-  var closeBtn = document.getElementById('reservationClose');
-  var backdropId = 'reservationBackdrop';
-
-  function createBackdrop(){
-    var existing = document.getElementById(backdropId);
-    if(existing) return existing;
-    var b = document.createElement('div');
-    b.id = backdropId;
-    b.className = 'modal-backdrop';
-    document.body.appendChild(b);
-    // allow click on backdrop to close
-    b.addEventListener('click', closePanel);
-    return b;
-  }
-
-  function openPanel(){
-    // ensure panel exists
-    if(!panel) return;
-    createBackdrop().classList.add('open');
-    panel.classList.add('modal');
-    // small delay to allow DOM paint then open
-    requestAnimationFrame(function(){ panel.classList.add('open'); });
-    panel.setAttribute('aria-hidden','false');
-    // mark contact toggle active
-    if(toggle) toggle.classList.add('active');
-    // also set body class for modal-open (used for custom cursor if needed)
-    document.body.classList.add('has-modal-open');
-  }
-  function closePanel(){
-    if(!panel) return;
-    var b = document.getElementById(backdropId);
-    if(b) b.classList.remove('open');
-    panel.classList.remove('open');
-    // remove modal class after transition
-    setTimeout(function(){ panel.classList.remove('modal'); if(b && b.parentNode) b.parentNode.removeChild(b); }, 300);
-    panel.setAttribute('aria-hidden','true');
-    if(toggle) toggle.classList.remove('active');
-    document.body.classList.remove('has-modal-open');
-  }
-
-  if(toggle && panel){
-    toggle.addEventListener('click',function(e){
-      e.preventDefault();
-      if(panel.classList.contains('open')) closePanel(); else openPanel();
-    });
-  }
-
-  if(closeBtn){
-    closeBtn.addEventListener('click', function(){ closePanel(); });
-  }
-
-  // close when pressing Escape
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closePanel(); } });
-
-  // close when clicking outside the panel handled by backdrop click above
-
-})();
-
-// Scrollspy: mark nav items active based on section in view
-(function(){
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-list a'));
-  var sectionLinks = navLinks.filter(function(a){ return a.getAttribute('href') && a.getAttribute('href').indexOf('#')===0 && a.id !== 'contact-toggle'; });
-
-  var sections = sectionLinks.map(function(a){ var id = a.getAttribute('href').slice(1); return document.getElementById(id); }).filter(Boolean);
-  var linkById = {};
-  sectionLinks.forEach(function(a){ linkById[a.getAttribute('href').slice(1)] = a; });
-
-  function clearActive(){ navLinks.forEach(function(a){ a.classList.remove('active'); }); }
-  function setActiveById(id){ clearActive(); var a = linkById[id]; if(a) a.classList.add('active'); }
-
-  // IntersectionObserver to detect section in view
-  if(window.IntersectionObserver && sections.length){
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          setActiveById(entry.target.id);
-        }
-      });
-    },{ root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 });
-    sections.forEach(function(s){ observer.observe(s); });
-  }
-
-  // clicking a nav link sets active (and smooth-scroll behavior for internal links)
-  navLinks.forEach(function(a){
-    var href = a.getAttribute('href') || '';
-    if(href.indexOf('#')===0 && href.length>1){
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        var target = document.getElementById(href.slice(1));
-        if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); setActiveById(target.id); }
-        // close mobile nav if open
-        var navList = document.getElementById('primary-navigation'); if(navList && navList.classList.contains('show')) navList.classList.remove('show');
-      });
-    }
-  });
-
-  // Make CONTACT toggle set active state while open
-  var contactToggle = document.getElementById('contact-toggle');
-  var panel = document.getElementById('reservationPanel');
-  if(contactToggle && panel){
-    contactToggle.addEventListener('click', function(){
-      if(panel.classList.contains('active')){ contactToggle.classList.remove('active'); }
-      else{ clearActive(); contactToggle.classList.add('active'); }
-    });
-    // when panel closes via other means, remove active from contact-toggle
-    var closePanelObserver = new MutationObserver(function(){ if(!panel.classList.contains('active')) contactToggle.classList.remove('active'); });
-    closePanelObserver.observe(panel, { attributes:true, attributeFilter:['class'] });
-  }
-})();
-// Modal handling and intro flow
-(function(){
-  // Open modal by id, manage aria-hidden and focus
-  function openModal(id){
-    var m = document.getElementById(id);
-    if(!m) return;
-    m.setAttribute('aria-hidden','false');
-    var focusable = m.querySelector('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
-    if(focusable) focusable.focus();
-  }
-  function closeModal(m){
-    if(!m) return;
-    m.setAttribute('aria-hidden','true');
-  }
-
-  // Attach modal triggers from nav
-  document.querySelectorAll('.nav-list a[data-modal]').forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      var id = a.getAttribute('data-modal');
-      if(id) openModal(id);
-    });
-  });
-
-  // Fallback: if nav links use href #home etc, map to modal ids
-  document.querySelectorAll('.nav-list a[href^="#"]').forEach(function(a){
-    var href = a.getAttribute('href');
-    if(!href || href.length<=1) return;
-    var modalId = 'modal-' + href.slice(1);
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      openModal(modalId);
-    });
-  });
-
-  // close buttons and outside clicks
-  document.querySelectorAll('.modal').forEach(function(m){
-    m.addEventListener('click', function(e){
-      if(e.target === m){ closeModal(m); }
-    });
-    var btn = m.querySelector('.modal-close');
-    if(btn) btn.addEventListener('click', function(){ closeModal(m); });
-  });
-
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ document.querySelectorAll('.modal[aria-hidden="false"]').forEach(function(m){ closeModal(m); }); } });
-
-  // Intro enter
   var enter = document.getElementById('enterSite');
   var intro = document.getElementById('intro');
   var siteRoot = document.getElementById('site-root');
   if(enter && intro && siteRoot){
-    // Delay sequence: show intro-inner elements after a short delay so video begins
     var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!reduced){
-      setTimeout(function(){ document.querySelector('.intro-inner').classList.add('show'); }, 500);
+      setTimeout(function(){ var inner = document.querySelector('.intro-inner'); if(inner) inner.classList.add('show'); }, 500);
     } else {
-      document.querySelector('.intro-inner').classList.add('show');
+      var inner = document.querySelector('.intro-inner'); if(inner) inner.classList.add('show');
     }
 
     enter.addEventListener('click', function(){
       // Move the intro video out so it remains playing in the page background
       try{
         var video = document.getElementById('introVideo');
-        if(video && !document.body.contains(video.parentNode)){
-          /* nothing */
-        } else if(video){
-          // preserve current playback; move the element to the body
+        if(video){
           video.classList.add('fixed-bg-video');
           document.body.appendChild(video);
         }
@@ -225,16 +64,11 @@
       intro.setAttribute('aria-hidden','true');
       setTimeout(function(){ try{ intro.style.display='none'; }catch(e){} }, 420);
 
-      // show the site content as a centered modal so video remains visible behind it
+      // show the site content (site-root) that now contains the Home content
       siteRoot.classList.remove('hidden');
-      siteRoot.classList.add('site-modal');
-      // small delay to allow layout then open with animation
-      requestAnimationFrame(function(){ siteRoot.classList.add('open');
-        // after site modal opened, open the home modal so content is visible
-        try{ if(typeof openModal === 'function'){ openModal('modal-home'); } }catch(e){console.warn('openModal call failed', e);}      
-      });
-      // mark aria
+      siteRoot.classList.add('open');
       siteRoot.setAttribute('aria-hidden','false');
+      try{ var focusable = siteRoot.querySelector('h3, [tabindex], button, a'); if(focusable) focusable.focus(); }catch(e){console.warn('focus site-root failed', e);}      
       document.body.classList.add('site-open');
     });
   }
@@ -267,7 +101,6 @@
 
     // trailing ring animation (lerp)
     function raf(){
-      // even snappier lerp factor for a quicker, tighter trail
       ringX += (mouseX - ringX) * 0.5;
       ringY += (mouseY - ringY) * 0.5;
       ring.style.transform = 'translate('+ringX+'px, '+ringY+'px) translate(-50%,-50%)';

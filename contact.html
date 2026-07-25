@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Adam Pace — Contact</title>
+  <link rel="shortcut icon" type="image/png" href="images/coding_icon.png">
+  <link rel="stylesheet" href="css/portfolio.css">
+</head>
+<body class="site-dark">
+  <video id="introVideo" class="intro-video fixed-bg-video" autoplay muted playsinline loop preload="auto">
+    <source src="images/video/tunnel.mp4" type="video/mp4">
+  </video>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1><a href="index.html">Adam Pace</a></h1>
+        <p class="role">Full‑Stack Software Developer</p>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+        <ul id="primary-navigation" class="nav-list">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="projects.html">PROJECTS</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html" class="active">CONTACT</a></li>
+          </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-section container">
+      <h2>Contact</h2>
+      <p>If you'd like to reach out, please use the form below.</p>
+      <form class="reservation-form form-rsvp" action="https://formspree.io/info@learncodinganywhere.com" method="POST">
+        <div class="name-row">
+          <input class="rsvp" name="first_name" type="text" placeholder="First Name" required>
+          <input class="rsvp" name="last_name" type="text" placeholder="Last Name" required>
+        </div>
+
+        <input class="rsvp" name="email" type="email" placeholder="Email Address" required>
+        <input class="rsvp" name="phone" type="tel" placeholder="Phone Number">
+
+        <div class="form-spacer">
+          <label class="terms"><input type="checkbox" name="terms" required> I accept the terms and conditions</label>
+        </div>
+
+        <div class="submit">
+          <input class="rsvp-submit" type="submit" value="Submit">
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; 2026 Adam Pace</small>
+    </div>
+  </footer>
+
+  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+  <script src="js/portfolio.js"></script>
+</body>
+</html>

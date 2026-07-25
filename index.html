@@ -19,10 +19,10 @@
       <nav class="nav" aria-label="Primary">
         <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
         <ul id="primary-navigation" class="nav-list">
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#" id="contact-toggle">CONTACT</a></li>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="projects.html">PROJECTS</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
           </ul>
       </nav>
     </div>
@@ -42,15 +42,8 @@
       </div>
     </div>
 
-    <!-- Site root (hidden until Enter is clicked) -->
-    <div id="site-root" class="site-root hidden">
-      <div class="container">
-        <p class="muted-note">Use the navigation to open sections as modal dialogs.</p>
-      </div>
-    </div>
-
-    <!-- Modals for sections -->
-    <div class="modal" id="modal-home" role="dialog" aria-modal="true" aria-hidden="true">
+    <!-- Site root (hidden until Enter is clicked) - now contains the Home content -->
+    <div id="site-root" class="site-root hidden" aria-hidden="true">
       <div class="modal-content" role="document">
         <button class="modal-close" aria-label="Close">×</button>
         <h3>Home</h3>
@@ -59,88 +52,10 @@
       </div>
     </div>
 
-    <div class="modal" id="modal-projects" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="modal-content" role="document">
-        <button class="modal-close" aria-label="Close">×</button>
-        <h3>Projects</h3>
-        <div class="projects-grid modal-grid">
-          <article class="project-card">
-            <img src="images/thumbnail1.png" alt="Project thumbnail">
-            <div class="project-body">
-              <h4>Project One</h4>
-              <p>Responsive UI with accessible components and light UX animations.</p>
-            </div>
-          </article>
+    <!-- Section pages are separate HTML files now (projects.html, about.html, contact.html). -->
+    <!-- Projects/About/Skills content moved to their own pages -->
 
-          <article class="project-card">
-            <img src="images/thumbnail2.png" alt="Project thumbnail">
-            <div class="project-body">
-              <h4>Project Two</h4>
-              <p>Full‑stack app with REST API and persistent storage.</p>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img src="images/thumbnail3.png" alt="Project thumbnail">
-            <div class="project-body">
-              <h4>Project Three</h4>
-              <p>Automation and tooling scripts to improve developer workflow.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal" id="modal-about" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="modal-content" role="document">
-        <button class="modal-close" aria-label="Close">×</button>
-        <h3>About</h3>
-        <p>I’m a software developer with a certificate from The Tech Academy. I focus on maintainable code, thoughtful UI, and reliable backend systems. I enjoy learning new technologies and contributing to open-source projects.</p>
-        <p><strong>Education:</strong> Software Developer Boot Camp — The Tech Academy</p>
-      </div>
-    </div>
-
-    <div class="modal" id="modal-skills" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="modal-content" role="document">
-        <button class="modal-close" aria-label="Close">×</button>
-        <h3>Skills</h3>
-        <div class="skills-list modal-skills">
-          <span class="skill">HTML</span>
-          <span class="skill">CSS</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">Python</span>
-          <span class="skill">C#</span>
-          <span class="skill">SQL</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Floating reservation panel (hidden by default, toggled by Contact nav button) -->
-    <div class="reservation reservation-floating" id="reservationPanel" aria-hidden="true">
-      <button class="reservation-close" id="reservationClose" aria-label="Close">×</button>
-      <div class="reservation-inner">
-        <h3>Reservations</h3>
-        <p class="rsvp-text">Your adventure is just around the moon. Reserve your flight today!</p>
-
-        <form class="reservation-form form-rsvp" action="https://formspree.io/info@learncodinganywhere.com" method="POST">
-          <div class="name-row">
-            <input class="rsvp" name="first_name" type="text" placeholder="First Name" required>
-            <input class="rsvp" name="last_name" type="text" placeholder="Last Name" required>
-          </div>
-
-          <input class="rsvp" name="email" type="email" placeholder="Email Address" required>
-          <input class="rsvp" name="phone" type="tel" placeholder="Phone Number">
-
-          <div class="form-spacer">
-            <label class="terms"><input type="checkbox" name="terms" required> I accept the terms and conditions</label>
-          </div>
-
-          <div class="submit">
-            <input class="rsvp-submit" type="submit" value="Submit">
-          </div>
-        </form>
-      </div>
-    </div>
+    <!-- (Reservation / Contact is now on contact.html) -->
 
   </main>
 
