@@ -30,27 +30,22 @@
 
   <main>
 
-    <!-- Intro overlay / animated entry -->
-    <div id="intro" class="intro-overlay" aria-hidden="false">
-      <video id="introVideo" class="intro-video" autoplay muted playsinline loop preload="auto">
+    <!-- Background video kept playing behind the page (always visible) -->
+    <video id="introVideo" class="fixed-bg-video" autoplay muted playsinline loop preload="auto">
       <source src="images/video/tunnel.mp4" type="video/mp4">
-      </video>
-      <div class="intro-inner">
-        <h2 class="intro-title">Adam Pace</h2>
-        <p class="intro-sub">Full‑Stack Software Developer — building web apps with HTML, CSS, JavaScript, Python and C#.</p>
-        <button id="enterSite" class="btn btn-primary">Enter Site</button>
-      </div>
-    </div>
+    </video>
 
-    <!-- Site root (hidden until Enter is clicked) - now contains the Home content -->
-    <div id="site-root" class="site-root hidden" aria-hidden="true">
-      <div class="modal-content" role="document">
-        <button class="modal-close" aria-label="Close">×</button>
-        <h3>Home</h3>
-        <p>Hello — I’m Adam. I build web applications using HTML, CSS, JavaScript, Python and C#. I enjoy turning ideas into clean, maintainable code and delivering products that solve problems.</p>
-        <div class="hero-image-modal"><img src="images/adam2.jpg" alt="Adam Pace portrait"></div>
+    <!-- Home / Hero content (visible immediately) -->
+    <section class="hero container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <h2 class="intro-title">Adam Pace</h2>
+          <p class="lead">Full‑Stack Software Developer — building web apps with HTML, CSS, JavaScript, Python and C#.</p>
+          <div class="cta-row"><a href="projects.html" class="btn btn-primary">View Projects</a></div>
+        </div>
+        <div class="hero-image"><img src="images/adam2.jpg" alt="Adam Pace portrait"></div>
       </div>
-    </div>
+    </section>
 
     <!-- Section pages are separate HTML files now (projects.html, about.html, contact.html). -->
     <!-- Projects/About/Skills content moved to their own pages -->
