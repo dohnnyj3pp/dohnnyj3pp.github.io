@@ -229,7 +229,10 @@
       siteRoot.classList.remove('hidden');
       siteRoot.classList.add('site-modal');
       // small delay to allow layout then open with animation
-      requestAnimationFrame(function(){ siteRoot.classList.add('open'); });
+      requestAnimationFrame(function(){ siteRoot.classList.add('open');
+        // after site modal opened, open the home modal so content is visible
+        try{ if(typeof openModal === 'function'){ openModal('modal-home'); } }catch(e){console.warn('openModal call failed', e);}      
+      });
       // mark aria
       siteRoot.setAttribute('aria-hidden','false');
       document.body.classList.add('site-open');
