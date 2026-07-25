@@ -208,15 +208,29 @@
     }
 
     enter.addEventListener('click', function(){
-      // Hide the intro copy but keep the video running in the background.
-      var inner = document.querySelector('.intro-inner'); if(inner) inner.classList.remove('show');
+      // Move the intro video out so it remains playing in the page background
+      try{
+        var video = document.getElementById('introVideo');
+        if(video && !document.body.contains(video.parentNode)){
+          /* nothing */
+        } else if(video){
+          // preserve current playback; move the element to the body
+          video.classList.add('fixed-bg-video');
+          document.body.appendChild(video);
+        }
+      }catch(e){console.warn('move video failed', e);}      
+
+      // Hide the intro overlay so it no longer blocks the page
+      intro.style.opacity = '0';
+      intro.setAttribute('aria-hidden','true');
+      setTimeout(function(){ try{ intro.style.display='none'; }catch(e){} }, 420);
+
       // show the site content as a centered modal so video remains visible behind it
       siteRoot.classList.remove('hidden');
       siteRoot.classList.add('site-modal');
       // small delay to allow layout then open with animation
       requestAnimationFrame(function(){ siteRoot.classList.add('open'); });
       // mark aria
-      intro.setAttribute('aria-hidden','false');
       siteRoot.setAttribute('aria-hidden','false');
       document.body.classList.add('site-open');
     });
