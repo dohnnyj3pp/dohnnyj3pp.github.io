@@ -11,15 +11,10 @@
 <body class="site-dark">
   <header class="site-header">
     <div class="container header-inner">
-      <div class="brand">
-        <h1><a href="#home">Adam Pace</a></h1>
-        <p class="role">Full‑Stack Software Developer</p>
-      </div>
-
       <nav class="nav" aria-label="Primary">
         <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+        <a href="index.html" class="brand-button">Adam Pace</a>
         <ul id="primary-navigation" class="nav-list">
-            <li><a href="index.html">HOME</a></li>
             <li><a href="projects.html">PROJECTS</a></li>
             <li><a href="about.html">ABOUT</a></li>
             <li><a href="contact.html">CONTACT</a></li>
@@ -35,15 +30,14 @@
       <source src="images/video/tunnel.mp4" type="video/mp4">
     </video>
 
-    <!-- Home / Hero content (visible immediately) -->
-    <section class="hero container">
+    <!-- Brand/Home button and nav links only (moved Brand from header to nav) -->
+    <section class="hero container hero-fade-in">
       <div class="hero-inner">
         <div class="hero-content">
-          <h2 class="intro-title">Adam Pace</h2>
-          <p class="lead">Full‑Stack Software Developer — building web apps with HTML, CSS, JavaScript, Python and C#.</p>
-          <div class="cta-row"><a href="projects.html" class="btn btn-primary">View Projects</a></div>
+          <h2 class="intro-title hero-title-fade">Adam Pace</h2>
+          <p class="lead hero-subtitle-fade">Full‑Stack Software Developer — building web apps with HTML, CSS, JavaScript, Python and C#.</p>
+          <div class="cta-row hero-cta-fade"><a href="projects.html" class="btn btn-primary">View Projects</a></div>
         </div>
-        <div class="hero-image"><img src="images/adam2.jpg" alt="Adam Pace portrait"></div>
       </div>
     </section>
 

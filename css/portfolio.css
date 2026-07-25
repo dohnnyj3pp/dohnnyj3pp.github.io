@@ -18,12 +18,11 @@ html{scroll-behavior:smooth}
 body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:#e6eef1; line-height:1.5}
 .container{max-width:1100px;margin:0 auto;padding:1.5rem}
 
-/* Header */
-.site-header{backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(15,15,17,0.6), rgba(15,15,17,0.4));position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(255,255,255,0.03)}
+/* Header with transparent/floating navbar */
+.site-header{backdrop-filter:none;background:transparent;position:sticky;top:0;z-index:40;border-bottom:none}
 .header-inner{display:flex;align-items:center;justify-content:space-between}
-.brand h1{font-size:1.25rem;margin:0}
-.brand a{color:inherit;text-decoration:none}
-.role{font-size:.8rem;color:var(--muted);margin:0}
+.brand-button{color:var(--muted);text-decoration:none;padding:.5rem 1rem;border-radius:20px;border:2px solid var(--teal);background:transparent;cursor:pointer;font-weight:600;transition:all .3s ease;display:inline-block}
+.brand-button:hover{background:var(--teal);color:#011;transform:translateY(-2px)}
 
 /* Nav */
 .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center}
@@ -52,9 +51,9 @@ body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neu
 .project-links a{color:var(--teal);text-decoration:none;margin-right:.5rem}
 
 /* About and Skills */
-.about-grid{display:grid;grid-template-columns:1fr 320px;gap:1.5rem;align-items:start}
+.about-grid{display:grid;grid-template-columns:1fr 300px;gap:2rem;align-items:start}
 .about-text p{color:var(--muted)}
-.about-details h4{margin-top:0}
+.about-image img{width:100%;height:auto;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
 .skills-list{display:flex;flex-wrap:wrap;gap:.5rem}
 .skill{background:var(--glass);padding:.4rem .6rem;border-radius:6px;color:var(--muted)}
 
@@ -342,4 +341,15 @@ button:hover, .form-container .btn:hover {
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce){
   .intro-overlay,.modal,.modal-content{transition:none}
+}
+
+/* Fade-in animations for hero content */
+.hero-fade-in { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
+.hero-title-fade { opacity: 0; animation: fadeInUp 0.8s ease-out 0.2s forwards; }
+.hero-subtitle-fade { opacity: 0; animation: fadeInUp 0.8s ease-out 0.4s forwards; }
+.hero-cta-fade { opacity: 0; animation: fadeInUp 0.8s ease-out 0.6s forwards; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
