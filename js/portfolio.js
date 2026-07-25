@@ -208,11 +208,17 @@
     }
 
     enter.addEventListener('click', function(){
-      // hide intro with fade
-      intro.style.opacity = '0';
-      intro.setAttribute('aria-hidden','true');
+      // Hide the intro copy but keep the video running in the background.
+      var inner = document.querySelector('.intro-inner'); if(inner) inner.classList.remove('show');
+      // show the site content as a centered modal so video remains visible behind it
       siteRoot.classList.remove('hidden');
-      setTimeout(function(){ intro.style.display='none'; }, 550);
+      siteRoot.classList.add('site-modal');
+      // small delay to allow layout then open with animation
+      requestAnimationFrame(function(){ siteRoot.classList.add('open'); });
+      // mark aria
+      intro.setAttribute('aria-hidden','false');
+      siteRoot.setAttribute('aria-hidden','false');
+      document.body.classList.add('site-open');
     });
   }
 })();
@@ -244,9 +250,9 @@
 
     // trailing ring animation (lerp)
     function raf(){
-      // quicker lerp factor for snappier trailing
-      ringX += (mouseX - ringX) * 0.32;
-      ringY += (mouseY - ringY) * 0.32;
+      // even snappier lerp factor for a quicker, tighter trail
+      ringX += (mouseX - ringX) * 0.5;
+      ringY += (mouseY - ringY) * 0.5;
       ring.style.transform = 'translate('+ringX+'px, '+ringY+'px) translate(-50%,-50%)';
       requestAnimationFrame(raf);
     }

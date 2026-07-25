@@ -158,10 +158,13 @@ button:focus{outline:2px solid var(--teal)}
 @media (pointer: fine) and (hover: hover){
   body.custom-cursor-enabled{ cursor: none; }
   .cursor-dot, .cursor-ring{ position:fixed; top:0; left:0; border-radius:50%; pointer-events:none; transform:translate(-50%,-50%) translateZ(0); z-index:2000; transition:opacity .12s ease, transform .12s ease; opacity:0 }
-  .cursor-dot{ background:var(--teal); box-shadow:0 8px 28px rgba(0,191,166,0.22), inset 0 1px 0 rgba(255,255,255,0.06); width:10px; height:10px; }
-  .cursor-ring{ width:46px; height:46px; border:2px solid rgba(0,191,166,0.14); background:transparent; box-shadow:0 6px 20px rgba(0,0,0,0.45); }
-  body.cursor-hover .cursor-dot{ transform:translate(-50%,-50%) scale(0.9); background:#ffffff; box-shadow:0 10px 30px rgba(0,191,166,0.28), inset 0 1px 0 rgba(255,255,255,0.06); }
-  body.cursor-hover .cursor-ring{ transform:translate(-50%,-50%) scale(1.12); border-color:rgba(0,191,166,0.95); }
+  /* Ensure native cursor doesn't show over clickable elements while custom cursor enabled */
+  body.custom-cursor-enabled a, body.custom-cursor-enabled button, body.custom-cursor-enabled input[type="submit"], body.custom-cursor-enabled [role="button"]{ cursor: none !important; }
+  /* dot white, ring tighter and bright (match --teal) */
+  .cursor-dot{ background:#ffffff; box-shadow:0 12px 36px rgba(0,191,166,0.18), inset 0 1px 0 rgba(255,255,255,0.6); width:10px; height:10px; }
+  .cursor-ring{ width:36px; height:36px; border:2px solid var(--teal); background:transparent; box-shadow:0 8px 24px rgba(0,0,0,0.45); }
+  body.cursor-hover .cursor-dot{ transform:translate(-50%,-50%) scale(0.95); background:#ffffff; box-shadow:0 12px 40px rgba(0,191,166,0.32), inset 0 1px 0 rgba(255,255,255,0.6); }
+  body.cursor-hover .cursor-ring{ transform:translate(-50%,-50%) scale(1.08); border-color:var(--teal); opacity:0.98; }
 }
 
 /* Reservation modal-style (match other modals) */
@@ -306,6 +309,14 @@ button:hover, .form-container .btn:hover {
 .intro-sub{color:#ffffff;margin-bottom:1rem;opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s}
 #enterSite{opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s}
 .site-root.hidden{display:none}
+
+/* Site-root as modal on top of background video (keeps video playing behind) */
+.site-root.site-modal{ position:fixed; left:50%; top:50%; transform:translate(-50%,-50%) scale(.98); opacity:0; transition:opacity .36s ease, transform .36s ease; z-index:1510; max-width:1100px; width:calc(100% - 3rem); background:rgba(8,10,12,0.86); border-radius:12px; box-shadow:0 30px 80px rgba(0,0,0,0.7); padding:1.25rem; }
+.site-root.site-modal.open{ opacity:1; transform:translate(-50%,-50%) scale(1); }
+
+@media (max-width:900px){
+  .site-root.site-modal{ position:fixed; left:0; top:auto; bottom:0; transform:none; width:100%; border-radius:12px 12px 0 0; max-height:92vh; overflow:auto; }
+}
 
 /* Show states (will be toggled with JS for delays) */
 .intro-inner.show .intro-title{opacity:1;transform:none;transition-delay:0.5s}
