@@ -1,77 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Adam Pace — Projects</title>
-  <link rel="shortcut icon" type="image/png" href="images/coding_icon.png">
-  <link rel="stylesheet" href="css/portfolio.css">
+    <meta charset="UTF-8">
+    <title>Projects — Adam Pace</title>
+    <link rel="stylesheet" href="css/portfolio.css">
+    <script defer src="js/main.js"></script>
 </head>
-<body class="site-dark">
-  <video id="introVideo" class="intro-video fixed-bg-video" autoplay muted playsinline loop preload="auto">
-    <source src="images/video/intro.mp4" type="video/mp4">
-  </video>
+<body class="subpage">
+    <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
 
-<header class="site-header">
-  <div class="container header-inner centered-nav">
-    
-    <a href="index.html" class="brand-center">Adam Pace</a>
-
-    <nav class="nav" aria-label="Primary">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
-
-      <ul id="primary-navigation" class="nav-list">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="projects.html">PROJECTS</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-brand">Adam Pace</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-  </div>
-</header>
+    <main class="main-wrapper">
+        <section class="section page-content">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>Some of the things I’ve built, broken, and rebuilt better.</p>
+            </div>
 
+            <div class="projects-grid">
+                <article class="project-card scroll-fade parallax-layer">
+                    <h3>Portfolio Site</h3>
+                    <p>Cinematic, video-backed portfolio with scroll-triggered animations and parallax layers.</p>
+                </article>
 
-  <main>
-    <section class="projects-section container">
-      <h2>Projects</h2>
-      <div class="projects-grid">
-        <article class="project-card">
-          <img src="images/thumbnail1.png" alt="Project thumbnail">
-          <div class="project-body">
-            <h4>Project One</h4>
-            <p>Responsive UI with accessible components and light UX animations.</p>
-          </div>
-        </article>
+                <article class="project-card scroll-fade parallax-layer">
+                    <h3>Reservation System</h3>
+                    <p>Full-stack app with modals, drawers, and a clean UX for booking flows.</p>
+                </article>
 
-        <article class="project-card">
-          <img src="images/thumbnail2.png" alt="Project thumbnail">
-          <div class="project-body">
-            <h4>Project Two</h4>
-            <p>Full‑stack app with REST API and persistent storage.</p>
-          </div>
-        </article>
+                <article class="project-card scroll-fade parallax-layer">
+                    <h3>API Playground</h3>
+                    <p>Backend-focused project exploring clean API design and integration patterns.</p>
+                </article>
+            </div>
+        </section>
+    </main>
 
-        <article class="project-card">
-          <img src="images/thumbnail3.png" alt="Project thumbnail">
-          <div class="project-body">
-            <h4>Project Three</h4>
-            <p>Automation and tooling scripts to improve developer workflow.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+ <!-- custom cursor --> 
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <small>&copy; 2026 Adam Pace</small>
-    </div>
-  </footer>
-
-  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
-  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
-
-  <script src="js/portfolio.js"></script>
+    <footer>
+        &copy; <span id="year"></span> Adam Pace. All rights reserved.
+    </footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-// Modern site JS: nav toggle and simple accessibility helpers
+/* // Modern site JS: nav toggle and simple accessibility helpers
 (function(){
   var navToggle = document.querySelector('.nav-toggle');
   var navList = document.getElementById('primary-navigation');
@@ -75,7 +75,7 @@
 })();
 
 /* Custom cursor: dot + trailing ring that reacts to hover on clickable elements */
-(function(){
+/* (function(){
   try{
     if(('ontouchstart' in window) || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches)) return; // don't enable on touch
     var dot = document.getElementById('cursor-dot');
@@ -122,3 +122,4 @@
 
   }catch(e){ console.error('cursor init error', e); }
 })();
+*/

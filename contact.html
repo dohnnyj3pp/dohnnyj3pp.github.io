@@ -1,70 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Adam Pace — Contact</title>
-  <link rel="shortcut icon" type="image/png" href="images/coding_icon.png">
-  <link rel="stylesheet" href="css/portfolio.css">
+    <meta charset="UTF-8">
+    <title>Contact — Adam Pace</title>
+    <link rel="stylesheet" href="css/portfolio.css">
+    <script defer src="js/main.js"></script>
 </head>
-<body class="site-dark">
-  <video id="introVideo" class="intro-video fixed-bg-video" autoplay muted playsinline loop preload="auto">
-    <source src="images/video/intro.mp4" type="video/mp4">
-  </video>
+<body class="subpage">
+    <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
 
-<header class="site-header">
-  <div class="container header-inner centered-nav">
-    
-    <a href="index.html" class="brand-center">Adam Pace</a>
-
-    <nav class="nav" aria-label="Primary">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
-
-      <ul id="primary-navigation" class="nav-list">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="projects.html">PROJECTS</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-brand">Adam Pace</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-  </div>
-</header>
+    <main class="main-wrapper">
+        <section class="section page-content">
+            <div class="section-header">
+                <h2>Contact</h2>
+                <p>Let’s talk about code, ideas, or that bug you can’t shake.</p>
+            </div>
 
+            <div class="contact-grid">
+                <div class="scroll-fade parallax-layer">
+                    <p>
+                        Whether it’s a new project, a collaboration, or just comparing
+                        war stories from the debugger, I’m open to chat.
+                    </p>
+                    <ul class="contact-list">
+                        <li>Email: <strong>adam@example.com</strong></li>
+                        <li>GitHub: <strong>github.com/dohnnyj3pp</strong></li>
+                        <li>Location: Calgary, AB</li>
+                    </ul>
+                </div>
+                <div class="scroll-fade parallax-layer">
+                    <p>
+                        You can also wire up a simple contact form here later:
+                    </p>
+                    <p style="margin-top: 8px; font-size: 0.9rem;">
+                        Name, email, message, and a backend endpoint to handle submissions.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+ <!-- custom cursor --> 
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
 
-  <main>
-    <section class="contact-section container">
-      <h2>Contact</h2>
-      <p>If you'd like to reach out, please use the form below.</p>
-      <form class="reservation-form form-rsvp" action="https://formspree.io/info@learncodinganywhere.com" method="POST">
-        <div class="name-row">
-          <input class="rsvp" name="first_name" type="text" placeholder="First Name" required>
-          <input class="rsvp" name="last_name" type="text" placeholder="Last Name" required>
-        </div>
-
-        <input class="rsvp" name="email" type="email" placeholder="Email Address" required>
-        <input class="rsvp" name="phone" type="tel" placeholder="Phone Number">
-
-        <div class="form-spacer">
-          <label class="terms"><input type="checkbox" name="terms" required> I accept the terms and conditions</label>
-        </div>
-
-        <div class="submit">
-          <input class="rsvp-submit" type="submit" value="Submit">
-        </div>
-      </form>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <small>&copy; 2026 Adam Pace</small>
-    </div>
-  </footer>
-
-  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
-  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
-
-  <script src="js/portfolio.js"></script>
+    <footer>
+        &copy; <span id="year"></span> Adam Pace. All rights reserved.
+    </footer>
 </body>
 </html>

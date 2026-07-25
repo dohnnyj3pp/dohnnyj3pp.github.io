@@ -1,69 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Adam Pace — Software Developer</title>
-  <link rel="shortcut icon" type="image/png" href="images/coding_icon.png">
-  <link rel="stylesheet" href="css/portfolio.css">
+    <meta charset="UTF-8">
+    <title>Adam Pace — Software Developer</title>
+    <link rel="stylesheet" href="css/portfolio.css">
+    <script defer src="js/main.js"></script>
+    <script defer src="js/cursor.js"></script>
+
 </head>
+<body class="hero-page">
+    <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
 
-<body class="site-dark">
-<header class="site-header">
-  <div class="container header-inner centered-nav">
-    
-    <a href="index.html" class="brand-center">Adam Pace</a>
-
-    <nav class="nav" aria-label="Primary">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
-
-      <ul id="primary-navigation" class="nav-list">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="projects.html">PROJECTS</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-brand">Adam Pace</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-  </div>
-</header>
+    <main class="main-wrapper">
+        <section class="hero page-content">
+            <div class="hero-text parallax-layer">
+                <h1>Hi, I’m <span>Adam Pace</span></h1>
+                <p>
+                    Full-stack developer building modern web applications with clean architecture,
+                    smooth UX, and a bit of cinematic flair.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn-primary">View Projects</button>
+                    <button class="btn-secondary">Download Resume</button>
+                </div>
+            </div>
+            <div class="hero-visual scroll-fade parallax-layer">
+                <img src="images/me_cutout.png" alt="Adam Pace portrait">
+            </div>
+        </section>
+    </main>
 
+ <!-- custom cursor --> 
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
 
-  <main>
-
-    <!-- Background video kept playing behind the page (always visible) -->
-    <video id="introVideo" class="fixed-bg-video" autoplay muted playsinline loop preload="auto">
-      <source src="images/video/intro.mp4" type="video/mp4">
-    </video>
-
-    <!-- Brand/Home button and nav links only (moved Brand from header to nav) -->
-    <section class="hero container hero-fade-in">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <h2 class="intro-title hero-title-fade">Adam Pace</h2>
-          <p class="lead hero-subtitle-fade">Full‑Stack Software Developer — building web apps with HTML, CSS, JavaScript, Python and C#.</p>
-          <div class="cta-row hero-cta-fade"><a href="projects.html" class="btn btn-primary">View Projects</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section pages are separate HTML files now (projects.html, about.html, contact.html). -->
-    <!-- Projects/About/Skills content moved to their own pages -->
-
-    <!-- (Reservation / Contact is now on contact.html) -->
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <small>&copy; 2026 Adam Pace — <a href="https://github.com/dohnnyj3pp" target="_blank">GitHub</a></small>
-    </div>
-  </footer>
-
-  <!-- Custom cursor elements (dot + ring) -->
-  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
-  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
-
-  <script src="js/portfolio.js"></script>
+    <footer>
+        &copy; <span id="year"></span> Adam Pace. All rights reserved.
+    </footer>
 </body>
 </html>

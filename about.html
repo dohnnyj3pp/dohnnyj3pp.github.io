@@ -1,59 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Adam Pace — About</title>
-  <link rel="shortcut icon" type="image/png" href="images/coding_icon.png">
-  <link rel="stylesheet" href="css/portfolio.css">
+    <meta charset="UTF-8">
+    <title>About — Adam Pace</title>
+    <link rel="stylesheet" href="css/portfolio.css">
+    <script defer src="js/main.js"></script>
 </head>
-<body class="site-dark">
-  <video id="introVideo" class="intro-video fixed-bg-video" autoplay muted playsinline loop preload="auto">
-    <source src="images/video/intro.mp4" type="video/mp4">
-  </video>
+<body class="subpage">
+    <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
 
-<header class="site-header">
-  <div class="container header-inner centered-nav">
-    
-    <a href="index.html" class="brand-center">Adam Pace</a>
-
-    <nav class="nav" aria-label="Primary">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
-
-      <ul id="primary-navigation" class="nav-list">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="projects.html">PROJECTS</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-      </ul>
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-brand">Adam Pace</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-  </div>
-</header>
+    <main class="main-wrapper">
+        <section class="section page-content">
+            <div class="section-header">
+                <h2>About</h2>
+                <p>A bit of context behind the code.</p>
+            </div>
 
+            <div class="about-layout">
+                <div class="scroll-fade parallax-layer">
+                    <p>
+                        I’m a full-stack developer who likes mixing solid engineering with
+                        visual storytelling. I’ve rebuilt this portfolio from scratch more
+                        than once, which tells you a lot about how I iterate.
+                    </p>
+                    <p style="margin-top: 12px;">
+                        I enjoy working with modern JavaScript stacks, clean CSS architecture,
+                        and UX that feels intentional rather than accidental.
+                    </p>
+                </div>
+                <div class="scroll-fade parallax-layer">
+                    <img src="images/me_cutout.png" alt="Adam Pace">
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <main>
-    <section class="about-section container">
-      <h2>About</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>I'm a software developer with a certificate from The Tech Academy. I focus on maintainable code, thoughtful UI, and reliable backend systems. I enjoy learning new technologies and contributing to open-source projects.</p>
-          <p><strong>Education:</strong> Software Developer Boot Camp — The Tech Academy</p>
-        </div>
-        <div class="about-image"><img src="images/adam2.jpg" alt="Adam Pace portrait"></div>
-      </div>
-    </section>
-  </main>
+ <!-- custom cursor --> 
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <small>&copy; 2026 Adam Pace</small>
-    </div>
-  </footer>
-
-  <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
-  <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
-
-  <script src="js/portfolio.js"></script>
+    <footer>
+        &copy; <span id="year"></span> Adam Pace. All rights reserved.
+    </footer>
 </body>
 </html>
