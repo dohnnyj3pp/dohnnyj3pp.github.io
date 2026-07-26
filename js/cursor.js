@@ -1,31 +1,53 @@
-const cursorDot = document.getElementById("cursor-dot");
-const cursorRing = document.getElementById("cursor-ring");
+// cursor.js
 
-if (cursorDot && cursorRing) {
-    document.body.classList.add("custom-cursor-enabled");
+document.addEventListener("DOMContentLoaded", () => {
+  const dot = document.querySelector(".cursor-dot");
+  const ring = document.querySelector(".cursor-ring");
+  const body = document.body;
 
-    window.addEventListener("mousemove", e => {
-        const { clientX, clientY } = e;
-        cursorDot.style.transform = `translate(${clientX}px, ${clientY}px)`;
-        cursorRing.style.transform = `translate(${clientX - 16}px, ${clientY - 16}px)`;
-        cursorDot.style.opacity = 1;
-        cursorRing.style.opacity = 1;
+  if (!dot || !ring) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+
+  // Move cursor
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    ring.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+  });
+
+  // Hover state on interactive elements
+  const hoverSelectors = [
+    "a",
+    "button",
+    ".btn-primary",
+    ".btn-secondary",
+    ".nav-links a"
+  ];
+
+  hoverSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        body.classList.add("cursor-hover");
+      });
+      el.addEventListener("mouseleave", () => {
+        body.classList.remove("cursor-hover");
+      });
     });
+  });
 
-    window.addEventListener("mousedown", () => {
-        document.body.classList.add("cursor-down");
-    });
+  // Optional: mouse down/up for subtle feedback
+  document.addEventListener("mousedown", () => {
+    ring.style.opacity = "0.6";
+  });
 
-    window.addEventListener("mouseup", () => {
-        document.body.classList.remove("cursor-down");
-    });
+  document.addEventListener("mouseup", () => {
+    ring.style.opacity = "1";
+  });
 
-    document.querySelectorAll("a, button, .project-card").forEach(el => {
-        el.addEventListener("mouseenter", () => {
-            document.body.classList.add("cursor-hover");
-        });
-        el.addEventListener("mouseleave", () => {
-            document.body.classList.remove("cursor-hover");
-        });
-    });
-}
+  // Enable custom cursor styling
+  body.classList.add("custom-cursor-enabled");
+});

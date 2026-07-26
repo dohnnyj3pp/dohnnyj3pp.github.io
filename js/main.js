@@ -1,139 +1,44 @@
-// -------------------------------
-// CINEMATIC VIDEO ENGINE
-// -------------------------------
-
-const introVideo = document.getElementById("intro-video");
-
-// First-load video start logic
-window.addEventListener("DOMContentLoaded", () => {
-    const hasStarted = sessionStorage.getItem("videoStarted");
-
-    if (!hasStarted) {
-        // First time visitor → start at 0
-        if (introVideo) introVideo.currentTime = 0;
-        sessionStorage.setItem("videoStarted", "true");
-    }
-});
-
-// -------------------------------
-// HERO PARALLAX (with depth)
-// -------------------------------
-
-document.addEventListener("mousemove", (e) => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 10;
-    const y = (e.clientY / window.innerHeight - 0.5) * 10;
-
-    const hero = document.querySelector(".hero-content");
-    if (hero) {
-        hero.style.transform =
-            `translate(-50%, -50%) translate(${x}px, ${y}px) translateZ(20px)`;
-    }
-});
-
-// -------------------------------
-// CURSOR HOVER REBIND
-// -------------------------------
-
-function bindCursorHover() {
-    document.querySelectorAll("a, button, .project-card").forEach(el => {
-        el.addEventListener("mouseenter", () => {
-            document.body.classList.add("cursor-hover");
-        });
-        el.addEventListener("mouseleave", () => {
-            document.body.classList.remove("cursor-hover");
-        });
-    });
-}
-
-// -------------------------------
-// SPA SOFT NAVIGATION ENGINE
-// -------------------------------
+// main.js
 
 document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("page-content");
-    if (!container) return;
+  const body = document.body;
+  const pageContent = document.getElementById("page-content");
+  const heroContent = document.querySelector(".hero-content");
+  const yearSpan = document.getElementById("year");
 
-    function setActiveNav(urlPath) {
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            const href = link.getAttribute("href");
-            link.classList.toggle("active", href === urlPath);
-        });
-    }
+  // Set footer year
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
 
-    function loadPage(url) {
-        document.body.classList.add("transitioning");
+  // Mark page as loaded (for CSS fade)
+  body.classList.add("page-loaded");
 
-        fetch(url)
-            .then(res => res.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, "text/html");
+  // Hero entrance
+  if (heroContent) {
+    heroContent.classList.add("hero-enter");
+  }
 
-                const newContent = doc.getElementById("page-content");
-                const newBodyClass = doc.body.className;
+  // Simple parallax on mouse move for hero
+  const parallaxLayers = document.querySelectorAll(".parallax-layer");
 
-                if (!newContent) return;
+  if (parallaxLayers.length > 0) {
+    document.addEventListener("mousemove", (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
 
-                container.style.opacity = 0;
+      parallaxLayers.forEach((layer) => {
+        const depth = layer.classList.contains("depth-3")
+          ? 18
+          : layer.classList.contains("depth-2")
+          ? 12
+          : 8;
 
-                setTimeout(() => {
-                    container.innerHTML = newContent.innerHTML;
+        const translateX = -x * depth;
+        const translateY = -y * depth;
 
-                    // Restore body class + cursor class
-                    document.body.className = newBodyClass + " page-loaded";
-                    document.body.classList.add("custom-cursor-enabled");
-
-                    // Rebind cursor hover
-                    bindCursorHover();
-
-                    // Reapply hero entrance animation
-                    const hero = document.querySelector(".hero-content");
-                    if (hero) {
-                        hero.classList.add("hero-enter");
-                        setTimeout(() => hero.classList.remove("hero-enter"), 1200);
-                    }
-
-                    setActiveNav(url);
-                    container.style.opacity = 1;
-
-                    setTimeout(() => {
-                        document.body.classList.remove("transitioning");
-                    }, 400);
-                }, 250);
-            })
-            .catch(err => {
-                console.error("SPA load error", err);
-                window.location.href = url;
-            });
-    }
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", e => {
-            const url = link.getAttribute("href");
-            if (!url || url.startsWith("http")) return;
-
-            e.preventDefault();
-            history.pushState(null, "", url);
-            loadPage(url);
-        });
+        layer.style.transform = `translate(${translateX}px, ${translateY}px)`;
+      });
     });
-
-    window.addEventListener("popstate", () => {
-        const path = location.pathname.replace(/^\//, "") || "index.html";
-        loadPage(path);
-    });
-
-    document.body.classList.add("page-loaded");
-    bindCursorHover();
-});
-
-// -------------------------------
-// OPTIONAL PARALLAX MOTION BLUR
-// -------------------------------
-
-window.addEventListener("scroll", () => {
-    document.querySelectorAll(".parallax-layer").forEach(layer => {
-        layer.classList.add("moving");
-        setTimeout(() => layer.classList.remove("moving"), 150);
-    });
+  }
 });
