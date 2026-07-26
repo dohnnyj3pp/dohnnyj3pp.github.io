@@ -1,86 +1,31 @@
-(function () {
-    try {
-        // Disable on touch devices
-        if (
-            "ontouchstart" in window ||
-            (window.matchMedia && window.matchMedia("(pointer: coarse)").matches)
-        ) {
-            return;
-        }
+const cursorDot = document.getElementById("cursor-dot");
+const cursorRing = document.getElementById("cursor-ring");
 
-        const dot = document.getElementById("cursor-dot");
-        const ring = document.getElementById("cursor-ring");
+if (cursorDot && cursorRing) {
+    document.body.classList.add("custom-cursor-enabled");
 
-        if (!dot || !ring) return;
+    window.addEventListener("mousemove", e => {
+        const { clientX, clientY } = e;
+        cursorDot.style.transform = `translate(${clientX}px, ${clientY}px)`;
+        cursorRing.style.transform = `translate(${clientX - 16}px, ${clientY - 16}px)`;
+        cursorDot.style.opacity = 1;
+        cursorRing.style.opacity = 1;
+    });
 
-        document.body.classList.add("custom-cursor-enabled");
+    window.addEventListener("mousedown", () => {
+        document.body.classList.add("cursor-down");
+    });
 
-        let mouseX = 0,
-            mouseY = 0,
-            ringX = 0,
-            ringY = 0;
-        let visible = false;
-        let lastMove = 0;
+    window.addEventListener("mouseup", () => {
+        document.body.classList.remove("cursor-down");
+    });
 
-        // Move dot instantly
-        function onPointerMove(e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-
-            if (!visible) {
-                dot.style.opacity = "1";
-                ring.style.opacity = "1";
-                visible = true;
-            }
-
-            lastMove = Date.now();
-        }
-
-        window.addEventListener("pointermove", onPointerMove, { passive: true });
-
-        // Smooth trailing ring
-        function animateRing() {
-            ringX += (mouseX - ringX) * 0.15;
-            ringY += (mouseY - ringY) * 0.15;
-
-            ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-
-            requestAnimationFrame(animateRing);
-        }
-
-        requestAnimationFrame(animateRing);
-
-        // Hover states
-        const clickables = document.querySelectorAll(
-            "a, button, input[type='submit'], [role='button']"
-        );
-
-        clickables.forEach((el) => {
-            el.addEventListener("pointerenter", () =>
-                document.body.classList.add("cursor-hover")
-            );
-            el.addEventListener("pointerleave", () =>
-                document.body.classList.remove("cursor-hover")
-            );
-            el.addEventListener("pointerdown", () =>
-                document.body.classList.add("cursor-down")
-            );
-            el.addEventListener("pointerup", () =>
-                document.body.classList.remove("cursor-down")
-            );
+    document.querySelectorAll("a, button, .project-card").forEach(el => {
+        el.addEventListener("mouseenter", () => {
+            document.body.classList.add("cursor-hover");
         });
-
-        // Auto-hide when idle
-        setInterval(() => {
-            if (Date.now() - lastMove > 1200) {
-                dot.style.opacity = "0";
-                ring.style.opacity = "0";
-                visible = false;
-            }
-        }, 600);
-    } catch (e) {
-        console.error("cursor init error", e);
-    }
-})();
+        el.addEventListener("mouseleave", () => {
+            document.body.classList.remove("cursor-hover");
+        });
+    });
+}

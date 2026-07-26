@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Projects — Adam Pace</title>
+
     <link rel="stylesheet" href="css/portfolio.css">
+
     <script defer src="js/main.js"></script>
+    <script defer src="js/cursor.js"></script>
 </head>
+
 <body class="subpage">
+
     <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
+    <div id="video-overlay"></div>
+    <div id="page-surface"></div>
 
     <nav>
         <div class="nav-inner">
@@ -21,25 +28,25 @@
         </div>
     </nav>
 
-    <main class="main-wrapper">
-        <section class="section page-content">
+    <main id="page-content" class="main-wrapper page-content">
+        <section class="section">
             <div class="section-header">
                 <h2>Projects</h2>
                 <p>Some of the things I’ve built, broken, and rebuilt better.</p>
             </div>
 
             <div class="projects-grid">
-                <article class="project-card scroll-fade parallax-layer">
+                <article class="project-card scroll-fade parallax-layer depth-1">
                     <h3>Portfolio Site</h3>
                     <p>Cinematic, video-backed portfolio with scroll-triggered animations and parallax layers.</p>
                 </article>
 
-                <article class="project-card scroll-fade parallax-layer">
+                <article class="project-card scroll-fade parallax-layer depth-1">
                     <h3>Reservation System</h3>
                     <p>Full-stack app with modals, drawers, and a clean UX for booking flows.</p>
                 </article>
 
-                <article class="project-card scroll-fade parallax-layer">
+                <article class="project-card scroll-fade parallax-layer depth-1">
                     <h3>API Playground</h3>
                     <p>Backend-focused project exploring clean API design and integration patterns.</p>
                 </article>
@@ -47,12 +54,12 @@
         </section>
     </main>
 
- <!-- custom cursor --> 
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
 
     <footer>
         &copy; <span id="year"></span> Adam Pace. All rights reserved.
     </footer>
+
 </body>
 </html>

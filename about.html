@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>About — Adam Pace</title>
+
     <link rel="stylesheet" href="css/portfolio.css">
+
     <script defer src="js/main.js"></script>
+    <script defer src="js/cursor.js"></script>
 </head>
+
 <body class="subpage">
+
     <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
+    <div id="video-overlay"></div>
+    <div id="page-surface"></div>
 
     <nav>
         <div class="nav-inner">
@@ -21,15 +28,15 @@
         </div>
     </nav>
 
-    <main class="main-wrapper">
-        <section class="section page-content">
+    <main id="page-content" class="main-wrapper page-content">
+        <section class="section">
             <div class="section-header">
                 <h2>About</h2>
                 <p>A bit of context behind the code.</p>
             </div>
 
             <div class="about-layout">
-                <div class="scroll-fade parallax-layer">
+                <div class="scroll-fade parallax-layer depth-1">
                     <p>
                         I’m a full-stack developer who likes mixing solid engineering with
                         visual storytelling. I’ve rebuilt this portfolio from scratch more
@@ -40,19 +47,19 @@
                         and UX that feels intentional rather than accidental.
                     </p>
                 </div>
-                <div class="scroll-fade parallax-layer">
+                <div class="scroll-fade parallax-layer depth-2">
                     <img src="images/adam-hero.png" alt="Adam Pace">
                 </div>
             </div>
         </section>
     </main>
 
- <!-- custom cursor --> 
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
 
     <footer>
         &copy; <span id="year"></span> Adam Pace. All rights reserved.
     </footer>
+
 </body>
 </html>
