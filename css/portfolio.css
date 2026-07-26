@@ -247,6 +247,13 @@ body.custom-cursor-enabled .hero-content {
         opacity 1.1s ease-out 1.2s;
 }
 
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+
 .page-loaded .hero-button {
     left: 10%;
     opacity: 1;
