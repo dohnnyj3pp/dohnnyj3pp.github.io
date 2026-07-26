@@ -1,69 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Adam Pace — Software Developer</title>
-
-    <link rel="stylesheet" href="css/portfolio.css">
-
-    <script defer src="js/main.js"></script>
-    <script defer src="js/cursor.js"></script>
+  <meta charset="UTF-8" />
+  <title>Adam Pace — Software Developer</title>
+  <link rel="stylesheet" href="css/portfolio.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/cursor.js"></script>
 </head>
 
 <body class="hero-page">
+  <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
+  <div id="video-overlay"></div>
+  <div id="page-surface"></div>
 
-    <!-- Background Video -->
-    <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">Adam Pace</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Blur Overlay -->
-    <div id="video-overlay"></div>
-
-    <!-- Dark Surface -->
-    <div id="page-surface"></div>
-
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="nav-inner">
-            <div class="nav-brand">Adam Pace</div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+  <main id="page-content" class="main-wrapper page-content">
+    <section class="hero-section">
+      <div class="hero-content parallax-layer depth-1">
+        <div class="hero-content-inner">
+          <h1>Hi, I'm <span>Adam Pace</span></h1>
+          <p>
+            Full‑stack developer building modern web applications with clean architecture,
+            smooth UX, and a bit of cinematic flair.
+          </p>
+          <div class="hero-cta">
+            <button class="btn-primary">View Projects</button>
+            <button class="btn-secondary">Download Resume</button>
+          </div>
         </div>
-    </nav>
+      </div>
+    </section>
+  </main>
 
-    <!-- PAGE CONTENT (SPA WRAPPER) -->
-    <main id="page-content" class="main-wrapper page-content">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
 
-        <!-- FULLSCREEN CINEMATIC HERO -->
-        <section class="hero-section">
-            <div class="hero-content parallax-layer depth-1">
-                <div class="hero-content-inner">
-                    <h1>Hi, I'm <span>Adam Pace</span></h1>
-                    <p>
-                        Full-stack developer building modern web applications with clean architecture,
-                        smooth UX, and a bit of cinematic flair.
-                    </p>
-
-                    <div class="hero-cta">
-                        <button class="btn-primary">View Projects</button>
-                        <button class="btn-secondary">Download Resume</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- CLASS-BASED CUSTOM CURSOR -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-
-    <footer>
-        &copy; <span id="year"></span> Adam Pace. All rights reserved.
-    </footer>
-
+  <footer>
+    &copy; <span id="year"></span> Adam Pace. All rights reserved.
+  </footer>
 </body>
 </html>

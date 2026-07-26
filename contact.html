@@ -1,70 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact — Adam Pace</title>
-
-    <link rel="stylesheet" href="css/portfolio.css">
-
-    <script defer src="js/main.js"></script>
-    <script defer src="js/cursor.js"></script>
+  <meta charset="UTF-8" />
+  <title>Contact — Adam Pace</title>
+  <link rel="stylesheet" href="css/portfolio.css" />
+  <script defer src="js/main.js"></script>
+  <script defer src="js/cursor.js"></script>
 </head>
 
 <body class="subpage">
 
-    <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
-    <div id="video-overlay"></div>
-    <div id="page-surface"></div>
+  <video id="intro-video" src="images/video/intro.mp4" autoplay muted loop playsinline></video>
+  <div id="video-overlay"></div>
+  <div id="page-surface"></div>
 
-    <nav>
-        <div class="nav-inner">
-            <div class="nav-brand">Adam Pace</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-brand">Adam Pace</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <main id="page-content" class="main-wrapper page-content">
-        <section class="section">
-            <div class="section-header">
-                <h2>Contact</h2>
-                <p>Let’s talk about code, ideas, or that bug you can’t shake.</p>
-            </div>
+  <main id="page-content" class="main-wrapper page-content">
+    <h1>Contact</h1>
+    <p>If you'd like to reach out, feel free to send a message below.</p>
 
-            <div class="contact-grid">
-                <div class="scroll-fade parallax-layer depth-1">
-                    <p>
-                        Whether it’s a new project, a collaboration, or just comparing
-                        war stories from the debugger, I’m open to chat.
-                    </p>
-                    <ul class="contact-list">
-                        <li>Email: <strong>adam@example.com</strong></li>
-                        <li>GitHub: <strong>github.com/dohnnyj3pp</strong></li>
-                        <li>Location: Calgary, AB</li>
-                    </ul>
-                </div>
-                <div class="scroll-fade parallax-layer depth-2">
-                    <p>
-                        You can also wire up a simple contact form here later:
-                    </p>
-                    <p style="margin-top: 8px; font-size: 0.9rem;">
-                        Name, email, message, and a backend endpoint to handle submissions.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
+    <form class="contact-form">
+      <label>Name</label>
+      <input type="text" placeholder="Your name" />
 
-    <div id="cursor-dot"></div>
-    <div id="cursor-ring"></div>
+      <label>Email</label>
+      <input type="email" placeholder="Your email" />
 
-    <footer>
-        &copy; <span id="year"></span> Adam Pace. All rights reserved.
-    </footer>
+      <label>Message</label>
+      <textarea placeholder="Your message"></textarea>
+
+      <button class="btn-primary" type="submit">Send Message</button>
+    </form>
+  </main>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <footer>
+    &copy; <span id="year"></span> Adam Pace. All rights reserved.
+  </footer>
 
 </body>
 </html>
