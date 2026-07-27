@@ -181,26 +181,41 @@ nav {
   text-shadow: 0 0 10px rgba(255, 75, 129, 0.6);
 }
 
-/* ===== SEQUENTIAL WAVE WITH CLEAN PAUSE ===== */
-@keyframes letterPulse {
-  0%, 70%, 100% { transform: translateY(0); } /* rest phase */
-  40% { transform: translateY(-4px); } /* lift phase */
+/* ===== QUICK SEQUENTIAL HOP WITH PAUSE ===== */
+
+/* Fast hop: 0.18s up/down, rest for the remainder */
+@keyframes letterHop {
+  0%, 20%, 100% { transform: translateY(0); }
+  10% { transform: translateY(-6px); }
 }
 
-/* Each letter as a span */
+/* Each letter must be inline-block to hop independently */
 .nav-links a span {
   display: inline-block;
 }
 
-/* Sequential pulse only on snapped link */
-.nav-links a.snap-active span:nth-child(1) { animation: letterPulse 4s ease-in-out 0s infinite; }
-.nav-links a.snap-active span:nth-child(2) { animation: letterPulse 4s ease-in-out 0.3s infinite; }
-.nav-links a.snap-active span:nth-child(3) { animation: letterPulse 4s ease-in-out 0.6s infinite; }
-.nav-links a.snap-active span:nth-child(4) { animation: letterPulse 4s ease-in-out 0.9s infinite; }
-.nav-links a.snap-active span:nth-child(5) { animation: letterPulse 4s ease-in-out 1.2s infinite; }
-.nav-links a.snap-active span:nth-child(6) { animation: letterPulse 4s ease-in-out 1.5s infinite; }
-.nav-links a.snap-active span:nth-child(7) { animation: letterPulse 4s ease-in-out 1.8s infinite; }
-.nav-links a.snap-active span:nth-child(8) { animation: letterPulse 4s ease-in-out 2.1s infinite; }
+/* Total duration: 2.2s
+   - First 0.18s = hop
+   - Remaining ~2s = pause
+   - Delays spaced by 0.18s so each waits for the previous
+*/
+
+.nav-links a.snap-active span:nth-child(1) {
+  animation: letterHop 2.2s ease-out 0s infinite;
+}
+
+.nav-links a.snap-active span:nth-child(2) {
+  animation: letterHop 2.2s ease-out 0.18s infinite;
+}
+
+.nav-links a.snap-active span:nth-child(3) {
+  animation: letterHop 2.2s ease-out 0.36s infinite;
+}
+
+.nav-links a.snap-active span:nth-child(4) {
+  animation: letterHop 2.2s ease-out 0.54s infinite;
+}
+
 
 
 /* Main wrapper */
