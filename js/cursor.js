@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   body.classList.add("custom-cursor-enabled");
 
   function renderCursor() {
-    ringX += (mouseX - ringX) * 0.16;
-    ringY += (mouseY - ringY) * 0.16;
+    ringX += (mouseX - ringX) * 0.06;
+    ringY += (mouseY - ringY) * 0.06;
 
     const ringScale = body.classList.contains("cursor-hover") ? 1.4 : 1;
     dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
