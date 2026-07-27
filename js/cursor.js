@@ -53,26 +53,30 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentTarget = null;
 
   // Hover logic
-  document.addEventListener("pointerover", (event) => {
-    const target = event.target.closest(
-      "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
-    );
+document.addEventListener("pointerover", (event) => {
+  const target = event.target.closest(
+    "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
+  );
 
-    if (target) {
-      body.classList.add("cursor-hover");
-      isSnapped = true;
-      currentTarget = target;
+  if (target) {
+    body.classList.add("cursor-hover");
+    isSnapped = true;
+    currentTarget = target;
 
-      const rect = target.getBoundingClientRect();
-      ring.style.width = `${rect.width + 2}px`;
-      ring.style.height = `${rect.height + 2}px`;
-      ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${
-        rect.top + rect.height / 2
-      }px) translate(-50%, -50%)`;
+    // Add wave trigger class for snapped link
+    target.classList.add("snap-active");
 
-      ring.classList.add("snap");
-    }
-  });
+    const rect = target.getBoundingClientRect();
+    ring.style.width = `${rect.width + 2}px`;
+    ring.style.height = `${rect.height + 2}px`;
+    ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${
+      rect.top + rect.height / 2
+    }px) translate(-50%, -50%)`;
+
+    ring.classList.add("snap");
+  }
+});
+
 
   // Pointer out logic
   document.addEventListener("pointerout", (event) => {
