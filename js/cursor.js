@@ -10,12 +10,20 @@ document.addEventListener("DOMContentLoaded", () => {
   let mouseY = window.innerHeight / 2;
 
   // Move cursor
+  let cursorTicking = false;
+
   document.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    ring.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+    if (!cursorTicking) {
+      requestAnimationFrame(() => {
+        dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        ring.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+        cursorTicking = false;
+      });
+      cursorTicking = true;
+    }
   });
 
   // Hover feedback

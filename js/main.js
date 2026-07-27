@@ -16,22 +16,32 @@ document.addEventListener("DOMContentLoaded", () => {
   // Parallax movement
   const parallaxLayers = document.querySelectorAll(".parallax-layer");
   if (parallaxLayers.length > 0) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let ticking = false;
+
     document.addEventListener("mousemove", (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 2;
-      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
 
-      parallaxLayers.forEach((layer) => {
-        const depth = layer.classList.contains("depth-3")
-          ? 10
-          : layer.classList.contains("depth-2")
-          ? 6
-          : 3;
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          parallaxLayers.forEach((layer) => {
+            const depth = layer.classList.contains("depth-3")
+              ? 10
+              : layer.classList.contains("depth-2")
+              ? 6
+              : 3;
 
-        const translateX = -x * depth;
-        const translateY = -y * depth;
+            const translateX = -mouseX * depth;
+            const translateY = -mouseY * depth;
 
-        layer.style.transform = `translate(${translateX}px, ${translateY}px)`;
-      });
+            layer.style.transform = `translate(${translateX}px, ${translateY}px)`;
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
   }
 });
