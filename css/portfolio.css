@@ -264,12 +264,12 @@ body.cursor-visible .cursor-ring {
 .cursor-ring {
   width: 32px;
   height: 32px;
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(235, 7, 235, 0.788);
   border-radius: 50%;
 }
 
 body.cursor-hover .cursor-ring {
-  border-color: rgba(255, 255, 255, 1);
+  border-color: rgb(237, 4, 245);
 }
 
 /* Parallax */
