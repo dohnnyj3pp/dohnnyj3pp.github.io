@@ -2,9 +2,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const dot = document.querySelector(".cursor-dot");
   const ring = document.querySelector(".cursor-ring");
+  const ringInner = document.querySelector(".cursor-ring-inner");
   const body = document.body;
 
-  if (!dot || !ring || !window.matchMedia("(pointer: fine)").matches) return;
+  if (!dot || !ring || !ringInner || !window.matchMedia("(pointer: fine)").matches) return;
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
@@ -49,7 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       ring.style.width = `${rect.width + 1}px`;
       ring.style.height = `${rect.height + 1}px`;
-      ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${rect.top + rect.height / 2}px) translate(-50%, -50%)`;
+      ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${
+        rect.top + rect.height / 2
+      }px) translate(-50%, -50%)`;
+
       ring.classList.add("snap");
     }
   });
@@ -69,12 +73,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Opacity feedback
-  document.addEventListener("mousedown", () => (ring.style.opacity = "0.6"));
-  document.addEventListener("mouseup", () => (ring.style.opacity = ""));
+  document.addEventListener("mousedown", () => (ringInner.style.opacity = "0.6"));
+  document.addEventListener("mouseup", () => (ringInner.style.opacity = ""));
 
-  window.addEventListener('beforeunload', () => {
-  ring.classList.remove('snap');
-  ring.style.width = "32px";
-  ring.style.height = "32px";
+  // Reset on page unload
+  window.addEventListener("beforeunload", () => {
+    ring.classList.remove("snap");
+    ring.style.width = "32px";
+    ring.style.height = "32px";
   });
 });
+
