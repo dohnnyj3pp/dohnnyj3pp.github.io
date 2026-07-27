@@ -234,6 +234,17 @@ nav {
   to { opacity: 1; transform: translateY(0); }
 }
 
+.nav-animate {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeSlideDown 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeSlideDown {
+  to { opacity: 1; transform: translateY(0); }
+  }
+
 /* Main wrapper */
 .main-wrapper {
   max-width: 1100px;
