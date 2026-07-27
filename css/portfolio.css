@@ -269,7 +269,8 @@ body.cursor-visible .cursor-ring {
 }
 
 body.cursor-hover .cursor-ring {
-  border-color: rgb(237, 4, 245);
+  border-color: #ff4b81;
+  box-shadow: 0 0 10px rgba(255, 75, 129, 0.6);
 }
 
 /* Parallax */
