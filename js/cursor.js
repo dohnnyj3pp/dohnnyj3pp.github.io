@@ -110,10 +110,26 @@ document.addEventListener("DOMContentLoaded", () => {
         currentTarget = null;
         document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("snap-active"));
         ring.style.opacity = "1";
+
+        // ✅ Re‑apply snap if still hovered
+        const hovered = document.querySelector(".nav-links a:hover");
+        if (hovered) {
+          const rect = hovered.getBoundingClientRect();
+          ring.style.width = `${rect.width + 4}px`;
+          ring.style.height = `${rect.height + 4}px`;
+          ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${
+            rect.top + rect.height / 2
+          }px) translate(-50%, -50%)`;
+          ring.classList.add("snap");
+          hovered.classList.add("snap-active");
+          isSnapped = true;
+          currentTarget = hovered;
+        }
       }, 250);
     }
   });
 });
+
 
 
   // Opacity feedback
