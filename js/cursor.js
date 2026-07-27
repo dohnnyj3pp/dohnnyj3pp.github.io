@@ -47,8 +47,8 @@ document.addEventListener("pointerover", (event) => {
     const rect = target.getBoundingClientRect();
 
     // Resize ring to match element
-   ring.style.width = `${rect.width + 2}px`;
-   ring.style.height = `${rect.height + 2}px`;
+   ring.style.width = `${rect.width + 1}px`;
+   ring.style.height = `${rect.height + 1}px`;
 
 
     // Center ring on element
