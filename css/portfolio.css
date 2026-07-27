@@ -269,13 +269,11 @@ body.cursor-hover .cursor-ring {
 /* Snap mode for cursor ring */
 @keyframes pulseGlow {
   0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 8px rgba(255, 75, 129, 0.6);
+        box-shadow: 0 0 8px rgba(255, 75, 129, 0.6);
     border-color: #ff4b81;
   }
   50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 14px rgba(255, 100, 150, 0.9);
+        box-shadow: 0 0 14px rgba(255, 100, 150, 0.9);
     border-color: #f1759a;
   }
 }
@@ -283,7 +281,6 @@ body.cursor-hover .cursor-ring {
 .cursor-ring.snap {
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(255, 75, 129, 0.8);
-  background: radial-gradient(circle, rgba(255,75,129,0.15) 0%, transparent 80%);
   animation: pulseGlow 2s ease-in-out infinite;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition: width 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
