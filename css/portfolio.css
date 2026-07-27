@@ -185,7 +185,7 @@ nav {
 
 /* Lift up/down happens quicker — sharper motion */
 @keyframes letterHop {
-  0%, 5%, 100% { transform: translateY(0); }
+  0%, 10%, 100% { transform: translateY(0); }
   2% { transform: translateY(-6px); }
 }
 
@@ -200,14 +200,14 @@ nav {
    - Delays spaced by 0.14s so each waits for the previous
 */
 
-.nav-links a.snap-active span:nth-child(1) { animation: letterHop 1s ease-out 0s infinite; }
-.nav-links a.snap-active span:nth-child(2) { animation: letterHop 1s ease-out 0.10s infinite; }
-.nav-links a.snap-active span:nth-child(3) { animation: letterHop 1s ease-out 0.20s infinite; }
-.nav-links a.snap-active span:nth-child(4) { animation: letterHop 1s ease-out 0.30s infinite; }
-.nav-links a.snap-active span:nth-child(5) { animation: letterHop 1s ease-out 0.40s infinite; }
-.nav-links a.snap-active span:nth-child(6) { animation: letterHop 1s ease-out 0.50s infinite; }
-.nav-links a.snap-active span:nth-child(7) { animation: letterHop 1s ease-out 0.60s infinite; }
-.nav-links a.snap-active span:nth-child(8) { animation: letterHop 1s ease-out 0.70s infinite; }
+.nav-links a.snap-active span:nth-child(1) { animation: letterHop 2s ease-out 0s infinite; }
+.nav-links a.snap-active span:nth-child(2) { animation: letterHop 2s ease-out 0.10s infinite; }
+.nav-links a.snap-active span:nth-child(3) { animation: letterHop 2s ease-out 0.20s infinite; }
+.nav-links a.snap-active span:nth-child(4) { animation: letterHop 2s ease-out 0.30s infinite; }
+.nav-links a.snap-active span:nth-child(5) { animation: letterHop 2s ease-out 0.40s infinite; }
+.nav-links a.snap-active span:nth-child(6) { animation: letterHop 2s ease-out 0.50s infinite; }
+.nav-links a.snap-active span:nth-child(7) { animation: letterHop 2s ease-out 0.60s infinite; }
+.nav-links a.snap-active span:nth-child(8) { animation: letterHop 2s ease-out 0.70s infinite; }
 
 
 
