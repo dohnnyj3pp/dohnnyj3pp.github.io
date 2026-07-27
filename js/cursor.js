@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const rect = target.getBoundingClientRect();
 
-      ring.style.width = `${rect.width + 1}px`;
-      ring.style.height = `${rect.height + 1}px`;
+      ring.style.width = `${rect.width + 2}px`;
+      ring.style.height = `${rect.height + 2}px`;
       ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${
         rect.top + rect.height / 2
       }px) translate(-50%, -50%)`;
