@@ -130,6 +130,35 @@ document.addEventListener("DOMContentLoaded", () => {
   body.classList.add("page-loaded");
   revealContent(pageContent);
   enterHero();
+  startHeroSequence();
+
+  function enterHero() {
+  const heroContent = document.querySelector(".hero-content");
+  if (heroContent) heroContent.classList.add("hero-enter");
+}
+
+function startHeroSequence() {
+
+  if (!body.classList.contains("hero-page")) return;
+
+  const video = document.getElementById("intro-video");
+
+  const run = () => {
+
+    setTimeout(() => body.classList.add("nav-ready"), 200);
+    setTimeout(() => body.classList.add("hero-ready"), 550);
+    setTimeout(() => body.classList.add("buttons-ready"), 950);
+    setTimeout(() => body.classList.add("cursor-visible"), 1200);
+
+  };
+
+  if (!video || video.readyState >= 2) {
+    run();
+  } else {
+    video.addEventListener("loadeddata", run, { once:true });
+  }
+
+}
 
   let parallaxFrame;
   document.addEventListener("pointermove", (event) => {
