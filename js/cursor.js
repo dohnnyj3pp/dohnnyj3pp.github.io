@@ -53,7 +53,7 @@ document.addEventListener("pointerover", (event) => {
 
     // Center ring on element
     ring.style.transform =
-      `translate(${rect.left + rect.width / 2}px, ${rect.top + rect.height / 2}px) translate(-50%, -50%)`;
+      `translate(${rect.left + rect.width / 2 + window.scrollX}px, ${rect.top + rect.height / 2 + window.scrollX}px) translate(-50%, -50%)`;
 
     ring.classList.add("snap");
   }
