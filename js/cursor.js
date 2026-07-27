@@ -59,6 +59,12 @@ document.addEventListener("pointerover", (event) => {
   }
 });
 
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    ring.classList.remove('snap');
+  });
+});
+
 document.addEventListener("pointerout", (event) => {
   const leaving = event.target.closest("a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary");
 
