@@ -18,9 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ringX += (mouseX - ringX) * 0.15;
     ringY += (mouseY - ringY) * 0.15;
 
-    const ringScale = body.classList.contains("cursor-hover") ? 1.4 : 1;
     dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%) scale(${ringScale})`;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
 
     requestAnimationFrame(renderCursor);
   }
