@@ -201,13 +201,13 @@ nav {
 */
 
 .nav-links a.snap-active span:nth-child(1) { animation: letterHop 2.5s ease-out 0s infinite; }
-.nav-links a.snap-active span:nth-child(2) { animation: letterHop 2.5s ease-out 0.08s infinite; }
-.nav-links a.snap-active span:nth-child(3) { animation: letterHop 2.5s ease-out 0.16s infinite; }
-.nav-links a.snap-active span:nth-child(4) { animation: letterHop 2.5s ease-out 0.24s infinite; }
-.nav-links a.snap-active span:nth-child(5) { animation: letterHop 2.5s ease-out 0.32s infinite; }
-.nav-links a.snap-active span:nth-child(6) { animation: letterHop 2.5s ease-out 0.40s infinite; }
-.nav-links a.snap-active span:nth-child(7) { animation: letterHop 2.5s ease-out 0.48s infinite; }
-.nav-links a.snap-active span:nth-child(8) { animation: letterHop 2.5s ease-out 0.64s infinite; }
+.nav-links a.snap-active span:nth-child(2) { animation: letterHop 2.5s ease-out 0.06s infinite; }
+.nav-links a.snap-active span:nth-child(3) { animation: letterHop 2.5s ease-out 0.12s infinite; }
+.nav-links a.snap-active span:nth-child(4) { animation: letterHop 2.5s ease-out 0.18s infinite; }
+.nav-links a.snap-active span:nth-child(5) { animation: letterHop 2.5s ease-out 0.24s infinite; }
+.nav-links a.snap-active span:nth-child(6) { animation: letterHop 2.5s ease-out 0.30s infinite; }
+.nav-links a.snap-active span:nth-child(7) { animation: letterHop 2.5s ease-out 0.36s infinite; }
+.nav-links a.snap-active span:nth-child(8) { animation: letterHop 2.5s ease-out 0.42s infinite; }
 
 
 
