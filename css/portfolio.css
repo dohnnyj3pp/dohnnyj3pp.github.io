@@ -269,11 +269,12 @@ body.cursor-hover .cursor-ring {
 /* Snap mode for cursor ring */
 @keyframes pulseGlow {
   0%, 100% {
+    transform: scale(1);
     box-shadow: 0 0 8px rgba(255, 75, 129, 0.6);
     border-color: #ff4b81;
   }
-  
   50% {
+    transform: scale(1.05);
     box-shadow: 0 0 14px rgba(255, 100, 150, 0.9);
     border-color: #f1759a;
   }
