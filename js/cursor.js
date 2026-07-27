@@ -67,8 +67,8 @@ document.addEventListener("pointerover", (event) => {
     target.classList.add("snap-active");
 
     const rect = target.getBoundingClientRect();
-    ring.style.width = `${rect.width + 2}px`;
-    ring.style.height = `${rect.height + 2}px`;
+    ring.style.width = `${rect.width + 4}px`;
+    ring.style.height = `${rect.height + 4}px`;
     ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${
       rect.top + rect.height / 2
     }px) translate(-50%, -50%)`;
