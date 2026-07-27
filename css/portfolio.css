@@ -182,6 +182,36 @@ nav {
 .nav-links a:hover {
   color: #ffb3c9;
   text-shadow: 0 0 8px rgba(255, 75, 129, 0.5);
+  transform: translateY(-1px); /* subtle lift */
+  transition: color 0.25s ease-out, text-shadow 0.25s ease-out, transform 0.25s ease-out;
+}
+
+nav a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff4b81;
+  letter-spacing: 1px; /* 🔧 Slight expansion for cinematic feel */
+}
+
+/* Optional: subtle underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: #ff4b81;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 /* Main wrapper */
@@ -281,9 +311,11 @@ body.cursor-hover .cursor-ring-inner {
 
 /* Snap mode */
 .cursor-ring.snap .cursor-ring-inner {
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(255, 75, 129, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 14px rgba(255, 75, 129, 0.9);
   background: radial-gradient(circle, rgba(255,75,129,0.15) 0%, transparent 80%);
+  padding: 6px; /* 🔧 Added breathing space inside the box */
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Breathing animation */
