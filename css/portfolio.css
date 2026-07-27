@@ -264,12 +264,13 @@ body.cursor-visible .cursor-ring {
 .cursor-ring {
   width: 32px;
   height: 32px;
-  border: 2px solid rgba(235, 7, 235, 0.788);
+  border: 2px solid #ff4b81;
+  box-shadow:rgba(255, 75, 129, 0.6);
   border-radius: 50%;
 }
 
 body.cursor-hover .cursor-ring {
-  border-color: #ff4b81;
+  border-color: #f1759a;
   box-shadow: 0 0 10px rgba(255, 75, 129, 0.6);
 }
 
