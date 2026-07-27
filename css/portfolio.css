@@ -200,14 +200,14 @@ nav {
    - Delays spaced by 0.14s so each waits for the previous
 */
 
-.nav-links a.snap-active span:nth-child(1) { animation: letterHop 1.4s ease-out 0s infinite; }
-.nav-links a.snap-active span:nth-child(2) { animation: letterHop 1.4s ease-out 0.14s infinite; }
-.nav-links a.snap-active span:nth-child(3) { animation: letterHop 1.4s ease-out 0.28s infinite; }
-.nav-links a.snap-active span:nth-child(4) { animation: letterHop 1.4s ease-out 0.42s infinite; }
-.nav-links a.snap-active span:nth-child(5) { animation: letterHop 1.4s ease-out 0.56s infinite; }
-.nav-links a.snap-active span:nth-child(6) { animation: letterHop 1.4s ease-out 0.70s infinite; }
-.nav-links a.snap-active span:nth-child(7) { animation: letterHop 1.4s ease-out 0.84s infinite; }
-.nav-links a.snap-active span:nth-child(8) { animation: letterHop 1.4s ease-out 0.98s infinite; }
+.nav-links a.snap-active span:nth-child(1) { animation: letterHop 2s ease-out 0s infinite; }
+.nav-links a.snap-active span:nth-child(2) { animation: letterHop 2s ease-out 0.14s infinite; }
+.nav-links a.snap-active span:nth-child(3) { animation: letterHop 2s ease-out 0.28s infinite; }
+.nav-links a.snap-active span:nth-child(4) { animation: letterHop 2s ease-out 0.42s infinite; }
+.nav-links a.snap-active span:nth-child(5) { animation: letterHop 2s ease-out 0.56s infinite; }
+.nav-links a.snap-active span:nth-child(6) { animation: letterHop 2s ease-out 0.70s infinite; }
+.nav-links a.snap-active span:nth-child(7) { animation: letterHop 2s ease-out 0.84s infinite; }
+.nav-links a.snap-active span:nth-child(8) { animation: letterHop 2s ease-out 0.98s infinite; }
 
 
 
