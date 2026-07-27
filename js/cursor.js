@@ -37,47 +37,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Delegation keeps hover feedback working after page content is replaced.
-document.addEventListener("pointerover", (event) => {
-  const target = event.target.closest("a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary");
+  // Hover logic
+  document.addEventListener("pointerover", (event) => {
+    const target = event.target.closest(
+      "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
+    );
 
-  if (target) {
-    body.classList.add("cursor-hover");
+    if (target) {
+      body.classList.add("cursor-hover");
 
-    const rect = target.getBoundingClientRect();
+      const rect = target.getBoundingClientRect();
 
-    // Resize ring to match element
-   ring.style.width = `${rect.width + 1}px`;
-   ring.style.height = `${rect.height + 1}px`;
-
-
-    // Center ring on element
-    ring.style.transform =
-      `translate(${rect.left + rect.width / 2}px, ${rect.top + rect.height / 2}px) translate(-50%, -50%)`;
-
-    ring.classList.add("snap");
-  }
-});
-
-document.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    ring.classList.remove('snap');
+      ring.style.width = `${rect.width + 1}px`;
+      ring.style.height = `${rect.height + 1}px`;
+      ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${rect.top + rect.height / 2}px) translate(-50%, -50%)`;
+      ring.classList.add("snap");
+    }
   });
-});
 
-document.addEventListener("pointerout", (event) => {
-  const leaving = event.target.closest("a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary");
+  // Pointer out logic
+  document.addEventListener("pointerout", (event) => {
+    const leaving = event.target.closest(
+      "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
+    );
 
-  if (leaving) {
-    body.classList.remove("cursor-hover");
-    ring.classList.remove("snap");
+    if (leaving) {
+      body.classList.remove("cursor-hover");
+      ring.classList.remove("snap");
+      ring.style.width = "32px";
+      ring.style.height = "32px";
+    }
+  });
 
-    // Reset ring size
-    ring.style.width = "32px";
-    ring.style.height = "32px";
-  }
-});
-
+  // Opacity feedback
   document.addEventListener("mousedown", () => (ring.style.opacity = "0.6"));
   document.addEventListener("mouseup", () => (ring.style.opacity = ""));
+
+  // 🔧 Reset ring on click
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      ring.classList.remove("snap");
+      ring.style.width = "32px";
+      ring.style.height = "32px";
+    });
+  });
 });
