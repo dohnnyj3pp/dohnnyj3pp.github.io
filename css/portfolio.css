@@ -252,8 +252,11 @@ body.cursor-visible .cursor-ring {
   width: 32px;
   height: 32px;
   border: 2px solid #ff4b81;
-  box-shadow:rgba(255, 75, 129, 0.6);
-  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(255, 75, 129, 0.6);
+  border-radius: 50%;
+  transition: width 0.25s cubic-bezier(0.25, 0.1, 0.25, 1),
+              height 0.25s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 body.cursor-hover .cursor-ring {
@@ -263,7 +266,11 @@ body.cursor-hover .cursor-ring {
 
 /* Snap mode for cursor ring */
 .cursor-ring.snap {
-  transition: width 0.07s ease, height 0.07s ease, transform 0.07s ease;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(255, 75, 129, 0.8);
+  transition: width 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+              height 0.35s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 
