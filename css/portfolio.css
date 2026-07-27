@@ -181,33 +181,34 @@ nav {
   text-shadow: 0 0 10px rgba(255, 75, 129, 0.6);
 }
 
-/* ===== QUICK SEQUENTIAL HOP WITH PAUSE ===== */
+/* ===== ULTRA‑FAST SEQUENTIAL HOP ===== */
 
-/* Fast hop: 0.18s up/down, rest for the remainder */
+/* Lift up/down happens quicker — sharper motion */
 @keyframes letterHop {
-  0%, 15%, 100% { transform: translateY(0); }
-  8% { transform: translateY(-6px); }
+  0%, 10%, 100% { transform: translateY(0); }
+  5% { transform: translateY(-6px); }
 }
 
-/* Each letter must be inline-block to hop independently */
+/* Each letter hops independently */
 .nav-links a span {
   display: inline-block;
 }
 
-/* Total duration: 1.8s
-   - First 0.18s = hop
-   - Remaining ~1.6s = pause
-   - Delays spaced by 0.18s so each waits for the previous
+/* Total duration shortened to 1.4s
+   - Hop occurs in first 0.14s
+   - Remaining ~1.26s = pause
+   - Delays spaced by 0.14s so each waits for the previous
 */
 
-.nav-links a.snap-active span:nth-child(1) { animation: letterHop 1.8s ease-out 0s infinite; }
-.nav-links a.snap-active span:nth-child(2) { animation: letterHop 1.8s ease-out 0.18s infinite; }
-.nav-links a.snap-active span:nth-child(3) { animation: letterHop 1.8s ease-out 0.36s infinite; }
-.nav-links a.snap-active span:nth-child(4) { animation: letterHop 1.8s ease-out 0.54s infinite; }
-.nav-links a.snap-active span:nth-child(5) { animation: letterHop 1.8s ease-out 0.72s infinite; }
-.nav-links a.snap-active span:nth-child(6) { animation: letterHop 1.8s ease-out 0.90s infinite; }
-.nav-links a.snap-active span:nth-child(7) { animation: letterHop 1.8s ease-out 1.08s infinite; }
-.nav-links a.snap-active span:nth-child(8) { animation: letterHop 1.8s ease-out 1.26s infinite; }
+.nav-links a.snap-active span:nth-child(1) { animation: letterHop 1.4s ease-out 0s infinite; }
+.nav-links a.snap-active span:nth-child(2) { animation: letterHop 1.4s ease-out 0.14s infinite; }
+.nav-links a.snap-active span:nth-child(3) { animation: letterHop 1.4s ease-out 0.28s infinite; }
+.nav-links a.snap-active span:nth-child(4) { animation: letterHop 1.4s ease-out 0.42s infinite; }
+.nav-links a.snap-active span:nth-child(5) { animation: letterHop 1.4s ease-out 0.56s infinite; }
+.nav-links a.snap-active span:nth-child(6) { animation: letterHop 1.4s ease-out 0.70s infinite; }
+.nav-links a.snap-active span:nth-child(7) { animation: letterHop 1.4s ease-out 0.84s infinite; }
+.nav-links a.snap-active span:nth-child(8) { animation: letterHop 1.4s ease-out 0.98s infinite; }
+
 
 
 
