@@ -38,20 +38,38 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Delegation keeps hover feedback working after page content is replaced.
-  document.addEventListener("pointerover", (event) => {
-    if (event.target.closest("a, button, input, textarea, select, [role='button']")) {
-      body.classList.add("cursor-hover");
-    }
-  });
+document.addEventListener("pointerover", (event) => {
+  const target = event.target.closest("a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary");
 
-  document.addEventListener("pointerout", (event) => {
-    const leavingInteractive = event.target.closest("a, button, input, textarea, select, [role='button']");
-    const enteringInteractive = event.relatedTarget?.closest?.(
-      "a, button, input, textarea, select, [role='button']"
-    );
+  if (target) {
+    body.classList.add("cursor-hover");
 
-    if (leavingInteractive && !enteringInteractive) body.classList.remove("cursor-hover");
-  });
+    const rect = target.getBoundingClientRect();
+
+    // Resize ring to match element
+    ring.style.width = rect.width + 12 + "px";
+    ring.style.height = rect.height + 12 + "px";
+
+    // Center ring on element
+    ring.style.transform =
+      `translate(${rect.left + rect.width / 2}px, ${rect.top + rect.height / 2}px) translate(-50%, -50%)`;
+
+    ring.classList.add("snap");
+  }
+});
+
+document.addEventListener("pointerout", (event) => {
+  const leaving = event.target.closest("a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary");
+
+  if (leaving) {
+    body.classList.remove("cursor-hover");
+    ring.classList.remove("snap");
+
+    // Reset ring size
+    ring.style.width = "32px";
+    ring.style.height = "32px";
+  }
+});
 
   document.addEventListener("mousedown", () => (ring.style.opacity = "0.6"));
   document.addEventListener("mouseup", () => (ring.style.opacity = ""));

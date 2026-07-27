@@ -168,31 +168,18 @@ nav {
   transition: color 0.2s ease;
 }
 
+/* Remove underline pseudo-element */
 .nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #ff4b81;
-  transition: width 0.25s ease;
+  display: none;
+}
+
+/* Keep active link visible */
+.nav-links a.active {
+  color: #f5f5f5; /* or whatever color you want */
 }
 
 .nav-links a:hover {
   color: #ffb3c9;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-links a.active {
-  color: #ff4b81;
-}
-
-.nav-links a.active::after {
-  width: 100%;
 }
 
 /* Main wrapper */
@@ -274,6 +261,12 @@ body.cursor-hover .cursor-ring {
   box-shadow: 0 0 10px rgba(255, 75, 129, 0.6);
 }
 
+/* Snap mode for cursor ring */
+.cursor-ring.snap {
+  transition: width 0.15s ease, height 0.15s ease, transform 0.15s ease;
+}
+
+
 /* Parallax */
 .parallax-layer {
   position: relative;
@@ -318,7 +311,7 @@ footer {
   display: inline-block;
   padding: 10px 22px;
   margin: 8px;
-  border: 2px solid #ff4b81;
+  border: none;
   border-radius: 4px;
   text-decoration: none;
   font-weight: 500;
