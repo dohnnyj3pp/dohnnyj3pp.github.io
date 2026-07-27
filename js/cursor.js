@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentTarget = null;
 
-  // Hover logic
+// Hover logic
 document.addEventListener("pointerover", (event) => {
   const target = event.target.closest(
     "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
@@ -77,22 +77,25 @@ document.addEventListener("pointerover", (event) => {
   }
 });
 
+// Pointer out logic
+document.addEventListener("pointerout", (event) => {
+  const leaving = event.target.closest(
+    "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
+  );
 
-  // Pointer out logic
-  document.addEventListener("pointerout", (event) => {
-    const leaving = event.target.closest(
-      "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
-    );
+  if (leaving) {
+    body.classList.remove("cursor-hover");
+    ring.classList.remove("snap");
+    ring.style.width = "32px";
+    ring.style.height = "32px";
+    isSnapped = false;
+    currentTarget = null;
 
-    if (leaving) {
-      body.classList.remove("cursor-hover");
-      ring.classList.remove("snap");
-      ring.style.width = "32px";
-      ring.style.height = "32px";
-      isSnapped = false;
-      currentTarget = null;
-    }
-  });
+    // Remove wave trigger class when leaving
+    leaving.classList.remove("snap-active");
+  }
+});
+
 
   // Opacity feedback
   document.addEventListener("mousedown", () => (ringInner.style.opacity = "0.6"));
