@@ -94,21 +94,27 @@ document.addEventListener("DOMContentLoaded", () => {
   ring.style.transition =
     "opacity 0.25s ease-out, width 0.25s ease-out, height 0.25s ease-out";
 
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", () => {
+  document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", (event) => {
+    const currentURL = window.location.href.split("#")[0];
+    const targetURL = link.href.split("#")[0];
+
+    // If clicking the same page link, prevent default and reset cursor
+    if (currentURL === targetURL) {
+      event.preventDefault();
       ring.style.opacity = "0";
       setTimeout(() => {
         body.classList.remove("cursor-hover");
         ring.classList.remove("snap");
         isSnapped = false;
         currentTarget = null;
-        document
-          .querySelectorAll(".nav-links a")
-          .forEach((a) => a.classList.remove("snap-active"));
+        document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("snap-active"));
         ring.style.opacity = "1";
       }, 250);
-    });
+    }
   });
+});
+
 
   // Opacity feedback
   document.addEventListener("mousedown", () => {
