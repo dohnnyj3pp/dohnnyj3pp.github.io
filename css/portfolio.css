@@ -185,8 +185,8 @@ nav {
 
 /* Lift up/down happens quicker — sharper motion */
 @keyframes letterHop {
-  0%, 10%, 100% { transform: translateY(0); }
-  5% { transform: translateY(-6px); }
+  0%, 5%, 100% { transform: translateY(0); }
+  15% { transform: translateY(-6px); }
 }
 
 /* Each letter hops independently */
