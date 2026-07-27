@@ -79,10 +79,7 @@ document.addEventListener("pointerover", (event) => {
 
 // Pointer out logic
 document.addEventListener("pointerout", (event) => {
-  const leaving = event.target.closest(
-    "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
-  );
-
+  const leaving = event.target.closest("a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary");
   if (leaving) {
     body.classList.remove("cursor-hover");
     ring.classList.remove("snap");
@@ -90,12 +87,39 @@ document.addEventListener("pointerout", (event) => {
     ring.style.height = "32px";
     isSnapped = false;
     currentTarget = null;
-
-    // Remove wave trigger class when leaving
     leaving.classList.remove("snap-active");
   }
 });
 
+// ✅ Reset cursor when clicking a nav link (even same page)
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.body.classList.remove("cursor-hover");
+    ring.classList.remove("snap");
+    isSnapped = false;
+    currentTarget = null;
+    document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("snap-active"));
+  });
+});
+
+// Reset cursor when clicking a nav link (even same page)
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    // Fade out the ring
+    ring.style.opacity = "0";
+    setTimeout(() => {
+      // Clear stuck cursor states
+      document.body.classList.remove("cursor-hover");
+      ring.classList.remove("snap");
+      isSnapped = false;
+      currentTarget = null;
+      document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("snap-active"));
+
+      // Fade back in
+      ring.style.opacity = "1";
+    }, 250); // matches transition duration
+  });
+});
 
   // Opacity feedback
   document.addEventListener("mousedown", () => (ringInner.style.opacity = "0.6"));
