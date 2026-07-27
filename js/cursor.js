@@ -72,12 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("mousedown", () => (ring.style.opacity = "0.6"));
   document.addEventListener("mouseup", () => (ring.style.opacity = ""));
 
-  // 🔧 Reset ring on click
-  document.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      ring.classList.remove("snap");
-      ring.style.width = "32px";
-      ring.style.height = "32px";
-    });
+  window.addEventListener('beforeunload', () => {
+  ring.classList.remove('snap');
+  ring.style.width = "32px";
+  ring.style.height = "32px";
   });
 });
