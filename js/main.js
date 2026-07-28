@@ -1,4 +1,4 @@
-// main.js — persistent video, soft navigation, hero sequence
+// main.js — persistent video, soft navigation, hero motion
 document.addEventListener("DOMContentLoaded",()=>{
   const body=document.body;
   const video=document.getElementById("intro-video");
@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded",()=>{
   function resetHeroState(){
     body.classList.remove(
       "hero-ready",
-      "nav-ready",
       "title-ready",
       "text-ready",
       "buttons-ready"
@@ -37,7 +36,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
   function setActiveNav(url){
     const filename=
-      url.pathname.split("/").pop()||"index.html";
+      url.pathname.split("/").pop() || "index.html";
     document.querySelectorAll(".nav-links a")
       .forEach(link=>{
         link.classList.toggle(
@@ -55,16 +54,14 @@ document.addEventListener("DOMContentLoaded",()=>{
       "subpage",
       nextBody.classList.contains("subpage")
     );
-    body.classList.add(
-      "page-loaded",
-      "custom-cursor-enabled"
-    );
   }
   function enterHero(){
     const heroContent=
       document.querySelector(".hero-content");
     if(heroContent){
-      heroContent.classList.add("hero-enter");
+      heroContent.classList.add(
+        "hero-enter"
+      );
     }
   }
   function startHeroSequence(){
@@ -77,23 +74,35 @@ document.addEventListener("DOMContentLoaded",()=>{
     heroStarted=true;
     const run=()=>{
       setTimeout(()=>{
-        body.classList.add("nav-ready");
+        body.classList.add(
+          "nav-ready"
+        );
       },700);
       setTimeout(()=>{
-        body.classList.add("hero-ready");
+        body.classList.add(
+          "hero-ready"
+        );
         enterHero();
       },1300);
       setTimeout(()=>{
-        body.classList.add("title-ready");
+        body.classList.add(
+          "title-ready"
+        );
       },1700);
       setTimeout(()=>{
-        body.classList.add("text-ready");
+        body.classList.add(
+          "text-ready"
+        );
       },2300);
       setTimeout(()=>{
-        body.classList.add("buttons-ready");
+        body.classList.add(
+          "buttons-ready"
+        );
       },3000);
       setTimeout(()=>{
-        body.classList.add("cursor-visible");
+        body.classList.add(
+          "cursor-visible"
+        );
       },3800);
     };
     if(!video || video.readyState>=2){
@@ -102,7 +111,9 @@ document.addEventListener("DOMContentLoaded",()=>{
       video.addEventListener(
         "loadeddata",
         run,
-        {once:true}
+        {
+          once:true
+        }
       );
     }
   }
@@ -110,23 +121,35 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(activeRequest){
       activeRequest.abort();
     }
-    const controller=new AbortController();
+    const controller=
+      new AbortController();
     activeRequest=controller;
-    resetHeroState();
-    body.classList.add("transitioning");
+    /*
+      Only reset hero animation when leaving
+      the hero page.
+      Do NOT destroy global body states.
+    */
+    if(body.classList.contains("hero-page")){
+      resetHeroState();
+    }
+    body.classList.add(
+      "transitioning"
+    );
     try{
-      const response=await fetch(
-        url.href,
-        {
-          signal:controller.signal
-        }
-      );
+      const response=
+        await fetch(
+          url.href,
+          {
+            signal:controller.signal
+          }
+        );
       if(!response.ok){
         throw new Error(
           `Could not load ${url.pathname}`
         );
       }
-      const html=await response.text();
+      const html=
+        await response.text();
       if(activeRequest!==controller){
         return;
       }
@@ -145,7 +168,9 @@ document.addEventListener("DOMContentLoaded",()=>{
           "Missing page-content"
         );
       }
-      setPageMode(nextDocument.body);
+      setPageMode(
+        nextDocument.body
+      );
       nextContent.classList.add(
         "is-entering"
       );
@@ -190,7 +215,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     "click",
     event=>{
       const link=
-        event.target.closest("a[href]");
+        event.target.closest(
+          "a[href]"
+        );
       if(
         !link ||
         event.defaultPrevented ||
@@ -235,7 +262,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     "popstate",
     ()=>{
       loadPage(
-        new URL(window.location.href)
+        new URL(
+          window.location.href
+        )
       );
     }
   );
@@ -272,6 +301,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   body.classList.add(
     "page-loaded"
   );
-  revealContent(pageContent);
+  revealContent(
+    pageContent
+  );
   startHeroSequence();
 });
