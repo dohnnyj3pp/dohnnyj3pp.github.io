@@ -44,7 +44,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     if(isSnapped&&currentTarget&&!ring.classList.contains("cursor-lock")){
       const rect=currentTarget.getBoundingClientRect();
-      ring.style.transform=`translate(${rect.left+rect.width/2}px,${rect.top+rect.height/2}px) translate(-50%,-50%)`;
+
+      ring.style.transform=
+        `translate(${rect.left+rect.width/2}px,${rect.top+rect.height/2}px) translate(-50%,-50%)`;
     }
   });
 
@@ -64,23 +66,12 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     ring.style.width=`${rect.width+4}px`;
     ring.style.height=`${rect.height+4}px`;
-    ring.style.transform=`translate(${rect.left+rect.width/2}px,${rect.top+rect.height/2}px) translate(-50%,-50%)`;
+
+    ring.style.transform=
+      `translate(${rect.left+rect.width/2}px,${rect.top+rect.height/2}px) translate(-50%,-50%)`;
 
     ring.classList.add("snap");
   });
-
-function unlockCursor(){
-  ring.classList.remove("cursor-lock");
-  dot.classList.remove("cursor-lock-dot");
-
-  ring.style.width="32px";
-  ring.style.height="32px";
-  ring.style.transform =
-    `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
-
-  isSnapped=false;
-  currentTarget=null;
-}
 
   document.addEventListener("click",event=>{
     const projectButton=event.target.closest(".btn-primary");
@@ -90,15 +81,12 @@ function unlockCursor(){
     ring.classList.remove("snap");
     body.classList.remove("cursor-hover");
 
-ring.classList.add("cursor-lock");
+    ring.classList.add("cursor-lock");
 
-isSnapped=false;
-currentTarget=null;
+    isSnapped=false;
+    currentTarget=null;
 
-dot.classList.add("cursor-lock-dot");
-
-  setTimeout(unlockCursor,900);
-
+    dot.classList.add("cursor-lock-dot");
   });
 
   document.addEventListener("pointerout",event=>{
@@ -122,7 +110,8 @@ dot.classList.add("cursor-lock-dot");
     leaving.classList.remove("snap-active");
   });
 
-  ring.style.transition="opacity .25s ease-out,width .25s ease-out,height .25s ease-out";
+  ring.style.transition=
+    "opacity .25s ease-out,width .25s ease-out,height .25s ease-out";
 
   document.querySelectorAll(".nav-links a").forEach(link=>{
     link.addEventListener("click",event=>{
@@ -153,7 +142,9 @@ dot.classList.add("cursor-lock-dot");
 
             ring.style.width=`${rect.width+4}px`;
             ring.style.height=`${rect.height+4}px`;
-            ring.style.transform=`translate(${rect.left+rect.width/2}px,${rect.top+rect.height/2}px) translate(-50%,-50%)`;
+
+            ring.style.transform=
+              `translate(${rect.left+rect.width/2}px,${rect.top+rect.height/2}px) translate(-50%,-50%)`;
 
             ring.classList.add("snap");
             hovered.classList.add("snap-active");
@@ -176,8 +167,8 @@ dot.classList.add("cursor-lock-dot");
 
   window.addEventListener("beforeunload",()=>{
     ring.classList.remove("snap");
+    ring.classList.remove("cursor-lock");
     ring.style.width="32px";
     ring.style.height="32px";
   });
 });
-
