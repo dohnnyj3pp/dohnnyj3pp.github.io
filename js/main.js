@@ -56,11 +56,20 @@ document.addEventListener("DOMContentLoaded",()=>{
   }
 
   function setPageMode(nextBody){
-    const home=nextBody.classList.contains("hero-page");
+  const home=nextBody.classList.contains("hero-page");
 
-    body.classList.toggle("hero-page",home);
-    body.classList.toggle("subpage",!home);
+  body.classList.toggle("hero-page",home);
+  body.classList.toggle("subpage",!home);
+
+  body.classList.add(
+    "page-loaded",
+    "custom-cursor-enabled"
+  );
+
+  if(body.classList.contains("nav-ready")){
+    body.classList.add("nav-ready");
   }
+}
 
   function enterHero(){
     document.querySelector(".hero-content")
