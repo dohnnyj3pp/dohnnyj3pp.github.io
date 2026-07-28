@@ -1,28 +1,28 @@
 // main.js — persistent video, soft navigation, hero motion
-document.addEventListener("DOMContentLoaded",()=>{
-  const body=document.body;
-  const video=document.getElementById("intro-video");
-  const yearSpan=document.getElementById("year");
-  let pageContent=document.getElementById("page-content");
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
+  const video = document.getElementById("intro-video");
+  const yearSpan = document.getElementById("year");
+  let pageContent = document.getElementById("page-content");
   let activeRequest;
-  let heroStarted=false;
+  let heroStarted = false;
   let parallaxFrame;
-  if(yearSpan){
-    yearSpan.textContent=new Date().getFullYear();
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
   }
-  if(video){
-    video.play().catch(()=>{});
+  if (video) {
+    video.play().catch(() => { });
   }
-  function revealContent(content){
-    if(!content)return;
+  function revealContent(content) {
+    if (!content) return;
     content.classList.add("is-entering");
-    requestAnimationFrame(()=>{
-      requestAnimationFrame(()=>{
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
         content.classList.remove("is-entering");
       });
     });
   }
-  function resetHeroState(){
+  function resetHeroState() {
     body.classList.remove(
       "hero-ready",
       "title-ready",
@@ -32,20 +32,20 @@ document.addEventListener("DOMContentLoaded",()=>{
     document
       .querySelector(".hero-content")
       ?.classList.remove("hero-enter");
-    heroStarted=false;
+    heroStarted = false;
   }
-  function setActiveNav(url){
-    const filename=
+  function setActiveNav(url) {
+    const filename =
       url.pathname.split("/").pop() || "index.html";
     document.querySelectorAll(".nav-links a")
-      .forEach(link=>{
+      .forEach(link => {
         link.classList.toggle(
           "active",
-          link.getAttribute("href")===filename
+          link.getAttribute("href") === filename
         );
       });
   }
-  function setPageMode(nextBody){
+  function setPageMode(nextBody) {
     body.classList.toggle(
       "hero-page",
       nextBody.classList.contains("hero-page")
@@ -55,115 +55,115 @@ document.addEventListener("DOMContentLoaded",()=>{
       nextBody.classList.contains("subpage")
     );
   }
-  function enterHero(){
-    const heroContent=
+  function enterHero() {
+    const heroContent =
       document.querySelector(".hero-content");
-    if(heroContent){
+    if (heroContent) {
       heroContent.classList.add(
         "hero-enter"
       );
     }
   }
-  function startHeroSequence(){
-    if(
+  function startHeroSequence() {
+    if (
       !body.classList.contains("hero-page") ||
       heroStarted
-    ){
+    ) {
       return;
     }
-    heroStarted=true;
-    const run=()=>{
-      setTimeout(()=>{
+    heroStarted = true;
+    const run = () => {
+      setTimeout(() => {
         body.classList.add(
           "nav-ready"
         );
-      },700);
-      setTimeout(()=>{
+      }, 700);
+      setTimeout(() => {
         body.classList.add(
           "hero-ready"
         );
         enterHero();
-      },1300);
-      setTimeout(()=>{
+      }, 1300);
+      setTimeout(() => {
         body.classList.add(
           "title-ready"
         );
-      },1700);
-      setTimeout(()=>{
+      }, 1700);
+      setTimeout(() => {
         body.classList.add(
           "text-ready"
         );
-      },2300);
-      setTimeout(()=>{
+      }, 2300);
+      setTimeout(() => {
         body.classList.add(
           "buttons-ready"
         );
-      },3000);
-      setTimeout(()=>{
+      }, 3000);
+      setTimeout(() => {
         body.classList.add(
           "cursor-visible"
         );
-      },3800);
+      }, 3800);
     };
-    if(!video || video.readyState>=2){
+    if (!video || video.readyState >= 2) {
       run();
-    }else{
+    } else {
       video.addEventListener(
         "loadeddata",
         run,
         {
-          once:true
+          once: true
         }
       );
     }
   }
-  async function loadPage(url,{pushState=false}={}){
-    if(activeRequest){
+  async function loadPage(url, { pushState = false } = {}) {
+    if (activeRequest) {
       activeRequest.abort();
     }
-    const controller=
+    const controller =
       new AbortController();
-    activeRequest=controller;
+    activeRequest = controller;
     /*
       Only reset hero animation when leaving
       the hero page.
       Do NOT destroy global body states.
     */
-    if(body.classList.contains("hero-page")){
+    if (body.classList.contains("hero-page")) {
       resetHeroState();
     }
     body.classList.add(
       "transitioning"
     );
-    try{
-      const response=
+    try {
+      const response =
         await fetch(
           url.href,
           {
-            signal:controller.signal
+            signal: controller.signal
           }
         );
-      if(!response.ok){
+      if (!response.ok) {
         throw new Error(
           `Could not load ${url.pathname}`
         );
       }
-      const html=
+      const html =
         await response.text();
-      if(activeRequest!==controller){
+      if (activeRequest !== controller) {
         return;
       }
-      const nextDocument=
+      const nextDocument =
         new DOMParser()
           .parseFromString(
             html,
             "text/html"
           );
-      const nextContent=
+      const nextContent =
         nextDocument.getElementById(
           "page-content"
         );
-      if(!nextContent){
+      if (!nextContent) {
         throw new Error(
           "Missing page-content"
         );
@@ -177,90 +177,90 @@ document.addEventListener("DOMContentLoaded",()=>{
       pageContent.replaceWith(
         nextContent
       );
-      pageContent=nextContent;
-      document.title=
+      pageContent = nextContent;
+      document.title =
         nextDocument.title;
       setActiveNav(url);
-      if(pushState){
+      if (pushState) {
         history.pushState(
           {},
           "",
           url.href
         );
       }
-      requestAnimationFrame(()=>{
+      requestAnimationFrame(() => {
         body.classList.remove(
           "transitioning"
         );
-        requestAnimationFrame(()=>{
+        requestAnimationFrame(() => {
           nextContent.classList.remove(
             "is-entering"
           );
         });
       });
       startHeroSequence();
-    }catch(error){
-      if(error.name!=="AbortError"){
+    } catch (error) {
+      if (error.name !== "AbortError") {
         window.location.assign(
           url.href
         );
       }
-    }finally{
-      if(activeRequest===controller){
-        activeRequest=undefined;
+    } finally {
+      if (activeRequest === controller) {
+        activeRequest = undefined;
       }
     }
   }
   document.addEventListener(
     "click",
-    event=>{
-      const link=
+    event => {
+      const link =
         event.target.closest(
           "a[href]"
         );
-      if(
+      if (
         !link ||
         event.defaultPrevented ||
-        event.button!==0 ||
+        event.button !== 0 ||
         event.metaKey ||
         event.ctrlKey ||
         event.shiftKey ||
         event.altKey ||
         link.target ||
         link.hasAttribute("download")
-      ){
+      ) {
         return;
       }
-      const url=
+      const url =
         new URL(
           link.href,
           window.location.href
         );
-      const isSitePage=
-        url.origin===window.location.origin &&
+      const isSitePage =
+        url.origin === window.location.origin &&
         (
           url.pathname.endsWith(".html") ||
           url.pathname.endsWith("/")
         );
-      if(
+      if (
         !isSitePage ||
         url.hash ||
-        url.href===window.location.href
-      ){
+        url.href === window.location.href
+      ) {
         return;
       }
       event.preventDefault();
       loadPage(
         url,
         {
-          pushState:true
+          pushState: true
         }
       );
     }
   );
   window.addEventListener(
     "popstate",
-    ()=>{
+    () => {
       loadPage(
         new URL(
           window.location.href
@@ -270,29 +270,29 @@ document.addEventListener("DOMContentLoaded",()=>{
   );
   document.addEventListener(
     "pointermove",
-    event=>{
-      if(
+    event => {
+      if (
         !window.matchMedia("(pointer:fine)").matches
-      ){
+      ) {
         return;
       }
-      const offsetX=
-        (event.clientX/window.innerWidth-.5)*-6;
-      const offsetY=
-        (event.clientY/window.innerHeight-.5)*-6;
-      if(parallaxFrame){
+      const offsetX =
+        (event.clientX / window.innerWidth - .5) * -6;
+      const offsetY =
+        (event.clientY / window.innerHeight - .5) * -6;
+      if (parallaxFrame) {
         cancelAnimationFrame(
           parallaxFrame
         );
       }
-      parallaxFrame=
-        requestAnimationFrame(()=>{
-          const heroInner=
+      parallaxFrame =
+        requestAnimationFrame(() => {
+          const heroInner =
             document.querySelector(
               ".hero-content-inner"
             );
-          if(heroInner){
-            heroInner.style.transform=
+          if (heroInner) {
+            heroInner.style.transform =
               `translate3d(${offsetX}px,${offsetY}px,20px)`;
           }
         });
