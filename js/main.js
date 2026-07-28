@@ -55,11 +55,17 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
   }
 
-  function setPageMode(nextBody){
-  const home=nextBody.classList.contains("hero-page");
+function setPageMode(nextBody) {
+  body.classList.toggle(
+    "hero-page",
+    nextBody.classList.contains("hero-page")
+  );
 
-  body.classList.toggle("hero-page",home);
-  body.classList.toggle("subpage",!home);
+  body.classList.toggle(
+    "subpage",
+    nextBody.classList.contains("subpage")
+  );
+}
 
   body.classList.add(
     "page-loaded",
@@ -105,8 +111,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     const controller=new AbortController();
     activeRequest=controller;
-
-    resetHeroState();
 
     body.classList.add("transitioning");
 
