@@ -1,10 +1,14 @@
 // main.js — persistent video, soft navigation, and hero motion
+
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const video = document.getElementById("intro-video");
   const yearSpan = document.getElementById("year");
+
   let pageContent = document.getElementById("page-content");
   let activeRequest;
+  let heroStarted = false;
+  let parallaxFrame;
 
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
   if (video) video.play().catch(() => {});
@@ -13,16 +17,34 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!content) return;
 
     content.classList.add("is-entering");
+
     requestAnimationFrame(() => {
-      requestAnimationFrame(() => content.classList.remove("is-entering"));
+      requestAnimationFrame(() => {
+        content.classList.remove("is-entering");
+      });
     });
+  }
+
+  function resetHeroState() {
+    body.classList.remove(
+      "hero-ready",
+      "nav-ready",
+      "title-ready",
+      "text-ready",
+      "buttons-ready",
+    );
+
+    heroStarted = false;
   }
 
   function setActiveNav(url) {
     const filename = url.pathname.split("/").pop() || "index.html";
 
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-      link.classList.toggle("active", link.getAttribute("href") === filename);
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === filename
+      );
     });
   }
 
@@ -30,78 +52,112 @@ document.addEventListener("DOMContentLoaded", () => {
     return (url.pathname.split("/").pop() || "index.html") === "index.html";
   }
 
-  function startBackgroundTransition(url) {
-    body.classList.toggle("hero-page", isHomePage(url));
-    body.classList.toggle("subpage", !isHomePage(url));
+  function setPageMode(nextBody) {
+    const home = nextBody.classList.contains("hero-page");
+
+    body.classList.toggle("hero-page", home);
+    body.classList.toggle("subpage", !home);
   }
 
   function enterHero() {
     const heroContent = document.querySelector(".hero-content");
-    if (heroContent) heroContent.classList.add("hero-enter");
+
+    if (heroContent) {
+      heroContent.classList.add("hero-enter");
+    }
   }
 
-function setPageMode(nextBody) {
+  function startHeroSequence() {
+    if (!body.classList.contains("hero-page") || heroStarted) return;
 
-  body.classList.toggle(
-    "hero-page",
-    nextBody.classList.contains("hero-page")
-  );
+    heroStarted = true;
 
-  body.classList.toggle(
-    "subpage",
-    nextBody.classList.contains("subpage")
-  );
+    const run = () => {
+      setTimeout(() => body.classList.add("nav-ready"), 700);
+      setTimeout(() => body.classList.add("hero-ready"), 900);
+      setTimeout(() => enterHero(), 1300);
+      setTimeout(() => body.classList.add("title-ready"), 1700);
+      setTimeout(() => body.classList.add("text-ready"), 2300);
+      setTimeout(() => body.classList.add("buttons-ready"), 3000);
+    };
 
-}
+    if (!video || video.readyState >= 2) {
+      run();
+    } else {
+      video.addEventListener("loadeddata", run, { once:true });
+    }
+  }
 
   async function loadPage(url, { pushState = false } = {}) {
     if (activeRequest) activeRequest.abort();
 
     const controller = new AbortController();
     activeRequest = controller;
-    startBackgroundTransition(url);
+
+    resetHeroState();
     body.classList.add("transitioning");
 
     try {
-      const response = await fetch(url.href, { signal: controller.signal });
-      if (!response.ok) throw new Error(`Could not load ${url.pathname}`);
+      const response = await fetch(url.href, {
+        signal: controller.signal
+      });
 
-      const documentText = await response.text();
+      if (!response.ok) {
+        throw new Error(`Could not load ${url.pathname}`);
+      }
+
+      const html = await response.text();
+
       if (activeRequest !== controller) return;
 
-      // Let the outgoing content fade while the video starts its new treatment.
-      await new Promise((resolve) => window.setTimeout(resolve, 180));
-      if (activeRequest !== controller) return;
+      const nextDocument = new DOMParser()
+        .parseFromString(html, "text/html");
 
-      const nextDocument = new DOMParser().parseFromString(documentText, "text/html");
       const nextContent = nextDocument.getElementById("page-content");
-      if (!nextContent) throw new Error("The requested page has no page content.");
 
-      // Keep this document and its video alive; only replace the changing main content.
+      if (!nextContent) {
+        throw new Error("Missing page-content");
+      }
+
       setPageMode(nextDocument.body);
+
       nextContent.classList.add("is-entering");
+
       pageContent.replaceWith(nextContent);
       pageContent = nextContent;
+
       document.title = nextDocument.title;
+
       setActiveNav(url);
 
-      if (pushState) history.pushState({}, "", url.href);
+      if (pushState) {
+        history.pushState({}, "", url.href);
+      }
 
       requestAnimationFrame(() => {
         body.classList.remove("transitioning");
-        requestAnimationFrame(() => nextContent.classList.remove("is-entering"));
+
+        requestAnimationFrame(() => {
+          nextContent.classList.remove("is-entering");
+        });
       });
 
-      enterHero();
-    } catch (error) {
-      if (error.name !== "AbortError") window.location.assign(url.href);
+      startHeroSequence();
+
+    } catch(error) {
+      if (error.name !== "AbortError") {
+        window.location.assign(url.href);
+      }
     } finally {
-      if (activeRequest === controller) activeRequest = undefined;
+      if (activeRequest === controller) {
+        activeRequest = undefined;
+      }
     }
   }
 
-  document.addEventListener("click", (event) => {
+  document.addEventListener("click", event => {
     const link = event.target.closest("a[href]");
+
     if (
       !link ||
       event.defaultPrevented ||
@@ -117,91 +173,55 @@ function setPageMode(nextBody) {
     }
 
     const url = new URL(link.href, window.location.href);
+
     const isSitePage =
       url.origin === window.location.origin &&
-      (url.pathname.endsWith(".html") || url.pathname.endsWith("/"));
+      (
+        url.pathname.endsWith(".html") ||
+        url.pathname.endsWith("/")
+      );
 
-    if (!isSitePage || url.hash || url.href === window.location.href) return;
+    if (!isSitePage || url.hash || url.href === window.location.href) {
+      return;
+    }
 
     event.preventDefault();
-    loadPage(url, { pushState: true });
+
+    loadPage(url, {
+      pushState:true
+    });
   });
 
   window.addEventListener("popstate", () => {
     loadPage(new URL(window.location.href));
   });
 
-  body.classList.add("page-loaded");
-  revealContent(pageContent);
-  startHeroSequence();
+  document.addEventListener("pointermove", event => {
+    if (!window.matchMedia("(pointer:fine)").matches) return;
 
-  function enterHero() {
-  const heroContent = document.querySelector(".hero-content");
-  if (heroContent) heroContent.classList.add("hero-enter");
-}
+    const offsetX =
+      (event.clientX / window.innerWidth - .5) * -6;
 
+    const offsetY =
+      (event.clientY / window.innerHeight - .5) * -6;
 
-function startHeroSequence() {
+    if (parallaxFrame) {
+      cancelAnimationFrame(parallaxFrame);
+    }
 
-  if (!body.classList.contains("hero-page")) return;
-
-  const video = document.getElementById("intro-video");
-
-  const run = () => {
-
-    setTimeout(() => {
-      body.classList.add("nav-ready");
-    }, 700);
-
-
-    setTimeout(() => {
-      enterHero();
-    }, 1300);
-
-
-    setTimeout(() => {
-      body.classList.add("title-ready");
-    }, 1700);
-
-
-    setTimeout(() => {
-      body.classList.add("text-ready");
-    }, 2300);
-
-
-    setTimeout(() => {
-      body.classList.add("buttons-ready");
-    }, 3000);
-
-
-    setTimeout(() => {
-      body.classList.add("cursor-visible");
-    }, 3800);
-
-  };
-
-  if (!video || video.readyState >= 2) {
-    run();
-  } else {
-    video.addEventListener("loadeddata", run, { once:true });
-  }
-
-}
-
-
-  let parallaxFrame;
-  document.addEventListener("pointermove", (event) => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-
-    const offsetX = (event.clientX / window.innerWidth - 0.5) * -6;
-    const offsetY = (event.clientY / window.innerHeight - 0.5) * -6;
-
-    if (parallaxFrame) cancelAnimationFrame(parallaxFrame);
     parallaxFrame = requestAnimationFrame(() => {
-      const heroInner = document.querySelector(".hero-content-inner");
+      const heroInner =
+        document.querySelector(".hero-content-inner");
+
       if (heroInner) {
-        heroInner.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 20px)`;
+        heroInner.style.transform =
+          `translate3d(${offsetX}px, ${offsetY}px, 20px)`;
       }
     });
   });
+
+  body.classList.add("page-loaded");
+
+  revealContent(pageContent);
+  startHeroSequence();
 });
