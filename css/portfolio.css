@@ -594,6 +594,55 @@ body.cursor-hover .cursor-ring-inner {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ===== PROJECT TRANSITION CURSOR LOCK ===== */
+
+/* ===== PROJECT TRANSITION CURSOR LOCK ===== */
+
+.cursor-ring.cursor-lock {
+
+  position: fixed;
+
+  top: 32px;
+  left: 32px;
+
+  width: 32px !important;
+  height: 32px !important;
+
+  transform:
+    translate(0,0)
+    scale(.65);
+
+  transition:
+    top .8s cubic-bezier(.22,.61,.36,1),
+    left .8s cubic-bezier(.22,.61,.36,1),
+    width .5s ease,
+    height .5s ease,
+    transform .8s cubic-bezier(.22,.61,.36,1);
+
+}
+
+
+/* Locked cursor appearance */
+
+.cursor-ring.cursor-lock .cursor-ring-inner {
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 0 20px rgba(255,75,129,.9),
+    0 0 40px rgba(255,75,129,.35);
+
+}
+
+.cursor-ring.cursor-lock .cursor-ring-inner {
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 0 20px rgba(255,75,129,.9);
+
+}
+
 /* Breathing animation */
 @keyframes pulseGlow {
   0%, 100% {

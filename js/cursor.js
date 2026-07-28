@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       body.classList.add("cursor-visible");
     }
 
-    if (isSnapped && currentTarget) {
+    if (isSnapped && currentTarget && !ring.classList.contains("cursor-lock")) {
       const rect = currentTarget.getBoundingClientRect();
       ring.style.transform = `translate(${rect.left + rect.width / 2}px, ${
         rect.top + rect.height / 2
@@ -74,21 +74,54 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Pointer out logic
-  document.addEventListener("pointerout", (event) => {
-    const leaving = event.target.closest(
-      "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
-    );
-    if (leaving) {
-      body.classList.remove("cursor-hover");
-      ring.classList.remove("snap");
-      ring.style.width = "32px";
-      ring.style.height = "32px";
-      isSnapped = false;
-      currentTarget = null;
-      leaving.classList.remove("snap-active");
-    }
-  });
+// ===== PROJECT BUTTON CURSOR LOCK =====
+
+document.addEventListener("click", (event) => {
+
+  const projectButton = event.target.closest(".btn-primary");
+
+  if (!projectButton) return;
+
+
+  // release button snap first
+  ring.classList.remove("snap");
+  body.classList.remove("cursor-hover");
+
+
+  // lock cinematic cursor
+  ring.classList.add("cursor-lock");
+
+
+  // stop hover tracking
+  isSnapped = false;
+  currentTarget = null;
+
+});
+
+// Pointer out logic
+document.addEventListener("pointerout", (event) => {
+
+  if (ring.classList.contains("cursor-lock")) return;
+
+  const leaving = event.target.closest(
+    "a, button, input, textarea, select, [role='button'], .btn-primary, .btn-secondary"
+  );
+
+  if (leaving) {
+
+    body.classList.remove("cursor-hover");
+    ring.classList.remove("snap");
+
+    ring.style.width = "32px";
+    ring.style.height = "32px";
+
+    isSnapped = false;
+    currentTarget = null;
+
+    leaving.classList.remove("snap-active");
+  }
+
+});
 
   // Fade-out polish for cursor reset
   ring.style.transition =
