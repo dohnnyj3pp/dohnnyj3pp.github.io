@@ -69,6 +69,19 @@ document.addEventListener("DOMContentLoaded",()=>{
     ring.classList.add("snap");
   });
 
+function unlockCursor(){
+  ring.classList.remove("cursor-lock");
+  dot.classList.remove("cursor-lock-dot");
+
+  ring.style.width="32px";
+  ring.style.height="32px";
+  ring.style.transform =
+    `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
+
+  isSnapped=false;
+  currentTarget=null;
+}
+
   document.addEventListener("click",event=>{
     const projectButton=event.target.closest(".btn-primary");
 
@@ -77,12 +90,15 @@ document.addEventListener("DOMContentLoaded",()=>{
     ring.classList.remove("snap");
     body.classList.remove("cursor-hover");
 
-    ring.classList.add("cursor-lock");
+ring.classList.add("cursor-lock");
 
-    isSnapped=false;
-    currentTarget=null;
+isSnapped=false;
+currentTarget=null;
 
-    dot.classList.add("cursor-lock-dot");
+dot.classList.add("cursor-lock-dot");
+
+  setTimeout(unlockCursor,900);
+
   });
 
   document.addEventListener("pointerout",event=>{

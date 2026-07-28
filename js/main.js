@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "title-ready",
       "text-ready",
       "buttons-ready",
+      "cursor-visible"
     );
 
     heroStarted = false;
@@ -79,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => body.classList.add("title-ready"), 1700);
       setTimeout(() => body.classList.add("text-ready"), 2300);
       setTimeout(() => body.classList.add("buttons-ready"), 3000);
+      setTimeout(() => body.classList.add("cursor-visible"), 3800);
     };
 
     if (!video || video.readyState >= 2) {
