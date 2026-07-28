@@ -40,15 +40,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (heroContent) heroContent.classList.add("hero-enter");
   }
 
-  function setPageMode(nextBody) {
-    const cursorEnabled = body.classList.contains("custom-cursor-enabled");
-    const cursorVisible = body.classList.contains("cursor-visible");
+function setPageMode(nextBody) {
 
-    body.className = nextBody.className;
-    body.classList.add("page-loaded", "transitioning");
-    body.classList.toggle("custom-cursor-enabled", cursorEnabled);
-    body.classList.toggle("cursor-visible", cursorVisible);
-  }
+  body.classList.toggle(
+    "hero-page",
+    nextBody.classList.contains("hero-page")
+  );
+
+  body.classList.toggle(
+    "subpage",
+    nextBody.classList.contains("subpage")
+  );
+
+}
 
   async function loadPage(url, { pushState = false } = {}) {
     if (activeRequest) activeRequest.abort();
