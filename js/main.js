@@ -133,13 +133,13 @@ function setPageMode(nextBody) {
 
   body.classList.add("page-loaded");
   revealContent(pageContent);
-  enterHero();
   startHeroSequence();
 
   function enterHero() {
   const heroContent = document.querySelector(".hero-content");
   if (heroContent) heroContent.classList.add("hero-enter");
 }
+
 
 function startHeroSequence() {
 
@@ -149,10 +149,34 @@ function startHeroSequence() {
 
   const run = () => {
 
-    setTimeout(() => body.classList.add("nav-ready"), 200);
-    setTimeout(() => body.classList.add("hero-ready"), 550);
-    setTimeout(() => body.classList.add("buttons-ready"), 950);
-    setTimeout(() => body.classList.add("cursor-visible"), 1200);
+    setTimeout(() => {
+      body.classList.add("nav-ready");
+    }, 700);
+
+
+    setTimeout(() => {
+      enterHero();
+    }, 1300);
+
+
+    setTimeout(() => {
+      body.classList.add("title-ready");
+    }, 1700);
+
+
+    setTimeout(() => {
+      body.classList.add("text-ready");
+    }, 2300);
+
+
+    setTimeout(() => {
+      body.classList.add("buttons-ready");
+    }, 3000);
+
+
+    setTimeout(() => {
+      body.classList.add("cursor-visible");
+    }, 3800);
 
   };
 
@@ -163,6 +187,7 @@ function startHeroSequence() {
   }
 
 }
+
 
   let parallaxFrame;
   document.addEventListener("pointermove", (event) => {
