@@ -1,4 +1,4 @@
-// main.js — persistent video, soft navigation, hero motion
+ // main.js — persistent video, soft navigation, hero motion
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const video = document.getElementById("intro-video");
@@ -6,12 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let pageContent = document.getElementById("page-content");
   let activeRequest;
   let heroStarted = false;
+  let heroTimers = [];
   let parallaxFrame;
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
   }
   if (video) {
-    video.play().catch(() => { });
+    video.play().catch(() => {});
   }
   function revealContent(content) {
     if (!content) return;
@@ -22,7 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+  function clearHeroTimers() {
+    heroTimers.forEach(timer => {
+      clearTimeout(timer);
+    });
+    heroTimers = [];
+  }
   function resetHeroState() {
+    clearHeroTimers();
     body.classList.remove(
       "hero-ready",
       "title-ready",
@@ -37,7 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function setActiveNav(url) {
     const filename =
       url.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll(".nav-links a")
+    document
+      .querySelectorAll(".nav-links a")
       .forEach(link => {
         link.classList.toggle(
           "active",
@@ -59,9 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroContent =
       document.querySelector(".hero-content");
     if (heroContent) {
-      heroContent.classList.add(
-        "hero-enter"
-      );
+      heroContent.classList.add("hero-enter");
     }
   }
   function startHeroSequence() {
@@ -73,37 +80,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     heroStarted = true;
     const run = () => {
-      setTimeout(() => {
-        body.classList.add(
-          "nav-ready"
-        );
-      }, 700);
-      setTimeout(() => {
-        body.classList.add(
-          "hero-ready"
-        );
-        enterHero();
-      }, 1300);
-      setTimeout(() => {
-        body.classList.add(
-          "title-ready"
-        );
-      }, 1700);
-      setTimeout(() => {
-        body.classList.add(
-          "text-ready"
-        );
-      }, 2300);
-      setTimeout(() => {
-        body.classList.add(
-          "buttons-ready"
-        );
-      }, 3000);
-      setTimeout(() => {
-        body.classList.add(
-          "cursor-visible"
-        );
-      }, 3800);
+      clearHeroTimers();
+      heroTimers.push(
+        setTimeout(() => {
+          body.classList.add("nav-ready");
+        }, 700)
+      );
+      heroTimers.push(
+        setTimeout(() => {
+          body.classList.add("hero-ready");
+          enterHero();
+        }, 1300)
+      );
+      heroTimers.push(
+        setTimeout(() => {
+          body.classList.add("title-ready");
+        }, 1700)
+      );
+      heroTimers.push(
+        setTimeout(() => {
+          body.classList.add("text-ready");
+        }, 2300)
+      );
+      heroTimers.push(
+        setTimeout(() => {
+          body.classList.add("buttons-ready");
+        }, 3000)
+      );
+      heroTimers.push(
+        setTimeout(() => {
+          body.classList.add("cursor-visible");
+        }, 3800)
+      );
     };
     if (!video || video.readyState >= 2) {
       run();
@@ -124,17 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const controller =
       new AbortController();
     activeRequest = controller;
-    /*
-      Only reset hero animation when leaving
-      the hero page.
-      Do NOT destroy global body states.
-    */
     if (body.classList.contains("hero-page")) {
       resetHeroState();
     }
-    body.classList.add(
-      "transitioning"
-    );
+    body.classList.add("transitioning");
     try {
       const response =
         await fetch(
@@ -277,9 +278,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       const offsetX =
-        (event.clientX / window.innerWidth - .5) * -6;
+        (event.clientX / window.innerWidth - 0.5) * -6;
       const offsetY =
-        (event.clientY / window.innerHeight - .5) * -6;
+        (event.clientY / window.innerHeight - 0.5) * -6;
       if (parallaxFrame) {
         cancelAnimationFrame(
           parallaxFrame
@@ -293,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
           if (heroInner) {
             heroInner.style.transform =
-              `translate3d(${offsetX}px,${offsetY}px,20px)`;
+              `translate3d(${offsetX}px, ${offsetY}px, 20px)`;
           }
         });
     }
