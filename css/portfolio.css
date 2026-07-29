@@ -206,7 +206,7 @@ body.nav-ready nav {
 .glow {
   color: #ffffff;
   text-shadow:
-    0 0 10px rgb(192, 8, 2),
+    0 0 10px rgb(252, 250, 252),
     0 0 22px rgba(255, 75, 129, .45);
 }
 
