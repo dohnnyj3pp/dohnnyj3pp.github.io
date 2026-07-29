@@ -210,6 +210,29 @@ body.nav-ready nav {
     0 0 22px rgba(255, 75, 129, .45);
 }
 
+.nav-brand {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-150%) skewX(-20deg);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.08),
+    rgba(255,255,255,.35),
+    rgba(255,255,255,.08),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
