@@ -152,6 +152,7 @@ nav {
   left: 0;
   width: 100%;
   z-index: 9999;
+  isolation: isolate;
   padding: 20px 0;
   opacity: 0;
   transform: translateY(-80px);
@@ -175,6 +176,7 @@ body.nav-ready nav {
 
 .nav-brand {
   position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   padding: 10px 18px;
@@ -183,6 +185,7 @@ body.nav-ready nav {
   font-size: 1.15rem;
   letter-spacing: .15em;
   color: #fff;
+  text-decoration: none;
   border: 1px solid rgba(255, 75, 129, .25);
   border-radius: 6px;
   background: rgba(255, 75, 129, .05);
@@ -195,7 +198,9 @@ body.nav-ready nav {
     background .3s ease;
 }
 
+
 .nav-brand:hover {
+  text-decoration: none;
   border-color: rgba(255, 75, 129, .5);
   background: rgba(255, 75, 129, .08);
   box-shadow:
@@ -210,27 +215,8 @@ body.nav-ready nav {
     0 0 22px rgba(255, 75, 129, .45);
 }
 
-.nav-brand {
-  position: relative;
-  overflow: hidden;
-}
-
-.nav-brand::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  transform: translateX(-150%) skewX(-20deg);
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.08),
-    rgba(255,255,255,.35),
-    rgba(255,255,255,.08),
-    transparent
-  );
-
-  pointer-events: none;
+.nav-brand span {
+  display: inline-block;
 }
 
 .nav-links {
