@@ -1,0 +1,30 @@
+body{
+    background-color: darkgreen;
+    color: goldenrod;
+    text-align: center;
+    font-size: xx-large;
+}
+p{
+    font-style: italic;
+    font-weight: 700;
+    margin: 1%;
+}
+button{
+    width: 250px;
+    padding: 8px;
+    background-color: goldenrod;
+    color: darkgreen;
+    font-weight: 900;
+    font-size: x-large;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: 600ms;
+    border: 3px solid darkgreen;
+}
+button:hover{
+    /* width: 350px; */
+    /* box-shadow: 3px 3px 3px rgb(237, 246, 84); */
+    background-color:darkgreen;
+    color: goldenrod;
+    border: 3px solid goldenrod;
+}

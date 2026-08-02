@@ -20,9 +20,13 @@
 		},
 		{
 			"path": "../The-Tech-Academy-Basic-C-Sharp-Projects"
+		},
+		{
+			"path": "../portfolio-images"
 		}
 	],
 	"settings": {
-		"CodeGPT.apiKey": "CodeGPT Plus Beta"
+		"CodeGPT.apiKey": "CodeGPT Plus Beta",
+		"liveServer.settings.multiRootWorkspaceName": "dohnnyj3pp.github.io"
 	}
 }

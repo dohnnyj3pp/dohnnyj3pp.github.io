@@ -34,8 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.remove(
       "hero-ready",
       "title-ready",
-      "text-ready",
-      "buttons-ready"
+      "text-ready"
     );
     document
       .querySelector(".hero-content")
@@ -63,7 +62,26 @@ document.addEventListener("DOMContentLoaded", () => {
       "subpage",
       nextBody.classList.contains("subpage")
     );
+      body.classList.toggle(
+      "projects-page",
+     nextBody.classList.contains("projects-page")
+   );
   }
+
+ function initializePageModule(){
+
+if(
+body.classList.contains("projects-page") &&
+typeof window.initProjects==="function"
+){
+
+window.initProjects();
+
+}
+
+}
+
+
   function enterHero() {
     const heroContent =
       document.querySelector(".hero-content");
@@ -102,12 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
           body.classList.add("text-ready");
         }, 2300)
       );
-      heroTimers.push(
-        setTimeout(() => {
-          body.classList.add("buttons-ready");
-        }, 3000)
-      );
-      heroTimers.push(
+         heroTimers.push(
         setTimeout(() => {
           body.classList.add("cursor-visible");
         }, 3800)
@@ -193,13 +206,15 @@ document.addEventListener("DOMContentLoaded", () => {
         body.classList.remove(
           "transitioning"
         );
-        requestAnimationFrame(() => {
-          nextContent.classList.remove(
+         nextContent.classList.remove(
             "is-entering"
           );
+        requestAnimationFrame(() => {
+          initializePageModule();  
         });
       });
       startHeroSequence();
+
     } catch (error) {
       if (error.name !== "AbortError") {
         window.location.assign(
@@ -299,11 +314,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
   );
-  body.classList.add(
-    "page-loaded"
-  );
-  revealContent(
-    pageContent
-  );
-  startHeroSequence();
+
+body.classList.add(
+  "page-loaded"
+);
+
+if (!body.classList.contains("hero-page")) {
+  body.classList.add("nav-ready");
+}
+
+revealContent(
+  pageContent
+);
+
+startHeroSequence();
+
+initializePageModule();
+
 });
