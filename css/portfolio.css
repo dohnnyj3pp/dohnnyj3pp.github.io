@@ -486,7 +486,7 @@ body.cursor-visible .cursor-ring {
   height: 100%;
   border-radius: 50%;
   border: 2px solid #ff4b81;
-  box-shadow: 0 0 8px rgba(255, 75, 129, .6);
+  box-shadow: 0 0 8px #ff4b8199;
   transform-origin: center;
   animation:
     cursorPulseGlow 2.5s cubic-bezier(.4, 0, .2, 1) infinite;

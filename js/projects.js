@@ -42,13 +42,9 @@ function setPlatformState(nextState) {
     );
 }
 function bootProject() {
-
     console.log(activeModuleAvailable());
-
     if (!activeModuleAvailable()) return;
-
     setPlatformState("booting");
-
     startDocumentationBoot();
 }
 function initProjects() {
@@ -106,7 +102,6 @@ function activeModuleAvailable() {
 function bootProject() {
     if (!activeModuleAvailable()) return;
     setPlatformState("booting");
-
     startDocumentationBoot();
 }
 function startDocumentationBoot() {
@@ -125,14 +120,14 @@ function startDocumentationBoot() {
     if (loadingLabel) {
         loadingLabel.textContent = "LOADING DATA";
         loadingLabel.style.backgroundImage =
-            "linear-gradient(90deg, #faf8f6 0%, #f7f5f3 0%, #ffffff 0%, #ffffff 100%)";
+            "linear-gradient(90deg, #f6f9fa 0%, #f7f5f3 0%, #ffffff 0%, #ffffff 100%)";
     }
     let progress = 0;
     clearInterval(initializingTimer);
     function update() {
         progress += Math.floor(
-            Math.random() * 10
-        ) + 5;
+            Math.random() * 4
+        ) + 2;
         if (progress >= 99) {
             progress = 99;
         }
@@ -146,37 +141,28 @@ function startDocumentationBoot() {
         }
         if (loadingLabel) {
             loadingLabel.style.backgroundImage =
-                `linear-gradient(90deg, #080808 0%, #18171d, ${progress}%, #ffffff ${progress}%, #ffffff 100%)`;
+                `linear-gradient(90deg, #a705cf 0%, #0824a1, ${progress}%, #ffffff ${progress}%, #ffffff 100%)`;
         }
         if (progress >= 99) {
-
             clearInterval(initializingTimer);
-
             initializeDocumentation();
-
             setTimeout(() => {
-
                 deployDocumentation();
-
             }, 350);
-
         }
     }
     update();
     initializingTimer = setInterval(
         update,
-        350
+        120
     );
 }
-function initializeDocumentation(){
-
-    currentCategory="summary";
-    currentModule=null;
-
+function initializeDocumentation() {
+    currentCategory = "summary";
+    currentModule = null;
     buildCategories();
     clearModules();
     clearDocumentation();
-
 }
 function getPortfolioData() {
     return window.PROJECT_DATA?.portfolio?.categories || projectData;
@@ -191,148 +177,114 @@ function clearDocumentation() {
     if (!content) return;
     content.innerHTML = "";
 }
-function deployDocumentation(){
-
+function deployDocumentation() {
     setPlatformState("deploying");
-
-    const viewer=document.querySelector(".documentation-viewer");
-
+    const viewer = document.querySelector(".documentation-viewer");
     viewer?.classList.remove(
         "deploy-hidden"
     );
-
     viewer?.classList.add(
         "deploy-seed"
     );
-
-
-    setTimeout(()=>{
-
+    setTimeout(() => {
         viewer?.classList.remove(
             "deploy-seed"
         );
-
         viewer?.classList.add(
             "deploy-expand"
         );
-
-    },600);
-
-
-    setTimeout(()=>{
-
+    }, 600);
+    setTimeout(() => {
         finishBoot();
-
-    },900);
-
+    }, 900);
 }
-function finishBoot(){
-
+function finishBoot() {
     setPlatformState("online");
-
-    status.className="project-status online";
-
-    const loader=document.querySelector(".loading-container");
-
-    if(loader){
-        loader.style.display="none";
+    status.className = "project-status online";
+    const loader = document.querySelector(".loading-container");
+    if (loader) {
+        loader.style.display = "none";
     }
-
-    statusText.className="status-text online-text";
-    statusText.style.visibility="visible";
-    statusText.textContent="ONLINE";
-
+    statusText.className = "status-text online-text";
+    statusText.style.visibility = "visible";
+    statusText.textContent = "ONLINE";
     document.querySelector(".terminal-cursor")
-    ?.style.setProperty(
-        "display",
-        "inline-block"
-    );
-
-showDocumentationSystem();
-
-setTimeout(()=>{
-
-    loadDocumentation();
-
-},900);
-
+        ?.style.setProperty(
+            "display",
+            "inline-block"
+        );
+    showDocumentationSystem();
+    setTimeout(() => {
+        loadDocumentation();
+    }, 900);
 }
-function showDocumentationSystem(){
-
-    const documentationSystem=document.querySelector(".documentation-system");
-    const buttons=document.querySelectorAll(".project-category");
-
-    if(!documentationSystem)return;
-
+function loadCategoryIntroduction() {
+    const content = document.querySelector(".documentation-content");
+    if (!content) return;
+    const dataSource = getPortfolioData();
+    const category = dataSource[currentCategory];
+    if (!category) {
+        return;
+    }
+    content.innerHTML = `
+        <h2>${category.title}</h2>
+        <div class="typed-overview"></div>
+    `;
+    const typedElement =
+        content.querySelector(".typed-overview");
+    if (category.introduction) {
+        typeWriter(
+            category.introduction,
+            typedElement
+        );
+    }
+}
+function showDocumentationSystem() {
+    const documentationSystem = document.querySelector(".documentation-system");
+    const buttons = document.querySelectorAll(".project-category");
+    if (!documentationSystem) return;
     documentationSystem.classList.add("visible");
-
-    buttons.forEach((button,index)=>{
-
+    buttons.forEach((button, index) => {
         button.classList.remove(
             "show",
             "enter-left",
             "enter-right"
         );
-
         button.classList.add(
             index % 2 === 0 ? "enter-left" : "enter-right"
         );
-
-        setTimeout(()=>{
-
+        setTimeout(() => {
             button.classList.add("show");
-
-        },220 * index + 180);
-
+        }, 220 * index + 180);
     });
-
 }
-function buildCategories(){
-
-    const buttons=document.querySelectorAll(".project-category");
-    const documentationSystem=document.querySelector(".documentation-system");
-
-    buttons.forEach(button=>{
-
+function buildCategories() {
+    const buttons = document.querySelectorAll(".project-category");
+    const documentationSystem = document.querySelector(".documentation-system");
+    buttons.forEach(button => {
         button.classList.toggle(
             "active",
-            button.dataset.category===currentCategory
+            button.dataset.category === currentCategory
         );
-
     });
-
-    buttons.forEach(button=>{
-
-        button.onclick=()=>{
-
-            buttons.forEach(btn=>btn.classList.remove("active"));
-
+    buttons.forEach(button => {
+        button.onclick = () => {
+            buttons.forEach(btn => btn.classList.remove("active"));
             button.classList.add("active");
-
-            currentCategory=button.dataset.category;
-
-            currentModule=null;
-
+            currentCategory = button.dataset.category;
+            currentModule = null;
             buildModules();
-
-            clearDocumentation();
-
-            if(documentationSystem){
-
+            loadCategoryIntroduction();
+            if (documentationSystem) {
                 documentationSystem.classList.remove(
                     "popout-closed"
                 );
-
                 documentationSystem.classList.add(
                     "popout-active"
                 );
-
             }
-
         };
-
     });
-
 }
 function animateModuleTransition(callback) {
     const container = document.querySelector(".module-navigation");
@@ -351,269 +303,158 @@ function animateModuleTransition(callback) {
     setTimeout(callback, 220);
 }
 function buildModules() {
-
     const container = document.querySelector(".module-navigation");
-
     if (!container) return;
-
     animateModuleTransition(() => {
-
         container.innerHTML = "";
-
         const dataSource = getPortfolioData();
-
         const category = dataSource?.[currentCategory];
-
         if (currentCategory === "summary") {
-
             currentModule = null;
-
             loadDocumentation();
-
             return;
-
         }
-
         const modules = category?.modules;
-
         if (!modules || Object.keys(modules).length === 0) {
-
             container.innerHTML = `
                 <div class="technology-item empty-state show">
                     No modules available for this category yet.
                 </div>
             `;
-
             return;
-
         }
-
         Object.keys(modules).forEach((module, idx) => {
-
             const button = document.createElement("button");
-
             button.className = "technology-item";
-
             if (currentModule === module) {
                 button.classList.add("active");
             }
-
             button.textContent = module;
-
             button.onclick = () => {
-
                 const siblings = container.querySelectorAll(".technology-item");
-
                 siblings.forEach(btn => btn.classList.remove("active"));
-
                 button.classList.add("active");
-
                 currentModule = module;
-
                 loadDocumentation();
-
             };
-
             container.appendChild(button);
-
             setTimeout(() => {
-
                 button.classList.add("show");
-
             }, 70 * idx + 80);
-
         });
-
     });
-
 }
 function loadDocumentation() {
-
     const content = document.querySelector(".documentation-content");
     const documentationSystem = document.querySelector(".documentation-system");
-
     if (!content) return;
-
     content.classList.remove("animate-in");
     void content.offsetWidth;
-
-
     if (currentCategory !== "summary" && !currentModule) {
-
         content.innerHTML = `
             <h2>Portfolio Documentation</h2>
             <p>Select a technology module.</p>
         `;
-
         return;
-
     }
-
-
     const dataSource = getPortfolioData();
-
     let data;
-
-
     if (currentCategory === "summary") {
-
         data = dataSource.summary;
-
     } else {
-
         data = dataSource[currentCategory]?.modules?.[currentModule];
-
     }
-
-
     if (!data) {
-
         content.innerHTML = `
             <h2>Module not found</h2>
             <p>Try selecting another category or module.</p>
         `;
-
         content.classList.add("animate-in");
-
         return;
-
     }
-
-
     const sections = (data.sections || [])
         .map(section => {
-
             let list = "";
-
-
             if (Array.isArray(section.content)) {
-
                 list = section.content
                     .map(item => `<li>${item}</li>`)
                     .join("");
-
             }
-
             else if (Array.isArray(section.details)) {
-
                 list = section.details
                     .map(item => `<li>${item}</li>`)
                     .join("");
-
             }
-
             else {
-
                 list = `<li>${section.content}</li>`;
-
             }
-
-
             return `
                 <div class="doc-section">
-
                     <div class="section-header">
                         ${section.heading}
                     </div>
-
                     <div class="section-content">
-
                         <ul>
                             ${list}
                         </ul>
-
                     </div>
-
                 </div>
             `;
-
         })
         .join("");
-
-
     content.innerHTML = `
-
         <h2>${data.title}</h2>
-
         <div class="typed-overview"></div>
-
-        ${data.intro 
-            ? `<div class="examples-label">${data.intro}</div>` 
+        ${data.intro
+            ? `<div class="examples-label">${data.intro}</div>`
             : ""
         }
-
         ${sections}
-
     `;
-
-
     const typedElement = content.querySelector(".typed-overview");
-
     typeWriter(
         data.overview,
         typedElement
     );
-
-
     content.classList.add("animate-in");
-
-
     if (documentationSystem) {
-
         documentationSystem.classList.add("visible");
-
     }
-
 }
-    content.innerHTML = `
+content.innerHTML = `
     <h2>${data.title}</h2>
     <div class="typed-overview"></div>
     ${data.intro ? `<div class="examples-label">${data.intro}</div>` : ""}
     ${sections}
     `;
-    const typedElement = content.querySelector(".typed-overview");
-    typeWriter(data.overview, typedElement);
-    content.classList.add("animate-in");
-    if (documentationSystem) {
-        documentationSystem.classList.add("visible");
-    }
-function typeWriter(text,target){
-
-    if(!target)return;
-
-    if(typingTimer){
+const typedElement = content.querySelector(".typed-overview");
+typeWriter(data.overview, typedElement);
+content.classList.add("animate-in");
+if (documentationSystem) {
+    documentationSystem.classList.add("visible");
+}
+function typeWriter(text, target) {
+    if (!target) return;
+    if (typingTimer) {
         clearTimeout(typingTimer);
     }
-
-    target.innerHTML="";
-
-    const temp=document.createElement("div");
-    temp.innerHTML=text;
-
-    const formatted=temp.innerHTML;
-
-    let index=0;
-
-function step(){
-
-    target.innerHTML=formatted.slice(0,index);
-
-    const viewer=document.querySelector(".documentation-viewer");
-
-    if(viewer){
-        viewer.scrollTop=viewer.scrollHeight;
+    target.innerHTML = "";
+    const temp = document.createElement("div");
+    temp.innerHTML = text;
+    const formatted = temp.innerHTML;
+    let index = 0;
+    function step() {
+        target.innerHTML = formatted.slice(0, index);
+        const viewer = document.querySelector(".documentation-viewer");
+        if (viewer) {
+            viewer.scrollTop = viewer.scrollHeight;
+        }
+        index++;
+        if (index <= formatted.length) {
+            typingTimer = setTimeout(step, 9);
+        }
     }
-
-    index++;
-
-    if(index<=formatted.length){
-        typingTimer=setTimeout(step,9);
-    }
-
-}
-
     step();
-
 }
 function setOffline() {
     status.className = "project-status offline";
@@ -628,48 +469,32 @@ function setOffline() {
     document.querySelector(".loading-container").style.display = "none";
 }
 function shutdownProject() {
-
     clearTimeout(initializingTimer);
     clearTimeout(typingTimer);
-
     setPlatformState("carousel");
-
     const viewer = document.querySelector(".documentation-viewer");
-
     viewer?.classList.remove(
         "deploy-seed",
         "deploy-expand"
     );
-
     viewer?.classList.add(
         "deploy-hidden"
     );
-
-
     const categories = document.querySelector(
         ".category-navigation"
     );
-
     categories?.classList.remove(
         "deploy-slide"
     );
-
-
     const documentationSystem = document.querySelector(
         ".documentation-system"
     );
-
     documentationSystem?.classList.remove(
         "visible"
     );
-
-
     clearModules();
-
     clearDocumentation();
-
     currentModule = null;
-
     setOffline();
 }
 function bindEvents() {
