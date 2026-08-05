@@ -17,314 +17,418 @@ Together these technologies made it possible to build this platform entirely fro
 
         modules: {
 
-            HTML5: {
+HTML5: {
 
-                title:
-                    "THE STRUCTURE & SEMANTIC FOUNDATION",
+    title:
+        "THE STRUCTURE & SEMANTIC FOUNDATION",
 
-                overview:
-                    `
-HTML5 serves as the structural backbone of the platform, providing the semantic foundation that everything else is built upon.`,
+    overview:
+        `
+HTML5 serves as the foundation of the platform, providing the structure needed to build the visual design, interactive systems, and dynamic features that bring the experience together.
+`,
 
-                intro:
-                    "Examples:",
+    intro:
+        "Examples:",
 
-                sections: [
+    sections: [
 
-                    {
-                        heading:
-                            "Creating the website structure",
+        {
+            heading:
+                "Created the website foundation.",
 
-                        details: [
+            details: [
 
-                            {
-                                text:
-                                    "Implemented semantic page structure.",
+                {
+                    text:
+                        "Built the core page structure using semantic HTML.",
 
-                                description:
-                                    "Semantic HTML elements provide meaningful structure to the document, improving accessibility, readability, and search engine optimization.",
+                    description:
+                        "Organizes the website into meaningful sections and elements that define the layout, content hierarchy, and relationship between different parts of the platform.",
 
-                                code:
-                                    `<main>
+                    code:
+`<main>
   <section>
     <article>
       <footer>
     </article>
   </section>
 </main>`
-                            },
+                },
 
-                            {
-                                text:
-                                    "Stored custom data using HTML attributes.",
+                {
+                    text:
+                        "Created reusable project content layouts.",
 
-                                description:
-                                    "Custom data attributes allow HTML elements to store additional information that JavaScript can access for creating dynamic behavior.",
+                    description:
+                        "Provides a consistent structure for displaying project information, allowing multiple projects to share the same layout and styling system.",
 
-                                code:
-                                    `<button
+                    code:
+`<article class="project-card">
+  <div class="project-thumbnail"></div>
+
+  <div class="project-card-content">
+  </div>
+</article>`
+                }
+
+            ]
+
+        },
+
+
+        {
+            heading:
+                "Built HTML elements for interaction.",
+
+            details: [
+
+                {
+                    text:
+                        "Used custom data attributes for dynamic content.",
+
+                    description:
+                        "Stores additional information directly on HTML elements so JavaScript can identify, access, and update specific interactive features.",
+
+                    code:
+`<button
   class="example-card"
   data-language="javascript"
   data-code="example">
   View Code
 </button>`
-                            },
-                        ]
-                    },
-                  
-                    {
-                        heading:
-                            "Sets up the foundation for Animation.",
+                },
 
-                        details: [
+                {
+                    text:
+                        "Created animated navigation elements.",
 
-                            {
-                                text:
-                                    "Created the navigation bar custom visual effects and letter motion.",
+                    description:
+                        "Allows individual navigation elements to be animated and controlled, creating custom hover effects and interactive visual responses.",
 
-                                description:
-                                    "This creates the navigation menu containing a link to the Projects page, with each letter wrapped individually to enable custom hover and animation effects.",
+                    code:
+`<a href="projects.html">
+  <span>P</span>
+  <span>R</span>
+  <span>O</span>
+  <span>JECTS</span>
+</a>`
+                },
 
-                                code:
-                                    `<ul class="nav-links">
-<li>
-<a href="projects.html">
-<span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span>
-</a>
-</li>`
-                            },
+                {
+                    text:
+                        "Integrated HTML5 video background systems.",
 
-                            {
-                                text:
-                                    "Integrated background video loop.",
+                    description:
+                        "Creates a cinematic background experience by automatically loading, playing, muting, and looping video content behind the interface.",
 
-                                description:
-                                    "Configures the background video to automatically play silently, repeat continuously, and remain embedded within the webpage instead of opening in fullscreen on mobile devices.",
-
-                                code:
-                                    `<video autoplay muted loop playsinline>
-<source src="images/video/intro.mp4" type="video/mp4">
+                    code:
+`<video autoplay muted loop playsinline>
+  <source src="images/video/intro.mp4"
+  type="video/mp4">
 </video>`
-                            },
+                }
 
-                            {
-                                text:
-                                    "Organized information using lists.",
+            ]
 
-                                description:
-                                    "Structured related content into ordered and unordered lists to improve readability and document hierarchy.",
-
-                                code:
-                                    `
-<ul>
-<li>HTML</li>
-li>CSS</li>
-<li>JavaScript</li>
-</ul>`
-                            }
-
-                        ]
-
-                    },
+        },
 
 
-                    {
-                        text:
-                            "Built reusable modal interface.",
+        {
+            heading:
+                "Developed reusable interface components.",
 
-                        description:
-                            "Created a reusable HTML structure for code previews, incorporating accessibility attributes and a consistent layout for displaying interactive content.",
+            details: [
 
-                        code:
-                            `<div class="code-modal" aria-hidden="true">
-  <div class="code-modal-backdrop"></div>
+                {
+                    text:
+                        "Created a reusable code preview modal.",
+
+                    description:
+                        "Displays code examples and additional information inside a popup window that can be opened and closed without leaving the current page.",
+
+                    code:
+`<div class="code-modal" aria-hidden="true">
+
   <div class="code-modal-panel">
-    <div class="code-modal-header">
-      <div class="code-modal-title">Code Preview</div>
-      <button type="button"
-              class="code-modal-close"
-              aria-label="Close modal">×</button>
-    </div>
-    <pre class="code-modal-snippet"><code></code></pre>
-    <div class="code-modal-description"
-         aria-live="polite"></div>
-    <div class="code-modal-note">
-      Press Esc or click outside to close.
-    </div>
+
+    <button
+      class="code-modal-close"
+      aria-label="Close modal">
+      ×
+    </button>
+
   </div>
+
 </div>`
-                    },
+                },
 
-                    {
-                        text:
-                            "Implemented structured page-content containers.",
+                {
+                    text:
+                        "Added accessibility support to interactive elements.",
 
-                        code:
-                            `<section class="projects-section">`
-                    },
+                    description:
+                        "Provides additional information about interactive elements so both users and other assistive technologies can identify their purpose.",
 
-                    {
-                        text:
-                            "Maintained separation between content and functionality.",
+                    code:
+`<button
+  class="project-return"
+  aria-label="Return to projects">
+  RETURN
+</button>`
+                },
 
-                        code:
-                            `<div class="project-card-content">`
-                    }
+                {
+                    text:
+                        "Structured page sections for future expansion.",
 
-                ]
+                    description:
+                        "Creates organized containers that separate different parts of the platform, making future additions and modifications easier to implement.",
 
-            },
+                    code:
+`<section class="projects-section">
+
+  <div class="project-platform">
+
+  </div>
+
+</section>`
+                }
+
+            ]
+
+        }
+
+    ]
+
+},
 
 
-            CSS3: {
+        CSS3: {
 
-                title:
-                    "THE DESIGN & ANIMATIONS",
+    title:
+        "THE VISUAL DESIGN & INTERACTION SYSTEM",
 
-                overview:
-                    `
-CSS3 transforms the websites structure into a polished visual experience through custom layouts, animations, effects, and responsive design.`,
+    overview:
+        `
+CSS3 controls the visual language of the platform, transforming the structural HTML foundation into a cinematic interface through custom layouts, animations, transitions, effects, and responsive design systems.
+`,
 
-                intro:
-                    "Examples:",
+    intro:
+        "Examples:",
 
-                sections: [
+    sections: [
 
-                    {
-                        heading:
-                            "Creating the visual identity",
+        {
+            heading:
+                "Built the visual foundation of the platform.",
 
-                        details: [
+            details: [
 
-                            {
-                                text:
-                                    "Designed the dark sci-fi inspired color system.",
+                {
+                    text:
+                        "Created the primary layout and positioning systems.",
 
-                                code:
-                                    `.project-category {
-  border: 1px solid rgba(255, 132, 0, .35);
-  background: rgba(8, 10, 18, .75);
+                    description:
+                        "Established the core page layouts using modern CSS positioning techniques, allowing interface components to be precisely arranged and controlled throughout the application.",
+
+                    code:
+` .project-platform {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.project-workspace {
+    display:grid;
+    grid-template-columns:
+    200px 1fr;
 }`
-                            },
+                },
 
-                            {
-                                text:
-                                    "Created neon glow typography and visual effects.",
 
-                                code:
-                                    `.hero-content h1 span {
-  color: #ffca5a;
-  text-shadow: 0 0 12px rgba(255, 75, 129, .6), 0 0 24px rgba(255, 75, 129, .4);
+                {
+                    text:
+                        "Developed the cinematic visual atmosphere.",
+
+                    description:
+                        "Applied layered backgrounds, transparency effects, shadows, and blur techniques to create the immersive interface style used throughout the platform.",
+
+                    code:
+`.documentation-system {
+    background:
+    rgba(8,10,18,.85);
+
+    backdrop-filter:
+    blur(14px);
+
+    box-shadow:
+    0 0 45px
+    rgba(255,132,0,.08);
 }`
-                            },
+                }
 
-                            {
-                                text:
-                                    "Developed the overall presentation style.",
+            ]
 
-                                code:
-                                    `.hero-content::before {
-  background: radial-gradient(ellipse, rgba(18, 8, 15, .65) 0%, rgba(35, 10, 25, .38) 35%, rgba(0, 0, 0, 0) 75%);
+        },
+
+
+        {
+            heading:
+                "Created custom animation and transition systems.",
+
+            details: [
+
+                {
+                    text:
+                        "Designed interface deployment animations.",
+
+                    description:
+                        "Built custom transitions that control how sections of the platform appear, expand, and change states, creating the feeling of a live application booting and loading.",
+
+                    code:
+`.documentation-viewer {
+    opacity:0;
+    transform:
+    scale(.05);
+
+    transition:
+    transform .55s ease,
+    opacity .3s ease;
+}
+
+.documentation-viewer.deploy-expand {
+    opacity:1;
+    transform:
+    scale(1);
 }`
-                            }
-
-                        ]
-
-                    },
+                },
 
 
-                    {
-                        heading:
-                            "Built reusable styling systems",
+                {
+                    text:
+                        "Created interactive hover effects.",
 
-                        details: [
+                    description:
+                        "Developed animated feedback states for buttons and interface elements, providing visual responses that make the platform feel dynamic and responsive.",
 
-                            {
-                                text:
-                                    "Created component-based styling.",
+                    code:
+`.project-return:hover {
 
-                                code:
-                                    `.technology-item {
-  padding: 6px 18px;
-  border-radius: 12px;
-  background: rgba(8, 10, 18, .5);
+    transform:
+    translateY(-3px);
+
+    box-shadow:
+    0 0 18px
+    rgba(255,183,75,.4);
 }`
-                            },
+                },
 
-                            {
-                                text:
-                                    "Separated layout, appearance, and animation behavior.",
 
-                                code:
-                                    `.technology-item:hover {
-  transform: translateY(-2px);
-  border-color: #ff8a00;
+                {
+                    text:
+                        "Built custom terminal-style animations.",
+
+                    description:
+                        "Created animated status displays using CSS keyframes, text effects, and visual overlays to simulate system states and reinforce the application's HUD-inspired design.",
+
+                    code:
+`@keyframes terminalFlicker {
+
+    0%,100% {
+        opacity:1;
+    }
+
+    94% {
+        opacity:.65;
+    }
 }`
-                            },
+                }
 
-                            {
-                                text:
-                                    "Designed reusable classes for UI elements.",
+            ]
 
-                                code:
-                                    `.technology-item.active {
-  border-color: #ff8a00;
-  background: rgba(255, 132, 0, .15);
+        },
+
+
+        {
+            heading:
+                "Developed reusable interface components.",
+
+            details: [
+
+                {
+                    text:
+                        "Created reusable card and panel systems.",
+
+                    description:
+                        "Designed consistent UI components with shared styling rules, allowing project cards, documentation panels, and interface sections to maintain the same visual identity.",
+
+                    code:
+`.project-card {
+
+    border-radius:
+    19px;
+
+    backdrop-filter:
+    blur(12px);
+
+    box-shadow:
+    0 0 30px
+    rgba(255,202,90,.12);
 }`
-                            }
-
-                        ]
-
-                    },
+                },
 
 
-                    {
-                        heading:
-                            "Developed responsive layouts",
+                {
+                    text:
+                        "Implemented advanced visual effects.",
 
-                        details: [
+                    description:
+                        "Used CSS gradients, shadows, transparency, and pseudo-elements to create animated lighting effects, glowing borders, and layered visual details without external libraries.",
 
-                            {
-                                text:
-                                    "Created adaptable designs across screen sizes.",
+                    code:
+`.button::before {
 
-                                code:
-                                    `.module-navigation {
-  display: flex;
-  flex-wrap: wrap;
+    content:"";
+
+    background:
+    linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.18)
+    );
+
 }`
-                            },
+                },
 
-                            {
-                                text:
-                                    "Used flexible positioning and sizing techniques.",
 
-                                code:
-                                    `@media (max-width: 800px) {
-  .module-navigation {
-    flex-wrap: wrap;
-  }
+                {
+                    text:
+                        "Created 3D interface transformations.",
+
+                    description:
+                        "Applied CSS perspective and transform properties to create depth-based interactions within the project carousel, making elements appear layered in a 3D environment.",
+
+                    code:
+`.project-carousel {
+
+    perspective:
+    1200px;
+}
+
+.project-card.active {
+
+    transform:
+    translateZ(120px);
 }`
-                            },
+                }
 
-                            {
-                                text:
-                                    "Maintained consistent presentation across devices.",
+            ]
 
-                                code:
-                                    `.project-category.active {
-  border-color: #ff8a00;
-  background: rgba(255, 132, 0, .15);
-}`
-                            }
+        }
 
-                        ]
+    ]
 
-                    }
-
-                ]
-
-            },
+},    
 
 
             JavaScript: {
@@ -334,8 +438,7 @@ CSS3 transforms the websites structure into a polished visual experience through
 
                 overview:
                     `
-JavaScript is the heartbeat of the website. It brings the entire experience to life by controlling interactions, navigation, animations, and countless other systems working together behind the scenes.
- Ultimately it's what allows everything to communicate and function together as one cohesive application.`,
+JavaScript is the heartbeat of the website. It brings the entire experience to life by controlling interactions, navigation, animations, and countless other systems working together behind the scenes.`,
 
                 intro:
                     "Examples:",
@@ -959,9 +1062,9 @@ My goal was to create more than a traditional portfolio. I wanted to build a ful
 
 Most developers create portfolios to showcase their work, but I wanted to take that concept one step further. I wanted the portfolio itself to become part of the showcase.
 
-As you explore the different sections, you will discover the technical systems, the thought process, and logical decisions used that brought this creation to life.
+As you explore the different sections, you will discover how each technology plays a role in everything you're seeing and doing on this platform.
 
-Every element was intentionally designed to demonstrate a unique approach to frontend development and the thought process behind building it.`,
+Every element was intentionally designed to demonstrate a unique approach to frontend development and the process behind building it.`,
     }
 
 };

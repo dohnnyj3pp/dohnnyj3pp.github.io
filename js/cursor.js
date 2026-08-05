@@ -65,9 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("pointerover", event => {
-    const inspectTarget = event.target.closest(
-      ".example-card"
-    );
+    const inspectTarget = event.target.closest(".example-card");
 
     if (inspectTarget && brackets) {
       currentBracketTarget = inspectTarget;
@@ -77,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const target = event.target.closest(
-      "a,button:not(.example-card),input,textarea,select,[role='button'],.btn-primary,.btn-secondary"
+      "a,button,input,textarea,select,[role='button'],.btn-primary,.btn-secondary"
     );
 
     if (!target) return;
@@ -101,13 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("pointerout", event => {
-    const inspectLeaving = event.target.closest(
-      ".example-card"
-    );
+    const inspectLeaving = event.target.closest(".example-card");
 
     if (inspectLeaving) {
       currentBracketTarget = null;
-
       body.classList.remove("inspect-active");
 
       if (brackets) {
@@ -146,47 +141,56 @@ document.addEventListener("DOMContentLoaded", () => {
     brackets.style.opacity = "1";
   }
 
-document.addEventListener("click", event => {
+  document.addEventListener("click", event => {
 
-  if (event.target.closest(".example-card")) {
+    if (event.target.closest(".example-card")) {
+      currentBracketTarget = null;
 
-    currentBracketTarget = null;
+      body.classList.remove("inspect-active");
 
-    body.classList.remove("inspect-active");
+      if (brackets) {
+        brackets.style.opacity = "0";
+      }
 
-    if (brackets) {
-      brackets.style.opacity = "0";
+      return;
     }
 
-    return;
-  }
+    const transitionButton = event.target.closest(
+      ".project-initialize,.project-return"
+    );
 
+    if (!transitionButton) return;
 
-  if (event.target.closest(
-    ".btn-primary,.btn-secondary"
-  )) {
+    setTimeout(() => {
 
-    currentTarget = null;
-    isSnapped = false;
+      currentTarget = null;
+      isSnapped = false;
 
-    ring.classList.remove("snap");
+      body.classList.remove("cursor-hover");
 
-    ring.style.width = "16px";
-    ring.style.height = "16px";
+      ring.classList.remove("snap");
 
-    document
-      .querySelectorAll(".snap-active")
-      .forEach(el =>
-        el.classList.remove("snap-active")
-      );
+      ring.style.width = "16px";
+      ring.style.height = "16px";
 
-  }
+      ringX = mouseX;
+      ringY = mouseY;
 
-});
+      ring.style.transform =
+        `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
+
+      document
+        .querySelectorAll(".snap-active")
+        .forEach(el =>
+          el.classList.remove("snap-active")
+        );
+
+    },50);
+
+  });
 
   ring.style.transition =
     "opacity .25s ease-out,width .25s ease-out,height .25s ease-out";
-
 
   document.querySelectorAll(".nav-links a")
     .forEach(link => {
@@ -214,8 +218,17 @@ document.addEventListener("click", event => {
           isSnapped = false;
           currentTarget = null;
 
+          ring.style.width = "16px";
+          ring.style.height = "16px";
+
+          ringX = mouseX;
+          ringY = mouseY;
+
+          ring.style.transform =
+            `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
+
           document
-            .querySelectorAll(".nav-links a")
+            .querySelectorAll(".snap-active")
             .forEach(a =>
               a.classList.remove("snap-active")
             );
@@ -228,16 +241,13 @@ document.addEventListener("click", event => {
 
     });
 
-
   document.addEventListener("mousedown", () => {
     ringInner.style.opacity = ".6";
   });
 
-
   document.addEventListener("mouseup", () => {
     ringInner.style.opacity = "";
   });
-
 
   window.addEventListener("scroll", () => {
 
@@ -266,7 +276,6 @@ document.addEventListener("click", event => {
     }
 
   });
-
 
   window.addEventListener("beforeunload", () => {
 
