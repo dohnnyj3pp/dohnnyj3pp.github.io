@@ -202,8 +202,7 @@ HTML5 serves as the foundation of the platform, providing the structure needed t
 
 },
 
-
-        CSS3: {
+ CSS3: {
 
     title:
         "THE VISUAL DESIGN & INTERACTION SYSTEM",
@@ -429,151 +428,223 @@ CSS3 controls the visual language of the platform, transforming the structural H
     ]
 
 },    
+            
 
 
-            JavaScript: {
+JavaScript: {
 
-                title:
-                    "THE INTERACTION & DYNAMIC BEHAVIOR",
+    title:
+        "THE INTERACTION & DYNAMIC BEHAVIOR",
 
-                overview:
-                    `
-JavaScript is the heartbeat of the website. It brings the entire experience to life by controlling interactions, navigation, animations, and countless other systems working together behind the scenes.`,
+    overview:
+        `
+JavaScript acts as the core functionality layer of the platform, bringing the website to life by controlling interactions, navigation, animations, dynamic content, and the systems that make the experience feel like an application rather than a traditional webpage.
+`,
 
-                intro:
-                    "Examples:",
+    intro:
+        "Examples:",
 
-                sections: [
+    sections: [
 
-                    {
-                        heading:
-                            "Creating dynamic navigation systems",
+        {
+            heading:
+                "Created dynamic application behavior.",
 
-                        details: [
+            details: [
 
-                            {
-                                text:
-                                    "Built SPA-style page transitions.",
+                {
+                    text:
+                        "Built SPA-style page transitions.",
 
-                                code:
-                                    `function rotateCarousel(direction) {
-  if (PLATFORM.state !== "carousel") return;
-  PLATFORM.project += direction;
+                    description:
+                        "Allows different areas of the platform to open and transition smoothly without forcing the user to leave the page and reload everything, creating a more seamless experience.",
+
+                    code:
+`function loadPage(url) {
+
+    const response =
+    await fetch(url);
+
+    const html =
+    await response.text();
+
 }`
-                            },
+                },
 
 
-                            {
-                                text:
-                                    "Loaded content dynamically without full refreshes.",
+                {
+                    text:
+                        "Loaded content dynamically.",
 
-                                code:
-                                    `const response = await fetch(url.href, {
-  signal: controller.signal
+                    description:
+                        "Allows new information and sections of the website to appear when needed instead of loading everything at once, helping keep the experience organized and responsive.",
+
+                    code:
+`const response =
+await fetch(url.href, {
+    signal:
+    controller.signal
 });
-const html = await response.text();`
-                            },
+
+const html =
+await response.text();`
+                },
 
 
-                            {
-                                text:
-                                    "Created application-style navigation behavior.",
+                {
+                    text:
+                        "Created application state control.",
 
-                                code:
-                                    `const url = new URL(link.href, window.location.href);
-button.classList.add("active");
+                    description:
+                        "Keeps track of what the platform is currently doing, such as moving through projects, loading documentation, or changing between different interface modes.",
+
+                    code:
+`if (PLATFORM.state !== "carousel") {
+    return;
+}
+
+PLATFORM.project += direction;`
+                }
+
+            ]
+
+        },
+
+
+        {
+            heading:
+                "Controlled interface behavior.",
+
+            details: [
+
+                {
+                    text:
+                        "Managed animation states.",
+
+                    description:
+                        "Controls when animations begin, reset, and change by communicating with the visual design systems created through CSS.",
+
+                    code:
+`content.classList.remove(
+    "animate-in"
+);
+
+void content.offsetWidth;
+
+content.classList.add(
+    "animate-in"
+);`
+                },
+
+
+                {
+                    text:
+                        "Updated active interface elements.",
+
+                    description:
+                        "Keeps the website aware of what the user has selected, updating buttons, menus, and content areas to match the current section being viewed.",
+
+                    code:
+`button.classList.add(
+    "active"
+);
+
 loadDocumentation();`
-                            }
-
-                        ]
-
-                    },
+                },
 
 
-                    {
-                        heading:
-                            "Controlled interface behavior",
+                {
+                    text:
+                        "Created interactive user responses.",
 
-                        details: [
+                    description:
+                        "Allows the website to react to user actions such as clicking buttons, selecting projects, and navigating through different areas of the platform.",
 
-                            {
-                                text:
-                                    "Managed animation states.",
+                    code:
+`document
+.querySelectorAll(".project-category")
+.forEach(btn => {
 
-                                code:
-                                    `content.classList.remove("animate-in");
-void content.offsetWidth;`
-                            },
+    btn.classList.remove(
+        "active"
+    );
 
-
-                            {
-                                text:
-                                    "Updated active navigation elements.",
-
-                                code:
-                                    `button.classList.add("active");
-loadDocumentation();`
-                            },
-
-
-                            {
-                                text:
-                                    "Created interactive user responses.",
-
-                                code:
-                                    `document.querySelectorAll(".project-category").forEach(btn => {
-  btn.classList.remove("active");
 });`
-                            }
+                }
 
-                        ]
+            ]
 
-                    },
+        },
 
 
-                    {
-                        heading:
-                            "Added custom interactions",
+        {
+            heading:
+                "Developed custom interactive systems.",
 
-                        details: [
+            details: [
 
-                            {
-                                text:
-                                    "Developed cursor tracking behavior.",
+                {
+                    text:
+                        "Built custom cursor tracking behavior.",
 
-                                code:
-                                    `window.addEventListener("pointermove", e => {
-  cursor.style.left = e.clientX + "px";
+                    description:
+                        "Created a custom cursor experience that follows the user's movement and adds another layer of interaction beyond the standard browser cursor.",
+
+                    code:
+`window.addEventListener(
+    "pointermove",
+    e => {
+
+        cursor.style.left =
+        e.clientX + "px";
+
+    }
+);`
+                },
+
+
+                {
+                    text:
+                        "Implemented mouse-based parallax effects.",
+
+                    description:
+                        "Created movement effects where certain elements respond to mouse movement, adding depth and making the interface feel more alive.",
+
+                    code:
+`requestAnimationFrame(() => {
+
+    heroInner.style.transform =
+    "translate3d(" +
+    offsetX +
+    "px," +
+    offsetY +
+    "px,20px)";
+
 });`
-                            },
+                },
 
 
-                            {
-                                text:
-                                    "Implemented mouse-based parallax effects.",
+                {
+                    text:
+                        "Created reusable initialization systems.",
 
-                                code:
-                                    `requestAnimationFrame(() => {
-  heroInner.style.transform = 'translate3d(' + offsetX + 'px, ' + offsetY + 'px, 20px)';
-});`
-                            },
+                    description:
+                        "Organized the startup process that prepares website features, connects interactions, and makes sure each system is ready when the platform loads.",
 
-                            {
-                                text:
-                                    "Added dynamic functionality throughout the site.",
+                    code:
+`document.addEventListener(
+    "DOMContentLoaded",
+    initProjects
+);`
+                }
 
+            ]
 
-                                code:
-                                    `document.addEventListener("DOMContentLoaded", initProjects);`
-                            }
+        }
 
-                        ]
+    ]
 
-                    }
-
-                ]
-
-            }
+},
 
         }
 
