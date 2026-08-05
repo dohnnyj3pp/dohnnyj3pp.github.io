@@ -41,12 +41,6 @@ function setPlatformState(nextState) {
         nextState
     );
 }
-function bootProject() {
-    console.log(activeModuleAvailable());
-    if (!activeModuleAvailable()) return;
-    setPlatformState("booting");
-    startDocumentationBoot();
-}
 function initProjects() {
     cacheDOM();
     const viewer = document.querySelector(".documentation-viewer");
@@ -55,9 +49,11 @@ function initProjects() {
     setPlatformState("carousel");
     renderCarousel();
     bindEvents();
+    bindCodeModalEvents();
     setOffline();
     console.log("Portfolio Platform Online");
 }
+
 function renderCarousel() {
     const total = cards.length;
     cards.forEach((card, index) => {
@@ -143,13 +139,17 @@ function startDocumentationBoot() {
             loadingLabel.style.backgroundImage =
                 `linear-gradient(90deg, #a705cf 0%, #0824a1, ${progress}%, #ffffff ${progress}%, #ffffff 100%)`;
         }
-        if (progress >= 99) {
-            clearInterval(initializingTimer);
-            initializeDocumentation();
-            setTimeout(() => {
-                deployDocumentation();
-            }, 350);
-        }
+if (progress >= 99) {
+    clearInterval(initializingTimer);
+
+    window.scrollTo(0,0);
+
+    initializeDocumentation();
+
+    setTimeout(() => {
+        deployDocumentation();
+    },350);
+}
     }
     update();
     initializingTimer = setInterval(
@@ -344,6 +344,154 @@ function buildModules() {
         });
     });
 }
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\r/g, "&#13;")
+        .replace(/\n/g, "&#10;");
+}
+function detectCodeLanguage(code) {
+    if (!code) return "text";
+    const trimmed = code.trim();
+    if (/^</.test(trimmed)) return "html";
+    if (/^\s*[@.#]?[a-zA-Z0-9\-_]+\s*\{/.test(trimmed) || /:\s*[^;\n]+;/.test(trimmed)) return "css";
+    return "js";
+}
+function highlightCode(code, language) {
+    const escaped = String(code)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\t/g, "    ");
+    if (language === "html") {
+        return escaped
+            .replace(/(&lt;!--[\s\S]*?--&gt;)/g, `<span class="token comment">$1</span>`)
+            .replace(/(&lt;\/?)([a-zA-Z0-9-]+)([^&]*?)(\/?>)/g, `$1<span class="token tag">$2</span>$3$4`)
+            .replace(/([a-zA-Z-:]+)(=)(".*?"|'.*?'|&quot;.*?&quot;|&#39;.*?&#39;)/g, `<span class="token attr-name">$1</span>$2<span class="token string">$3</span>`);
+    }
+    if (language === "css") {
+        return escaped
+            .replace(/(\/\*[\s\S]*?\*\/)/g, `<span class="token comment">$1</span>`)
+            .replace(/([a-zA-Z\-]+)(\s*:\s*)([^;\n]+)(;?)/g, `<span class="token property">$1</span>$2<span class="token value">$3</span>$4`)
+            .replace(/([{}])/g, `<span class="token punctuation">$1</span>`);
+    }
+    const highlighted = escaped
+        .replace(/(\/\*[\s\S]*?\*\/|\/\/.*?$)/gm, `<span class="token comment">$1</span>`)
+        .replace(/(".*?"|'.*?'|`[\s\S]*?`)/g, `<span class="token string">$1</span>`)
+        .replace(/\b(const|let|var|function|return|if|else|for|while|switch|case|break|continue|class|new|this|document|window|querySelector|addEventListener)\b/g, `<span class="token keyword">$1</span>`)
+        .replace(/\b(true|false|null|undefined)\b/g, `<span class="token literal">$1</span>`)
+        .replace(/([{}();.,])/g, `<span class="token punctuation">$1</span>`);
+    return highlighted;
+}
+function renderDocumentationItem(item) {
+    if (typeof item === "string") {
+        return `
+            <li class="description-item">
+                ${escapeHtml(item)}
+            </li>
+        `;
+    }
+    const title = escapeHtml(item?.text || item?.title || "View example");
+    const hasCode = typeof item === "object" && item?.code;
+    if (!hasCode) {
+        return `
+            <li class="description-item">
+                ${title}
+            </li>
+        `;
+    }
+    const rawCode = item.code;
+    const encodedCode = encodeURIComponent(rawCode);
+    const language = item.language || detectCodeLanguage(rawCode);
+    const description = item.description ? escapeHtml(item.description) : "";
+    const descriptionAttr = description ? ` data-description="${description}"` : "";
+    return `
+        <li>
+            <button
+                type="button"
+                class="example-card"
+                data-code="${encodedCode}"
+                data-title="${title}"
+                data-language="${language}"${descriptionAttr}>
+                <span>${title}</span>
+                <strong>View code</strong>
+            </button>
+        </li>
+    `;
+}
+function renderDocumentationSection(section) {
+    const items = Array.isArray(section.content)
+        ? section.content
+        : Array.isArray(section.details)
+            ? section.details
+            : [];
+    const list = items
+        .map(renderDocumentationItem)
+        .join("");
+    return `
+        <div class="doc-section">
+            <div class="section-header">
+                ${escapeHtml(section.heading)}
+            </div>
+            <div class="section-content">
+                <ul>
+                    ${list}
+                </ul>
+            </div>
+        </div>
+    `;
+}
+function bindExampleCards() {
+    const cards = document.querySelectorAll(".example-card");
+    cards.forEach(card => {
+        card.onclick = () => {
+            const rawCode = decodeURIComponent(card.dataset.code || "");
+            const description = card.dataset.description || "";
+            openCodeModal(card.dataset.title, rawCode, card.dataset.language, description);
+        };
+    });
+}
+function openCodeModal(title, code, language, description) {
+    const modal = document.querySelector(".code-modal");
+    const titleElement = modal?.querySelector(".code-modal-title");
+    const codeBlock = modal?.querySelector(".code-modal-snippet code");
+    const descriptionElement = modal?.querySelector(".code-modal-description");
+    if (!modal || !titleElement || !codeBlock || !descriptionElement) return;
+    titleElement.textContent = title || "Code Preview";
+    codeBlock.innerHTML = highlightCode(code || "", language || detectCodeLanguage(code));
+    if (description) {
+        descriptionElement.textContent = description;
+        descriptionElement.style.display = "block";
+    } else {
+        descriptionElement.textContent = "";
+        descriptionElement.style.display = "none";
+    }
+    modal.classList.add("visible");
+    document.body.classList.add("code-modal-open");
+}
+function closeCodeModal() {
+    const modal = document.querySelector(".code-modal");
+    if (!modal) return;
+    modal.classList.remove("visible");
+    document.body.classList.remove("code-modal-open");
+}
+function bindCodeModalEvents() {
+    const modal = document.querySelector(".code-modal");
+    if (!modal) return;
+    const closeButton = modal.querySelector(".code-modal-close");
+    const backdrop = modal.querySelector(".code-modal-backdrop");
+    closeButton?.addEventListener("click", closeCodeModal);
+    backdrop?.addEventListener("click", closeCodeModal);
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && modal.classList.contains("visible")) {
+            closeCodeModal();
+        }
+    });
+}
 function loadDocumentation() {
     const content = document.querySelector(".documentation-content");
     const documentationSystem = document.querySelector(".documentation-system");
@@ -373,40 +521,13 @@ function loadDocumentation() {
         return;
     }
     const sections = (data.sections || [])
-        .map(section => {
-            let list = "";
-            if (Array.isArray(section.content)) {
-                list = section.content
-                    .map(item => `<li>${item}</li>`)
-                    .join("");
-            }
-            else if (Array.isArray(section.details)) {
-                list = section.details
-                    .map(item => `<li>${item}</li>`)
-                    .join("");
-            }
-            else {
-                list = `<li>${section.content}</li>`;
-            }
-            return `
-                <div class="doc-section">
-                    <div class="section-header">
-                        ${section.heading}
-                    </div>
-                    <div class="section-content">
-                        <ul>
-                            ${list}
-                        </ul>
-                    </div>
-                </div>
-            `;
-        })
+        .map(renderDocumentationSection)
         .join("");
     content.innerHTML = `
-        <h2>${data.title}</h2>
+        <h2>${escapeHtml(data.title)}</h2>
         <div class="typed-overview"></div>
         ${data.intro
-            ? `<div class="examples-label">${data.intro}</div>`
+            ? `<div class="examples-label">${escapeHtml(data.intro)}</div>`
             : ""
         }
         ${sections}
@@ -416,22 +537,11 @@ function loadDocumentation() {
         data.overview,
         typedElement
     );
+    bindExampleCards();
     content.classList.add("animate-in");
     if (documentationSystem) {
         documentationSystem.classList.add("visible");
     }
-}
-content.innerHTML = `
-    <h2>${data.title}</h2>
-    <div class="typed-overview"></div>
-    ${data.intro ? `<div class="examples-label">${data.intro}</div>` : ""}
-    ${sections}
-    `;
-const typedElement = content.querySelector(".typed-overview");
-typeWriter(data.overview, typedElement);
-content.classList.add("animate-in");
-if (documentationSystem) {
-    documentationSystem.classList.add("visible");
 }
 function typeWriter(text, target) {
     if (!target) return;

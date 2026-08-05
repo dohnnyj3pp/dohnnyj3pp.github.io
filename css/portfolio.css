@@ -472,8 +472,8 @@ body.cursor-visible .cursor-ring {
 }
 
 .cursor-ring {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   transform-origin: center;
   transition:
     width .25s cubic-bezier(.25, .1, .25, 1),
@@ -506,14 +506,126 @@ body.cursor-hover .cursor-ring-inner {
       transparent 80%);
   padding: 6px;
 }
+.cursor-brackets {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    opacity: 0;
+    transition:
+        width .25s ease,
+        height .25s ease,
+        left .25s ease,
+        top .25s ease,
+        opacity .2s ease;
+}
+
+body.inspect-active .cursor-brackets {
+    opacity: 1;
+}
+
+.cursor-brackets .corner {
+    position:absolute;
+    width:18px;
+    height:18px;
+}
+
+.cursor-brackets .top-left {
+    top:0;
+    left:0;
+    border-top:2px solid #ff9102;
+    border-left:2px solid #ff9102;
+    animation: bracket-top-left 2s ease-in-out infinite;
+}
+
+.cursor-brackets .top-right {
+    top:0;
+    right:0;
+    border-top:2px solid #ff9102;
+    border-right:2px solid #ff9102;
+    animation: bracket-top-right 2s ease-in-out infinite;
+}
+
+.cursor-brackets .bottom-left {
+    bottom:0;
+    left:0;
+    border-bottom:2px solid #ff9102;
+    border-left:2px solid #ff9102;
+    animation: bracket-bottom-left 2s ease-in-out infinite;
+}
+
+.cursor-brackets .bottom-right {
+    bottom:0;
+    right:0;
+    border-bottom:2px solid #ff9102;
+    border-right:2px solid #ff9102;
+    animation: bracket-bottom-right 2s ease infinite;
+}
+
+
+@keyframes bracket-top-left {
+
+    0%,100% {
+        transform:translate(0,0);
+    }
+
+    50% {
+        transform:translate(-8px,-8px);
+    }
+
+}
+
+
+@keyframes bracket-top-right {
+
+    0%,100% {
+        transform:translate(0,0);
+    }
+
+    50% {
+        transform:translate(8px,-8px);
+    }
+
+}
+
+
+@keyframes bracket-bottom-left {
+
+    0%,100% {
+        transform:translate(0,0);
+    }
+
+    50% {
+        transform:translate(-8px,8px);
+    }
+
+}
+
+
+@keyframes bracket-bottom-right {
+
+    0%,100% {
+        transform:translate(0,0);
+    }
+
+    50% {
+        transform:translate(8px,8px);
+    }
+
+}
+
+
+body.custom-cursor-enabled,
+body.custom-cursor-enabled * {
+    cursor: none !important;
+}
 
 /* ===== CURSOR LOCK ===== */
 .cursor-ring.cursor-lock {
   position: fixed;
   top: 32px;
   left: 32px;
-  width: 32px !important;
-  height: 32px !important;
+  width: 16px !important;
+  height: 16px !important;
   transform: translate(0, 0) scale(.65) !important;
   transition:
     top .8s cubic-bezier(.22, .61, .36, 1),

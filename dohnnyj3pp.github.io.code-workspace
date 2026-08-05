@@ -23,10 +23,13 @@
 		},
 		{
 			"path": "../portfolio-images"
+		},
+		{
+			"path": "../code-preview"
 		}
 	],
 	"settings": {
 		"CodeGPT.apiKey": "CodeGPT Plus Beta",
-		"liveServer.settings.multiRootWorkspaceName": "dohnnyj3pp.github.io"
+		"liveServer.settings.multiRootWorkspaceName": "code-preview"
 	}
 }

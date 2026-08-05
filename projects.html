@@ -9,6 +9,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Michroma&family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=VT323&display=swap"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Aladin&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/portfolio.css" />
   <link rel="stylesheet" href="css/projects.css" />
   <link rel="stylesheet" href="css/project-platform.css" />
@@ -76,16 +79,21 @@
             <div class="project-card" data-module="available">
 
               <div class="project-thumbnail">
-                PORTFOLIO
+
+                <video id="portforlio-thumbnail.mp4" autoplay muted loop playsinline>
+                  <source src="images/video/code.mp4" type="video/mp4">
+                </video>
+
               </div>
+
 
               <div class="project-card-content">
 
-                <h2>Creating My Portfolio</h2>
+                <h2>PLATFORM</h2>
+                <p>DEVELOPMENT</p>
 
-                <p>
-                  How I built it, and why I made it.
-                </p>
+
+
 
 
               </div>
@@ -106,7 +114,7 @@
           <div class="carousel-controls">
 
             <button class="carousel-prev">
-              ◀ LAST
+              ◀LAST
             </button>
 
             <button class="project-initialize">
@@ -114,7 +122,7 @@
             </button>
 
             <button class="carousel-next">
-              NEXT ▶
+              NEXT▶
             </button>
 
 
@@ -133,94 +141,114 @@
           <aside class="project-hud">
 
             <div class="hud-thumbnail">
-              PORTFOLIO
-            </div>
 
+              <video id="hud-thumbnail" autoplay muted loop playsinline>
+                <source src="images/video/code.mp4" type="video/mp4">
+              </video>
+
+            </div>
             <h2>
-              Creating My Portfolio
+              Platform Development
             </h2>
 
             </p>
 
-            <button class="project-return">
-              RETURN
-            </button>
 
 
             <div class="project-status">
+
               <div class="status-display">
 
-                <div class="status-display">
+                <span class="status-label">
+                  STATUS:
+                </span>
 
-                  <span class="status-label">
-                    STATUS:
+                <div class="status-line">
+
+                  <span class="status-text">
+                    OFFLINE
                   </span>
-
-                  <div class="status-line">
-
-                    <span class="status-text">
-                      OFFLINE
-                    </span>
-
-                    <div class="loading-container">
-
-                      <div class="loading-bar">
-                        <div class="loading-fill"></div>
-                        <span class="loading-label">LOADING DATA</span>
-                      </div>
-
-                      <span class="loading-percent">
-                        0%
-                      </span>
-
-                    </div>
-
-                  </div>
 
                 </div>
 
-          </aside>
+            
 
-
-          <div class="documentation-system">
-
-
-            <div class="category-navigation">
-
-              <button class="project-category active" data-category="languages">
-                Core Languages
+              <button class="project-return">
+                RETURN
               </button>
 
-              <button class="project-category" data-category="technologies">
-                Tech & Features
-              </button>
+            <div class="loading-container">
 
-              <button class="project-category" data-category="development">
-                Development
-              </button>
-
-              <button class="project-category" data-category="summary">
-                Summary
-              </button>
-
-            </div>
-
-
-            <div class="module-navigation"></div>
-
-
-            <div class="documentation-viewer deploy-hidden">
-
-              <div class="documentation-content">
-
+              <div class="loading-bar">
+                <div class="loading-fill"></div>
+                <span class="loading-label">LOADING DATA</span>
               </div>
 
-            </div>
+              <span class="loading-percent">
+                0%
+              </span>
+
+              </div>
+    
+        </div>
+
+      </div>
+
+      </aside>
+
+
+      <div class="documentation-system">
+
+
+        <div class="category-navigation">
+
+          <button class="project-category active" data-category="languages">
+            Core Languages
+          </button>
+
+          <button class="project-category" data-category="technologies">
+            Tech & Features
+          </button>
+
+          <button class="project-category" data-category="development">
+            Development
+          </button>
+
+          <button class="project-category" data-category="summary">
+            Summary
+          </button>
+
+        </div>
+
+
+        <div class="module-navigation"></div>
+
+
+        <div class="documentation-viewer deploy-hidden">
+
+          <div class="documentation-content">
 
           </div>
 
-
         </div>
+
+        <div class="code-modal" aria-hidden="true">
+          <div class="code-modal-backdrop"></div>
+          <div class="code-modal-panel">
+            <div class="code-modal-header">
+              <div class="code-modal-title">Code Preview</div>
+              <button type="button" class="code-modal-close" aria-label="Close modal">×</button>
+            </div>
+            <pre class="code-modal-snippet"><code></code></pre>
+            <div class="code-modal-description" aria-live="polite"></div>
+            <div class="code-modal-note">Press Esc or click outside to close.</div>
+          </div>
+        </div>
+
+      </div>
+
+
+      </div>
 
 
       </div>
@@ -234,6 +262,13 @@
 
   <div class="cursor-ring">
     <div class="cursor-ring-inner"></div>
+  </div>
+
+  <div class="cursor-brackets">
+    <span class="corner top-left"></span>
+    <span class="corner top-right"></span>
+    <span class="corner bottom-left"></span>
+    <span class="corner bottom-right"></span>
   </div>
 
 

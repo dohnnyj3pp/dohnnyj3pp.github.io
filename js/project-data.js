@@ -7,11 +7,13 @@ const projectData = {
     languages: {
 
         title: "CORE LANGUAGES",
-        
-        introduction:`
-In this section you will find the three primary languages used to compose everything you are seeing.
 
-Select one of the modules above to find out a bit more about the purpose and functionality it served for this project.`,
+        introduction:
+            `
+Every experience begins with a foundation, and this portfolio was no different. The entire platform was designed and developed using three core web technologies: HTML5, CSS3, and JavaScript.
+
+Together these technologies made it possible to build this platform entirely from the ground up, demonstrating an understanding of modern frontend development and the ability to combine structure, design, and logic into a complete interactive experience.
+`,
 
         modules: {
 
@@ -19,39 +21,154 @@ Select one of the modules above to find out a bit more about the purpose and fun
 
                 title:
                     "THE STRUCTURE & SEMANTIC FOUNDATION",
-                overview:`
-used HTML5 to create the structural foundation of the portfolio, including the page architecture, navigation systems, hero experience, project platform structure, and reusable content containers.`,
 
-                intro: [
-                    "Examples:"
-                ],
+                overview:
+                    `
+HTML5 serves as the structural backbone of the platform, providing the semantic foundation that everything else is built upon.`,
+
+                intro:
+                    "Examples:",
+
                 sections: [
 
                     {
-                        heading: "creating the website structure",
+                        heading:
+                            "Creating the website structure",
+
                         details: [
-                            "Built the main navigation system and page hierarchy.",
-                            "creating reusable page layouts.",
-                            "Structured content sections using semantic HTML."
+
+                            {
+                                text:
+                                    "Implemented semantic page structure.",
+
+                                description:
+                                    "Semantic HTML elements provide meaningful structure to the document, improving accessibility, readability, and search engine optimization.",
+
+                                code:
+                                    `<main>
+  <section>
+    <article>
+      <footer>
+    </article>
+  </section>
+</main>`
+                            },
+
+                            {
+                                text:
+                                    "Stored custom data using HTML attributes.",
+
+                                description:
+                                    "Custom data attributes allow HTML elements to store additional information that JavaScript can access for creating dynamic behavior.",
+
+                                code:
+                                    `<button
+  class="example-card"
+  data-language="javascript"
+  data-code="example">
+  View Code
+</button>`
+                            },
                         ]
+                    },
+                  
+                    {
+                        heading:
+                            "Sets up the foundation for Animation.",
+
+                        details: [
+
+                            {
+                                text:
+                                    "Created the navigation bar custom visual effects and letter motion.",
+
+                                description:
+                                    "This creates the navigation menu containing a link to the Projects page, with each letter wrapped individually to enable custom hover and animation effects.",
+
+                                code:
+                                    `<ul class="nav-links">
+<li>
+<a href="projects.html">
+<span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>C</span><span>T</span><span>S</span>
+</a>
+</li>`
+                            },
+
+                            {
+                                text:
+                                    "Integrated background video loop.",
+
+                                description:
+                                    "Configures the background video to automatically play silently, repeat continuously, and remain embedded within the webpage instead of opening in fullscreen on mobile devices.",
+
+                                code:
+                                    `<video autoplay muted loop playsinline>
+<source src="images/video/intro.mp4" type="video/mp4">
+</video>`
+                            },
+
+                            {
+                                text:
+                                    "Organized information using lists.",
+
+                                description:
+                                    "Structured related content into ordered and unordered lists to improve readability and document hierarchy.",
+
+                                code:
+                                    `
+<ul>
+<li>HTML</li>
+li>CSS</li>
+<li>JavaScript</li>
+</ul>`
+                            }
+
+                        ]
+
+                    },
+
+
+                    {
+                        text:
+                            "Built reusable modal interface.",
+
+                        description:
+                            "Created a reusable HTML structure for code previews, incorporating accessibility attributes and a consistent layout for displaying interactive content.",
+
+                        code:
+                            `<div class="code-modal" aria-hidden="true">
+  <div class="code-modal-backdrop"></div>
+  <div class="code-modal-panel">
+    <div class="code-modal-header">
+      <div class="code-modal-title">Code Preview</div>
+      <button type="button"
+              class="code-modal-close"
+              aria-label="Close modal">×</button>
+    </div>
+    <pre class="code-modal-snippet"><code></code></pre>
+    <div class="code-modal-description"
+         aria-live="polite"></div>
+    <div class="code-modal-note">
+      Press Esc or click outside to close.
+    </div>
+  </div>
+</div>`
                     },
 
                     {
-                        heading: "Built the cinematic hero experience",
-                        details: [
-                            "creating the landing page foundation.",
-                            "Integrated HTML5 video background support.",
-                            "Structured title, description, and call-to-action elements."
-                        ]
+                        text:
+                            "Implemented structured page-content containers.",
+
+                        code:
+                            `<section class="projects-section">`
                     },
 
                     {
-                        heading: "Developed reusable content containers",
-                        details: [
-                            "creating organized project sections.",
-                            "implementing structured page-content containers.",
-                            "maintaining separation between content and functionality."
-                        ]
+                        text:
+                            "Maintained separation between content and functionality.",
+
+                        code:
+                            `<div class="project-card-content">`
                     }
 
                 ]
@@ -65,7 +182,8 @@ used HTML5 to create the structural foundation of the portfolio, including the p
                     "THE DESIGN & ANIMATIONS",
 
                 overview:
-                    "used CSS3 to create the visual identity of the portfolio, including typography, layouts, effects, responsive styling, and the overall cinematic atmosphere.",
+                    `
+CSS3 transforms the websites structure into a polished visual experience through custom layouts, animations, effects, and responsive design.`,
 
                 intro:
                     "Examples:",
@@ -73,30 +191,135 @@ used HTML5 to create the structural foundation of the portfolio, including the p
                 sections: [
 
                     {
-                        heading: "creating the visual identity",
+                        heading:
+                            "Creating the visual identity",
+
                         details: [
-                            "designing the dark sci-fi inspired color system.",
-                            "creating neon glow typography and visual effects.",
-                            "Developed the overall presentation style."
+
+                            {
+                                text:
+                                    "Designed the dark sci-fi inspired color system.",
+
+                                code:
+                                    `.project-category {
+  border: 1px solid rgba(255, 132, 0, .35);
+  background: rgba(8, 10, 18, .75);
+}`
+                            },
+
+                            {
+                                text:
+                                    "Created neon glow typography and visual effects.",
+
+                                code:
+                                    `.hero-content h1 span {
+  color: #ffca5a;
+  text-shadow: 0 0 12px rgba(255, 75, 129, .6), 0 0 24px rgba(255, 75, 129, .4);
+}`
+                            },
+
+                            {
+                                text:
+                                    "Developed the overall presentation style.",
+
+                                code:
+                                    `.hero-content::before {
+  background: radial-gradient(ellipse, rgba(18, 8, 15, .65) 0%, rgba(35, 10, 25, .38) 35%, rgba(0, 0, 0, 0) 75%);
+}`
+                            }
+
                         ]
+
                     },
 
-                    {
-                        heading: "Built reusable styling systems",
-                        details: [
-                            "creating component-based styling.",
-                            "Separated layout, appearance, and animation behavior.",
-                            "designing reusable classes for UI elements."
-                        ]
-                    },
 
                     {
-                        heading: "Developed responsive layouts",
+                        heading:
+                            "Built reusable styling systems",
+
                         details: [
-                            "creating adaptable designs across screen sizes.",
-                            "using flexible positioning and sizing techniques.",
-                            "maintaining consistent presentation across devices."
+
+                            {
+                                text:
+                                    "Created component-based styling.",
+
+                                code:
+                                    `.technology-item {
+  padding: 6px 18px;
+  border-radius: 12px;
+  background: rgba(8, 10, 18, .5);
+}`
+                            },
+
+                            {
+                                text:
+                                    "Separated layout, appearance, and animation behavior.",
+
+                                code:
+                                    `.technology-item:hover {
+  transform: translateY(-2px);
+  border-color: #ff8a00;
+}`
+                            },
+
+                            {
+                                text:
+                                    "Designed reusable classes for UI elements.",
+
+                                code:
+                                    `.technology-item.active {
+  border-color: #ff8a00;
+  background: rgba(255, 132, 0, .15);
+}`
+                            }
+
                         ]
+
+                    },
+
+
+                    {
+                        heading:
+                            "Developed responsive layouts",
+
+                        details: [
+
+                            {
+                                text:
+                                    "Created adaptable designs across screen sizes.",
+
+                                code:
+                                    `.module-navigation {
+  display: flex;
+  flex-wrap: wrap;
+}`
+                            },
+
+                            {
+                                text:
+                                    "Used flexible positioning and sizing techniques.",
+
+                                code:
+                                    `@media (max-width: 800px) {
+  .module-navigation {
+    flex-wrap: wrap;
+  }
+}`
+                            },
+
+                            {
+                                text:
+                                    "Maintained consistent presentation across devices.",
+
+                                code:
+                                    `.project-category.active {
+  border-color: #ff8a00;
+  background: rgba(255, 132, 0, .15);
+}`
+                            }
+
+                        ]
+
                     }
 
                 ]
@@ -110,7 +333,9 @@ used HTML5 to create the structural foundation of the portfolio, including the p
                     "THE INTERACTION & DYNAMIC BEHAVIOR",
 
                 overview:
-                    "used JavaScript to transform the website from a static page into an interactive experience by controlling navigation, user interaction, animations, and dynamic content behavior.",
+                    `
+JavaScript is the heartbeat of the website. It brings the entire experience to life by controlling interactions, navigation, animations, and countless other systems working together behind the scenes.
+ Ultimately it's what allows everything to communicate and function together as one cohesive application.`,
 
                 intro:
                     "Examples:",
@@ -118,30 +343,129 @@ used HTML5 to create the structural foundation of the portfolio, including the p
                 sections: [
 
                     {
-                        heading: "creating dynamic navigation systems",
+                        heading:
+                            "Creating dynamic navigation systems",
+
                         details: [
-                            "Built SPA-style page transitions.",
-                            "Loaded content dynamically without full refreshes.",
-                            "creating application-style navigation behavior."
+
+                            {
+                                text:
+                                    "Built SPA-style page transitions.",
+
+                                code:
+                                    `function rotateCarousel(direction) {
+  if (PLATFORM.state !== "carousel") return;
+  PLATFORM.project += direction;
+}`
+                            },
+
+
+                            {
+                                text:
+                                    "Loaded content dynamically without full refreshes.",
+
+                                code:
+                                    `const response = await fetch(url.href, {
+  signal: controller.signal
+});
+const html = await response.text();`
+                            },
+
+
+                            {
+                                text:
+                                    "Created application-style navigation behavior.",
+
+                                code:
+                                    `const url = new URL(link.href, window.location.href);
+button.classList.add("active");
+loadDocumentation();`
+                            }
+
                         ]
+
                     },
 
-                    {
-                        heading: "Controlled interface behavior",
-                        details: [
-                            "Managed animation states.",
-                            "updating active navigation elements.",
-                            "creating interactive user responses."
-                        ]
-                    },
 
                     {
-                        heading: "Added custom interactions",
+                        heading:
+                            "Controlled interface behavior",
+
                         details: [
-                            "Developed cursor tracking behavior.",
-                            "implementing mouse-based parallax effects.",
-                            "Added dynamic functionality throughout the site."
+
+                            {
+                                text:
+                                    "Managed animation states.",
+
+                                code:
+                                    `content.classList.remove("animate-in");
+void content.offsetWidth;`
+                            },
+
+
+                            {
+                                text:
+                                    "Updated active navigation elements.",
+
+                                code:
+                                    `button.classList.add("active");
+loadDocumentation();`
+                            },
+
+
+                            {
+                                text:
+                                    "Created interactive user responses.",
+
+                                code:
+                                    `document.querySelectorAll(".project-category").forEach(btn => {
+  btn.classList.remove("active");
+});`
+                            }
+
                         ]
+
+                    },
+
+
+                    {
+                        heading:
+                            "Added custom interactions",
+
+                        details: [
+
+                            {
+                                text:
+                                    "Developed cursor tracking behavior.",
+
+                                code:
+                                    `window.addEventListener("pointermove", e => {
+  cursor.style.left = e.clientX + "px";
+});`
+                            },
+
+
+                            {
+                                text:
+                                    "Implemented mouse-based parallax effects.",
+
+                                code:
+                                    `requestAnimationFrame(() => {
+  heroInner.style.transform = 'translate3d(' + offsetX + 'px, ' + offsetY + 'px, 20px)';
+});`
+                            },
+
+                            {
+                                text:
+                                    "Added dynamic functionality throughout the site.",
+
+
+                                code:
+                                    `document.addEventListener("DOMContentLoaded", initProjects);`
+                            }
+
+                        ]
+
                     }
 
                 ]
@@ -152,456 +476,390 @@ used HTML5 to create the structural foundation of the portfolio, including the p
 
     },
 
+    technologies: {
 
-technologies:{
+        title:
+            "TECH & FEATURES",
 
-    title:"TECH & FEATURES",
+        introduction:
+            `
+This section highlights the additional technologies and features that helped transform the portfolio from a traditional website into an interactive, application-style experience.
 
-    modules:{
+Beyond the core languages, these systems allowed the platform to support dynamic content, smooth navigation, immersive visuals, and a more engaging user experience.
 
-  technologies: {
+Explore each module below to discover the tools and features that expanded the functionality of the final product.
+`,
 
-    title:"TECH & FEATURES",
+        modules: {
 
-    introduction:
-`This section highlights the additional technologies and features that helped transform the portfolio from a static website into an interactive application-style experience.`,
 
-    modules:{
+            "DOM Manipulation": {
 
-        "DOM Manipulation":{
+                title:
+                    "THE DYNAMIC INTERFACE SYSTEM",
 
-            title:
-                "THE DYNAMIC INTERFACE SYSTEM",
+                overview:
+                    `
+Used DOM manipulation to allow JavaScript to communicate directly with webpage elements, enabling dynamic updates, interface changes, and interactive user experiences without rebuilding the page structure.
+`,
 
-            overview:
-`Used DOM manipulation to allow JavaScript to communicate directly with webpage elements, enabling dynamic updates, interface changes, and interactive user experiences without rebuilding the page structure.`,
+                sections: [
 
-            sections:[
+                    {
+                        heading:
+                            "Controlled dynamic interface states",
 
-                {
-                    heading:
-                        "Controlled dynamic interface states",
+                        content: [
 
-                    content:[
+                            "Added and removed classes to trigger visual changes.",
 
-                        "Added and removed classes to trigger visual changes.",
-                        "Managed animations and transition states.",
-                        "Updated interface elements based on user interaction."
+                            "Managed animation and transition states.",
 
-                    ]
-                },
+                            "Updated interface elements based on user interaction."
 
-                {
-                    heading:
-                        "Connected user interaction with functionality",
+                        ]
 
-                    content:[
+                    },
 
-                        "Linked user actions with visual responses.",
-                        "Modified page content dynamically.",
-                        "Created a more application-like experience."
 
-                    ]
-                }
+                    {
+                        heading:
+                            "Connected user interaction with functionality",
 
-            ]
+                        content: [
 
-        },
+                            "Linked user actions with visual responses.",
 
+                            "Modified page content dynamically.",
 
-        "Fetch API":{
+                            "Created a more application-like experience."
 
-            title:
-                "THE ASYNCHRONOUS CONTENT SYSTEM",
+                        ]
 
-            overview:
-`Used the Fetch API to create dynamic content loading systems, allowing sections of the portfolio to update asynchronously while maintaining a smooth application-style navigation experience.`,
+                    }
 
-            sections:[
+                ]
 
-                {
-                    heading:
-                        "Created dynamic content delivery",
+            },
 
-                    content:[
 
-                        "Retrieved page content without full refreshes.",
-                        "Updated website sections seamlessly.",
-                        "Reduced unnecessary page reloads."
+            "Fetch API": {
 
-                    ]
-                },
+                title:
+                    "THE ASYNCHRONOUS CONTENT SYSTEM",
 
-                {
-                    heading:
-                        "Improved navigation flow",
+                overview:
+                    `
+Used the Fetch API to create dynamic content loading systems, allowing sections of the portfolio to update asynchronously while maintaining a smooth application-style navigation experience.
+`,
 
-                    content:[
+                sections: [
 
-                        "Maintained persistent interface elements.",
-                        "Created smoother transitions between pages.",
-                        "Improved the overall user experience."
+                    {
+                        heading:
+                            "Created dynamic content delivery",
 
-                    ]
-                }
+                        content: [
 
-            ]
+                            "Retrieved page content without full refreshes.",
 
-        },
+                            "Updated website sections seamlessly.",
 
+                            "Reduced unnecessary page reloads."
 
-        "Browser History API":{
+                        ]
 
-            title:
-                "THE NAVIGATION STATE SYSTEM",
+                    },
 
-            overview:
-`Used the Browser History API to maintain modern navigation behavior while implementing dynamic page transitions and application-style routing.`,
 
-            sections:[
+                    {
+                        heading:
+                            "Improved navigation flow",
 
-                {
-                    heading:
-                        "Managed browser navigation states",
+                        content: [
 
-                    content:[
+                            "Maintained persistent interface elements.",
 
-                        "Implemented pushState navigation.",
-                        "Updated URLs dynamically.",
-                        "Supported browser back and forward functionality."
+                            "Created smoother transitions between sections.",
 
-                    ]
-                },
+                            "Improved the overall user experience."
 
-                {
-                    heading:
-                        "Maintained application behavior",
+                        ]
 
-                    content:[
+                    }
 
-                        "Preserved navigation consistency.",
-                        "Connected URL changes with loaded content.",
-                        "Improved the feeling of a single-page application."
+                ]
 
-                    ]
-                }
+            },
 
-            ]
 
-        },
+            "Browser History API": {
 
+                title:
+                    "THE NAVIGATION STATE SYSTEM",
 
-        "CSS Animations":{
+                overview:
+                    `
+Used the Browser History API to maintain modern navigation behavior while implementing dynamic page transitions and application-style routing.
+`,
 
-            title:
-                "THE MOTION DESIGN SYSTEM",
+                sections: [
 
-            overview:
-`Used CSS animations and transitions to create the cinematic movement, timing, and interactive feedback that define the visual experience of the portfolio.`,
+                    {
+                        heading:
+                            "Managed browser navigation states",
 
-            sections:[
+                        content: [
 
-                {
-                    heading:
-                        "Created cinematic presentation sequences",
+                            "Implemented pushState navigation.",
 
-                    content:[
+                            "Updated URLs dynamically without refreshing pages.",
 
-                        "Designed staged hero introduction animations.",
-                        "Controlled animation timing and sequencing.",
-                        "Built smooth page transitions."
+                            "Supported browser back and forward functionality."
 
-                    ]
-                },
+                        ]
 
-                {
-                    heading:
-                        "Enhanced user interaction",
+                    },
 
-                    content:[
 
-                        "Created hover-based feedback systems.",
-                        "Developed expanding interface components.",
-                        "Added motion throughout the user experience."
+                    {
+                        heading:
+                            "Maintained application behavior",
 
-                    ]
-                }
+                        content: [
 
-            ]
+                            "Preserved navigation consistency.",
 
-        },
+                            "Connected URL changes with loaded content.",
 
+                            "Improved the feeling of a single-page application."
 
-        "Responsive Design":{
+                        ]
 
-            title:
-                "THE ADAPTIVE LAYOUT SYSTEM",
+                    }
 
-            overview:
-`Used responsive design techniques to ensure the portfolio maintains usability, readability, and visual consistency across different screen sizes and devices.`,
+                ]
 
-            sections:[
+            },
 
-                {
-                    heading:
-                        "Built flexible layouts",
 
-                    content:[
+            "CSS Animations": {
 
-                        "Created adaptable content structures.",
-                        "Used scalable sizing and positioning techniques.",
-                        "Designed layouts that adjust across devices."
+                title:
+                    "THE MOTION DESIGN SYSTEM",
 
-                    ]
-                },
+                overview:
+                    `
+Used CSS animations and transitions to create the cinematic movement, timing, and interactive feedback that define the visual experience of the portfolio.
+`,
 
-                {
-                    heading:
-                        "Maintained visual consistency",
+                sections: [
 
-                    content:[
+                    {
+                        heading:
+                            "Created cinematic presentation sequences",
 
-                        "Preserved spacing and hierarchy.",
-                        "Optimized content presentation.",
-                        "Ensured accessibility across screen sizes."
+                        content: [
 
-                    ]
-                }
+                            "Designed staged hero introduction animations.",
 
-            ]
+                            "Controlled animation timing and sequencing.",
 
-        },
+                            "Built smooth page transitions."
 
+                        ]
 
-        "HTML5 Video Integration":{
+                    },
 
-            title:
-                "THE CINEMATIC BACKGROUND SYSTEM",
 
-            overview:
-`Used HTML5 video integration to create the immersive animated background experience that establishes the visual identity of the portfolio.`,
+                    {
+                        heading:
+                            "Enhanced user interaction",
 
-            sections:[
+                        content: [
 
-                {
-                    heading:
-                        "Developed the cinematic landing environment",
+                            "Created hover-based feedback systems.",
 
-                    content:[
+                            "Developed expanding interface components.",
 
-                        "Implemented looping background video playback.",
-                        "Combined video with layered visual effects.",
-                        "Created an atmospheric introduction sequence."
+                            "Added motion throughout the user experience."
 
-                    ]
-                },
+                        ]
 
-                {
-                    heading:
-                        "Integrated video into the design system",
+                    }
 
-                    content:[
+                ]
 
-                        "Controlled video behavior with HTML attributes.",
-                        "Built supporting overlays and visual effects.",
-                        "Balanced performance with presentation quality."
+            },
 
-                    ]
-                }
 
-            ]
+            "Responsive Design": {
 
-        },
+                title:
+                    "THE ADAPTIVE LAYOUT SYSTEM",
 
+                overview:
+                    `
+Used responsive design techniques to ensure the portfolio maintains usability, readability, and visual consistency across different screen sizes and devices.
+`,
 
-        "Git & GitHub":{
+                sections: [
 
-            title:
-                "THE DEVELOPMENT WORKFLOW",
+                    {
+                        heading:
+                            "Built flexible layouts",
 
-            overview:
-`Used Git and GitHub throughout development to manage version control, track improvements, maintain project organization, and deploy the completed portfolio.`,
+                        content: [
 
-            sections:[
+                            "Created adaptable content structures.",
 
-                {
-                    heading:
-                        "Managed development progression",
+                            "Used scalable sizing and positioning techniques.",
 
-                    content:[
+                            "Designed layouts that adjust across devices."
 
-                        "Tracked changes through version control.",
-                        "Maintained organized project structure.",
-                        "Preserved stable development versions."
+                        ]
 
-                    ]
-                },
+                    },
 
-                {
-                    heading:
-                        "Deployed the final experience",
 
-                    content:[
+                    {
+                        heading:
+                            "Maintained visual consistency",
 
-                        "Configured GitHub Pages hosting.",
-                        "Published the completed portfolio.",
-                        "Maintained production-ready files."
+                        content: [
 
-                    ]
-                }
+                            "Preserved spacing and hierarchy.",
 
-            ]
+                            "Optimized content presentation.",
+
+                            "Ensured accessibility across screen sizes."
+
+                        ]
+
+                    }
+
+                ]
+
+            },
+
+
+            "HTML5 Video Integration": {
+
+                title:
+                    "THE CINEMATIC BACKGROUND SYSTEM",
+
+                overview:
+                    `
+Used HTML5 video integration to create the immersive animated background experience that establishes the visual identity of the portfolio.
+`,
+
+                sections: [
+
+                    {
+                        heading:
+                            "Developed the cinematic landing environment",
+
+                        content: [
+
+                            "Implemented looping background video playback.",
+
+                            "Combined video with layered visual effects.",
+
+                            "Created an atmospheric introduction sequence."
+
+                        ]
+
+                    },
+
+
+                    {
+                        heading:
+                            "Integrated video into the design system",
+
+                        content: [
+
+                            "Controlled video behavior with HTML attributes.",
+
+                            "Built supporting overlays and visual effects.",
+
+                            "Balanced performance with presentation quality."
+
+                        ]
+
+                    }
+
+                ]
+
+            },
+
+
+            "Git & GitHub": {
+
+                title:
+                    "THE DEVELOPMENT WORKFLOW",
+
+                overview:
+                    `
+Used Git and GitHub throughout development to manage version control, track improvements, maintain project organization, and deploy the completed portfolio.
+`,
+
+                sections: [
+
+                    {
+                        heading:
+                            "Managed development progression",
+
+                        content: [
+
+                            "Tracked changes through version control.",
+
+                            "Maintained organized project structure.",
+
+                            "Preserved stable development versions."
+
+                        ]
+
+                    },
+
+
+                    {
+                        heading:
+                            "Deployed the final experience",
+
+                        content: [
+
+                            "Configured GitHub Pages hosting.",
+
+                            "Published the completed portfolio.",
+
+                            "Maintained production-ready files."
+
+                        ]
+
+                    }
+
+                ]
+
+            }
 
         }
 
-    }
-
-},
-
-
-        
-
-
-        "Browser History API":{
-
-            title:
-                "THE NAVIGATION STATE SYSTEM",
-
-            overview:
-                "used the Browser History API to maintain navigation behavior while the remaining dynamic page transition was kept in current state.",
-
-            sections:[
-
-                {
-                    heading:"Managed browser navigation",
-
-                    content:[
-
-                        "implementing pushState navigation.",
-                        "Updating URLs without refreshing pages.",
-                        "Supporting browser back and forward functionality."
-
-                    ]
-                }
-
-            ]
-
-        },
-
-
-        "CSS Animations":{
-
-            title:
-                "THE MOTION DESIGN SYSTEM",
-
-            overview:
-                "used CSS animations and transitions to create movement, timing, and interactive feedback throughout the website.",
-
-            sections:[
-
-                {
-                    heading:"creating cinematic reveals",
-
-                    content:[
-
-                        "Designing staged hero introductions.",
-                        "Controlling animation timing sequences.",
-                        "creating smooth content transitions."
-
-                    ]
-                },
-
-                {
-                    heading:"Enhanced interaction feedback",
-
-                    content:[
-
-                        "Built hover animations.",
-                        "creating expanding content sections.",
-                        "Developed visual responses to user actions."
-
-                    ]
-                }
-
-            ]
-
-        },
-
-        "HTML5 Video Integration":{
-
-            title:
-                "THE CINEMATIC BACKGROUND SYSTEM",
-
-            overview:
-                "used HTML5 video capabilities to create an immersive landing experience through a persistent animated background.",
-
-            sections:[
-
-                {
-                    heading:"Integrated video into the hero section",
-
-                    content:[
-
-                        "implemented the looping background playback.",
-                        "combining video with layered CSS effects.",
-                        "created an atmospheric introduction sequence."
-
-                    ]
-                }
-
-            ]
-
-        },
-
-        "Fetch API":{
-
-            title:
-                "THE SINGLE-PAGE NAVIGATION",
-
-            overview:
-                "used the Fetch API to asynchronously retrieve page content and create smooth transitions between sections without refreshing the entire website, giving it the \"one page only\" feeling.",
-
-            sections:[
-
-                {
-                    heading:"Built dynamic content loading",
-
-                    content:[
-
-                        "fetching HTML content dynamically.",
-                        "updating page sections seamlessly.",
-                        "creating smoother navigation experiences."
-
-                    ]
-                },
-
-                {
-                    heading:"Improved user experience",
-
-                    content:[
-
-                        "reducing unnecessary page reloads.",
-                        "maintaining persistent interface elements.",
-                        "creating a more application-like experience."
-
-                    ]
-                }
-
-            ]
-
-        },
-
-    }
-
-},
-
-
+    },
 
     development: {
 
-        title: "DEVELOPMENT",
+        title:
+            "DEVELOPMENT",
+
+        introduction:
+            `
+Building a successful project requires more than writing code. Development involves planning, testing, debugging, version control, and continuous improvement.
+
+This section highlights the workflow systems used throughout the creation of the portfolio, including maintaining stability, testing functionality, and preparing the final product for deployment.
+`,
 
         modules: {
+
 
             Build: {
 
@@ -609,25 +867,37 @@ technologies:{
                     "BUILD PIPELINE & VERSION CONTROL",
 
                 overview:
-                    "implemented Git version control, task automation, and a deployment-ready structure for the portfolio build process.",
+                    `
+Implemented development workflows using version control, organized project structures, and deployment practices to maintain a stable and scalable portfolio build.
+`,
 
                 sections: [
 
                     {
-                        heading: "Workflow",
+                        heading:
+                            "Development workflow",
+
                         content:
-                            "Organized development tasks with source control, branch management, and iterative improvements."
+
+                            "Organized development tasks through version control, iterative improvements, and structured project management."
+
                     },
 
+
                     {
-                        heading: "Deployment",
+                        heading:
+                            "Deployment preparation",
+
                         content:
-                            "The project is prepared for web deployment with responsive design, asset management, and performance optimization."
+
+                            "Prepared the project for web deployment through asset management, responsive design practices, and performance considerations."
+
                     }
 
                 ]
 
             },
+
 
             Testing: {
 
@@ -635,25 +905,37 @@ technologies:{
                     "QUALITY ASSURANCE & DEBUGGING",
 
                 overview:
-                    "Conducted testing across browsers, interactions, and responsive layouts to ensure stable behavior.",
+                    `
+Performed testing across browsers, interactions, animations, and responsive layouts to ensure the portfolio maintained stable and consistent behavior.
+`,
 
                 sections: [
 
                     {
-                        heading: "Cross-Browser",
+                        heading:
+                            "Cross-browser testing",
+
                         content:
-                            "Verified that the interactive portfolio works consistently across major browsers and device sizes."
+
+                            "Verified that the interactive portfolio maintained functionality and presentation consistency across different browsers and device sizes."
+
                     },
 
+
                     {
-                        heading: "Debugging",
+                        heading:
+                            "Debugging and refinement",
+
                         content:
-                            "Fixed layout, animation, and script issues through iterative testing and review."
+
+                            "Resolved layout issues, animation conflicts, and JavaScript behavior problems through continuous testing and iteration."
+
                     }
 
                 ]
 
             }
+
 
         }
 
@@ -662,20 +944,27 @@ technologies:{
 
     summary: {
 
-        title: "SUMMARY",
-
         title:
             "PROJECT SUMMARY",
 
         overview:
-`Welcome to the heart and soul of my portfolio. Countless hours have been devoted to writing the code, testing it, debugging, rewriting, tweaking, testing it again, and embracing the endless cycle of a coder's life.  This project was designing and developed entirely from scratch using semantic HTML5, custom CSS3, and vanilla JavaScript without the use of frontend frameworks.
+            `
+Welcome to the core of my portfolio.
 
-My goal was to create more than a traditional portfolio, but instead to build a truly interactive digital experience that demonstrates not only my understanding of my frontend development stack, but as well to deliver a captivating website filled with animation, dynamic interactions, and intentional user-focusing design.
+Countless hours have been devoted to writing code, testing functionality, debugging issues, rewriting systems, refining designs, and embracing the endless cycle that defines the life of a developer.
 
-Most software and web developers create portfolios to showcase their work, but I wanted to take that idea one step further. I wanted to create an immersive platform that not only showcases my projects, but also becomes part of the showcase itself.  As you navigate through the different sections, you'll discover the behind-the-scenes work, design decisions, the thought proccess, and technical systems in place that bring everything together as one final piece of art.`
+This project was designed and developed using HTML5, CSS3, and JavaScript without the use of frontend frameworks.
 
+My goal was to create more than a traditional portfolio. I wanted to build a fully custom frontend experience that demonstrates my ability to design, develop, and integrate modern web technologies into a cohesive application-style platform.
+
+Most developers create portfolios to showcase their work, but I wanted to take that concept one step further. I wanted the portfolio itself to become part of the showcase.
+
+As you explore the different sections, you will discover the technical systems, the thought process, and logical decisions used that brought this creation to life.
+
+Every element was intentionally designed to demonstrate a unique approach to frontend development and the thought process behind building it.`,
     }
 
-}
+};
+
 
 window.projectData = projectData;
