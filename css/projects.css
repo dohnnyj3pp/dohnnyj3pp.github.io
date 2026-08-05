@@ -234,7 +234,7 @@ PROJECT CARD CONTENT
 
     font-size: 2.5rem;
 
-    color: #fffdfb;
+    color: #fcfaf7;
 
     animation:
         Sweep 4s ease-in-out infinite;
@@ -249,7 +249,7 @@ PROJECT CARD CONTENT
 
     transform:
         translateX(-50%);
-
+    bottom:90px;
     margin: 0;
 
     padding: 8px 12px;
@@ -264,7 +264,7 @@ PROJECT CARD CONTENT
 
     font-size: 2.5rem;
 
-    color: #ffffff;
+    color: #faf8f6;
 
     animation:
         Sweep 4s ease-in-out infinite;

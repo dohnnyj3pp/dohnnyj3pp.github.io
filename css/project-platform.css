@@ -273,14 +273,24 @@ PROJECT HUD
 }
 
 .project-hud h2 {
-    font-family: "ZCOOL XiaoWei", sans-serif;
+    font-family:
+        "ZCOOL XiaoWei",
+        sans-serif;
     text-transform: uppercase;
-    transform: translateY(-120px);
-    color: #dad8d5cb;
-    font-size: 1.3rem;
-    letter-spacing: .2em;
+    transform: translateY(-115px);
+    color: #ffffff;
+    font-size: 2.1rem;
+    letter-spacing: .1em;
 }
 
+.project-hud p {
+    font-family: "michroma", serif;
+    text-transform: uppercase;
+    transform:translateY(-10px);
+    color: #faf9f7;
+    font-size: 1rem;
+    letter-spacing: .1em;
+}
 
 /* ==========================================
 PROJECT RETURN BUTTON
@@ -486,10 +496,10 @@ DOCUMENTATION CONTENT
 }
 
 .documentation-content h2 {
-    font-family: "orbitron", monospace;
+    font-family: "orbitron", serif;
     font-size: 2.3rem;
     letter-spacing: .11em;
-    color: #ff8a00;
+    color: #c9a846;
     margin-bottom: 16px;
 }
 
