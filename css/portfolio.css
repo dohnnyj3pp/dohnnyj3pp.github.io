@@ -602,372 +602,667 @@ HERO FOUNDATION
 
 }
 
+/* ==========================================
+HERO INTRO SEQUENCE
+========================================== */
+/* ==========================================
+HERO INTRO ANIMATION SYSTEM
+========================================== */
+
+
+.hero-identity {
+
+    font-family:
+        "Michroma",
+        sans-serif;
+
+    font-size:
+        1.5rem;
+
+    letter-spacing:
+        .35em;
+
+    opacity:0;
+
+    filter:
+        blur(10px);
+
+    transform:
+        scale(.96);
+
+
+    animation:
+        identityReveal 2s ease forwards;
+
+
+    animation-delay:
+        1s;
+
+}
+
+
+
+
+/*
+==========================================
+PRIMARY ROLE DEPLOYMENT
+
+Developer
+Engineer
+Creator
+
+==========================================
+*/
+
+
+.hero-name,
+.hero-role {
+
+    display:block;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+
+    font-size:
+        3.2rem;
+
+
+    letter-spacing:
+        .12em;
+
+
+    text-transform:
+        uppercase;
+
+
+    color:
+        #f5f5f5;
+
+
+    text-shadow:
+
+        0 0 12px rgba(255,138,0,.45);
+
+
+    opacity:0;
+
+
+    filter:
+        blur(12px);
+
+
+    transform:
+
+        translateX(150px)
+        scale(1.15);
+
+
+    animation:
+
+        roleDeploy .8s cubic-bezier(.22,.61,.36,1) forwards;
+
+}
+
+
+
+
+/* Developer */
+
+.hero-name {
+
+    animation-delay:
+        2.5s;
+
+}
+
+
+
+
+/* Engineer */
+
+.hero-role:nth-child(1) {
+
+    animation-delay:
+        3.5s;
+
+}
+
+
+
+
+/* Creator */
+
+.hero-role:nth-child(2) {
+
+    animation-delay:
+        4.5s;
+
+}
+
+
+
+
+
+/*
+==========================================
+DESCRIPTION
+==========================================
+*/
+
+
+.hero-description,
+.hero-content-inner p {
+
+
+    opacity:0;
+
+
+    filter:
+        blur(5px);
+
+
+    transform:
+
+        translateY(25px);
+
+
+
+    animation:
+
+        interfaceFade 1s ease forwards;
+
+
+
+    animation-delay:
+
+        6s;
+
+}
+
+
+
+/*
+==========================================
+KEYFRAMES
+==========================================
+*/
+
+
+@keyframes identityReveal {
+
+
+    0% {
+
+        opacity:0;
+
+        filter:
+            blur(12px);
+
+    }
+
+
+    20% {
+
+        opacity:.35;
+
+    }
+
+
+    35% {
+
+        opacity:.08;
+
+    }
+
+
+    100% {
+
+
+        opacity:1;
+
+
+        filter:
+            blur(0);
+
+
+        text-shadow:
+
+
+            0 0 8px rgba(255,132,0,.8),
+
+            0 0 25px rgba(255,132,0,.5),
+
+            0 0 60px rgba(255,132,0,.25);
+
+    }
+
+}
+
+
+
+
+
+@keyframes roleDeploy {
+
+
+    0% {
+
+
+        opacity:0;
+
+
+        transform:
+
+            translateX(160px)
+
+            scale(1.15);
+
+
+
+        filter:
+
+            blur(14px);
+
+    }
+
+
+
+    45% {
+
+
+        opacity:1;
+
+
+        transform:
+
+
+            translateX(-15px)
+
+            scale(1.04);
+
+
+
+        filter:
+
+
+            blur(3px);
+
+    }
+
+
+
+    65% {
+
+
+        opacity:.7;
+
+    }
+
+
+
+    100% {
+
+
+        opacity:1;
+
+
+        transform:
+
+
+            translateX(0)
+
+            scale(1);
+
+
+
+        filter:
+
+
+            blur(0);
+
+    }
+
+}
+
+
+
+
+
+@keyframes interfaceFade {
+
+
+    from {
+
+
+        opacity:0;
+
+
+        transform:
+
+            translateY(25px);
+
+
+        filter:
+
+            blur(5px);
+
+    }
+
+
+
+    to {
+
+
+        opacity:1;
+
+
+        transform:
+
+            translateY(0);
+
+
+        filter:
+
+            blur(0);
+
+    }
+
+}
+
+
+
+
+
+/*
+==========================================
+HERO POSITIONING
+==========================================
+*/
+
 
 .hero-content {
 
-  position: absolute;
-
-  top: 50%;
-
-  left: 50%;
+    position:absolute;
 
 
-  transform:
-    translate(-50%, -50%)
-    translateZ(0);
+    top:50%;
 
 
-  text-align: center;
+    left:50%;
 
 
-  display: flex;
 
-  align-items: center;
+    transform:
 
-  justify-content: center;
+        translate(-50%, -50%)
 
-
-  flex-direction: column;
+        translateZ(0);
 
 
-  perspective: 800px;
 
-  transform-style: preserve-3d;
-
-
-  opacity: 0;
+    text-align:center;
 
 
-  max-width: 700px;
 
-  width: 90%;
+    display:flex;
 
 
-  transition:
+    align-items:center;
 
-    opacity 1.4s ease,
-    transform 1.4s cubic-bezier(.22,.61,.36,1);
+
+    justify-content:center;
+
+
+
+    flex-direction:column;
+
+
+
+    perspective:
+        800px;
+
+
+
+    transform-style:
+        preserve-3d;
+
+
+
+    opacity:0;
+
+
+
+    max-width:
+        700px;
+
+
+
+    width:
+        90%;
+
+
+
+    transition:
+
+        opacity 1.4s ease,
+
+        transform 1.4s cubic-bezier(.22,.61,.36,1);
 
 }
+
 
 
 
 .hero-enter {
 
-  opacity: 1;
 
-  transform:
-
-    translate(-50%, -50%)
-    translateZ(20px);
-
-}
+    opacity:1;
 
 
-
-/*
-========================================
-HERO ATMOSPHERIC GLOW
-========================================
-*/
-
-.hero-content::before {
-
-  content: "";
-
-  position: absolute;
-
-
-  left: 50%;
-
-  top: 50%;
-
-
-  width: 1000px;
-
-  height: 420px;
-
-
-  transform:
-    translate(-50%, -50%);
-
-
-  border-radius: 50%;
-
-
-  background:
-
-
-    radial-gradient(
-      ellipse,
-      rgba(18,8,15,.65) 0%,
-      rgba(35,10,25,.38) 35%,
-      rgba(0,0,0,0) 75%
-    );
-
-
-  filter:
-    blur(32px);
-
-
-  z-index: -1;
-
-
-  pointer-events: none;
-
-
-  opacity: 0;
-
-
-  transition:
-    opacity 1.8s ease;
-
-
-  animation:
-    heroGlow 8s ease-in-out infinite;
-
-}
-
-
-
-@keyframes heroGlow {
-
-  0%,
-  100% {
 
     transform:
-      translate(-50%, -50%)
-      scale(1);
 
-    opacity: .65;
+        translate(-50%, -50%)
 
-  }
-
-
-  50% {
-
-    transform:
-      translate(-50%, -50%)
-      scale(1.08);
-
-    opacity: 1;
-
-  }
+        translateZ(20px);
 
 }
 
 
-
-body.hero-ready .hero-content::before {
-
-  opacity: 1;
-
-}
 
 
 
 .hero-content-inner {
 
-  max-width: 700px;
+    max-width:
+        700px;
 
 }
 
 
 
+
+
 /*
 ========================================
-HERO IDENTITY INTRO
-========================================
-
-Future animation structure:
-
-Adam Pace
-    ↓
-Developer
-    ↓
-Engineer
-    ↓
-Creator
-
-The individual elements will receive
-their own animation states here later.
-
+ATMOSPHERIC GLOW
 ========================================
 */
 
 
-.hero-name {
+.hero-content::before {
 
-  opacity: 0;
 
-  transform:
-    translateY(30px);
+    content:"";
+
+
+    position:absolute;
+
+
+    left:50%;
+
+
+    top:50%;
+
+
+
+    width:
+
+        1000px;
+
+
+
+    height:
+
+        420px;
+
+
+
+    transform:
+
+        translate(-50%, -50%);
+
+
+
+    border-radius:
+
+        50%;
+
+
+
+    background:
+
+
+        radial-gradient(
+
+            ellipse,
+
+            rgba(18,8,15,.65) 0%,
+
+            rgba(35,10,25,.38) 35%,
+
+            rgba(0,0,0,0) 75%
+
+        );
+
+
+
+    filter:
+
+        blur(32px);
+
+
+
+    z-index:-1;
+
+
+
+    pointer-events:none;
+
+
+
+    opacity:0;
+
+
+
+    transition:
+
+        opacity 1.8s ease;
+
+
+
+    animation:
+
+        heroGlow 8s ease-in-out infinite;
 
 }
 
 
-.hero-role {
 
-  opacity: 0;
 
-  transform:
-    translateX(80px)
-    scale(.85);
+
+@keyframes heroGlow {
+
+
+    0%,
+    100% {
+
+
+        transform:
+
+            translate(-50%, -50%)
+
+            scale(1);
+
+
+        opacity:.65;
+
+    }
+
+
+
+    50% {
+
+
+        transform:
+
+            translate(-50%, -50%)
+
+            scale(1.08);
+
+
+        opacity:1;
+
+    }
 
 }
 
 
-.hero-role-settle {
 
-  transform:
-    translateX(0)
-    scale(1);
+
+
+body.hero-ready .hero-content::before {
+
+
+    opacity:1;
 
 }
+
+
 
 
 
 /*
 ========================================
-TITLE
-========================================
-*/
-
-
-.hero-content-inner h1 {
-
-  font-family:
-    "Orbitron",
-    sans-serif;
-
-
-  opacity: 0;
-
-
-  transform:
-    translateY(45px);
-
-
-  transition:
-
-    opacity 1s ease,
-    transform 1s cubic-bezier(.22,.61,.36,1);
-
-
-
-  font-size:
-    3.5rem;
-
-
-  letter-spacing:
-    .07em;
-
-
-  margin-bottom:
-    20px;
-
-
-  color:
-    #f3f3f2;
-
-
-  text-shadow:
-
-
-    0 0 20px #ff8a00,
-
-    0 0 40px #ff8a00;
-
-}
-
-
-
-body.title-ready .hero-content-inner h1 {
-
-  opacity: 1;
-
-
-  transform:
-    translateY(0);
-
-}
-
-
-
-.hero-content h1 span {
-
-  color:
-    #ff8a00;
-
-
-  text-shadow:
-
-
-    0 0 12px rgba(167,92,6,.6),
-
-    0 0 24px rgba(219,156,38,.4);
-
-}
-
-
-
-/*
-========================================
-ROLE TEXT
+ROLE CONTAINER
 ========================================
 */
 
 
 .hero-roles {
 
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
+    display:flex;
 
 
-  margin-top: 10px;
-
-}
+    flex-direction:column;
 
 
-.hero-role {
-
-  font-family:
-    "Orbitron",
-    sans-serif;
+    align-items:center;
 
 
-  font-size:
-    2rem;
-
-
-  letter-spacing:
-    .2em;
-
-
-  color:
-    #f5f5f5;
-
-
-  text-transform:
-    uppercase;
-
-
-  text-shadow:
-
-
-    0 0 12px rgba(255,138,0,.45);
-
+    margin-top:10px;
 
 }
+
+
 
 
 
 /*
 ========================================
-DESCRIPTION
+DESCRIPTION STYLE
 ========================================
 */
 
@@ -975,59 +1270,42 @@ DESCRIPTION
 .hero-content-inner p {
 
 
-  opacity: 0;
+    font-size:
 
-
-  transform:
-    translateY(35px);
-
-
-  transition:
-
-
-    opacity 1s ease,
-
-    transform 1s cubic-bezier(.22,.61,.36,1);
+        1.4rem;
 
 
 
-  font-size:
-    1.6rem;
+    line-height:
+
+        1.6;
 
 
-  line-height:
-    1.6;
+
+    letter-spacing:
+
+        .05em;
 
 
-  letter-spacing:
-    .05em;
+
+    max-width:
+
+        700px;
 
 
-  max-width:
-    700px;
+
+    margin:
+
+        0 auto;
 
 
-  margin:
-    0 auto;
 
+    color:
 
-  color:
-    #f5f5f5;
+        #f5f5f5;
 
 }
 
-
-
-body.text-ready .hero-content-inner p {
-
-
-  opacity: 1;
-
-
-  transform:
-    translateY(0);
-
-}
 /* ===== CUSTOM CURSOR ===== */
 
 .cursor-dot,
