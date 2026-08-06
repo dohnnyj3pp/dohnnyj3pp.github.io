@@ -239,11 +239,13 @@ LOADING SYSTEM
 /* ==========================================
 PROJECT HUD
 ========================================== */
-
 .project-hud {
-    height: 340px;
+    height: 360px;
     width: 240px;
     padding: 20px;
+    position: relative;
+    left: -190px;
+    top: 95px;
     overflow: hidden;
     border: 1px solid #f7870679;
     border-radius: 14px;
@@ -251,8 +253,23 @@ PROJECT HUD
     backdrop-filter: blur(12px);
     box-shadow: 0 0 45px rgba(145, 94, 17, .26);
     text-align: center;
-    transform: translate(-100px, 150px);
+
+    opacity: 0;
+    transform: translate(-40px,40px);
+
+    transition:
+        opacity .4s ease,
+        transform .5s cubic-bezier(.22,.61,.36,1);
 }
+
+.project-platform.booting .project-hud,
+.project-platform.deploying .project-hud,
+.project-platform.online .project-hud {
+    opacity: 1;
+    transform: translate(0,0);
+}
+
+
 
 .hud-thumbnail {
     width: 240px;

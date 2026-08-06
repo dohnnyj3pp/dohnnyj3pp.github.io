@@ -16,6 +16,7 @@ let status;
 let statusText;
 let loadingFill;
 let loadingPercent;
+let initializedPlatform = null;
 function cacheDOM() {
     platform = document.querySelector(".project-platform");
     cards = document.querySelectorAll(".project-card");
@@ -27,6 +28,13 @@ function cacheDOM() {
     statusText = document.querySelector(".status-text");
     loadingFill = document.querySelector(".loading-fill");
     loadingPercent = document.querySelector(".loading-percent");
+    console.log("cacheDOM", {
+    platform,
+    cards,
+    cardCount: cards?.length,
+    initializedPlatform,
+    same: initializedPlatform === platform
+});
 }
 function setPlatformState(nextState) {
     PLATFORM.state = nextState;
@@ -43,14 +51,32 @@ function setPlatformState(nextState) {
 }
 function initProjects() {
     cacheDOM();
+
+    if (!platform) {
+        initializedPlatform = null;
+        return;
+    }
+
+    if (initializedPlatform === platform) {
+        return;
+    }
+
+    initializedPlatform = platform;
+
     const viewer = document.querySelector(".documentation-viewer");
     viewer?.classList.add("deploy-hidden");
-    if (!platform) return;
+
+    console.log("INIT STATE BEFORE", platform.className);
+
     setPlatformState("carousel");
+
+    console.log("INIT STATE AFTER", platform.className);
+
     renderCarousel();
     bindEvents();
     bindCodeModalEvents();
     setOffline();
+
     console.log("Portfolio Platform Online");
 }
 
@@ -97,7 +123,13 @@ function activeModuleAvailable() {
 }
 function bootProject() {
     if (!activeModuleAvailable()) return;
+
+    console.log("BOOT BEFORE", platform.className);
+
     setPlatformState("booting");
+
+    console.log("BOOT AFTER", platform.className);
+
     startDocumentationBoot();
 }
 function startDocumentationBoot() {
@@ -636,7 +668,11 @@ function bindEvents() {
     );
 }
 window.initProjects = initProjects;
+
 document.addEventListener(
     "DOMContentLoaded",
-    initProjects
+    () => {
+        console.log("Projects DOM ready");
+        initProjects();
+    }
 );
