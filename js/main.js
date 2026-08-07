@@ -148,7 +148,8 @@ document.addEventListener("DOMContentLoaded", () => {
     body.classList.remove(
       "hero-ready",
       "title-ready",
-      "text-ready"
+      "text-ready",
+      "platform-ready"
     );
 
     document
@@ -183,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function setPageMode(nextBody) {
+function setPageMode(nextBody) {
 
     body.classList.toggle(
       "hero-page",
@@ -200,7 +201,24 @@ document.addEventListener("DOMContentLoaded", () => {
       nextBody.classList.contains("projects-page")
     );
 
-  }
+
+    if (
+      nextBody.classList.contains("projects-page")
+    ) {
+
+      body.classList.remove(
+        "platform-ready"
+      );
+
+    } else {
+
+      body.classList.add(
+        "platform-ready"
+      );
+
+    }
+
+}
 
 
   function initializePageModule() {
@@ -297,6 +315,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2300)
       );
 
+      heroTimers.push(
+    setTimeout(() => {
+
+      body.classList.add(
+        "platform-ready"
+      );
+
+    }, 3000)
+);
 
       heroTimers.push(
         setTimeout(() => {
@@ -517,6 +544,25 @@ document.addEventListener("DOMContentLoaded", () => {
     "click",
     event => {
 
+      const launch =
+        event.target.closest(
+          "#launch-platform"
+        );
+
+
+      if (launch) {
+
+        event.preventDefault();
+
+        console.log(
+          "Launch Platform initiated"
+        );
+
+        return;
+
+      }
+
+
       const link =
         event.target.closest(
           "a[href]"
@@ -624,23 +670,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
-      parallaxFrame =
-        requestAnimationFrame(() => {
+parallaxFrame =
+    requestAnimationFrame(() => {
 
-          const heroInner =
-            document.querySelector(
-              ".hero-content-inner"
-            );
+      const heroInner =
+        document.querySelector(
+          ".hero-description"
+        );
 
 
-          if (heroInner) {
+      if (heroInner) {
 
-            heroInner.style.transform =
-              `translate3d(${offsetX}px, ${offsetY}px, 20px)`;
+        heroInner.style.transform =
+          `translate3d(${offsetX}px, ${offsetY}px, 20px)`;
 
-          }
+      }
 
-        });
+    });
 
     }
 
@@ -653,14 +699,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   if (
-    !body.classList.contains("hero-page")
-  ) {
+  !body.classList.contains("hero-page")
+) {
 
-    body.classList.add(
-      "nav-ready"
-    );
+  body.classList.add(
+    "nav-ready",
+    "platform-ready"
+  );
 
-  }
+}
 
 
   revealContent(
