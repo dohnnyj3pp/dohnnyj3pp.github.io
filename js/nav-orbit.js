@@ -75,15 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (
-      !normalized.endsWith(".html")
-    ) {
-
-      normalized += "/index.html";
-
-    }
-
-
     return normalized;
 
   }
@@ -102,10 +93,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     targets.forEach(target => {
 
+      if (
+        target.classList.contains(
+          "nav-external"
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      const href =
+        target.getAttribute("href");
+
+
+      if (
+        !href ||
+        href === "#"
+      ) {
+
+        return;
+
+      }
+
+
       const targetPath =
         normalizePath(
           new URL(
-            target.getAttribute("href"),
+            href,
             window.location.href
           ).pathname
         );
@@ -134,11 +150,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    positionOrbit(target);
+
+
     activeTarget =
       target;
-
-
-    positionOrbit(target);
 
 
     orbitRing.classList.add(
@@ -152,7 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (
       !target ||
-      target === activeTarget
+      target.classList.contains(
+        "nav-external"
+      )
     ) {
 
       return;
@@ -165,6 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    activeTarget =
+      null;
+
+
     setTimeout(() => {
 
       showOrbit(target);
@@ -174,91 +196,168 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  function initializeCurrentPage() {
+  /*
+  Wait for fonts before measuring
+  navigation dimensions.
+  */
+
+  document.fonts.ready.then(() => {
 
     const currentTarget =
       getCurrentTarget();
 
 
-    if (!currentTarget) {
-      return;
+    const currentPath =
+      normalizePath(
+        window.location.pathname
+      );
+
+
+    /*
+    Fresh homepage load:
+    HOME starts without a border.
+    */
+
+    if (
+      currentPath === "/index.html"
+    ) {
+
+      activeTarget =
+        null;
+
+      orbitRing.classList.remove(
+        "orbit-active"
+      );
+
     }
 
 
-    activeTarget =
-      currentTarget;
+    /*
+    Internal subpages:
+    show the current page border.
+    */
+
+    else if (currentTarget) {
+
+      requestAnimationFrame(() => {
+
+        showOrbit(
+          currentTarget
+        );
+
+      });
+
+    }
 
 
-    requestAnimationFrame(() => {
+    /*
+    Navigation clicks.
+    */
 
-      positionOrbit(currentTarget);
+    targets.forEach(target => {
+
+      target.addEventListener(
+        "click",
+        event => {
+
+          const href =
+            target.getAttribute("href");
 
 
-      orbitRing.classList.add(
-        "orbit-active"
+          if (
+            !href ||
+            href === "#"
+          ) {
+
+            return;
+
+          }
+
+
+          /*
+          GitHub:
+          no navigation orbit.
+          */
+
+          if (
+            target.classList.contains(
+              "nav-external"
+            )
+          ) {
+
+            orbitRing.classList.remove(
+              "orbit-active"
+            );
+
+            activeTarget =
+              null;
+
+            return;
+
+          }
+
+
+          const currentPath =
+            normalizePath(
+              window.location.pathname
+            );
+
+
+          const targetPath =
+            normalizePath(
+              new URL(
+                href,
+                window.location.href
+              ).pathname
+            );
+
+
+          /*
+          Already on this page.
+          */
+
+          if (
+            currentPath === targetPath
+          ) {
+
+            event.preventDefault();
+
+            return;
+
+          }
+
+
+          /*
+          Internal navigation:
+          remove the old border,
+          then place the new one.
+          */
+
+          activateOrbit(
+            target
+          );
+
+        }
       );
 
     });
 
-  }
 
+    window.addEventListener(
+      "resize",
+      () => {
 
-  targets.forEach(target => {
+        if (activeTarget) {
 
-    target.addEventListener(
-      "click",
-      event => {
-
-        const currentPath =
-          normalizePath(
-            window.location.pathname
+          positionOrbit(
+            activeTarget
           );
-
-
-        const targetPath =
-          normalizePath(
-            new URL(
-              target.getAttribute("href"),
-              window.location.href
-            ).pathname
-          );
-
-
-        if (
-          currentPath === targetPath
-        ) {
-
-          event.preventDefault();
-
-          return;
 
         }
-
-
-        activateOrbit(target);
 
       }
     );
 
   });
-
-
-  window.addEventListener(
-    "resize",
-    () => {
-
-      if (activeTarget) {
-
-        positionOrbit(
-          activeTarget
-        );
-
-      }
-
-    }
-  );
-
-
-  initializeCurrentPage();
 
 });

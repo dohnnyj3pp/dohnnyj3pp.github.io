@@ -467,48 +467,6 @@ NAV LINKS
 
 /*
 ========================================
-NAV ORBIT RING
-========================================
-*/
-
-.nav-orbit-ring {
-
-    position:absolute;
-
-    pointer-events:none;
-
-    z-index:9998;
-
-    width:0;
-    height:0;
-
-    border:
-        1px solid #ff8a00;
-
-    box-shadow:
-        0 0 10px rgba(255,138,0,.35);
-
-    opacity:0;
-
-    transition:
-        opacity .3s ease,
-        left .35s cubic-bezier(.22,.61,.36,1),
-        top .35s cubic-bezier(.22,.61,.36,1),
-        width .35s cubic-bezier(.22,.61,.36,1),
-        height .35s cubic-bezier(.22,.61,.36,1);
-
-}
-
-
-.nav-orbit-ring.orbit-active {
-
-    opacity:1;
-
-}
-
-
-/*
-========================================
 LAUNCH PLATFORM
 ========================================
 */
@@ -1362,6 +1320,48 @@ body.custom-cursor-enabled * {
   }
 
 }
+
+/*
+========================================
+NAV ORBIT RING
+========================================
+*/
+
+.nav-orbit-ring {
+
+    position:absolute;
+
+    pointer-events:none;
+
+    z-index:9998;
+
+    width:0;
+    height:0;
+
+    border:
+        2px solid #ff8a00;
+
+    box-shadow:
+        0 0 10px rgba(255,138,0,.35);
+
+    opacity:0;
+
+    transition:
+        opacity .3s ease,
+        left .35s cubic-bezier(.22,.61,.36,1),
+        top .35s cubic-bezier(.22,.61,.36,1),
+        width .35s cubic-bezier(.22,.61,.36,1),
+        height .35s cubic-bezier(.22,.61,.36,1);
+
+}
+
+
+.nav-orbit-ring.orbit-active {
+
+    opacity:1;
+
+}
+
 
 
 /* ===== ACCESSIBILITY ===== */
