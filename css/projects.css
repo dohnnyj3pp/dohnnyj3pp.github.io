@@ -91,7 +91,7 @@ LAUNCHER STATE
     border:
         1px solid rgba(255, 192, 75, 0);
 
-    border-radius: 19px;
+    border-radius: 0px;
 
     background:
         rgba(35, 2, 44, .089);
@@ -191,7 +191,7 @@ PROJECT CARD CONTENT
     border:
         1px solid rgba(36, 27, 3, 0);
 
-    border-radius: 12px;
+    border-radius: 0px;
 
     font-family:
         "ZCOOL XiaoWei",
@@ -302,7 +302,7 @@ CAROUSEL CONTROLS
     border:
         1px solid rgba(255, 156, 75, .35);
 
-    border-radius: 8px;
+    border-radius: 0px;
 
     background:
         rgba(8, 10, 18, .459);
@@ -695,7 +695,7 @@ DOCUMENTATION SYSTEM
         1px solid rgba(189, 113, 14, 0);
 
     border-radius:
-        18px;
+        0px;
 
     background:
         rgba(8,10,18,.45);
@@ -918,7 +918,7 @@ CAROUSEL IMAGE LAYER
         1px solid rgba(36,27,3,0);
 
     border-radius:
-        12px;
+        0px;
 
     overflow:
         hidden;
@@ -962,7 +962,7 @@ DOCUMENTATION WORKSPACE SAFETY
         1px solid rgba(255,132,0,.15);
 
     border-radius:
-        26px;
+        0px;
 
     background:
         rgba(8,10,18,.85);

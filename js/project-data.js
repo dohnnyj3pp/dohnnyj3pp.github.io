@@ -20,15 +20,8 @@ Together these technologies made it possible to build this platform entirely fro
 HTML5: {
 
     title:
-        "THE STRUCTURE & SEMANTIC FOUNDATION",
+        "THE STRUCTURE & FOUNDATION",
 
-    overview:
-        `
-HTML5 serves as the foundation of the platform, providing the structure needed to build the visual design, interactive systems, and dynamic features that bring the experience together.
-`,
-
-    intro:
-        "Examples:",
 
     sections: [
 
@@ -205,15 +198,8 @@ HTML5 serves as the foundation of the platform, providing the structure needed t
  CSS3: {
 
     title:
-        "THE VISUAL DESIGN & INTERACTION SYSTEM",
+        "THE VISUAL DESIGN",
 
-    overview:
-        `
-CSS3 controls the visual language of the platform, transforming the structural HTML foundation into a cinematic interface through custom layouts, animations, transitions, effects, and responsive design systems.
-`,
-
-    intro:
-        "Examples:",
 
     sections: [
 
@@ -273,7 +259,7 @@ CSS3 controls the visual language of the platform, transforming the structural H
 
         {
             heading:
-                "Created custom animation and transition systems.",
+                "Created animation and transition systems.",
 
             details: [
 
@@ -434,15 +420,8 @@ CSS3 controls the visual language of the platform, transforming the structural H
 JavaScript: {
 
     title:
-        "THE INTERACTION & DYNAMIC BEHAVIOR",
+        "THE DYNAMIC BEHAVIOR",
 
-    overview:
-        `
-JavaScript acts as the core functionality layer of the platform, bringing the website to life by controlling interactions, navigation, animations, dynamic content, and the systems that make the experience feel like an application rather than a traditional webpage.
-`,
-
-    intro:
-        "Examples:",
 
     sections: [
 
@@ -672,10 +651,6 @@ Explore each module below to discover the tools and features that expanded the f
                 title:
                     "THE DYNAMIC INTERFACE SYSTEM",
 
-                overview:
-                    `
-Used DOM manipulation to allow JavaScript to communicate directly with webpage elements, enabling dynamic updates, interface changes, and interactive user experiences without rebuilding the page structure.
-`,
 
                 sections: [
 
@@ -722,10 +697,6 @@ Used DOM manipulation to allow JavaScript to communicate directly with webpage e
                 title:
                     "THE ASYNCHRONOUS CONTENT SYSTEM",
 
-                overview:
-                    `
-Used the Fetch API to create dynamic content loading systems, allowing sections of the portfolio to update asynchronously while maintaining a smooth application-style navigation experience.
-`,
 
                 sections: [
 
@@ -772,10 +743,6 @@ Used the Fetch API to create dynamic content loading systems, allowing sections 
                 title:
                     "THE NAVIGATION STATE SYSTEM",
 
-                overview:
-                    `
-Used the Browser History API to maintain modern navigation behavior while implementing dynamic page transitions and application-style routing.
-`,
 
                 sections: [
 
@@ -822,10 +789,6 @@ Used the Browser History API to maintain modern navigation behavior while implem
                 title:
                     "THE MOTION DESIGN SYSTEM",
 
-                overview:
-                    `
-Used CSS animations and transitions to create the cinematic movement, timing, and interactive feedback that define the visual experience of the portfolio.
-`,
 
                 sections: [
 
@@ -872,10 +835,6 @@ Used CSS animations and transitions to create the cinematic movement, timing, an
                 title:
                     "THE ADAPTIVE LAYOUT SYSTEM",
 
-                overview:
-                    `
-Used responsive design techniques to ensure the portfolio maintains usability, readability, and visual consistency across different screen sizes and devices.
-`,
 
                 sections: [
 
@@ -922,10 +881,6 @@ Used responsive design techniques to ensure the portfolio maintains usability, r
                 title:
                     "THE CINEMATIC BACKGROUND SYSTEM",
 
-                overview:
-                    `
-Used HTML5 video integration to create the immersive animated background experience that establishes the visual identity of the portfolio.
-`,
 
                 sections: [
 
@@ -972,10 +927,6 @@ Used HTML5 video integration to create the immersive animated background experie
                 title:
                     "THE DEVELOPMENT WORKFLOW",
 
-                overview:
-                    `
-Used Git and GitHub throughout development to manage version control, track improvements, maintain project organization, and deploy the completed portfolio.
-`,
 
                 sections: [
 
@@ -1040,10 +991,6 @@ This section highlights the workflow systems used throughout the creation of the
                 title:
                     "BUILD PIPELINE & VERSION CONTROL",
 
-                overview:
-                    `
-Implemented development workflows using version control, organized project structures, and deployment practices to maintain a stable and scalable portfolio build.
-`,
 
                 sections: [
 
@@ -1078,10 +1025,6 @@ Implemented development workflows using version control, organized project struc
                 title:
                     "QUALITY ASSURANCE & DEBUGGING",
 
-                overview:
-                    `
-Performed testing across browsers, interactions, animations, and responsive layouts to ensure the portfolio maintained stable and consistent behavior.
-`,
 
                 sections: [
 

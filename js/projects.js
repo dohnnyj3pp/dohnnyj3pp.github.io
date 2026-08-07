@@ -556,19 +556,31 @@ function loadDocumentation() {
         .map(renderDocumentationSection)
         .join("");
     content.innerHTML = `
-        <h2>${escapeHtml(data.title)}</h2>
-        <div class="typed-overview"></div>
-        ${data.intro
+    ${data.title ? `<h2>${escapeHtml(data.title)}</h2>` : ""}
+    ${
+        data.overview
+            ? `<div class="typed-overview"></div>`
+            : ""
+    }
+    ${
+        data.intro
             ? `<div class="examples-label">${escapeHtml(data.intro)}</div>`
             : ""
-        }
-        ${sections}
-    `;
-    const typedElement = content.querySelector(".typed-overview");
+    }
+    ${sections}
+`;
+
+const typedElement =
+    content.querySelector(".typed-overview");
+
+if (data.overview && typedElement) {
+
     typeWriter(
         data.overview,
         typedElement
     );
+
+}
     bindExampleCards();
     content.classList.add("animate-in");
     if (documentationSystem) {

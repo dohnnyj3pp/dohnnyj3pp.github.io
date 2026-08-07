@@ -276,26 +276,25 @@ NAVIGATION
 
 nav {
 
-  position: fixed;
+  position:fixed;
 
-  top: 0;
-  left: 0;
+  top:0;
+  left:0;
 
-  width: 100%;
+  width:100%;
 
-  z-index: 9999;
+  z-index:9999;
 
-  isolation: isolate;
+  isolation:isolate;
 
-  padding: 20px 0;
+  padding:20px 0;
 
-  opacity: 0;
+  opacity:0;
 
   transform:
     translateY(-80px);
 
   transition:
-
     opacity .8s ease,
     transform .9s cubic-bezier(.22,.61,.36,1);
 
@@ -304,7 +303,7 @@ nav {
 
 body.nav-ready nav {
 
-  opacity: 1;
+  opacity:1;
 
   transform:
     translateY(0);
@@ -312,29 +311,39 @@ body.nav-ready nav {
 }
 
 
+/*
+========================================
+NAV INNER
+========================================
+*/
 
 .nav-inner {
 
-  max-width:1100px;
+  width:1100px;
+
+  max-width:calc(100% - 48px);
 
   margin:0 auto;
-
-  padding-left:0;
 
   display:flex;
 
   align-items:center;
 
-  transform:translateX(-260px);
-  
-
 }
 
 
+/*
+========================================
+NAV BRAND
+========================================
+*/
 
 .nav-brand {
 
   position:relative;
+  left:-260px;
+  
+
 
   display:flex;
 
@@ -342,18 +351,21 @@ body.nav-ready nav {
 
   justify-content:center;
 
+  flex-shrink:0;
+
   font-family:
     "Eagle Lake",
     serif;
 
   font-weight:100;
-  
+
   font-size:1.2rem;
 
   letter-spacing:.1em;
 
   color:#fff;
 
+  text-decoration:none;
 
   padding:
     12px 0;
@@ -364,46 +376,9 @@ body.nav-ready nav {
 
 /*
 ========================================
-BRAND ORANGE FRAME
+NAV LINKS
 ========================================
 */
-
-
-.nav-brand::before,
-.nav-brand::after {
-
-  content:"";
-
-  position:absolute;
-  left:0;
-  width:.5em;
-  height:1px;
-
-  background:#ff0000;
-
-  box-shadow:
-    0 0 10px rgba(255, 0, 0, 0.7);
-
-}
-
-
-.nav-brand::before {
-
-  top:14px;
-
-}
-
-
-.nav-brand::after {
-
-  bottom:15px;
-  width:1.5em;
-  height:.1em;
-  
-}
-
-
-
 
 .nav-links {
 
@@ -413,14 +388,11 @@ BRAND ORANGE FRAME
 
   align-items:center;
 
-  gap:75px;
-  margin-left:auto;
+  gap:80px;
 
-}
+  padding:0;
 
-.platform-button {
-
-  margin-left:90px;
+  transform:translateX(20px);
 
 }
 
@@ -445,16 +417,16 @@ BRAND ORANGE FRAME
 
   text-transform:uppercase;
 
+  white-space:nowrap;
+
   padding:
     4px 0;
 
   transition:
-
     color .3s ease,
     text-shadow .3s ease;
 
 }
-
 
 
 .nav-links a:hover {
@@ -462,11 +434,9 @@ BRAND ORANGE FRAME
   color:#fff;
 
   text-shadow:
-
     0 0 10px rgba(255,138,0,.8);
 
 }
-
 
 
 .nav-links a::after {
@@ -486,15 +456,12 @@ BRAND ORANGE FRAME
   background:#ff8a00;
 
   box-shadow:
-
     0 0 10px #ff8a00;
 
   transition:
-
     width .35s ease;
 
 }
-
 
 
 .nav-links a:hover::after {
@@ -504,21 +471,19 @@ BRAND ORANGE FRAME
 }
 
 
-
 .nav-links a span {
 
   display:inline-block;
+  flex-wrap: nowrap;
 
 }
 
 
-
 /*
 ========================================
-LAUNCH PLATFORM BUTTON
+LAUNCH PLATFORM
 ========================================
 */
-
 
 .platform-button {
 
@@ -527,32 +492,27 @@ LAUNCH PLATFORM BUTTON
   align-items:center;
 
   padding:
-
     10px 18px;
+  transform:translateX(280px);
 
   border:
-
     1px solid #ff8a00;
 
-  border-radius:4px;
+  border-radius:0px;
 
   color:#fff !important;
 
   background:
-
     rgba(255,138,0,.05);
 
   box-shadow:
-
     inset 0 0 12px rgba(255,138,0,.12);
 
   transition:
-
     background .3s ease,
     box-shadow .3s ease;
 
 }
-
 
 
 .platform-button::after {
@@ -562,15 +522,12 @@ LAUNCH PLATFORM BUTTON
 }
 
 
-
 .platform-button:hover {
 
   background:
-
     rgba(255,138,0,.18);
 
   box-shadow:
-
     0 0 18px rgba(255,138,0,.4),
     inset 0 0 18px rgba(255,138,0,.15);
 
@@ -635,6 +592,87 @@ NAV LETTER HOP
 
 .nav-links a.snap-active span:nth-child(8) {
   animation: letterHop 2.5s ease-out .42s infinite;
+}
+
+/*
+========================================
+NAV SYSTEM BOOT TRAIL
+========================================
+*/
+
+.nav-light-trail {
+
+  position:absolute;
+
+  bottom:32px;
+
+  left:0;
+
+  height:2px;
+
+  width:0%;
+
+  background:
+  linear-gradient(
+    90deg,
+    #ff8a00,
+    #ffffff
+  );
+  opacity:0;
+
+}
+
+
+/*
+BOOT SEQUENCE
+*/
+
+body.nav-ready .nav-light-trail {
+
+  opacity:1;
+
+  animation:
+
+    navIgnition 4.5s cubic-bezier(.22,.61,.36,1) forwards;
+
+}
+
+
+
+@keyframes navIgnition {
+
+
+  0% {
+
+    width:0%;
+
+    background:#ffffff;
+
+  }
+
+
+  80% {
+
+    width:100%;
+
+    background:
+      linear-gradient(
+        90deg,
+        #ff8a00,
+        #ffffff
+      );
+
+  }
+
+
+  100% {
+
+    width:100%;
+
+    background:#ff8a00;
+
+  }
+
 }
 /*
 ========================================
@@ -1050,31 +1088,29 @@ body.cursor-visible .cursor-ring {
   height: 16px;
   transform-origin: center;
   transition:
-    width .25s cubic-bezier(.25,.1,.25,1),
-    height .25s cubic-bezier(.25,.1,.25,1),
     transform .08s ease-out;
 }
 
 .cursor-ring-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px solid #ff8a00;
+  width:100%;
+  height:100%;
+  border-radius:0;
+  border:2px solid #ff8a00;
   box-shadow:
     0 0 8px #ff8a00;
-  transform-origin: center;
+  transform-origin:center;
   animation:
     cursorPulseGlow 2.5s cubic-bezier(.4,0,.2,1) infinite;
 }
 
 body.cursor-hover .cursor-ring-inner {
-  border-color: #f1ca75a4;
+  border-color:#f1ca75a4;
   box-shadow:
     0 0 10px rgba(255,183,75,.6);
 }
 
 .cursor-ring.snap .cursor-ring-inner {
-  border-radius: 10px;
+  border-radius:0;
   box-shadow:
     0 0 14px rgba(255,177,75,.9);
   background:
@@ -1083,9 +1119,9 @@ body.cursor-hover .cursor-ring-inner {
       rgba(255,75,129,.15),
       transparent 80%
     );
-  padding: 6px;
-}
 
+  padding:0;
+}
 
 /* ===== CURSOR BRACKETS ===== */
 
@@ -1259,25 +1295,24 @@ body.custom-cursor-enabled * {
 
   0%,
   100% {
-    transform:
-      scale(1);
 
     box-shadow:
       0 0 8px rgba(163,102,11,.973);
 
     border-color:
       #f5940db2;
+
   }
 
+
   50% {
-    transform:
-      scale(1.05);
 
     box-shadow:
       0 0 14px rgba(187,139,8,.9);
 
     border-color:
       #f8930e;
+
   }
 
 }
