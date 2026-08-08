@@ -544,24 +544,6 @@ function setPageMode(nextBody) {
     "click",
     event => {
 
-      const launch =
-        event.target.closest(
-          "#launch-platform"
-        );
-
-
-      if (launch) {
-
-        event.preventDefault();
-
-        console.log(
-          "Launch Platform initiated"
-        );
-
-        return;
-
-      }
-
 
       const link =
         event.target.closest(
