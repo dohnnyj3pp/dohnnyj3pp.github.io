@@ -1093,7 +1093,7 @@ NAV ORBIT RING
   height:0;
   border:2px solid #ff8a00;
   box-shadow:0 0 10px rgba(255,138,0,.35);
-  opacity:0;
+  opacity:1;
   transition:
     opacity .3s ease,
     left .35s cubic-bezier(.22,.61,.36,1),

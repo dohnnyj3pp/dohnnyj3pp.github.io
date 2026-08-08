@@ -218,18 +218,28 @@ document.addEventListener("DOMContentLoaded", () => {
     HOME starts without a border.
     */
 
-    if (
-      currentPath === "/index.html"
-    ) {
+  if (
+  currentPath === "/index.html"
+) {
 
-      activeTarget =
-        null;
+  const homeTarget =
+    document.querySelector(
+      '.nav-target[href="index.html"]'
+    );
 
-      orbitRing.classList.remove(
-        "orbit-active"
+  if (homeTarget) {
+
+    requestAnimationFrame(() => {
+
+      showOrbit(
+        homeTarget
       );
 
-    }
+    });
+
+  }
+
+}
 
 
     /*
