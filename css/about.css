@@ -70,7 +70,7 @@ PORTRAIT
   filter:
     brightness(.92)
     contrast(1.05);
-  opacity:.94;
+  opacity:.73;
 
   -webkit-mask-image:
     radial-gradient(
