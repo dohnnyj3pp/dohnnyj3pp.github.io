@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>About — Adam Pace</title>
-  <link rel="stylesheet" href="css/portfolio.css" />
+
+  <title>Adam Pace — About</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Aladin&family=Eagle+Lake&family=Michroma&family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=VT323&family=ZCOOL+XiaoWei&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Tapestry&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/portfolio.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/project-platform.css">
+  <link rel="stylesheet" href="css/about.css">
+
   <script defer src="js/main.js"></script>
   <script defer src="js/cursor.js"></script>
+  <script src="js/nav-orbit.js"></script>
 </head>
 
-<body class="subpage">
-  <!-- Background video -->
+<body class="subpage about-page">
+
   <video id="intro-video" autoplay muted loop playsinline>
     <source src="images/video/intro.mp4" type="video/mp4">
   </video>
@@ -17,8 +36,7 @@
   <div id="video-overlay"></div>
   <div id="page-surface"></div>
 
-  <!-- Navbar -->
- <nav>
+  <nav>
 
     <div class="nav-orbit-ring">
 
@@ -28,12 +46,12 @@
       <span class="orbit-right"></span>
 
     </div>
+
     <div class="nav-inner">
 
       <div class="nav-brand">
         Adam Pace
       </div>
-
 
       <ul class="nav-links">
 
@@ -43,11 +61,14 @@
           </a>
         </li>
 
-
-        <a href="https://github.com/dohnnyj3pp" class="nav-target nav-external" target="_blank"
-          rel="noopener noreferrer">
-          <span>G</span><span>I</span><span>T</span><span>H</span><span>U</span><span>B</span>
-        </a>
+        <li>
+          <a href="https://github.com/dohnnyj3pp"
+            class="nav-target nav-external"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span>G</span><span>I</span><span>T</span><span>H</span><span>U</span><span>B</span>
+          </a>
+        </li>
 
         <li>
           <a href="about.html" class="nav-target">
@@ -55,13 +76,11 @@
           </a>
         </li>
 
-
         <li>
           <a href="contact.html" class="nav-target">
             <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
           </a>
         </li>
-
 
         <li>
           <a href="resume.html" class="nav-target">
@@ -69,49 +88,161 @@
           </a>
         </li>
 
-
       </ul>
-<a href="projects.html" class="platform-button nav-target" id="launch-platform">
-  <span>E</span><span>n</span><span>t</span><span>e</span><span>r</span>
-  <span class="platform-word-gap"></span>
-  <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span>
-</a>
 
+      <a href="projects.html"
+        class="platform-button nav-target"
+        id="launch-platform">
+
+        <span>E</span><span>n</span><span>t</span><span>e</span><span>r</span>
+        <span class="platform-word-gap"></span>
+        <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span>
+
+      </a>
 
     </div>
 
-  <main id="page-content" class="main-wrapper page-content">
-    <h1>About Me</h1>
-    <p>
-      I'm a full‑stack developer focused on building modern, cinematic, and highly interactive
-      web experiences. I enjoy combining clean architecture with smooth UX and subtle motion.
-    </p>
+    <div class="nav-light-trail"></div>
 
-    <h2>Skills</h2>
-    <ul>
-      <li>JavaScript / TypeScript</li>
-      <li>React / Next.js</li>
-      <li>Node.js / Express</li>
-      <li>HTML / CSS / UI Animation</li>
-      <li>API Design & Architecture</li>
-    </ul>
+  </nav>
 
-    <h2>Philosophy</h2>
-    <p>
-      I believe software should feel alive — responsive, intuitive, and visually engaging.
-      My goal is to create interfaces that feel cinematic without sacrificing performance.
-    </p>
-  </main>
+  <main id="page-content" class="about-layout">
 
-<div class="cursor-dot"></div>
+    <section class="about-identity">
 
-<div class="cursor-ring">
-  <div class="cursor-ring-inner"></div>
-</div>
+      <div class="about-portrait">
 
-  <footer>
-    &copy; <span id="year"></span> Adam Pace. All rights reserved.
-  </footer>
+        <img
+          src="images/adam-about.png"
+          alt="Adam Pace"
+        >
+
+      </div>
+
+    </section>
+
+    <div class="about-divider" aria-hidden="true"></div>
+
+   <section class="about-content">
+
+  <div class="about-content-inner">
+
+    <section class="about-section">
+
+      <div class="about-section-number">[01]</div>
+
+      <h1 class="about-section-title">
+        Bio
+      </h1>
+
+      <div class="about-section-body">
+
+        <p>
+          Firstly, as you probably already know, my name is Adam Pace.
+          Born and raised in Calgary, AB, I've always been more of a
+          "tech-guru," as some would say.
+        </p>
+
+        <p>
+          Growing up, I spent a lot of my time helping friends and family
+          with their technology issues. Ranging anywhere from their cell
+          phones, TVs, TV boxes, internet, computers, gaming systems,
+          you name it.
+        </p>
+
+        <p>
+          It wasn't until I moved to Red Deer in my mid-20s that I somehow
+          stumbled upon the opportunity to go back to school on a government
+          grant.
+        </p>
+
+        <p>
+          I never anticipated furthering my education after graduating
+          Grade 12, but I immediately grew quite fond of the idea when I
+          realized one of the programs I could attend through the Academy
+          of Learning was Software & Web Development.
+        </p>
+
+        <p>
+          I figured, how cool would it be if I could land a career path
+          in the forefront of development and design on the web, or even
+          create interfaces for software?
+        </p>
+
+        <p>
+          One thing I've always known, on top of my natural ability to
+          understand technology, is that I love creativity.
+        </p>
+
+        <p>
+          Besides working on technology issues, I'm an avid gamer,
+          particularly when it comes to survival games. To no surprise
+          to anyone who knows me, I always seemed to be the "builder"
+          of any bases that ever had to be made.
+        </p>
+
+        <p>
+          I always went above and beyond with every one of my creations.
+          "Good" was never enough for me. I had to have something that
+          really <em>popped</em> when you saw it.
+        </p>
+
+        <p>
+          Something extraordinary. Something that made people stop for
+          a moment in awe and become inspired by what I'd created.
+        </p>
+
+        <p>
+          That's the same type of drive and devotion I eventually
+          envisioned bringing into a career developing frontend
+          architecture on the web, or in software.
+        </p>
+
+        <p>
+          I wanted to create things that could leave that same sense
+          of awe with the people experiencing them.
+        </p>
+
+      </div>
+
+    </section>
+
+    <section class="about-section">
+
+      <div class="about-section-number">[02]</div>
+
+      <h2 class="about-section-title">
+        Biggest Obstacle Out Of School
+      </h2>
+
+      <div class="about-section-body">
+
+        <!-- Section 02 content will go here. -->
+
+      </div>
+
+    </section>
+
+  </div>
+
+</section>
+</main>
+
+  <div class="cursor-dot"></div>
+
+  <div class="cursor-ring">
+    <div class="cursor-ring-inner"></div>
+  </div>
+
+  <div class="cursor-brackets">
+
+    <span class="corner top-left"></span>
+    <span class="corner top-right"></span>
+    <span class="corner bottom-left"></span>
+    <span class="corner bottom-right"></span>
+
+  </div>
 
 </body>
+
 </html>
