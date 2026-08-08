@@ -1072,13 +1072,13 @@ Countless hours have been devoted to writing code, testing functionality, debugg
 
 This project was designed and developed using HTML5, CSS3, and JavaScript without the use of frontend frameworks.
 
-My goal was to create more than a traditional portfolio. I wanted to build a fully custom frontend experience that demonstrates the ability to design, develop, and integrate modern web technologies into a cohesive application-style platform.
+My goal was to create more than a traditional portfolio. I wanted to build a fully customized frontend experience that demonstrates the ability to design, develop, and integrate modern web technologies into a cohesive application-style platform.
 
-Most developers create portfolios to showcase their work, but I wanted to take that concept one step further. I wanted the portfolio itself to become part of the showcase.
+Most developers create portfolios to showcase their work, I took that concept one step further. I wanted the portfolio itself to become part of the showcase.
 
-As you explore the different sections, you will discover how each technology plays a role in everything you're seeing and doing on this platform.
+As you explore the different sections, you will discover how each technology plays a role in various aspects of this platform.
 
-Every element was intentionally designed to demonstrate a unique approach to frontend development and the process behind building it.`,
+Every element was intentionally designed to demonstrate a unique approach to frontend development and the details that went into building it.`,
     }
 
 };
