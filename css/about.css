@@ -12,6 +12,8 @@ ABOUT PAGE
 }
 
 
+
+
 /*
 ========================================
 IDENTITY PANEL
@@ -70,7 +72,7 @@ PORTRAIT
   filter:
     brightness(.92)
     contrast(1.05);
-  opacity:.73;
+  opacity:.88;
 
   -webkit-mask-image:
     radial-gradient(

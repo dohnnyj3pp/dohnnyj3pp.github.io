@@ -12,33 +12,32 @@ const projectData = {
             `
 Every experience begins with a foundation, and this portfolio was no different. The entire platform was designed and developed using three core web technologies: HTML5, CSS3, and JavaScript.
 
-Together these technologies made it possible to build this platform entirely from the ground up, demonstrating an understanding of modern frontend development and the ability to combine structure, design, and logic into a complete interactive experience.
+Together these technologies made it possible to build this platform entirely from the ground up therefore demonstrating an understanding of modern frontend development and the ability to combine structure, design and logic into a complete interactive experience.
 `,
 
         modules: {
 
-HTML5: {
+            HTML5: {
 
-    title:
-        "THE STRUCTURE & FOUNDATION",
+                title:
+                    "THE STRUCTURE & FOUNDATION",
 
+                sections: [
 
-    sections: [
+                    {
+                        heading:
+                            "Created the website foundation.",
 
-        {
-            heading:
-                "Created the website foundation.",
+                        details: [
 
-            details: [
+                            {
+                                text:
+                                    "Built the core page structure using semantic HTML.",
 
-                {
-                    text:
-                        "Built the core page structure using semantic HTML.",
+                                description:
+                                    "Organizes the website into meaningful sections and elements that define the layout, content hierarchy and relationships between different parts of the platform.",
 
-                    description:
-                        "Organizes the website into meaningful sections and elements that define the layout, content hierarchy, and relationship between different parts of the platform.",
-
-                    code:
+                                code:
 `<main>
   <section>
     <article>
@@ -46,100 +45,98 @@ HTML5: {
     </article>
   </section>
 </main>`
-                },
+                            },
 
-                {
-                    text:
-                        "Created reusable project content layouts.",
+                            {
+                                text:
+                                    "Created reusable project content layouts.",
 
-                    description:
-                        "Provides a consistent structure for displaying project information, allowing multiple projects to share the same layout and styling system.",
+                                description:
+                                    "Provides a consistent structure for displaying project information, allowing multiple projects to share the same layout and styling system.",
 
-                    code:
+                                code:
 `<article class="project-card">
   <div class="project-thumbnail"></div>
 
   <div class="project-card-content">
   </div>
 </article>`
-                }
+                            }
 
-            ]
+                        ]
 
-        },
+                    },
 
+                    {
+                        heading:
+                            "Built HTML elements for interaction.",
 
-        {
-            heading:
-                "Built HTML elements for interaction.",
+                        details: [
 
-            details: [
+                            {
+                                text:
+                                    "Used custom data attributes for dynamic content.",
 
-                {
-                    text:
-                        "Used custom data attributes for dynamic content.",
+                                description:
+                                    "Stores additional information directly on HTML elements so JavaScript can identify, access and update specific interactive features.",
 
-                    description:
-                        "Stores additional information directly on HTML elements so JavaScript can identify, access, and update specific interactive features.",
-
-                    code:
+                                code:
 `<button
   class="example-card"
   data-language="javascript"
   data-code="example">
   View Code
 </button>`
-                },
+                            },
 
-                {
-                    text:
-                        "Created animated navigation elements.",
+                            {
+                                text:
+                                    "Created animated navigation elements.",
 
-                    description:
-                        "Allows individual navigation elements to be animated and controlled, creating custom hover effects and interactive visual responses.",
+                                description:
+                                    "Allows individual navigation elements to be animated and controlled, creating custom hover effects and interactive visual responses.",
 
-                    code:
+                                code:
 `<a href="projects.html">
   <span>P</span>
   <span>R</span>
   <span>O</span>
   <span>JECTS</span>
 </a>`
-                },
+                            },
 
-                {
-                    text:
-                        "Integrated HTML5 video background systems.",
+                            {
+                                text:
+                                    "Integrated HTML5 video background systems.",
 
-                    description:
-                        "Creates a cinematic background experience by automatically loading, playing, muting, and looping video content behind the interface.",
+                                description:
+                                    "Creates a cinematic background experience by automatically loading, playing, muting and looping video content behind the interface.",
 
-                    code:
+                                code:
 `<video autoplay muted loop playsinline>
   <source src="images/video/intro.mp4"
   type="video/mp4">
 </video>`
-                }
+                            }
 
-            ]
+                        ]
 
-        },
+                    },
 
+                    {
+                        heading:
+                            "Developed reusable interface components.",
 
-        {
-            heading:
-                "Developed reusable interface components.",
+                        details: [
 
-            details: [
+                            {
+                                text:
+                                    "Created a reusable code preview modal.",
 
-                {
-                    text:
-                        "Created a reusable code preview modal.",
+                                description:
+                                    "Displays code examples and additional information inside a popup window that can be opened and closed without leaving the current page.",
 
-                    description:
-                        "Displays code examples and additional information inside a popup window that can be opened and closed without leaving the current page.",
-
-                    code:
+                                code:
 `<div class="code-modal" aria-hidden="true">
 
   <div class="code-modal-panel">
@@ -153,31 +150,31 @@ HTML5: {
   </div>
 
 </div>`
-                },
+                            },
 
-                {
-                    text:
-                        "Added accessibility support to interactive elements.",
+                            {
+                                text:
+                                    "Added accessibility support to interactive elements.",
 
-                    description:
-                        "Provides additional information about interactive elements so both users and other assistive technologies can identify their purpose.",
+                                description:
+                                    "Provides additional information about interactive elements so both users and other assistive technologies can identify their purpose.",
 
-                    code:
+                                code:
 `<button
   class="project-return"
   aria-label="Return to projects">
   RETURN
 </button>`
-                },
+                            },
 
-                {
-                    text:
-                        "Structured page sections for future expansion.",
+                            {
+                                text:
+                                    "Structured page sections for future expansion.",
 
-                    description:
-                        "Creates organized containers that separate different parts of the platform, making future additions and modifications easier to implement.",
+                                description:
+                                    "Creates organized containers that separate different parts of the platform, making future additions and modifications easier to implement.",
 
-                    code:
+                                code:
 `<section class="projects-section">
 
   <div class="project-platform">
@@ -185,39 +182,38 @@ HTML5: {
   </div>
 
 </section>`
-                }
+                            }
 
-            ]
+                        ]
 
-        }
+                    }
 
-    ]
+                ]
 
-},
+            },
 
- CSS3: {
+            CSS3: {
 
-    title:
-        "THE VISUAL DESIGN",
+                title:
+                    "THE VISUAL DESIGN",
 
+                sections: [
 
-    sections: [
+                    {
+                        heading:
+                            "Built the visual foundation of the platform.",
 
-        {
-            heading:
-                "Built the visual foundation of the platform.",
+                        details: [
 
-            details: [
+                            {
+                                text:
+                                    "Created the primary layout and positioning systems.",
 
-                {
-                    text:
-                        "Created the primary layout and positioning systems.",
+                                description:
+                                    "Established the core page layouts using modern CSS positioning techniques, allowing interface components to be precisely arranged and controlled throughout the application.",
 
-                    description:
-                        "Established the core page layouts using modern CSS positioning techniques, allowing interface components to be precisely arranged and controlled throughout the application.",
-
-                    code:
-` .project-platform {
+                                code:
+`.project-platform {
     display:flex;
     justify-content:center;
     align-items:center;
@@ -228,17 +224,16 @@ HTML5: {
     grid-template-columns:
     200px 1fr;
 }`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Developed the cinematic visual atmosphere.",
 
-                {
-                    text:
-                        "Developed the cinematic visual atmosphere.",
+                                description:
+                                    "Applied layered backgrounds, transparency effects, shadows, and blur techniques to create the immersive interface style used throughout the platform.",
 
-                    description:
-                        "Applied layered backgrounds, transparency effects, shadows, and blur techniques to create the immersive interface style used throughout the platform.",
-
-                    code:
+                                code:
 `.documentation-system {
     background:
     rgba(8,10,18,.85);
@@ -250,27 +245,26 @@ HTML5: {
     0 0 45px
     rgba(255,132,0,.08);
 }`
-                }
+                            }
 
-            ]
+                        ]
 
-        },
+                    },
 
+                    {
+                        heading:
+                            "Created animation and transition systems.",
 
-        {
-            heading:
-                "Created animation and transition systems.",
+                        details: [
 
-            details: [
+                            {
+                                text:
+                                    "Designed interface deployment animations.",
 
-                {
-                    text:
-                        "Designed interface deployment animations.",
+                                description:
+                                    "Built custom transitions that control how sections of the platform appear, expand, and change states, creating the feeling of a live application booting and loading.",
 
-                    description:
-                        "Built custom transitions that control how sections of the platform appear, expand, and change states, creating the feeling of a live application booting and loading.",
-
-                    code:
+                                code:
 `.documentation-viewer {
     opacity:0;
     transform:
@@ -286,17 +280,16 @@ HTML5: {
     transform:
     scale(1);
 }`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Created interactive hover effects.",
 
-                {
-                    text:
-                        "Created interactive hover effects.",
+                                description:
+                                    "Developed animated feedback states for buttons and interface elements, providing visual responses that make the platform feel dynamic and responsive.",
 
-                    description:
-                        "Developed animated feedback states for buttons and interface elements, providing visual responses that make the platform feel dynamic and responsive.",
-
-                    code:
+                                code:
 `.project-return:hover {
 
     transform:
@@ -306,17 +299,16 @@ HTML5: {
     0 0 18px
     rgba(255,183,75,.4);
 }`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Built custom terminal-style animations.",
 
-                {
-                    text:
-                        "Built custom terminal-style animations.",
+                                description:
+                                    "Created animated status displays using CSS keyframes, text effects, and visual overlays to simulate system states and reinforce the application's HUD-inspired design.",
 
-                    description:
-                        "Created animated status displays using CSS keyframes, text effects, and visual overlays to simulate system states and reinforce the application's HUD-inspired design.",
-
-                    code:
+                                code:
 `@keyframes terminalFlicker {
 
     0%,100% {
@@ -327,27 +319,26 @@ HTML5: {
         opacity:.65;
     }
 }`
-                }
+                            }
 
-            ]
+                        ]
 
-        },
+                    },
 
+                    {
+                        heading:
+                            "Developed reusable interface components.",
 
-        {
-            heading:
-                "Developed reusable interface components.",
+                        details: [
 
-            details: [
+                            {
+                                text:
+                                    "Created reusable card and panel systems.",
 
-                {
-                    text:
-                        "Created reusable card and panel systems.",
+                                description:
+                                    "Designed consistent UI components with shared styling rules, allowing project cards, documentation panels, and interface sections to maintain the same visual identity.",
 
-                    description:
-                        "Designed consistent UI components with shared styling rules, allowing project cards, documentation panels, and interface sections to maintain the same visual identity.",
-
-                    code:
+                                code:
 `.project-card {
 
     border-radius:
@@ -360,17 +351,16 @@ HTML5: {
     0 0 30px
     rgba(255,202,90,.12);
 }`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Implemented advanced visual effects.",
 
-                {
-                    text:
-                        "Implemented advanced visual effects.",
+                                description:
+                                    "Used CSS gradients, shadows, transparency, and pseudo-elements to create animated lighting effects, glowing borders, and layered visual details without external libraries.",
 
-                    description:
-                        "Used CSS gradients, shadows, transparency, and pseudo-elements to create animated lighting effects, glowing borders, and layered visual details without external libraries.",
-
-                    code:
+                                code:
 `.button::before {
 
     content:"";
@@ -383,17 +373,16 @@ HTML5: {
     );
 
 }`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Created 3D interface transformations.",
 
-                {
-                    text:
-                        "Created 3D interface transformations.",
+                                description:
+                                    "Applied CSS perspective and transform properties to create depth-based interactions within the project carousel, making elements appear layered in a 3D environment.",
 
-                    description:
-                        "Applied CSS perspective and transform properties to create depth-based interactions within the project carousel, making elements appear layered in a 3D environment.",
-
-                    code:
+                                code:
 `.project-carousel {
 
     perspective:
@@ -405,40 +394,37 @@ HTML5: {
     transform:
     translateZ(120px);
 }`
-                }
+                            }
 
-            ]
+                        ]
 
-        }
+                    }
 
-    ]
+                ]
 
-},    
-            
+            },
 
+            JavaScript: {
 
-JavaScript: {
+                title:
+                    "THE DYNAMIC BEHAVIOR",
 
-    title:
-        "THE DYNAMIC BEHAVIOR",
+                sections: [
 
+                    {
+                        heading:
+                            "Created dynamic application behavior.",
 
-    sections: [
+                        details: [
 
-        {
-            heading:
-                "Created dynamic application behavior.",
+                            {
+                                text:
+                                    "Built SPA-style page transitions.",
 
-            details: [
+                                description:
+                                    "Allows different areas of the platform to open and transition smoothly without forcing the user to leave the page and reload everything, creating a more seamless experience.",
 
-                {
-                    text:
-                        "Built SPA-style page transitions.",
-
-                    description:
-                        "Allows different areas of the platform to open and transition smoothly without forcing the user to leave the page and reload everything, creating a more seamless experience.",
-
-                    code:
+                                code:
 `function loadPage(url) {
 
     const response =
@@ -448,17 +434,16 @@ JavaScript: {
     await response.text();
 
 }`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Loaded content dynamically.",
 
-                {
-                    text:
-                        "Loaded content dynamically.",
+                                description:
+                                    "Allows new information and sections of the website to appear when needed instead of loading everything at once, helping keep the experience organized and responsive.",
 
-                    description:
-                        "Allows new information and sections of the website to appear when needed instead of loading everything at once, helping keep the experience organized and responsive.",
-
-                    code:
+                                code:
 `const response =
 await fetch(url.href, {
     signal:
@@ -467,43 +452,41 @@ await fetch(url.href, {
 
 const html =
 await response.text();`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Created application state control.",
 
-                {
-                    text:
-                        "Created application state control.",
+                                description:
+                                    "Keeps track of what the platform is currently doing, such as moving through projects, loading documentation, or changing between different interface modes.",
 
-                    description:
-                        "Keeps track of what the platform is currently doing, such as moving through projects, loading documentation, or changing between different interface modes.",
-
-                    code:
+                                code:
 `if (PLATFORM.state !== "carousel") {
     return;
 }
 
 PLATFORM.project += direction;`
-                }
+                            }
 
-            ]
+                        ]
 
-        },
+                    },
 
+                    {
+                        heading:
+                            "Controlled interface behavior.",
 
-        {
-            heading:
-                "Controlled interface behavior.",
+                        details: [
 
-            details: [
+                            {
+                                text:
+                                    "Managed animation states.",
 
-                {
-                    text:
-                        "Managed animation states.",
+                                description:
+                                    "Controls when animations begin, reset, and change by communicating with the visual design systems created through CSS.",
 
-                    description:
-                        "Controls when animations begin, reset, and change by communicating with the visual design systems created through CSS.",
-
-                    code:
+                                code:
 `content.classList.remove(
     "animate-in"
 );
@@ -513,33 +496,31 @@ void content.offsetWidth;
 content.classList.add(
     "animate-in"
 );`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Updated active interface elements.",
 
-                {
-                    text:
-                        "Updated active interface elements.",
+                                description:
+                                    "Keeps the website aware of what the user has selected, updating buttons, menus, and content areas to match the current section being viewed.",
 
-                    description:
-                        "Keeps the website aware of what the user has selected, updating buttons, menus, and content areas to match the current section being viewed.",
-
-                    code:
+                                code:
 `button.classList.add(
     "active"
 );
 
 loadDocumentation();`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Created interactive user responses.",
 
-                {
-                    text:
-                        "Created interactive user responses.",
+                                description:
+                                    "Allows the website to react to user actions such as clicking buttons, selecting projects, and navigating through different areas of the platform.",
 
-                    description:
-                        "Allows the website to react to user actions such as clicking buttons, selecting projects, and navigating through different areas of the platform.",
-
-                    code:
+                                code:
 `document
 .querySelectorAll(".project-category")
 .forEach(btn => {
@@ -549,27 +530,26 @@ loadDocumentation();`
     );
 
 });`
-                }
+                            }
 
-            ]
+                        ]
 
-        },
+                    },
 
+                    {
+                        heading:
+                            "Developed custom interactive systems.",
 
-        {
-            heading:
-                "Developed custom interactive systems.",
+                        details: [
 
-            details: [
+                            {
+                                text:
+                                    "Built custom cursor tracking behavior.",
 
-                {
-                    text:
-                        "Built custom cursor tracking behavior.",
+                                description:
+                                    "Created a custom cursor experience that follows the user's movement and adds another layer of interaction beyond the standard browser cursor.",
 
-                    description:
-                        "Created a custom cursor experience that follows the user's movement and adds another layer of interaction beyond the standard browser cursor.",
-
-                    code:
+                                code:
 `window.addEventListener(
     "pointermove",
     e => {
@@ -579,17 +559,16 @@ loadDocumentation();`
 
     }
 );`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Implemented mouse-based parallax effects.",
 
-                {
-                    text:
-                        "Implemented mouse-based parallax effects.",
+                                description:
+                                    "Created movement effects where certain elements respond to mouse movement, adding depth and making the interface feel more alive.",
 
-                    description:
-                        "Created movement effects where certain elements respond to mouse movement, adding depth and making the interface feel more alive.",
-
-                    code:
+                                code:
 `requestAnimationFrame(() => {
 
     heroInner.style.transform =
@@ -600,34 +579,34 @@ loadDocumentation();`
     "px,20px)";
 
 });`
-                },
+                            },
 
+                            {
+                                text:
+                                    "Created reusable initialization systems.",
 
-                {
-                    text:
-                        "Created reusable initialization systems.",
+                                description:
+                                    "Organized the startup process that prepares website features, connects interactions, and makes sure each system is ready when the platform loads.",
 
-                    description:
-                        "Organized the startup process that prepares website features, connects interactions, and makes sure each system is ready when the platform loads.",
-
-                    code:
+                                code:
 `document.addEventListener(
     "DOMContentLoaded",
     initProjects
 );`
-                }
+                            }
 
-            ]
+                        ]
 
-        }
+                    }
 
-    ]
+                ]
 
-},
+            }
 
         }
 
     },
+
 
     technologies: {
 
@@ -636,98 +615,126 @@ loadDocumentation();`
 
         introduction:
             `
-This section highlights the additional technologies and features that helped transform the portfolio from a traditional website into an interactive, application-style experience.
+This section highlights the technologies and supporting systems that extended the portfolio beyond its core languages.
 
-Beyond the core languages, these systems allowed the platform to support dynamic content, smooth navigation, immersive visuals, and a more engaging user experience.
+Rather than relying on frameworks or pre-built interface libraries, these systems were implemented directly to create application-style navigation, persistent interface behavior, immersive presentation, and a structured development workflow.
 
-Explore each module below to discover the tools and features that expanded the functionality of the final product.
+Explore each module to see how these technologies contributed to the architecture and overall experience of the final product.
 `,
 
         modules: {
-
-
-            "DOM Manipulation": {
-
-                title:
-                    "THE DYNAMIC INTERFACE SYSTEM",
-
-
-                sections: [
-
-                    {
-                        heading:
-                            "Controlled dynamic interface states",
-
-                        content: [
-
-                            "Added and removed classes to trigger visual changes.",
-
-                            "Managed animation and transition states.",
-
-                            "Updated interface elements based on user interaction."
-
-                        ]
-
-                    },
-
-
-                    {
-                        heading:
-                            "Connected user interaction with functionality",
-
-                        content: [
-
-                            "Linked user actions with visual responses.",
-
-                            "Modified page content dynamically.",
-
-                            "Created a more application-like experience."
-
-                        ]
-
-                    }
-
-                ]
-
-            },
-
 
             "Fetch API": {
 
                 title:
                     "THE ASYNCHRONOUS CONTENT SYSTEM",
 
-
                 sections: [
 
                     {
                         heading:
-                            "Created dynamic content delivery",
+                            "Built soft page navigation.",
 
-                        content: [
+                        details: [
 
-                            "Retrieved page content without full refreshes.",
+                            {
+                                text:
+                                    "Loaded page content dynamically without requiring full browser refreshes.",
 
-                            "Updated website sections seamlessly.",
+                                description:
+                                    "Uses the Fetch API to request another HTML document, parse the returned markup, and replace the active page content while keeping the surrounding application environment alive.",
 
-                            "Reduced unnecessary page reloads."
+                                code:
+`const response =
+await fetch(
+    url.href,
+    {
+        signal:
+        controller.signal
+    }
+);
+
+const html =
+await response.text();
+
+const nextDocument =
+new DOMParser()
+.parseFromString(
+    html,
+    "text/html"
+);`
+                            },
+
+                            {
+                                text:
+                                    "Replaced only the active page content.",
+
+                                description:
+                                    "The navigation system retrieves the next page and replaces the existing page-content element rather than rebuilding the entire document.",
+
+                                code:
+`const nextContent =
+nextDocument.getElementById(
+    "page-content"
+);
+
+pageContent.replaceWith(
+    nextContent
+);
+
+pageContent =
+    nextContent;`
+                            }
 
                         ]
 
                     },
 
-
                     {
                         heading:
-                            "Improved navigation flow",
+                            "Coordinated asynchronous navigation.",
 
-                        content: [
+                        details: [
 
-                            "Maintained persistent interface elements.",
+                            {
+                                text:
+                                    "Prevented overlapping navigation requests.",
 
-                            "Created smoother transitions between sections.",
+                                description:
+                                    "Uses AbortController to cancel an existing navigation request before beginning another, preventing outdated page requests from interfering with the current interface state.",
 
-                            "Improved the overall user experience."
+                                code:
+`if (activeRequest) {
+    activeRequest.abort();
+}
+
+const controller =
+    new AbortController();
+
+activeRequest =
+    controller;`
+                            },
+
+                            {
+                                text:
+                                    "Connected content loading with transition states.",
+
+                                description:
+                                    "Asynchronous content loading is coordinated with the existing transition system so navigation feels like a continuous application rather than a series of disconnected page loads.",
+
+                                code:
+`body.classList.add(
+    "transitioning"
+);
+
+nextContent.classList.add(
+    "is-entering"
+);
+
+pageContent.replaceWith(
+    nextContent
+);`
+                            }
 
                         ]
 
@@ -743,129 +750,99 @@ Explore each module below to discover the tools and features that expanded the f
                 title:
                     "THE NAVIGATION STATE SYSTEM",
 
-
                 sections: [
 
                     {
                         heading:
-                            "Managed browser navigation states",
+                            "Connected navigation to browser state.",
 
-                        content: [
+                        details: [
 
-                            "Implemented pushState navigation.",
+                            {
+                                text:
+                                    "Updated browser URLs without forcing full page reloads.",
 
-                            "Updated URLs dynamically without refreshing pages.",
+                                description:
+                                    "Uses the History API to change the browser's current URL while keeping the dynamically loaded application state intact.",
 
-                            "Supported browser back and forward functionality."
+                                code:
+`if (pushState) {
+
+    history.pushState(
+        {},
+        "",
+        url.href
+    );
+
+}`
+                            },
+
+                            {
+                                text:
+                                    "Implemented application-style navigation.",
+
+                                description:
+                                    "Combines dynamic page loading with URL state so the portfolio behaves more like a single application while remaining built entirely with vanilla JavaScript.",
+
+                                code:
+`loadPage(
+    url,
+    {
+        pushState:true
+    }
+);`
+                            }
 
                         ]
 
                     },
 
-
                     {
                         heading:
-                            "Maintained application behavior",
+                            "Preserved expected browser behavior.",
 
-                        content: [
+                        details: [
 
-                            "Preserved navigation consistency.",
+                            {
+                                text:
+                                    "Supported browser back and forward navigation.",
 
-                            "Connected URL changes with loaded content.",
+                                description:
+                                    "Listens for popstate events and loads the appropriate page when the browser history changes.",
 
-                            "Improved the feeling of a single-page application."
+                                code:
+`window.addEventListener(
+    "popstate",
+    () => {
 
-                        ]
+        loadPage(
+            new URL(
+                window.location.href
+            )
+        );
 
-                    }
+    }
+);`
+                            },
 
-                ]
+                            {
+                                text:
+                                    "Synchronized URL state with loaded content.",
 
-            },
+                                description:
+                                    "Navigation state, page content, active navigation styling, and document titles are updated together so the application remains internally consistent.",
 
+                                code:
+`document.title =
+    nextDocument.title;
 
-            "CSS Animations": {
+setActiveNav(
+    url
+);
 
-                title:
-                    "THE MOTION DESIGN SYSTEM",
-
-
-                sections: [
-
-                    {
-                        heading:
-                            "Created cinematic presentation sequences",
-
-                        content: [
-
-                            "Designed staged hero introduction animations.",
-
-                            "Controlled animation timing and sequencing.",
-
-                            "Built smooth page transitions."
-
-                        ]
-
-                    },
-
-
-                    {
-                        heading:
-                            "Enhanced user interaction",
-
-                        content: [
-
-                            "Created hover-based feedback systems.",
-
-                            "Developed expanding interface components.",
-
-                            "Added motion throughout the user experience."
-
-                        ]
-
-                    }
-
-                ]
-
-            },
-
-
-            "Responsive Design": {
-
-                title:
-                    "THE ADAPTIVE LAYOUT SYSTEM",
-
-
-                sections: [
-
-                    {
-                        heading:
-                            "Built flexible layouts",
-
-                        content: [
-
-                            "Created adaptable content structures.",
-
-                            "Used scalable sizing and positioning techniques.",
-
-                            "Designed layouts that adjust across devices."
-
-                        ]
-
-                    },
-
-
-                    {
-                        heading:
-                            "Maintained visual consistency",
-
-                        content: [
-
-                            "Preserved spacing and hierarchy.",
-
-                            "Optimized content presentation.",
-
-                            "Ensured accessibility across screen sizes."
+pageContent =
+    nextContent;`
+                            }
 
                         ]
 
@@ -879,39 +856,237 @@ Explore each module below to discover the tools and features that expanded the f
             "HTML5 Video Integration": {
 
                 title:
-                    "THE CINEMATIC BACKGROUND SYSTEM",
-
+                    "THE CINEMATIC MEDIA SYSTEM",
 
                 sections: [
 
                     {
                         heading:
-                            "Developed the cinematic landing environment",
+                            "Built the persistent visual environment.",
 
-                        content: [
+                        details: [
 
-                            "Implemented looping background video playback.",
+                            {
+                                text:
+                                    "Integrated looping HTML5 video as the portfolio's visual foundation.",
 
-                            "Combined video with layered visual effects.",
+                                description:
+                                    "Uses a persistent video element as the visual environment behind the interface, allowing the portfolio to maintain a cinematic presentation across navigation states.",
 
-                            "Created an atmospheric introduction sequence."
+                                code:
+`<video
+    id="intro-video"
+    autoplay
+    muted
+    loop
+    playsinline>
+
+    <source
+        src="images/video/intro.mp4"
+        type="video/mp4">
+
+</video>`
+                            },
+
+                            {
+                                text:
+                                    "Kept the video active during soft navigation.",
+
+                                description:
+                                    "Because navigation replaces page content instead of reloading the document, the background video can remain persistent while different sections of the portfolio are displayed.",
+
+                                code:
+`const video =
+    document.getElementById(
+        "intro-video"
+    );
+
+if (video) {
+    video.play()
+        .catch(() => {});
+}`
+                            }
 
                         ]
 
                     },
 
+                    {
+                        heading:
+                            "Integrated media with the interface.",
+
+                        details: [
+
+                            {
+                                text:
+                                    "Layered interface systems over the video surface.",
+
+                                description:
+                                    "The video acts as a visual layer beneath navigation, content, overlays, atmosphere effects, and interactive elements rather than functioning as a standalone media component.",
+
+                                code:
+`<video id="intro-video"></video>
+
+<div id="video-overlay"></div>
+
+<div id="page-surface"></div>
+
+<nav>
+    ...
+</nav>`
+                            },
+
+                            {
+                                text:
+                                    "Prepared media specifically for web delivery.",
+
+                                description:
+                                    "The background asset was encoded and optimized for browser playback while maintaining the visual quality required for the cinematic presentation.",
+
+                                code:
+`<video
+    autoplay
+    muted
+    loop
+    playsinline>
+</video>`
+                            }
+
+                        ]
+
+                    }
+
+                ]
+
+            },
+
+
+            "Interaction Systems": {
+
+                title:
+                    "THE INTERACTION SYSTEM",
+
+                sections: [
 
                     {
                         heading:
-                            "Integrated video into the design system",
+                            "Built custom motion-driven interaction.",
 
-                        content: [
+                        details: [
 
-                            "Controlled video behavior with HTML attributes.",
+                            {
+                                text:
+                                    "Created a custom cursor with independently controlled elements.",
 
-                            "Built supporting overlays and visual effects.",
+                                description:
+                                    "The portfolio uses separate cursor elements for the primary pointer, trailing ring, inner ring, and surrounding interface brackets, allowing each layer to respond independently.",
 
-                            "Balanced performance with presentation quality."
+                                code:
+`const dot =
+    document.querySelector(
+        ".cursor-dot"
+    );
+
+const ring =
+    document.querySelector(
+        ".cursor-ring"
+    );
+
+const ringInner =
+    document.querySelector(
+        ".cursor-ring-inner"
+    );`
+                            },
+
+                            {
+                                text:
+                                    "Added requestAnimationFrame-based pointer motion.",
+
+                                description:
+                                    "Uses requestAnimationFrame to synchronize visual movement with the browser's rendering cycle and prevent unnecessary continuous layout updates.",
+
+                                code:
+`parallaxFrame =
+    requestAnimationFrame(() => {
+
+        const heroInner =
+            document.querySelector(
+                ".hero-description"
+            );
+
+        if (heroInner) {
+
+            heroInner.style.transform =
+                \`translate3d(
+                    \${offsetX}px,
+                    \${offsetY}px,
+                    20px
+                )\`;
+
+        }
+
+    });`
+                            }
+
+                        ]
+
+                    },
+
+                    {
+                        heading:
+                            "Coordinated application states.",
+
+                        details: [
+
+                            {
+                                text:
+                                    "Used state classes to coordinate complex visual sequences.",
+
+                                description:
+                                    "Interface states are represented through body classes that allow different systems to respond to the same application state without tightly coupling their implementation.",
+
+                                code:
+`body.classList.add(
+    "nav-ready"
+);
+
+body.classList.add(
+    "hero-ready"
+);
+
+body.classList.add(
+    "title-ready"
+);
+
+body.classList.add(
+    "text-ready"
+);
+
+body.classList.add(
+    "platform-ready"
+);`
+                            },
+
+                            {
+                                text:
+                                    "Built timed presentation sequences.",
+
+                                description:
+                                    "Multiple delayed states are coordinated through stored timers, allowing the hero, navigation, content, platform controls, and cursor to enter the experience in a controlled sequence.",
+
+                                code:
+`heroTimers.push(
+    setTimeout(() => {
+
+        body.classList.add(
+            "hero-ready"
+        );
+
+        enterHero();
+
+    }, 1300)
+);`
+                            }
 
                         ]
 
@@ -927,37 +1102,85 @@ Explore each module below to discover the tools and features that expanded the f
                 title:
                     "THE DEVELOPMENT WORKFLOW",
 
-
                 sections: [
 
                     {
                         heading:
-                            "Managed development progression",
+                            "Managed versioned development.",
 
-                        content: [
+                        details: [
 
-                            "Tracked changes through version control.",
+                            {
+                                text:
+                                    "Used Git to track the progression of the portfolio.",
 
-                            "Maintained organized project structure.",
+                                description:
+                                    "Version control provided a structured history of development and made it possible to experiment with major architectural changes while maintaining stable versions of the project.",
 
-                            "Preserved stable development versions."
+                                code:
+`git status
+
+git add .
+
+git commit
+-m "Stabilize portfolio architecture"`
+                            },
+
+                            {
+                                text:
+                                    "Maintained stable development milestones.",
+
+                                description:
+                                    "The project was developed through deliberate milestones, allowing stable versions to act as restore points while new interface systems and architectural changes were introduced.",
+
+                                code:
+`git log
+--oneline
+
+git checkout <stable-commit>`
+                            }
 
                         ]
 
                     },
 
-
                     {
                         heading:
-                            "Deployed the final experience",
+                            "Deployed and maintained the production experience.",
 
-                        content: [
+                        details: [
 
-                            "Configured GitHub Pages hosting.",
+                            {
+                                text:
+                                    "Configured GitHub Pages hosting.",
 
-                            "Published the completed portfolio.",
+                                description:
+                                    "The portfolio is deployed directly from the GitHub repository, providing a production environment for the completed frontend application.",
 
-                            "Maintained production-ready files."
+                                code:
+`Repository
+    ↓
+GitHub Pages
+    ↓
+Production Portfolio`
+                            },
+
+                            {
+                                text:
+                                    "Used the repository as the source of the production application.",
+
+                                description:
+                                    "The same version-controlled project structure used during development is maintained as the source for the live portfolio, keeping development and deployment closely connected.",
+
+                                code:
+`Local Development
+      ↓
+     Git
+      ↓
+   GitHub
+      ↓
+GitHub Pages`
+                            }
 
                         ]
 
@@ -970,6 +1193,7 @@ Explore each module below to discover the tools and features that expanded the f
         }
 
     },
+
 
     development: {
 
@@ -985,12 +1209,10 @@ This section highlights the workflow systems used throughout the creation of the
 
         modules: {
 
-
             Build: {
 
                 title:
                     "BUILD PIPELINE & VERSION CONTROL",
-
 
                 sections: [
 
@@ -999,18 +1221,15 @@ This section highlights the workflow systems used throughout the creation of the
                             "Development workflow",
 
                         content:
-
                             "Organized development tasks through version control, iterative improvements, and structured project management."
 
                     },
-
 
                     {
                         heading:
                             "Deployment preparation",
 
                         content:
-
                             "Prepared the project for web deployment through asset management, responsive design practices, and performance considerations."
 
                     }
@@ -1019,12 +1238,10 @@ This section highlights the workflow systems used throughout the creation of the
 
             },
 
-
             Testing: {
 
                 title:
                     "QUALITY ASSURANCE & DEBUGGING",
-
 
                 sections: [
 
@@ -1033,18 +1250,15 @@ This section highlights the workflow systems used throughout the creation of the
                             "Cross-browser testing",
 
                         content:
-
                             "Verified that the interactive portfolio maintained functionality and presentation consistency across different browsers and device sizes."
 
                     },
-
 
                     {
                         heading:
                             "Debugging and refinement",
 
                         content:
-
                             "Resolved layout issues, animation conflicts, and JavaScript behavior problems through continuous testing and iteration."
 
                     }
@@ -1052,7 +1266,6 @@ This section highlights the workflow systems used throughout the creation of the
                 ]
 
             }
-
 
         }
 
@@ -1074,7 +1287,7 @@ This project was designed and developed using HTML5, CSS3, and JavaScript withou
 
 My goal was to create more than a traditional portfolio. I wanted to build a fully customized frontend experience that demonstrates the ability to design, develop, and integrate modern web technologies into a cohesive application-style platform.
 
-Most developers create portfolios to showcase their work, I took that concept one step further. I wanted the portfolio itself to become part of the showcase.
+Most developers create portfolios to showcase their work, but I took that concept one step further. I wanted the portfolio itself to become part of the showcase.
 
 As you explore the different sections, you will discover how each technology plays a role in various aspects of this platform.
 
