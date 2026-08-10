@@ -1,119 +1,508 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <title>Resume — Adam Pace</title>
+
+  <!-- Fonts -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Aladin&family=Eagle+Lake&family=Michroma&family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=VT323&family=ZCOOL+XiaoWei&display=swap"
+    rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Tapestry&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+
   <link rel="stylesheet" href="css/portfolio.css" />
+  <link rel="stylesheet" href="css/resume.css" />
+
+  <!-- Scripts -->
+
   <script defer src="js/main.js"></script>
+
   <script defer src="js/cursor.js"></script>
+
+  <script src="js/nav-orbit.js"></script>
+
+  <script defer src="js/resume.js"></script>
+
 </head>
 
-<body class="subpage">
-  <!-- Background video -->
+<body class="subpage resume-page">
+
+  <!-- Background Video -->
+
   <video id="intro-video" autoplay muted loop playsinline>
-    <source src="images/video/intro.mp4" type="video/mp4">
+
+
+<source src="images/video/intro.mp4" type="video/mp4">
+
+
   </video>
 
   <div id="video-overlay"></div>
+
   <div id="page-surface"></div>
 
-  <!-- Navbar -->
- <nav>
+  <!-- Navigation -->
 
-    <div class="nav-orbit-ring">
+  <nav>
 
-      <span class="orbit-top"></span>
-      <span class="orbit-left"></span>
-      <span class="orbit-bottom"></span>
-      <span class="orbit-right"></span>
 
+<div class="nav-orbit-ring">
+
+  <span class="orbit-top"></span>
+  <span class="orbit-left"></span>
+  <span class="orbit-bottom"></span>
+  <span class="orbit-right"></span>
+
+</div>
+
+<div class="nav-inner">
+
+  <div class="nav-brand">
+    Adam Pace
+  </div>
+
+  <ul class="nav-links">
+
+    <li>
+      <a href="index.html" class="nav-target">
+        <span>H</span><span>O</span><span>M</span><span>E</span>
+      </a>
+    </li>
+
+    <a
+      href="https://github.com/dohnnyj3pp"
+      class="nav-target nav-external"
+      target="_blank"
+      rel="noopener noreferrer">
+      <span>G</span><span>I</span><span>T</span><span>H</span><span>U</span><span>B</span>
+    </a>
+
+    <li>
+      <a href="about.html" class="nav-target">
+        <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="contact.html" class="nav-target">
+        <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="resume.html" class="nav-target">
+        <span>R</span><span>E</span><span>S</span><span>U</span><span>M</span><span>E</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <a
+    href="projects.html"
+    class="platform-button nav-target"
+    id="launch-platform">
+    <span>E</span><span>n</span><span>t</span><span>e</span><span>r</span>
+    <span class="platform-word-gap"></span>
+    <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span>
+  </a>
+
+</div>
+
+<div class="nav-light-trail"></div>
+
+
+  </nav>
+
+  <!-- Resume -->
+
+  <main id="page-content" class="main-wrapper page-content">
+
+
+<section class="resume-section">
+
+  <div class="resume-header">
+
+    <div class="resume-eyebrow">
+      PROFESSIONAL PROFILE
     </div>
-    <div class="nav-inner">
 
-      <div class="nav-brand">
-        Adam Pace
+    <h1>
+      RESUME
+    </h1>
+
+    <p>
+      Adam Pace — Junior Front-End Developer
+    </p>
+
+  </div>
+
+  <div class="resume-controls">
+
+<a
+    href="documents/adam-pace-resume.pdf"
+    class="resume-control"
+    download>
+    DOWNLOAD RESUME
+</a>
+
+<a
+    href="documents/adam-pace-diploma.pdf"
+    class="resume-control"
+    download>
+    DOWNLOAD DIPLOMA
+</a>
+
+<a
+    href="documents/adam-pace-diploma-and-transcript.pdf"
+    class="resume-control"
+    download>
+    DOWNLOAD DIPLOMA &amp; TRANSCRIPT
+</a>
+
+</div>
+
+  <div class="resume-document">
+
+    <!-- PROFILE -->
+
+    <section class="resume-block">
+
+      <div class="resume-block-heading">
+        PROFILE
       </div>
 
+      <div class="resume-block-content">
 
-      <ul class="nav-links">
+        <p>
+          Highly motivated and success-driven college graduate with a Diploma in Software &amp; Web Development, graduating with honours and a 92% overall average.
+        </p>
+
+        <p>
+          Passionate about developing modern web experiences with a strong focus on responsive design, interactive interfaces, clean implementation, and user experience.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- TECHNICAL SKILLS -->
+
+    <section class="resume-block">
+
+      <div class="resume-block-heading">
+        TECHNICAL SKILLS
+      </div>
+
+      <div class="resume-skill-grid">
+
+        <div class="resume-skill-group">
+
+          <h3>
+            LANGUAGES
+          </h3>
+
+          <ul>
+            <li>HTML5</li>
+            <li>JavaScript ES6+</li>
+            <li>Python</li>
+            <li>C#</li>
+            <li>C++</li>
+          </ul>
+
+        </div>
+
+        <div class="resume-skill-group">
+
+          <h3>
+            STYLING
+          </h3>
+
+          <ul>
+            <li>CSS3</li>
+            <li>Responsive Design</li>
+            <li>Animation</li>
+            <li>UI Styling</li>
+          </ul>
+
+        </div>
+
+        <div class="resume-skill-group">
+
+          <h3>
+            TOOLS
+          </h3>
+
+          <ul>
+            <li>Visual Studio Code</li>
+            <li>Notepad++</li>
+            <li>GitHub</li>
+            <li>GitHub Pages</li>
+          </ul>
+
+        </div>
+
+        <div class="resume-skill-group">
+
+          <h3>
+            CONCEPTS
+          </h3>
+
+          <ul>
+            <li>DOM Manipulation</li>
+            <li>Asynchronous JavaScript</li>
+            <li>UI/UX Principles</li>
+            <li>Component-Based Thinking</li>
+            <li>Responsive Interfaces</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- EDUCATION -->
+
+    <section class="resume-block">
+
+      <div class="resume-block-heading">
+        EDUCATION
+      </div>
+
+      <div class="resume-entry">
+
+        <div class="resume-entry-title">
+          Diploma in Software &amp; Web Development
+        </div>
+
+        <div class="resume-entry-subtitle">
+          Academy of Learning Career College
+        </div>
+
+        <div class="resume-entry-meta">
+          Graduated with Honours — 92% Overall Average
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CORE STRENGTHS -->
+
+    <section class="resume-block">
+
+      <div class="resume-block-heading">
+        CORE STRENGTHS
+      </div>
+
+      <ul class="resume-list">
 
         <li>
-          <a href="index.html" class="nav-target">
-            <span>H</span><span>O</span><span>M</span><span>E</span>
-          </a>
+          Problem solving and technical troubleshooting
         </li>
-
-
-        <a href="https://github.com/dohnnyj3pp" class="nav-target nav-external" target="_blank"
-          rel="noopener noreferrer">
-          <span>G</span><span>I</span><span>T</span><span>H</span><span>U</span><span>B</span>
-        </a>
 
         <li>
-          <a href="about.html" class="nav-target">
-            <span>A</span><span>B</span><span>O</span><span>U</span><span>T</span>
-          </a>
+          Customer-focused communication
         </li>
-
 
         <li>
-          <a href="contact.html" class="nav-target">
-            <span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>C</span><span>T</span>
-          </a>
+          Adaptability and continuous learning
         </li>
-
 
         <li>
-          <a href="resume.html" class="nav-target">
-            <span>R</span><span>E</span><span>S</span><span>U</span><span>M</span><span>E</span>
-          </a>
+          Attention to detail
         </li>
 
+        <li>
+          Independent development and structured workflow
+        </li>
 
       </ul>
 
-<a href="projects.html" class="platform-button nav-target" id="launch-platform">
-  <span>E</span><span>n</span><span>t</span><span>e</span><span>r</span>
-  <span class="platform-word-gap"></span>
-  <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span>
-</a>
-
-
-    </div>
-
-  <main id="page-content" class="main-wrapper page-content">
-    <h1>Projects</h1>
-    <p>Here are some of the applications and tools I've built.</p>
-
-    <section class="project-list">
-      <h2>Featured Work</h2>
-
-      <div class="project-item">
-        <h3>Project One</h3>
-        <p>A modern web app built with clean architecture and smooth UX.</p>
-      </div>
-
-      <div class="project-item">
-        <h3>Project Two</h3>
-        <p>Full‑stack application with API integration and responsive UI.</p>
-      </div>
-
-      <div class="project-item">
-        <h3>Project Three</h3>
-        <p>Interactive tool featuring animations and cinematic transitions.</p>
-      </div>
     </section>
+
+    <!-- FEATURED PROJECT -->
+
+    <section class="resume-block">
+
+      <div class="resume-block-heading">
+        FEATURED PROJECT
+      </div>
+
+      <div class="resume-entry">
+
+        <div class="resume-entry-title">
+          Portfolio Platform
+        </div>
+
+        <div class="resume-entry-subtitle">
+          Interactive Front-End Development Project
+        </div>
+
+        <p>
+          Designed and developed a custom portfolio platform from scratch using HTML5, CSS3, and vanilla JavaScript. The project focuses on responsive architecture, interactive UI systems, animation, state management, custom navigation, and cinematic presentation.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+
+    <section class="resume-block">
+
+      <div class="resume-block-heading">
+        PROFESSIONAL EXPERIENCE
+      </div>
+
+      <div class="resume-timeline">
+
+        <article class="resume-entry">
+
+          <div class="resume-entry-title">
+            AI Data Annotator
+          </div>
+
+          <div class="resume-entry-subtitle">
+            DataForce
+          </div>
+
+          <div class="resume-entry-meta">
+            Data &amp; AI Operations
+          </div>
+
+          <p>
+            Performed structured data annotation and language-focused evaluation tasks supporting artificial intelligence and machine learning systems.
+          </p>
+
+        </article>
+
+        <article class="resume-entry">
+
+          <div class="resume-entry-title">
+            Technical Support Advisor
+          </div>
+
+          <div class="resume-entry-subtitle">
+            Concentrix
+          </div>
+
+          <div class="resume-entry-meta">
+            Technical Support
+          </div>
+
+          <p>
+            Provided technical troubleshooting and customer support, diagnosing software, hardware, connectivity, and account-related issues while communicating solutions clearly to customers.
+          </p>
+
+        </article>
+
+        <article class="resume-entry">
+
+          <div class="resume-entry-title">
+            Technical Support Advisor
+          </div>
+
+          <div class="resume-entry-subtitle">
+            Teleperformance
+          </div>
+
+          <div class="resume-entry-meta">
+            Technical Support
+          </div>
+
+          <p>
+            Delivered technical support and customer service while troubleshooting issues, identifying solutions, and maintaining a strong focus on customer experience.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- INTERESTS -->
+
+    <section class="resume-block">
+
+      <div class="resume-block-heading">
+        INTERESTS
+      </div>
+
+      <ul class="resume-list">
+
+        <li>
+          Web development and emerging technologies
+        </li>
+
+        <li>
+          Interactive design and animation
+        </li>
+
+        <li>
+          Software engineering
+        </li>
+
+        <li>
+          Creative digital experiences
+        </li>
+
+      </ul>
+
+    </section>
+
+  </div>
+
+</section>
+
+
   </main>
 
-<div class="cursor-dot"></div>
+  <!-- Custom Cursor -->
 
-<div class="cursor-ring">
-  <div class="cursor-ring-inner"></div>
-</div>
+  <div class="cursor-dot"></div>
+
+  <div class="cursor-ring">
+
+
+<div class="cursor-ring-inner"></div>
+
+
+  </div>
+
+  <div class="cursor-brackets">
+
+
+<span class="corner top-left"></span>
+<span class="corner top-right"></span>
+<span class="corner bottom-left"></span>
+<span class="corner bottom-right"></span>
+
+
+  </div>
 
   <footer>
-    &copy; <span id="year"></span> Adam Pace. All rights reserved.
+
+
+&copy; <span id="year"></span> Adam Pace. All rights reserved.
+
+
   </footer>
 
 </body>
+
 </html>
