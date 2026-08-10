@@ -1197,79 +1197,211 @@ GitHub Pages`
 
     development: {
 
-        title:
-            "DEVELOPMENT",
+title:
+    "DEVELOPMENT",
 
-        introduction:
-            `
+introduction:
+    `
+
 Building a successful project requires more than writing code. Development involves planning, testing, debugging, version control, and continuous improvement.
 
-This section highlights the workflow systems used throughout the creation of the portfolio, including maintaining stability, testing functionality, and preparing the final product for deployment.
+This section highlights the major development milestones that shaped the portfolio from its initial structure into the completed interactive platform.
 `,
 
-        modules: {
+modules: {
 
-            Build: {
+    "Version 1.0": {
 
-                title:
-                    "BUILD PIPELINE & VERSION CONTROL",
+        title:
+            "FOUNDATION & STABILIZATION",
 
-                sections: [
+        sections: [
+
+            {
+                heading:
+                    "Established the core project platform.",
+
+                details: [
 
                     {
-                        heading:
-                            "Development workflow",
+                        text:
+                            "Built the initial project carousel and documentation viewer structure.",
 
-                        content:
-                            "Organized development tasks through version control, iterative improvements, and structured project management."
-
+                        description:
+                            "Established the foundation of the project platform by creating the carousel system, project workspace, and documentation viewer that became the core structure for presenting the portfolio project."
                     },
 
                     {
-                        heading:
-                            "Deployment preparation",
+                        text:
+                            "Stabilized the initial interface architecture.",
 
-                        content:
-                            "Prepared the project for web deployment through asset management, responsive design practices, and performance considerations."
-
-                    }
-
-                ]
-
-            },
-
-            Testing: {
-
-                title:
-                    "QUALITY ASSURANCE & DEBUGGING",
-
-                sections: [
-
-                    {
-                        heading:
-                            "Cross-browser testing",
-
-                        content:
-                            "Verified that the interactive portfolio maintained functionality and presentation consistency across different browsers and device sizes."
-
-                    },
-
-                    {
-                        heading:
-                            "Debugging and refinement",
-
-                        content:
-                            "Resolved layout issues, animation conflicts, and JavaScript behavior problems through continuous testing and iteration."
-
+                        description:
+                            "Created a stable starting point for the platform so additional navigation, documentation, animation, and interaction systems could be developed on top of a reliable foundation."
                     }
 
                 ]
 
             }
 
-        }
+        ]
 
     },
+
+
+    "Version 1.1": {
+
+        title:
+            "APPLICATION STATE STABILIZATION",
+
+        sections: [
+
+            {
+                heading:
+                    "Stabilized dynamic interface states.",
+
+                details: [
+
+                    {
+                        text:
+                            "Ensured different application states rendered correctly.",
+
+                        description:
+                            "Refined the platform's state system so the carousel, workspace, documentation viewer, navigation, and interface elements appeared and behaved correctly as the application moved between different states."
+                    },
+
+                    {
+                        text:
+                            "Improved state-based content loading.",
+
+                        description:
+                            "Ensured that content and interface elements were loaded and displayed in the correct state, preventing visual conflicts and inconsistent presentation during transitions."
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    "Version 1.2": {
+
+        title:
+            "DOCUMENTATION SYSTEM STABILIZATION",
+
+        sections: [
+
+            {
+                heading:
+                    "Integrated the documentation information system.",
+
+                details: [
+
+                    {
+                        text:
+                            "Implemented the modal-style information display system.",
+
+                        description:
+                            "Created the popup-based documentation interface used to display detailed project information without requiring the user to leave the current documentation view."
+                    },
+
+                    {
+                        text:
+                            "Stabilized information presentation.",
+
+                        description:
+                            "Refined the documentation display system so detailed information could be presented in a focused and controlled interface while maintaining the visual structure of the project platform."
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    "Version 1.3": {
+
+        title:
+            "HERO & LANDING PAGE STABILIZATION",
+
+        sections: [
+
+            {
+                heading:
+                    "Introduced the portfolio experience.",
+
+                details: [
+
+                    {
+                        text:
+                            "Rebuilt and stabilized the hero section.",
+
+                        description:
+                            "Developed the landing-page hero experience that introduces the portfolio before users enter the project platform, establishing the visual identity and first impression of the application."
+                    },
+
+                    {
+                        text:
+                            "Connected the landing experience to the project platform.",
+
+                        description:
+                            "Integrated the hero presentation with the existing navigation and project systems so the portfolio could transition naturally from its introduction into the interactive project experience."
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    },
+
+
+    "Version 1.4": {
+
+        title:
+            "ABOUT PAGE DEVELOPMENT",
+
+        sections: [
+
+            {
+                heading:
+                    "Expanded the portfolio beyond the project platform.",
+
+                details: [
+
+                    {
+                        text:
+                            "Developed and completed the About page.",
+
+                        description:
+                            "Created the About page to provide additional context about the developer behind the portfolio while maintaining the visual language and interaction style established throughout the platform."
+                    },
+
+                    {
+                        text:
+                            "Integrated the About experience with the existing site architecture.",
+
+                        description:
+                            "Connected the completed About page to the portfolio's navigation and shared visual systems, allowing it to function as part of the larger application-style experience."
+                    }
+
+                ]
+
+            }
+
+        ]
+
+    }
+
+}
+
+},
 
 
     summary: {

@@ -1,0 +1,433 @@
+/* ==========================================
+CONTACT PAGE
+========================================== */
+
+.contact-page {
+    overflow-x: hidden;
+}
+
+.contact-page .main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 150px 40px 110px;
+}
+
+
+/* ==========================================
+CONTACT SYSTEM
+========================================== */
+
+.contact-system {
+    position: relative;
+    width: min(900px, 100%);
+    padding: 55px 60px 60px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background:
+        rgba(8, 10, 18, .72);
+
+    border:
+        1px solid rgba(255, 183, 75, .18);
+
+    box-shadow:
+        0 0 45px rgba(255, 132, 0, .08),
+        inset 0 0 35px rgba(255, 75, 129, .035);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+}
+
+
+/* ==========================================
+CONTACT HEADER
+========================================== */
+
+.contact-header {
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.contact-header h1 {
+    margin: 0;
+
+    font-family:
+        "ZCOOL XiaoWei",
+        sans-serif;
+
+    font-size:
+        clamp(3rem, 6vw, 5rem);
+
+    font-weight:
+        400;
+
+    letter-spacing:
+        .12em;
+
+    color:
+        #fcfaf7;
+
+    text-shadow:
+        0 0 18px rgba(255, 183, 75, .18);
+}
+
+.contact-header p {
+    max-width: 620px;
+    margin: 18px auto 0;
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size:
+        1rem;
+
+    line-height:
+        1.7;
+
+    letter-spacing:
+        .04em;
+
+    color:
+        rgba(250, 248, 246, .72);
+}
+
+
+/* ==========================================
+CONTACT FORM
+========================================== */
+
+.contact-form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+/* ==========================================
+FORM LABELS
+========================================== */
+
+.contact-form label {
+    margin-top: 18px;
+
+    font-family:
+        "Space Mono",
+        monospace;
+
+    font-size:
+        .72rem;
+
+    letter-spacing:
+        .14em;
+
+    text-transform:
+        uppercase;
+
+    color:
+        rgba(255, 183, 75, .78);
+}
+
+
+/* ==========================================
+FORM INPUTS
+========================================== */
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    border:
+        1px solid rgba(255, 183, 75, .16);
+
+    border-radius:
+        0;
+
+    outline:
+        none;
+
+    background:
+        rgba(4, 6, 12, .58);
+
+    color:
+        #f8f5f1;
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size:
+        .95rem;
+
+    letter-spacing:
+        .025em;
+
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease,
+        transform .3s ease;
+}
+
+
+/* ==========================================
+INPUT
+========================================== */
+
+.contact-form input {
+    height:
+        52px;
+
+    padding:
+        0 16px;
+}
+
+
+/* ==========================================
+TEXTAREA
+========================================== */
+
+.contact-form textarea {
+    min-height:
+        190px;
+
+    padding:
+        16px;
+
+    resize:
+        vertical;
+
+    line-height:
+        1.6;
+}
+
+
+/* ==========================================
+PLACEHOLDERS
+========================================== */
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color:
+        rgba(255, 255, 255, .32);
+
+    transition:
+        color .3s ease;
+}
+
+
+/* ==========================================
+FOCUS STATES
+========================================== */
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color:
+        rgba(255, 183, 75, .65);
+
+    background:
+        rgba(10, 12, 20, .72);
+
+    box-shadow:
+        0 0 15px rgba(255, 183, 75, .08),
+        inset 0 0 12px rgba(255, 183, 75, .035);
+
+    transform:
+        translateY(-1px);
+}
+
+.contact-form input:focus::placeholder,
+.contact-form textarea:focus::placeholder {
+    color:
+        rgba(255, 255, 255, .18);
+}
+
+.contact-form .contact-submit {
+    position: relative !important;
+    align-self: center !important;
+
+    min-width: 220px !important;
+    height: 58px !important;
+    padding: 0 32px !important;
+
+    border: 1px solid rgba(255,183,75,.55) !important;
+    border-radius: 3px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(55,32,12,.75),
+            rgba(18,12,20,.9)
+        ) !important;
+
+    color: #fff !important;
+
+    font-family:
+        "ZCOOL XiaoWei",
+        sans-serif !important;
+
+    font-size: 1rem !important;
+    letter-spacing: .18em !important;
+    text-transform: uppercase !important;
+
+    cursor: pointer !important;
+    overflow: hidden !important;
+    isolation: isolate;
+
+    box-shadow:
+        0 0 12px rgba(255,183,75,.16),
+        0 0 28px rgba(255,132,0,.06),
+        inset 0 0 20px rgba(255,75,129,.06) !important;
+
+    transition:
+        transform .35s cubic-bezier(.22,.61,.36,1),
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease !important;
+}
+
+
+/* MOVING ENERGY */
+
+.contact-form .contact-submit::before {
+    content: "";
+
+    position: absolute;
+    inset: -100%;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 35%,
+            rgba(255,75,129,.08) 43%,
+            rgba(255,183,75,.7) 49%,
+            rgba(255,255,255,.5) 52%,
+            rgba(255,183,75,.7) 55%,
+            rgba(255,75,129,.08) 62%,
+            transparent 70%
+        );
+
+    transform:
+        translateX(-60%)
+        rotate(8deg);
+
+    opacity:
+        0;
+
+    transition:
+        transform .9s cubic-bezier(.22,.61,.36,1),
+        opacity .35s ease;
+
+    z-index:
+        -1;
+}
+
+
+/* INNER GLOW */
+
+.contact-form .contact-submit::after {
+    content: "";
+
+    position: absolute;
+    inset: 2px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,183,75,.12),
+            transparent 65%
+        );
+
+    opacity:
+        .45;
+
+    transition:
+        opacity .35s ease;
+
+    pointer-events:
+        none;
+
+    z-index:
+        -1;
+}
+
+
+/* HOVER */
+
+.contact-form .contact-submit:hover {
+    transform:
+        translateY(-5px) !important;
+
+    border-color:
+        rgba(255,183,75,1) !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(92,55,18,.8),
+            rgba(30,14,25,.95)
+        ) !important;
+
+    box-shadow:
+        0 0 18px rgba(255,183,75,.55),
+        0 0 40px rgba(255,132,0,.25),
+        0 0 75px rgba(255,75,129,.08),
+        inset 0 0 22px rgba(255,183,75,.12) !important;
+}
+
+
+.contact-form .contact-submit:hover::before {
+    opacity:
+        1;
+
+    transform:
+        translateX(60%)
+        rotate(8deg);
+}
+
+
+.contact-form .contact-submit:hover::after {
+    opacity:
+        1;
+}
+
+
+/* CLICK */
+
+.contact-form .contact-submit:active {
+    transform:
+        translateY(-1px)
+        scale(.96) !important;
+
+    box-shadow:
+        0 0 12px rgba(255,183,75,.4),
+        inset 0 0 25px rgba(255,183,75,.18) !important;
+
+    transition-duration:
+        .1s !important;
+}
+
+
+/* KEYBOARD FOCUS */
+
+.contact-form .contact-submit:focus-visible {
+    outline:
+        1px solid rgba(255,183,75,1) !important;
+
+    outline-offset:
+        5px;
+
+    box-shadow:
+        0 0 20px rgba(255,183,75,.5) !important;
+}
