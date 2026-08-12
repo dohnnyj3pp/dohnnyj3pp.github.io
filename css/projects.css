@@ -1,7 +1,7 @@
 /* ===== PROJECT PLATFORM ===== */
 
 .projects-page {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .project-platform {
@@ -357,4 +357,29 @@ DISABLED INITIALIZE STATE
   border-color: rgba(255, 255, 255, .15);
   box-shadow: none;
 }
+
+PROJECT STAGE HEIGHT
+
+The stage was set to "one screen minus 90px", but it lives
+inside a container that already adds 200px of padding of its
+own. So the page always ended up about 110px taller than the
+screen, and because the page could not scroll, that strip at
+the bottom (including the footer) was unreachable.
+
+"min-height" means it still fills the first screen nicely, but
+is now allowed to grow taller when there is more content.
+========================================== */
+
+.project-platform {
+  height: auto;
+  min-height: calc(100vh - 200px);
+}
+
+@media (max-width:1050px) {
+  .project-platform {
+    /* .main-wrapper drops to 104px + 64px at this width */
+    min-height: calc(100vh - 168px);
+  }
+}
+
 

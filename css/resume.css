@@ -141,7 +141,7 @@ RESUME DOCUMENT
     overflow-x:hidden;
 
     background:
-        rgba(8,10,18,.76);
+        rgba(8,10,18,.86);
 
     border:1px solid rgba(255,183,75,.18);
 
@@ -149,8 +149,9 @@ RESUME DOCUMENT
         0 0 45px rgba(255,132,0,.08),
         inset 0 0 35px rgba(255,75,129,.035);
 
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
+    /* No backdrop-filter: the panel is now full document length,
+       so blurring behind it costs ~2.3M px every scroll frame.
+       The background alpha carries the same look. */
 
     scrollbar-width:thin;
     scrollbar-color:
@@ -468,4 +469,44 @@ MOBILE
         padding-bottom:30px;
         margin-bottom:30px;
     }
+}
+
+/* ==========================================
+LET THE RESUME RUN THE FULL PAGE
+
+The resume was locked into a box exactly one screen tall, and
+the resume itself scrolled inside that box. On a normal laptop
+that meant reading roughly 2,200px of resume through a 450px
+window — about a fifth of the screen — with big empty margins
+above and below it.
+
+Now the panel runs the full length of the resume and the page
+scrolls normally, the way a document should.
+
+These rules sit at the bottom of the file on purpose: when two
+rules are equally specific, whichever comes last wins, so this
+is what lets them override the rules above.
+========================================== */
+
+body.resume-page {
+    overflow:visible;
+}
+
+.resume-page .main-wrapper {
+    height:auto;
+    min-height:100vh;
+    overflow:visible;
+}
+
+.resume-section {
+    height:auto;
+}
+
+.resume-document {
+    flex:0 0 auto;
+    min-height:0;
+    /* Both directions have to be "visible" together. If one axis is
+       hidden the browser quietly turns the other into a scrollbar,
+       which would put the inner scrollbar straight back. */
+    overflow:visible;
 }
