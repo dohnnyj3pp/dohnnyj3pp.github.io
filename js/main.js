@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   if (video) {
-    video.play().catch(() => {});
+    video.play().catch(() => { });
   }
 
 
@@ -46,87 +46,87 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadPageAssets(nextDocument) {
 
-  const styles =
-    nextDocument.querySelectorAll(
-      "link[rel='stylesheet']"
-    );
+    const styles =
+      nextDocument.querySelectorAll(
+        "link[rel='stylesheet']"
+      );
 
-  styles.forEach(style => {
+    styles.forEach(style => {
 
-    const href = style.href;
+      const href = style.href;
 
-    if (
-      href.includes("portfolio.css")
-    ) {
-      return;
-    }
+      if (
+        href.includes("portfolio.css")
+      ) {
+        return;
+      }
 
-    if (
-      !document.querySelector(
-        `link[href="${href}"]`
-      )
-    ) {
+      if (
+        !document.querySelector(
+          `link[href="${href}"]`
+        )
+      ) {
 
-      const link =
-        document.createElement("link");
+        const link =
+          document.createElement("link");
 
-      link.rel = "stylesheet";
-      link.href = href;
+        link.rel = "stylesheet";
+        link.href = href;
 
-      document.head.appendChild(link);
+        document.head.appendChild(link);
 
-    }
+      }
 
-  });
-
-
-  const scripts =
-    nextDocument.querySelectorAll(
-      "script[src]"
-    );
+    });
 
 
-  scripts.forEach(script => {
-
-    const src = script.src;
-
-
-    if (
-      src.includes("main.js") ||
-      src.includes("cursor.js")
-    ) {
-      return;
-    }
+    const scripts =
+      nextDocument.querySelectorAll(
+        "script[src]"
+      );
 
 
-    if (
-      document.querySelector(
-        `script[src="${src}"]`
-      )
-    ) {
-      return;
-    }
+    scripts.forEach(script => {
+
+      const src = script.src;
 
 
-    const newScript =
-      document.createElement("script");
+      if (
+        src.includes("main.js") ||
+        src.includes("cursor.js")
+      ) {
+        return;
+      }
 
 
-    newScript.src = src;
-    newScript.onload = () => {
+      if (
+        document.querySelector(
+          `script[src="${src}"]`
+        )
+      ) {
+        return;
+      }
 
-      initializePageModule();
 
-    };
+      const newScript =
+        document.createElement("script");
 
 
-    document.body.appendChild(
-      newScript
-    );
+      newScript.src = src;
+      newScript.onload = () => {
 
-  });
+        initializePageModule();
 
-}
+      };
+
+
+      document.body.appendChild(
+        newScript
+      );
+
+    });
+
+  }
 
   function clearHeroTimers() {
 
@@ -183,8 +183,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+  function closeMobileNav() {
+    const toggle = document.querySelector(".mobile-nav-toggle");
+    const menu = document.querySelector(".nav-links");
 
-function setPageMode(nextBody) {
+    if (!toggle || !menu) return;
+
+    menu.classList.remove("mobile-open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+
+
+  function setPageMode(nextBody) {
 
     body.classList.toggle(
       "hero-page",
@@ -218,7 +228,7 @@ function setPageMode(nextBody) {
 
     }
 
-}
+  }
 
 
   function initializePageModule() {
@@ -316,14 +326,14 @@ function setPageMode(nextBody) {
       );
 
       heroTimers.push(
-    setTimeout(() => {
+        setTimeout(() => {
 
-      body.classList.add(
-        "platform-ready"
+          body.classList.add(
+            "platform-ready"
+          );
+
+        }, 3000)
       );
-
-    }, 3000)
-);
 
       heroTimers.push(
         setTimeout(() => {
@@ -358,7 +368,7 @@ function setPageMode(nextBody) {
     }
 
   }
-    async function loadPage(
+  async function loadPage(
     url,
     {
       pushState = false
@@ -501,11 +511,11 @@ function setPageMode(nextBody) {
 
         requestAnimationFrame(() => {
 
-  initializePageModule();
+          initializePageModule();
 
-  console.log("initializePageModule called");
+          console.log("initializePageModule called");
 
-});
+        });
 
       });
 
@@ -593,9 +603,9 @@ function setPageMode(nextBody) {
 
       }
 
-
       event.preventDefault();
 
+      closeMobileNav();
 
       loadPage(
         url,
@@ -622,7 +632,7 @@ function setPageMode(nextBody) {
     }
 
   );
-    document.addEventListener(
+  document.addEventListener(
     "pointermove",
     event => {
 
@@ -652,23 +662,23 @@ function setPageMode(nextBody) {
       }
 
 
-parallaxFrame =
-    requestAnimationFrame(() => {
+      parallaxFrame =
+        requestAnimationFrame(() => {
 
-      const heroInner =
-        document.querySelector(
-          ".hero-description"
-        );
+          const heroInner =
+            document.querySelector(
+              ".hero-description"
+            );
 
 
-      if (heroInner) {
+          if (heroInner) {
 
-        heroInner.style.transform =
-          `translate3d(${offsetX}px, ${offsetY}px, 20px)`;
+            heroInner.style.transform =
+              `translate3d(${offsetX}px, ${offsetY}px, 20px)`;
 
-      }
+          }
 
-    });
+        });
 
     }
 
@@ -681,15 +691,15 @@ parallaxFrame =
 
 
   if (
-  !body.classList.contains("hero-page")
-) {
+    !body.classList.contains("hero-page")
+  ) {
 
-  body.classList.add(
-    "nav-ready",
-    "platform-ready"
-  );
+    body.classList.add(
+      "nav-ready",
+      "platform-ready"
+    );
 
-}
+  }
 
 
   revealContent(
