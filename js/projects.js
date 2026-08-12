@@ -778,6 +778,8 @@ function bindExampleCards() {
         });
 }
 
+let codeModalPreviousFocus = null;
+
 function openCodeModal(
     title,
     code,
@@ -813,6 +815,9 @@ function openCodeModal(
         return;
     }
 
+    codeModalPreviousFocus =
+        document.activeElement;
+
     titleElement.textContent =
         title || "Code Preview";
 
@@ -846,11 +851,36 @@ function closeCodeModal() {
 
     if (!modal) return;
 
+    if (
+        document.activeElement &&
+        modal.contains(
+            document.activeElement
+        )
+    ) {
+        document.activeElement.blur();
+    }
+
     modal.classList.remove("visible");
 
     document.body.classList.remove(
         "code-modal-open"
     );
+
+    if (
+        codeModalPreviousFocus &&
+        typeof codeModalPreviousFocus.focus ===
+            "function" &&
+        document.contains(
+            codeModalPreviousFocus
+        )
+    ) {
+        requestAnimationFrame(() => {
+            codeModalPreviousFocus.focus();
+            codeModalPreviousFocus = null;
+        });
+    } else {
+        codeModalPreviousFocus = null;
+    }
 }
 
 function bindCodeModalEvents() {

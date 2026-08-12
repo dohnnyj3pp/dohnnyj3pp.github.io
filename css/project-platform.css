@@ -48,15 +48,16 @@ PROJECT HUD
 }
 
 .project-platform.booting .project-hud,
-.project-platform.deploying .project-hud,
-.project-platform.online .project-hud {
+.project-platform.deploying .project-hud {
   opacity: 1;
   transform: translate(-50%, -50%);
 }
 
-.project-platform.hud-focus .project-hud {
-  transform: translate(-50%, -50%);
+.project-platform.online .project-hud {
+  visibility: hidden;
+  pointer-events: none;
 }
+
 
 .hud-thumbnail {
   width: 240px;

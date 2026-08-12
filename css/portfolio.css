@@ -679,15 +679,7 @@ HERO CAPABILITIES
 /*
 ========================================
 PROJECT BEAM SYSTEM
-========================================
-
-The Creator capability finishes at 6.05s.
-
-The beam deliberately begins at that exact
-point, rises from the lower edge, leaves a
-faint trace, and finishes beneath the
-"Enter Projects" navigation target.
-*/
+========================================*/
 
 .project-beam {
   position:fixed;
@@ -1370,5 +1362,11 @@ MOBILE PROJECT NAVIGATION
 
   body.projects-page .nav-links.mobile-open ~ .platform-button {
     display: flex;
+  }
+}
+@media (max-width: 1610px) {
+  body.projects-page .documentation-system {
+    height: 55vh;
+    min-height: 0;
   }
 }

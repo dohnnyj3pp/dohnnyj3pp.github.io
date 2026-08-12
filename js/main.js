@@ -1,7 +1,6 @@
 // main.js — persistent video, soft navigation, hero motion
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const body = document.body;
   const video = document.getElementById("intro-video");
   const yearSpan = document.getElementById("year");
@@ -12,52 +11,36 @@ document.addEventListener("DOMContentLoaded", () => {
   let heroTimers = [];
   let parallaxFrame;
 
-
   if (yearSpan) {
-    yearSpan.textContent =
-      new Date().getFullYear();
+    yearSpan.textContent = new Date().getFullYear();
   }
-
 
   if (video) {
     video.play().catch(() => { });
   }
 
-
   function revealContent(content) {
-
     if (!content) return;
 
     content.classList.add("is-entering");
 
     requestAnimationFrame(() => {
-
       requestAnimationFrame(() => {
-
-        content.classList.remove(
-          "is-entering"
-        );
-
+        content.classList.remove("is-entering");
       });
-
     });
-
   }
 
   function loadPageAssets(nextDocument) {
-
     const styles =
       nextDocument.querySelectorAll(
         "link[rel='stylesheet']"
       );
 
     styles.forEach(style => {
-
       const href = style.href;
 
-      if (
-        href.includes("portfolio.css")
-      ) {
+      if (href.includes("portfolio.css")) {
         return;
       }
 
@@ -66,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
           `link[href="${href}"]`
         )
       ) {
-
         const link =
           document.createElement("link");
 
@@ -74,30 +56,24 @@ document.addEventListener("DOMContentLoaded", () => {
         link.href = href;
 
         document.head.appendChild(link);
-
       }
-
     });
-
 
     const scripts =
       nextDocument.querySelectorAll(
         "script[src]"
       );
 
-
     scripts.forEach(script => {
-
       const src = script.src;
-
 
       if (
         src.includes("main.js") ||
-        src.includes("cursor.js")
+        src.includes("cursor.js") ||
+        src.includes("nav-orbit.js")
       ) {
         return;
       }
-
 
       if (
         document.querySelector(
@@ -107,42 +83,28 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
       const newScript =
         document.createElement("script");
 
-
       newScript.src = src;
+
       newScript.onload = () => {
-
         initializePageModule();
-
       };
 
-
-      document.body.appendChild(
-        newScript
-      );
-
+      document.body.appendChild(newScript);
     });
-
   }
 
   function clearHeroTimers() {
-
     heroTimers.forEach(timer => {
-
       clearTimeout(timer);
-
     });
 
     heroTimers = [];
-
   }
 
-
   function resetHeroState() {
-
     clearHeroTimers();
 
     body.classList.remove(
@@ -159,204 +121,259 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
     heroStarted = false;
-
   }
 
-
   function setActiveNav(url) {
-
     const filename =
       url.pathname.split("/").pop() ||
       "index.html";
 
-
     document
       .querySelectorAll(".nav-links a")
       .forEach(link => {
+        const href =
+          link.getAttribute("href");
 
         link.classList.toggle(
           "active",
-          link.getAttribute("href") === filename
+          href === filename
         );
-
       });
-
   }
 
   function closeMobileNav() {
-    const toggle = document.querySelector(".mobile-nav-toggle");
-    const menu = document.querySelector(".nav-links");
+    const toggle =
+      document.querySelector(
+        ".mobile-nav-toggle"
+      );
 
-    if (!toggle || !menu) return;
+    const menu =
+      document.querySelector(
+        "#mobile-nav-menu"
+      );
 
-    menu.classList.remove("mobile-open");
-    toggle.setAttribute("aria-expanded", "false");
+    if (!toggle || !menu) {
+      return;
+    }
+
+    menu.classList.remove(
+      "mobile-open"
+    );
+
+    toggle.setAttribute(
+      "aria-expanded",
+      "false"
+    );
   }
 
+  function initMobileNav() {
+    const toggle =
+      document.querySelector(
+        ".mobile-nav-toggle"
+      );
+
+    const menu =
+      document.querySelector(
+        "#mobile-nav-menu"
+      );
+
+    if (!toggle || !menu) {
+      return;
+    }
+
+    if (
+      toggle.dataset.mobileNavBound ===
+      "true"
+    ) {
+      return;
+    }
+
+    toggle.dataset.mobileNavBound = "true";
+
+    toggle.addEventListener(
+      "click",
+      event => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const isOpen =
+          menu.classList.toggle(
+            "mobile-open"
+          );
+
+        toggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+      }
+    );
+
+    menu
+      .querySelectorAll("a")
+      .forEach(link => {
+        link.addEventListener(
+          "click",
+          () => {
+            closeMobileNav();
+          }
+        );
+      });
+  }
+
+  function restartProjectBeam() {
+    const beam =
+      document.querySelector(
+        ".project-beam"
+      );
+
+    if (!beam) {
+      return;
+    }
+
+    beam.style.animation = "none";
+
+    void beam.offsetWidth;
+
+    beam.style.animation =
+      "projectBeamRise 1.8s cubic-bezier(.22,.61,.36,1) 6.05s forwards";
+  }
 
   function setPageMode(nextBody) {
-
     body.classList.toggle(
       "hero-page",
-      nextBody.classList.contains("hero-page")
+      nextBody.classList.contains(
+        "hero-page"
+      )
     );
 
     body.classList.toggle(
       "subpage",
-      nextBody.classList.contains("subpage")
+      nextBody.classList.contains(
+        "subpage"
+      )
     );
 
     body.classList.toggle(
       "projects-page",
-      nextBody.classList.contains("projects-page")
+      nextBody.classList.contains(
+        "projects-page"
+      )
     );
 
-
     if (
-      nextBody.classList.contains("projects-page")
+      nextBody.classList.contains(
+        "projects-page"
+      )
     ) {
-
       body.classList.remove(
         "platform-ready"
       );
-
     } else {
-
       body.classList.add(
         "platform-ready"
       );
-
     }
-
   }
-
 
   function initializePageModule() {
+    initMobileNav();
 
     if (
-      body.classList.contains("projects-page") &&
-      typeof window.initProjects === "function"
+      body.classList.contains(
+        "projects-page"
+      ) &&
+      typeof window.initProjects ===
+      "function"
     ) {
-
       window.initProjects();
-
     }
-
   }
 
-
   function enterHero() {
-
     const heroContent =
-      document.querySelector(".hero-content");
-
+      document.querySelector(
+        ".hero-content"
+      );
 
     if (heroContent) {
-
       heroContent.classList.add(
         "hero-enter"
       );
-
     }
-
   }
 
-
   function startHeroSequence() {
-
     if (
-      !body.classList.contains("hero-page") ||
+      !body.classList.contains(
+        "hero-page"
+      ) ||
       heroStarted
     ) {
       return;
     }
 
-
     heroStarted = true;
 
-
     const run = () => {
-
       clearHeroTimers();
-
 
       heroTimers.push(
         setTimeout(() => {
-
           body.classList.add(
             "nav-ready"
           );
-
         }, 700)
       );
 
-
       heroTimers.push(
         setTimeout(() => {
-
           body.classList.add(
             "hero-ready"
           );
 
           enterHero();
-
         }, 1300)
       );
 
-
       heroTimers.push(
         setTimeout(() => {
-
           body.classList.add(
             "title-ready"
           );
-
         }, 1700)
       );
 
-
       heroTimers.push(
         setTimeout(() => {
-
           body.classList.add(
             "text-ready"
           );
-
         }, 2300)
       );
 
       heroTimers.push(
         setTimeout(() => {
-
           body.classList.add(
             "platform-ready"
           );
-
         }, 3000)
       );
 
       heroTimers.push(
         setTimeout(() => {
-
           body.classList.add(
             "cursor-visible"
           );
-
         }, 3800)
       );
-
     };
-
 
     if (
       !video ||
       video.readyState >= 2
     ) {
-
       run();
-
     } else {
-
       video.addEventListener(
         "loadeddata",
         run,
@@ -364,45 +381,43 @@ document.addEventListener("DOMContentLoaded", () => {
           once: true
         }
       );
-
     }
-
   }
+
   async function loadPage(
     url,
     {
       pushState = false
     } = {}
   ) {
-
     if (activeRequest) {
       activeRequest.abort();
     }
 
-
     const controller =
       new AbortController();
 
-
     activeRequest = controller;
 
+    const enteringHome =
+      url.pathname.endsWith(
+        "index.html"
+      ) ||
+      url.pathname.endsWith("/");
 
     if (
-      body.classList.contains("hero-page")
+      body.classList.contains(
+        "hero-page"
+      )
     ) {
-
       resetHeroState();
-
     }
-
 
     body.classList.add(
       "transitioning"
     );
 
-
     try {
-
       const response =
         await fetch(
           url.href,
@@ -412,28 +427,20 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         );
 
-
       if (!response.ok) {
-
         throw new Error(
           `Could not load ${url.pathname}`
         );
-
       }
-
 
       const html =
         await response.text();
 
-
       if (
         activeRequest !== controller
       ) {
-
         return;
-
       }
-
 
       const nextDocument =
         new DOMParser()
@@ -442,124 +449,101 @@ document.addEventListener("DOMContentLoaded", () => {
             "text/html"
           );
 
-
       const nextContent =
         nextDocument.getElementById(
           "page-content"
         );
 
-
       if (!nextContent) {
-
         throw new Error(
           "Missing page-content"
         );
-
       }
-
 
       setPageMode(
         nextDocument.body
       );
 
-
       nextContent.classList.add(
         "is-entering"
       );
 
+      pageContent.replaceWith(nextContent);
 
-      pageContent.replaceWith(
-        nextContent
-      );
+      pageContent = nextContent;
 
+      if (
+        body.classList.contains("hero-page") &&
+        typeof window.refreshProjectBeam === "function"
+      ) {
+        window.refreshProjectBeam();
+      }
 
-      pageContent =
-        nextContent;
       loadPageAssets(nextDocument);
 
-      document.title =
-        nextDocument.title;
+      document.title = nextDocument.title;
 
-
-      setActiveNav(
-        url
-      );
-
+      setActiveNav(url);
 
       if (pushState) {
-
         history.pushState(
           {},
           "",
           url.href
         );
-
       }
 
-
       requestAnimationFrame(() => {
-
         body.classList.remove(
           "transitioning"
         );
-
 
         nextContent.classList.remove(
           "is-entering"
         );
 
-
         requestAnimationFrame(() => {
-
           initializePageModule();
 
-          console.log("initializePageModule called");
-
+          if (
+            enteringHome &&
+            body.classList.contains(
+              "hero-page"
+            )
+          ) {
+            restartProjectBeam();
+          }
         });
-
       });
 
-
       startHeroSequence();
-
-
     } catch (error) {
-
       if (
-        error.name !== "AbortError"
+        error.name !==
+        "AbortError"
       ) {
-
         window.location.assign(
           url.href
         );
-
       }
-
     } finally {
-
       if (
-        activeRequest === controller
+        activeRequest ===
+        controller
       ) {
-
-        activeRequest = undefined;
-
+        activeRequest =
+          undefined;
       }
-
     }
-
   }
-
 
   document.addEventListener(
     "click",
     event => {
-
-
       const link =
         event.target.closest(
           "a[href]"
         );
-
 
       if (
         !link ||
@@ -570,13 +554,12 @@ document.addEventListener("DOMContentLoaded", () => {
         event.shiftKey ||
         event.altKey ||
         link.target ||
-        link.hasAttribute("download")
+        link.hasAttribute(
+          "download"
+        )
       ) {
-
         return;
-
       }
-
 
       const url =
         new URL(
@@ -584,23 +567,25 @@ document.addEventListener("DOMContentLoaded", () => {
           window.location.href
         );
 
-
       const isSitePage =
-        url.origin === window.location.origin &&
+        url.origin ===
+        window.location.origin &&
         (
-          url.pathname.endsWith(".html") ||
-          url.pathname.endsWith("/")
+          url.pathname.endsWith(
+            ".html"
+          ) ||
+          url.pathname.endsWith(
+            "/"
+          )
         );
-
 
       if (
         !isSitePage ||
         url.hash ||
-        url.href === window.location.href
+        url.href ===
+        window.location.href
       ) {
-
         return;
-
       }
 
       event.preventDefault();
@@ -613,102 +598,86 @@ document.addEventListener("DOMContentLoaded", () => {
           pushState: true
         }
       );
-
     }
-
   );
-
 
   window.addEventListener(
     "popstate",
     () => {
-
       loadPage(
         new URL(
           window.location.href
         )
       );
-
     }
-
   );
+
   document.addEventListener(
     "pointermove",
     event => {
-
       if (
-        !window.matchMedia("(pointer:fine)").matches
+        !window.matchMedia(
+          "(pointer:fine)"
+        ).matches
       ) {
-
         return;
-
       }
 
-
       const offsetX =
-        (event.clientX / window.innerWidth - 0.5) * -6;
-
+        (
+          event.clientX /
+          window.innerWidth -
+          0.5
+        ) * -6;
 
       const offsetY =
-        (event.clientY / window.innerHeight - 0.5) * -6;
-
+        (
+          event.clientY /
+          window.innerHeight -
+          0.5
+        ) * -6;
 
       if (parallaxFrame) {
-
         cancelAnimationFrame(
           parallaxFrame
         );
-
       }
-
 
       parallaxFrame =
         requestAnimationFrame(() => {
-
           const heroInner =
             document.querySelector(
               ".hero-description"
             );
 
-
           if (heroInner) {
-
             heroInner.style.transform =
               `translate3d(${offsetX}px, ${offsetY}px, 20px)`;
-
           }
-
         });
-
     }
-
   );
-
 
   body.classList.add(
     "page-loaded"
   );
 
-
   if (
-    !body.classList.contains("hero-page")
+    !body.classList.contains(
+      "hero-page"
+    )
   ) {
-
     body.classList.add(
       "nav-ready",
       "platform-ready"
     );
-
   }
-
 
   revealContent(
     pageContent
   );
 
+  initializePageModule();
 
   startHeroSequence();
-
-
-
 });
