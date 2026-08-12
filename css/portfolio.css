@@ -1467,3 +1467,53 @@ lists drop underneath the words instead of overlapping them.
   }
 }
 
+/* ==========================================
+FOOTER
+
+The footer had no styling at all, so it showed up as plain
+default browser text at the very bottom of the page. It now
+matches the rest of the site: small, muted, spaced out, with
+the same orange accent line used elsewhere.
+
+It appears on the contact, projects and resume pages.
+========================================== */
+
+footer {
+  position:relative;
+  z-index:10;
+  padding:36px 24px 44px;
+  text-align:center;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:.75rem;
+  font-weight:400;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(250,248,246,.36);
+}
+
+footer::before {
+  content:"";
+  display:block;
+  width:min(420px,55%);
+  height:1px;
+  margin:0 auto 28px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,138,0,.32),
+    transparent
+  );
+}
+
+@media (max-width:768px) {
+  footer {
+    padding:28px 18px 36px;
+    letter-spacing:.12em;
+  }
+
+  footer::before {
+    margin-bottom:22px;
+  }
+}
+
+
