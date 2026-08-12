@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let heroStarted = false;
   let heroTimers = [];
   let parallaxFrame;
+  let mobileNavGlobalsBound = false;
 
   if (yearSpan) {
     yearSpan.textContent = new Date().getFullYear();
@@ -218,6 +219,72 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         );
       });
+
+    // Ways to close the mobile menu.
+    //
+    // Before this, the only way to close the menu was to tap the
+    // hamburger again or follow a link, so tapping anywhere else on
+    // the page left it stuck open on top of the content.
+    //
+    // These three listeners live on the whole document rather than on
+    // the button, so they are only ever attached once. This function
+    // runs again each time you move between pages, and without this
+    // guard we would stack up a duplicate set of listeners every time.
+    if (mobileNavGlobalsBound) {
+      return;
+    }
+
+    mobileNavGlobalsBound = true;
+
+    // 1. Tapping anywhere outside the menu closes it.
+    document.addEventListener(
+      "click",
+      event => {
+        const openMenu =
+          document.querySelector(
+            "#mobile-nav-menu.mobile-open"
+          );
+
+        if (!openMenu) {
+          return;
+        }
+
+        // Taps on the menu itself, or on the hamburger, are not
+        // "outside", so they are ignored here.
+        if (
+          event.target.closest(
+            "#mobile-nav-menu, .mobile-nav-toggle"
+          )
+        ) {
+          return;
+        }
+
+        closeMobileNav();
+      }
+    );
+
+    // 2. The Escape key closes it, which people expect from any
+    //    pop-out panel and which keyboard users rely on.
+    document.addEventListener(
+      "keydown",
+      event => {
+        if (event.key === "Escape") {
+          closeMobileNav();
+        }
+      }
+    );
+
+    // 3. If the window is widened back to the full desktop menu while
+    //    the mobile one is open, the "open" state would otherwise stay
+    //    stuck on and interfere with the desktop bar.
+    window.addEventListener(
+      "resize",
+      () => {
+        if (window.innerWidth > 1080) {
+          closeMobileNav();
+        }
+      }
+    );
   }
 
   function restartProjectBeam() {
