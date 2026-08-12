@@ -1321,7 +1321,13 @@ MOBILE NAVIGATION
 
   .platform-button {
     position:absolute;
-    top:calc(100% + 288px);
+    /* Sits the "Enter Project" button directly against the bottom of
+       the open menu so they read as one panel. It used to be 288px,
+       but the menu is only 242px tall, so the button floated 46px
+       below it looking disconnected.
+       If you ever add or remove a link from the menu, update this
+       number to match the menu's new height. */
+    top:calc(100% + 242px);
     left:20px;
     right:20px;
     display:none;
@@ -1331,6 +1337,7 @@ MOBILE NAVIGATION
     font-size:1rem;
     background:rgba(5,5,9,.94);
     border:1px solid rgba(255,138,0,.35);
+    border-top:0;
   }
 
   .nav-links.mobile-open ~ .platform-button {
@@ -1620,3 +1627,65 @@ body.subpage #intro-video {
 }
 
 
+/* ==========================================
+HAMBURGER MENU — CLEAN BAR
+
+Once the menu collapses to a hamburger there is no room for
+extras, so the "Adam Pace" wordmark and the orange line are
+hidden and the bar carries only the button.
+
+The button is sized in "em" so the bars and the tappable area
+grow together — change the font-size and the whole button
+scales. It is 56x56px, comfortably above the 44px minimum
+that is considered a reliable finger target.
+========================================== */
+
+@media (max-width:1080px) {
+
+  .nav-brand {
+    display:none;
+  }
+
+  .nav-light-trail {
+    display:none;
+  }
+
+  .mobile-nav-toggle {
+    font-size:1.25rem;
+    width:2.8em;
+    height:2.8em;
+    gap:.35em;
+    /* the desktop layout nudges this button left; on a phone we want
+       it sitting properly at the edge of the bar */
+    transform:none;
+    margin-right:-.4em;
+  }
+
+  .mobile-nav-toggle span {
+    width:1.9em;
+    height:.2em;
+  }
+
+  /* The open menu was 94% opaque, which sounds solid but was just
+     see-through enough that big white headings underneath showed
+     through it as ghostly text. Now fully solid. */
+  .nav-links.mobile-open,
+  .nav-links.mobile-open ~ .platform-button {
+    background:#050509;
+  }
+}
+
+
+/* ==========================================
+DESKTOP BAR — SOLID BACKGROUND
+
+The top bar had no background, so as you scrolled, the page
+text slid underneath it and you could read it through the
+menu links. A solid colour keeps the menu readable.
+========================================== */
+
+@media (min-width:1081px) {
+  nav {
+    background:#050509;
+  }
+}
