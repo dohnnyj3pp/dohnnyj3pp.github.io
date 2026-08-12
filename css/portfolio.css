@@ -208,6 +208,79 @@ body.nav-ready nav {
   padding:12px 0;
 }
 
+.nav-brand::after {
+    content:"Adam Pace";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"Eagle Lake",serif;
+    font-weight:100;
+    font-size:1.4rem;
+    letter-spacing:.1em;
+    white-space:nowrap;
+    color:transparent;
+    background:linear-gradient(
+        105deg,
+        transparent 18%,
+        rgba(255,255,255,.15) 32%,
+        rgba(255,255,255,.8) 43%,
+        #fff 48%,
+        #ffb347 51%,
+        #fff 54%,
+        rgba(255,255,255,.8) 59%,
+        rgba(255,255,255,.15) 68%,
+        transparent 82%
+    );
+    background-size:300% 100%;
+    background-position:140% 0;
+    background-clip:text;
+    -webkit-background-clip:text;
+    filter:
+        drop-shadow(0 0 6px rgba(255,183,75,.9))
+        drop-shadow(0 0 16px rgba(255,152,0,.55));
+    pointer-events:none;
+    opacity:0;
+    animation:navBrandShimmer 4.5s ease-in-out 7.85s infinite;
+}
+
+@keyframes navBrandShimmer {
+    0%,68% {
+        background-position:140% 0;
+        opacity:0;
+        filter:
+            drop-shadow(0 0 4px rgba(255,183,75,0));
+    }
+
+    72% {
+        opacity:1;
+        filter:
+            drop-shadow(0 0 8px rgba(255,183,75,.95))
+            drop-shadow(0 0 20px rgba(255,152,0,.6));
+    }
+
+    88% {
+        background-position:-40% 0;
+        opacity:1;
+        filter:
+            drop-shadow(0 0 10px rgba(255,255,255,.9))
+            drop-shadow(0 0 24px rgba(255,183,75,.75));
+    }
+
+    94% {
+        background-position:-40% 0;
+        opacity:.85;
+    }
+
+    100% {
+        background-position:-40% 0;
+        opacity:0;
+        filter:
+            drop-shadow(0 0 4px rgba(255,183,75,0));
+    }
+}
+
 .mobile-nav-toggle {
   display:none;
 }
@@ -710,6 +783,31 @@ faint trace, and finishes beneath the
     0 0 18px rgba(255,152,0,.18);
 }
 
+.project-beam::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        transparent 0%,
+        rgba(255,152,0,.12) 35%,
+        rgba(255,183,75,.65) 55%,
+        #fff 70%,
+        rgba(255,183,75,.65) 82%,
+        transparent 100%
+    );
+    background-size:100% 45%;
+    background-repeat:no-repeat;
+    background-position:center -45%;
+    opacity:0;
+    pointer-events:none;
+    filter:
+        drop-shadow(0 0 5px rgba(255,183,75,.8))
+        drop-shadow(0 0 14px rgba(255,152,0,.45));
+    animation:projectBeamPulse 4.5s ease-in-out 7.85s infinite;
+}
+
+
 .project-beam-trace {
   position:absolute;
   left:0;
@@ -739,6 +837,7 @@ faint trace, and finishes beneath the
   filter:
     drop-shadow(0 0 4px rgba(255,152,0,.8))
     drop-shadow(0 0 8px rgba(255,152,0,.35));
+    animation:projectArrowPulse 3.8s ease-in-out 8.35s infinite;
 }
 
 @keyframes projectBeamRise {
@@ -762,6 +861,66 @@ faint trace, and finishes beneath the
   }
 }
 
+@keyframes projectBeamPulse {
+    0%,10% {
+        background-position:center 145%;
+        opacity:0;
+    }
+
+    15% {
+        opacity:1;
+    }
+
+    85% {
+        background-position:center -45%;
+        opacity:1;
+    }
+
+    88%,100% {
+        background-position:center -45%;
+        opacity:0;
+    }
+}
+
+
+@keyframes projectArrowPulse {
+    0%,84% {
+        transform:translateX(-50%) scale(1);
+        filter:
+            drop-shadow(0 0 4px rgba(255,152,0,.8))
+            drop-shadow(0 0 8px rgba(255,152,0,.35));
+    }
+
+    88% {
+        transform:translateX(-50%) scale(1.2);
+        filter:
+            drop-shadow(0 0 8px rgba(255,183,75,1))
+            drop-shadow(0 0 18px rgba(255,183,75,.9));
+    }
+
+    91% {
+        transform:translateX(-50%) scale(1.55);
+        filter:
+            drop-shadow(0 0 3px #fff)
+            drop-shadow(0 0 10px #fff)
+            drop-shadow(0 0 25px rgba(255,183,75,1))
+            drop-shadow(0 0 40px rgba(255,152,0,.8));
+    }
+
+    95% {
+        transform:translateX(-50%) scale(1);
+        filter:
+            drop-shadow(0 0 8px #fff)
+            drop-shadow(0 0 20px rgba(255,183,75,.8));
+    }
+
+    100% {
+        transform:translateX(-50%) scale(1);
+        filter:
+            drop-shadow(0 0 4px rgba(255,152,0,.8))
+            drop-shadow(0 0 8px rgba(255,152,0,.35));
+    }
+}
 
 /*
 ========================================
