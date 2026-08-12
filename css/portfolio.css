@@ -1517,3 +1517,71 @@ footer::before {
 }
 
 
+/* ==========================================
+KEEP THE REAL MENU ON LAPTOPS
+
+The site used to switch to the mobile hamburger menu on any
+screen under 1610px wide. That meant a normal laptop (1280,
+1366, 1440, 1536 are all very common) showed a phone menu.
+
+The only reason it did not fit was an 80px gap between each
+link. The menu's actual content is about 1090px wide, so
+shrinking that gap on smaller screens lets the real menu stay
+all the way down to 1081px. Below that, the hamburger takes
+over as normal.
+========================================== */
+
+@media (min-width:1081px) and (max-width:1610px) {
+
+  /* The projects page has its own rule that forces the hamburger to
+     show, and that rule is more specific than a plain one, so it has
+     to be named here too or the hamburger appears next to the full
+     menu at the same time. */
+  .mobile-nav-toggle,
+  body.projects-page .mobile-nav-toggle {
+    display:none;
+  }
+
+  .nav-links {
+    position:static;
+    /* the mobile rules hide this until the hamburger is tapped */
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:clamp(24px,3.2vw,80px);
+    padding:0;
+    background:transparent;
+    border:0;
+    box-shadow:none;
+  }
+
+  .nav-links li {
+    width:auto;
+  }
+
+  .nav-links a {
+    display:inline-flex;
+    width:auto;
+    padding:8px 0;
+    font-size:1.05rem;
+  }
+
+  .nav-links a:hover {
+    background:transparent;
+  }
+
+  .platform-button {
+    position:relative;
+    top:auto;
+    left:auto;
+    right:auto;
+    display:flex;
+    justify-content:center;
+    padding:0 8px;
+    font-size:1.4rem;
+    background:transparent;
+    border:0;
+  }
+}
+
+
