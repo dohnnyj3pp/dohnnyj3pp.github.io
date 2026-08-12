@@ -1585,3 +1585,38 @@ over as normal.
 }
 
 
+/* ==========================================
+INNER PAGE BACKGROUND — PICTURE INSTEAD OF VIDEO
+
+Every page loaded the same 10.4MB background video. On the
+inner pages that video was blurred and dimmed so heavily that
+you could not tell it was moving at all — so visitors were
+downloading 10.4MB, and their phone was decoding video
+non-stop, to show something that looked like a still picture.
+
+It is now an actual still picture: 14KB, and no video work at
+all. The home page still plays the real video, because there
+it is sharp and it is the first thing people see.
+========================================== */
+
+body.subpage::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background-image:url("../images/video/intro-blur.jpg");
+  background-size:cover;
+  background-position:center;
+  opacity:.78;
+  filter:brightness(.58);
+  pointer-events:none;
+}
+
+/* When you click between pages the site swaps the content without a
+   full reload, which means the home page's video tag is still
+   sitting there. This hides it once you land on an inner page. */
+body.subpage #intro-video {
+  display:none;
+}
+
+
