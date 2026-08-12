@@ -214,89 +214,6 @@ body.nav-ready nav {
 }
 
 
-.nav-brand::after {
-    content:"Adam Pace";
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:"Eagle Lake",serif;
-    font-weight:100;
-    font-size:1.4rem;
-    letter-spacing:.1em;
-    white-space:nowrap;
-    color:transparent;
-    background:linear-gradient(
-        105deg,
-        transparent 18%,
-        rgba(255,255,255,.15) 32%,
-        rgba(255,255,255,.8) 43%,
-        #fff 48%,
-        #ffb347 51%,
-        #fff 54%,
-        rgba(255,255,255,.8) 59%,
-        rgba(255,255,255,.15) 68%,
-        transparent 82%
-    );
-    background-size:300% 100%;
-    background-position:140% 0;
-    background-clip:text;
-    -webkit-background-clip:text;
-    filter:
-        drop-shadow(0 0 6px rgba(255,183,75,.9))
-        drop-shadow(0 0 16px rgba(255,152,0,.55));
-    pointer-events:none;
-    opacity:0;
-    animation:navBrandShimmer 8.5s ease-in-out 10.85s infinite;
-}
-
-@keyframes navBrandShimmer {
-    0%,68% {
-        background-position:140% 0;
-        opacity:0;
-        filter:
-            drop-shadow(0 0 4px rgba(255,183,75,0));
-    }
-
-    72% {
-        opacity:1;
-        filter:
-            drop-shadow(0 0 8px rgba(255,183,75,.95))
-            drop-shadow(0 0 20px rgba(255,152,0,.6));
-    }
-
-    88% {
-        background-position:-40% 0;
-        opacity:1;
-        filter:
-            drop-shadow(0 0 10px rgba(255,255,255,.9))
-            drop-shadow(0 0 24px rgba(255,183,75,.75));
-    }
-
-    94% {
-        background-position:-40% 0;
-        opacity:.85;
-    }
-
-    100% {
-        background-position:-40% 0;
-        opacity:0;
-        filter:
-            drop-shadow(0 0 4px rgba(255,183,75,0));
-    }
-}
-
-@media (max-width:1610px) {
-  .nav-brand {
-    text-shadow:
-      0 0 2px rgba(255,255,255,.8),
-      0 0 5px rgba(255,255,255,.35),
-      0 0 10px rgba(255,152,0,.22),
-      0 0 16px rgba(255,152,0,.1);
-  }
-}
-
 .mobile-nav-toggle {
   display:none;
 }
@@ -1417,9 +1334,6 @@ MOBILE NAVIGATION
     transform:none !important;
   }
 
-  .nav-light-trail {
-    display:none;
-  }
 
   .nav-orbit-ring {
     display:none;
