@@ -826,18 +826,18 @@ faint trace, and finishes beneath the
 
 .project-beam-arrow {
   position:absolute;
-  top:-9px;
+  top:-11px;
   left:50%;
   width:0;
   height:0;
-  border-left:5px solid transparent;
-  border-right:5px solid transparent;
-  border-bottom:8px solid #ff9800;
+  border-left:8px solid transparent;
+  border-right:8px solid transparent;
+  border-bottom:14px solid #ff9800;
   transform:translateX(-50%);
   filter:
     drop-shadow(0 0 4px rgba(255,152,0,.8))
     drop-shadow(0 0 8px rgba(255,152,0,.35));
-    animation:projectArrowPulse 3.8s ease-in-out 8.35s infinite;
+    animation:projectArrowPulse 4.5s ease-in-out 8.35s infinite;
 }
 
 @keyframes projectBeamRise {
