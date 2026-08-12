@@ -206,7 +206,13 @@ body.nav-ready nav {
   color:#fff;
   text-decoration:none;
   padding:12px 0;
+  text-shadow:
+    0 0 3px rgba(255,255,255,.85),
+    0 0 8px rgba(255,255,255,.45),
+    0 0 18px rgba(255,152,0,.35),
+    0 0 32px rgba(255,152,0,.16);
 }
+
 
 .nav-brand::after {
     content:"Adam Pace";
@@ -242,7 +248,7 @@ body.nav-ready nav {
         drop-shadow(0 0 16px rgba(255,152,0,.55));
     pointer-events:none;
     opacity:0;
-    animation:navBrandShimmer 4.5s ease-in-out 7.85s infinite;
+    animation:navBrandShimmer 8.5s ease-in-out 10.85s infinite;
 }
 
 @keyframes navBrandShimmer {
