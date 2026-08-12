@@ -1397,11 +1397,49 @@ modules: {
 
         ]
 
-    }
+    },
+    
+    "Version 1.5": {
+
+    title:
+        "RESPONSIVE MOBILE NAVIGATION",
+
+    sections: [
+
+        {
+            heading:
+                "Implemented responsive mobile navigation.",
+
+            details: [
+
+                {
+                    text:
+                        "Developed the mobile navigation system.",
+
+                    description:
+                        "Implemented a dedicated responsive navigation experience that adapts the portfolio's navigation structure for smaller screens while preserving the existing desktop navigation behavior."
+                },
+
+                {
+                    text:
+                        "Integrated mobile navigation with the existing interface systems.",
+
+                    description:
+                        "Connected the mobile menu, navigation states, project platform controls, and responsive layout behavior so navigation remains consistent across desktop and mobile experiences."
+                }
+
+            ]
+
+        }
+
+    ]
+
+}
 
 }
 
 },
+
 
 
     summary: {
