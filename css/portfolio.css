@@ -287,6 +287,16 @@ body.nav-ready nav {
     }
 }
 
+@media (max-width:1610px) {
+  .nav-brand {
+    text-shadow:
+      0 0 2px rgba(255,255,255,.8),
+      0 0 5px rgba(255,255,255,.35),
+      0 0 10px rgba(255,152,0,.22),
+      0 0 16px rgba(255,152,0,.1);
+  }
+}
+
 .mobile-nav-toggle {
   display:none;
 }
