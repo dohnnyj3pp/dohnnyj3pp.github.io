@@ -1380,3 +1380,90 @@ MOBILE PROJECT NAVIGATION
     min-height: 0;
   }
 }
+
+
+/* ==========================================
+HOME PAGE — STACKING ON SMALL SCREENS
+
+On a wide monitor the three big words sit on the left and the
+three capability lists sit on the right. There is not enough
+room for that side-by-side layout on a laptop or phone, so the
+lists drop underneath the words instead of overlapping them.
+========================================== */
+
+/* Pulls the capability column back inside the screen edge.
+   It normally sits 80px further right than the text, which looks
+   good on a wide monitor but hangs off the side of a laptop screen
+   and gets its text chopped off. Below the stacking size it moves
+   under the titles anyway, so this stops mattering. */
+@media (max-width:1212px) {
+  .hero-capabilities {
+    right:0;
+  }
+}
+
+
+/* The hero used to be told "be exactly one screen tall", but it sits
+   inside a container that already adds 200px of padding, so the page
+   ended up one screen PLUS 200px. On a short laptop window that
+   pushed "CREATOR" and the third capability off the bottom with no
+   way to scroll down to them. */
+@media (min-width:1051px) {
+  body.hero-page .hero-section {
+    height:auto;
+    min-height:calc(100vh - 200px);
+  }
+}
+
+
+@media (max-width:1050px) {
+
+  .main-wrapper {
+    padding:104px 20px 64px;
+  }
+
+  .hero-section {
+    height:auto;
+  }
+
+  .hero-title-stack {
+    top:0;
+  }
+
+  .hero-role {
+    font-size:clamp(3rem,16vw,7rem);
+  }
+
+  .hero-capabilities {
+    position:static;
+    width:100%;
+    margin-top:44px;
+    gap:28px;
+  }
+
+  /* This is the thin orange line that decorates the right-hand edge
+     on a big screen. On small screens the thing it is positioned
+     against shrinks, so the line ends up drawn straight through the
+     middle of the text. It is only decoration, so it is hidden. */
+  .project-beam {
+    display:none;
+  }
+}
+
+
+@media (max-width:560px) {
+
+  .main-wrapper {
+    padding:96px 18px 56px;
+  }
+
+  .hero-capabilities {
+    margin-top:34px;
+    gap:22px;
+  }
+
+  .hero-capability li {
+    font-size:1rem;
+  }
+}
+
