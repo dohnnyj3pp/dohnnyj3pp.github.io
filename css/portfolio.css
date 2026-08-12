@@ -1162,8 +1162,8 @@ MOBILE NAVIGATION
     align-items:center;
     justify-content:center;
     gap:5px;
-    width:42px;
-    height:42px;
+    width:52px;
+    height:52px;
     padding:0;
     margin-left:auto;
     transform:translateX(-86px);
@@ -1176,8 +1176,8 @@ MOBILE NAVIGATION
 
   .mobile-nav-toggle span {
     display:block;
-    width:24px;
-    height:2px;
+    width:30px;
+    height:3px;
     background:#ff8a00;
     box-shadow:0 0 8px rgba(255,138,0,.6);
     transition:transform .3s ease,opacity .3s ease;
