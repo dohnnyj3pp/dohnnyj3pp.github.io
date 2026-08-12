@@ -3,7 +3,7 @@ RESUME PAGE
 ========================================== */
 
 .resume-page {
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
 .resume-page .main-wrapper {
@@ -14,21 +14,19 @@ RESUME PAGE
     overflow:hidden;
 }
 
-
 /* ==========================================
 RESUME SECTION
 ========================================== */
 
 .resume-section {
     width:min(1050px,100%);
-    height:100%;
+    height:calc(100vh - 215px);
     min-height:0;
     margin:0 auto;
 
     display:flex;
     flex-direction:column;
 }
-
 
 /* ==========================================
 RESUME HEADER
@@ -72,7 +70,6 @@ RESUME HEADER
 
     color:rgba(250,248,246,.65);
 }
-
 
 /* ==========================================
 RESUME CONTROLS
@@ -129,14 +126,13 @@ RESUME CONTROLS
         0 0 35px rgba(255,132,0,.08);
 }
 
-
 /* ==========================================
 RESUME DOCUMENT
 ========================================== */
 
 .resume-document {
     width:100%;
-    flex:1;
+    flex:1 1 0;
     min-height:0;
 
     padding:45px 50px 55px;
@@ -198,7 +194,6 @@ RESUME BLOCKS
     border-bottom:none;
 }
 
-
 /* ==========================================
 BLOCK HEADINGS
 ========================================== */
@@ -219,12 +214,6 @@ BLOCK HEADINGS
     color:rgba(255,183,75,.82);
 }
 
-
-/*
-Prevents the decorative line from
-visually running through the heading.
-*/
-
 .resume-block-heading::after {
     content:"";
 
@@ -241,7 +230,6 @@ visually running through the heading.
             rgba(255,183,75,.03)
         );
 }
-
 
 /* ==========================================
 PROFILE
@@ -264,7 +252,6 @@ PROFILE
 .resume-block-content p:last-child {
     margin-bottom:0;
 }
-
 
 /* ==========================================
 SKILL GRID
@@ -301,7 +288,6 @@ SKILL GRID
 
     color:rgba(250,248,246,.7);
 }
-
 
 /* ==========================================
 RESUME ENTRIES
@@ -353,7 +339,6 @@ RESUME ENTRIES
     color:rgba(250,248,246,.66);
 }
 
-
 /* ==========================================
 LISTS
 ========================================== */
@@ -395,7 +380,6 @@ LISTS
     box-shadow:
         0 0 8px rgba(255,183,75,.35);
 }
-
 
 /* ==========================================
 PROFESSIONAL TIMELINE
@@ -448,12 +432,19 @@ PROFESSIONAL TIMELINE
         0 0 10px rgba(255,183,75,.55);
 }
 
+/* ==========================================
+MOBILE
+========================================== */
 
 @media (max-width:700px) {
 
     .resume-page .main-wrapper {
         height:100vh;
         padding:125px 18px 55px;
+    }
+
+    .resume-section {
+        height:calc(100vh - 180px);
     }
 
     .resume-document {
@@ -477,5 +468,4 @@ PROFESSIONAL TIMELINE
         padding-bottom:30px;
         margin-bottom:30px;
     }
-
 }
