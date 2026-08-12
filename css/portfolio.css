@@ -1311,6 +1311,11 @@ MOBILE NAVIGATION
   .nav-links a:hover {
     background:rgba(255,138,0,.08);
   }
+  
+  .nav-light-trail {
+    position:absolute;
+    bottom:24px;
+  }
 
   .platform-button {
     position:absolute;
