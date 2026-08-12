@@ -15,8 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let mouseX = innerWidth / 2;
   let mouseY = innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
 
   let hasMoved = false;
   let isSnapped = false;
@@ -24,8 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentTarget = null;
   let currentBracketTarget = null;
 
-  let desktopCursorActive =
-    window.innerWidth > CURSOR_BREAKPOINT;
+  let desktopCursorActive = window.innerWidth > CURSOR_BREAKPOINT;
 
   function isDesktopMode() {
     return window.innerWidth > CURSOR_BREAKPOINT;
@@ -47,11 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ring.style.width = "16px";
     ring.style.height = "16px";
 
-    document
-      .querySelectorAll(".snap-active")
-      .forEach(element => {
-        element.classList.remove("snap-active");
-      });
+    document.querySelectorAll(".snap-active").forEach(element => {
+      element.classList.remove("snap-active");
+    });
 
     if (brackets) {
       brackets.style.opacity = "0";
@@ -61,9 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function enableDesktopCursor() {
     desktopCursorActive = true;
 
-    body.classList.add(
-      "custom-cursor-enabled"
-    );
+    body.classList.add("custom-cursor-enabled");
 
     dot.style.opacity = "";
     ring.style.opacity = "1";
@@ -71,9 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mouseX = innerWidth / 2;
     mouseY = innerHeight / 2;
-
-    ringX = mouseX;
-    ringY = mouseY;
 
     hasMoved = false;
 
@@ -91,9 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     resetCursorState();
 
-    body.classList.remove(
-      "custom-cursor-enabled"
-    );
+    body.classList.remove("custom-cursor-enabled");
 
     dot.style.opacity = "0";
     ring.style.opacity = "0";
@@ -101,13 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function syncCursorMode() {
-    const shouldBeActive =
-      isDesktopMode();
+    const shouldBeActive = isDesktopMode();
 
-    if (
-      shouldBeActive ===
-      desktopCursorActive
-    ) {
+    if (shouldBeActive === desktopCursorActive) {
       return;
     }
 
@@ -123,21 +107,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const rect =
-      target.getBoundingClientRect();
+    const rect = target.getBoundingClientRect();
 
-    brackets.style.width =
-      `${rect.width}px`;
-
-    brackets.style.height =
-      `${rect.height}px`;
-
-    brackets.style.left =
-      `${rect.left}px`;
-
-    brackets.style.top =
-      `${rect.top}px`;
-
+    brackets.style.width = `${rect.width}px`;
+    brackets.style.height = `${rect.height}px`;
+    brackets.style.left = `${rect.left}px`;
+    brackets.style.top = `${rect.top}px`;
     brackets.style.opacity = "1";
   }
 
@@ -147,20 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
         `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
 
       if (!isSnapped) {
-        ringX +=
-          (mouseX - ringX) * 0.15;
-
-        ringY +=
-          (mouseY - ringY) * 0.15;
-
         ring.style.transform =
-          `translate(${ringX}px,${ringY}px) translate(-50%,-50%)`;
+          `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
       }
     }
 
-    requestAnimationFrame(
-      renderCursor
-    );
+    requestAnimationFrame(renderCursor);
   }
 
   if (desktopCursorActive) {
@@ -169,328 +136,211 @@ document.addEventListener("DOMContentLoaded", () => {
     disableDesktopCursor();
   }
 
-  requestAnimationFrame(
-    renderCursor
-  );
+  requestAnimationFrame(renderCursor);
 
-  document.addEventListener(
-    "pointermove",
-    event => {
-      if (!desktopCursorActive) {
-        return;
-      }
-
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-
-      if (!hasMoved) {
-        hasMoved = true;
-
-        body.classList.add(
-          "cursor-visible"
-        );
-      }
-
-      if (
-        isSnapped &&
-        currentTarget
-      ) {
-        const rect =
-          currentTarget.getBoundingClientRect();
-
-        ring.style.transform =
-          `translate(${rect.left + rect.width / 2}px,${rect.top + rect.height / 2}px) translate(-50%,-50%)`;
-      }
-
-      if (currentBracketTarget) {
-        moveBrackets(
-          currentBracketTarget
-        );
-      }
+  document.addEventListener("pointermove", event => {
+    if (!desktopCursorActive) {
+      return;
     }
-  );
 
-  document.addEventListener(
-    "pointerover",
-    event => {
-      if (!desktopCursorActive) {
-        return;
-      }
+    mouseX = event.clientX;
+    mouseY = event.clientY;
 
-      const inspectTarget =
-        event.target.closest(
-          ".example-card"
-        );
+    if (!hasMoved) {
+      hasMoved = true;
 
-      if (
-        inspectTarget &&
-        brackets
-      ) {
-        currentBracketTarget =
-          inspectTarget;
+      body.classList.add("cursor-visible");
+    }
 
-        body.classList.add(
-          "inspect-active"
-        );
-
-        moveBrackets(
-          inspectTarget
-        );
-
-        return;
-      }
-
-      const target =
-        event.target.closest(
-          "a,button,input,textarea,select,[role='button'],.btn-primary,.btn-secondary"
-        );
-
-      if (!target) {
-        return;
-      }
-
-      body.classList.add(
-        "cursor-hover"
-      );
-
-      isSnapped = true;
-      currentTarget = target;
-
-      target.classList.add(
-        "snap-active"
-      );
-
-      const rect =
-        target.getBoundingClientRect();
-
-      ring.style.width =
-        `${rect.width + 4}px`;
-
-      ring.style.height =
-        `${rect.height + 4}px`;
+    if (isSnapped && currentTarget) {
+      const rect = currentTarget.getBoundingClientRect();
 
       ring.style.transform =
         `translate(${rect.left + rect.width / 2}px,${rect.top + rect.height / 2}px) translate(-50%,-50%)`;
-
-      ring.classList.add(
-        "snap"
-      );
     }
-  );
 
-  document.addEventListener(
-    "pointerout",
-    event => {
-      if (!desktopCursorActive) {
-        return;
-      }
-
-      const inspectLeaving =
-        event.target.closest(
-          ".example-card"
-        );
-
-      if (inspectLeaving) {
-        currentBracketTarget =
-          null;
-
-        body.classList.remove(
-          "inspect-active"
-        );
-
-        if (brackets) {
-          brackets.style.opacity =
-            "0";
-        }
-      }
-
-      const leaving =
-        event.target.closest(
-          "a,button,input,textarea,select,[role='button'],.btn-primary,.btn-secondary"
-        );
-
-      if (!leaving) {
-        return;
-      }
-
-      body.classList.remove(
-        "cursor-hover"
-      );
-
-      ring.classList.remove(
-        "snap"
-      );
-
-      ring.style.width =
-        "16px";
-
-      ring.style.height =
-        "16px";
-
-      isSnapped = false;
-      currentTarget = null;
-
-      leaving.classList.remove(
-        "snap-active"
-      );
+    if (currentBracketTarget) {
+      moveBrackets(currentBracketTarget);
     }
-  );
+  });
 
-  document.addEventListener(
-    "click",
-    event => {
-      if (!desktopCursorActive) {
-        return;
-      }
-
-      if (
-        event.target.closest(
-          ".example-card"
-        )
-      ) {
-        currentBracketTarget =
-          null;
-
-        body.classList.remove(
-          "inspect-active"
-        );
-
-        if (brackets) {
-          brackets.style.opacity =
-            "0";
-        }
-
-        return;
-      }
-
-      const transitionButton =
-        event.target.closest(
-          ".project-initialize,.project-return"
-        );
-
-      if (!transitionButton) {
-        return;
-      }
-
-      setTimeout(() => {
-        resetCursorState();
-
-        ringX = mouseX;
-        ringY = mouseY;
-
-        ring.style.transform =
-          `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
-      }, 50);
+  document.addEventListener("pointerover", event => {
+    if (!desktopCursorActive) {
+      return;
     }
-  );
+
+    const inspectTarget = event.target.closest(".example-card");
+
+    if (inspectTarget && brackets) {
+      currentBracketTarget = inspectTarget;
+
+      body.classList.add("inspect-active");
+
+      moveBrackets(inspectTarget);
+
+      return;
+    }
+
+    const target = event.target.closest(
+      "a,button,input,textarea,select,[role='button'],.btn-primary,.btn-secondary"
+    );
+
+    if (!target) {
+      return;
+    }
+
+    body.classList.add("cursor-hover");
+
+    isSnapped = true;
+    currentTarget = target;
+
+    target.classList.add("snap-active");
+
+    const rect = target.getBoundingClientRect();
+
+    ring.style.width = `${rect.width + 4}px`;
+    ring.style.height = `${rect.height + 4}px`;
+
+    ring.style.transform =
+      `translate(${rect.left + rect.width / 2}px,${rect.top + rect.height / 2}px) translate(-50%,-50%)`;
+
+    ring.classList.add("snap");
+  });
+
+  document.addEventListener("pointerout", event => {
+    if (!desktopCursorActive) {
+      return;
+    }
+
+    const inspectLeaving = event.target.closest(".example-card");
+
+    if (inspectLeaving) {
+      currentBracketTarget = null;
+
+      body.classList.remove("inspect-active");
+
+      if (brackets) {
+        brackets.style.opacity = "0";
+      }
+    }
+
+    const leaving = event.target.closest(
+      "a,button,input,textarea,select,[role='button'],.btn-primary,.btn-secondary"
+    );
+
+    if (!leaving) {
+      return;
+    }
+
+    body.classList.remove("cursor-hover");
+
+    ring.classList.remove("snap");
+
+    ring.style.width = "16px";
+    ring.style.height = "16px";
+
+    isSnapped = false;
+    currentTarget = null;
+
+    leaving.classList.remove("snap-active");
+  });
+
+  document.addEventListener("click", event => {
+    if (!desktopCursorActive) {
+      return;
+    }
+
+    if (event.target.closest(".example-card")) {
+      currentBracketTarget = null;
+
+      body.classList.remove("inspect-active");
+
+      if (brackets) {
+        brackets.style.opacity = "0";
+      }
+
+      return;
+    }
+
+    const transitionButton = event.target.closest(
+      ".project-initialize,.project-return"
+    );
+
+    if (!transitionButton) {
+      return;
+    }
+
+    setTimeout(() => {
+      resetCursorState();
+
+      ring.style.transform =
+        `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
+    }, 50);
+  });
 
   ring.style.transition =
     "opacity .25s ease-out,width .25s ease-out,height .25s ease-out";
 
-  document
-    .querySelectorAll(
-      ".nav-links a"
-    )
-    .forEach(link => {
-      link.addEventListener(
-        "click",
-        event => {
-          if (!desktopCursorActive) {
-            return;
-          }
-
-          const currentURL =
-            window.location.href.split(
-              "#"
-            )[0];
-
-          const targetURL =
-            link.href.split(
-              "#"
-            )[0];
-
-          if (
-            currentURL !== targetURL
-          ) {
-            return;
-          }
-
-          event.preventDefault();
-
-          ring.style.opacity =
-            "0";
-
-          setTimeout(() => {
-            resetCursorState();
-
-            ringX = mouseX;
-            ringY = mouseY;
-
-            ring.style.width =
-              "16px";
-
-            ring.style.height =
-              "16px";
-
-            ring.style.transform =
-              `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
-
-            ring.style.opacity =
-              "1";
-          }, 250);
-        }
-      );
-    });
-
-  document.addEventListener(
-    "mousedown",
-    () => {
-      if (desktopCursorActive) {
-        ringInner.style.opacity =
-          ".6";
-      }
-    }
-  );
-
-  document.addEventListener(
-    "mouseup",
-    () => {
-      ringInner.style.opacity =
-        "";
-    }
-  );
-
-  window.addEventListener(
-    "scroll",
-    () => {
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", event => {
       if (!desktopCursorActive) {
         return;
       }
 
-      resetCursorState();
+      const currentURL =
+        window.location.href.split("#")[0];
+
+      const targetURL =
+        link.href.split("#")[0];
+
+      if (currentURL !== targetURL) {
+        return;
+      }
+
+      event.preventDefault();
+
+      ring.style.opacity = "0";
+
+      setTimeout(() => {
+        resetCursorState();
+
+        ring.style.width = "16px";
+        ring.style.height = "16px";
+
+        ring.style.transform =
+          `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
+
+        ring.style.opacity = "1";
+      }, 250);
+    });
+  });
+
+  document.addEventListener("mousedown", () => {
+    if (desktopCursorActive) {
+      ringInner.style.opacity = ".6";
     }
-  );
+  });
 
-  window.addEventListener(
-    "resize",
-    () => {
-      syncCursorMode();
+  document.addEventListener("mouseup", () => {
+    ringInner.style.opacity = "";
+  });
+
+  window.addEventListener("scroll", () => {
+    if (!desktopCursorActive) {
+      return;
     }
-  );
 
-  window.addEventListener(
-    "beforeunload",
-    () => {
-      ring.classList.remove(
-        "snap"
-      );
+    resetCursorState();
+  });
 
-      ring.style.width =
-        "16px";
+  window.addEventListener("resize", () => {
+    syncCursorMode();
+  });
 
-      ring.style.height =
-        "16px";
-    }
-  );
+  window.addEventListener("beforeunload", () => {
+    ring.classList.remove("snap");
+
+    ring.style.width = "16px";
+    ring.style.height = "16px";
+  });
 });
-
