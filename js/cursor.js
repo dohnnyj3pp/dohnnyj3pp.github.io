@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     currentBracketTarget = null;
 
     body.classList.remove(
-      "cursor-visible",
       "cursor-hover",
       "inspect-active"
     );

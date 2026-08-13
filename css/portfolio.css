@@ -977,10 +977,11 @@ body.cursor-visible .cursor-ring {
   height:4px;
   background:#faf9f9;
   border-radius:50%;
+  z-index:10001;
 }
 
 .cursor-dot.cursor-lock-dot {
-  opacity:0;
+  opacity:1;
 }
 
 .cursor-ring {
