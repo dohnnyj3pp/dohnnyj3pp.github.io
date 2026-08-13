@@ -909,13 +909,7 @@ The code snippet keeps its sideways scrollbar, which is normal
 and expected for long lines of code.
 ========================================== */
 
-.documentation-system,
-.documentation-viewer,
-.documentation-content {
-  height: auto;
-  max-height: none;
-  overflow-y: visible;
-}
+
 
 @media (max-width: 1610px) {
   body.projects-page .documentation-system {
