@@ -1,7 +1,7 @@
 /* ===== PROJECT PLATFORM ===== */
 
 .projects-page {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .project-platform {
@@ -358,3 +358,96 @@ DISABLED INITIALIZE STATE
   box-shadow: none;
 }
 
+
+
+/* ==========================================
+PROJECT CAROUSEL — SMALL SCREENS
+
+The carousel stage is a fixed 700x420 box, and the cards inside
+it are positioned by JavaScript in 3D. Changing its width would
+break that maths, so instead the whole stage is scaled down as
+one piece, which JavaScript does not notice.
+
+Scaling visually shrinks it but the browser still reserves the
+original 700x420 of space, so the negative margins pull that
+leftover empty space back in.
+========================================== */
+
+@media (max-width:736px) {
+  .project-carousel {
+    transform: scale(.7);
+    margin: -63px -105px;
+  }
+}
+
+@media (max-width:525px) {
+  .project-carousel {
+    transform: scale(.52);
+    margin: -101px -168px;
+  }
+}
+
+@media (max-width:400px) {
+  .project-carousel {
+    transform: scale(.44);
+    margin: -118px -196px;
+  }
+}
+
+
+/* ==========================================
+PROJECT STAGE HEIGHT
+
+The stage was set to "one screen minus 90px", but it lives
+inside a container that already adds 200px of padding of its
+own. So the page always ended up about 110px taller than the
+screen, and because the page could not scroll, that strip at
+the bottom (including the footer) was unreachable.
+
+"min-height" means it still fills the first screen nicely, but
+is now allowed to grow taller when there is more content.
+========================================== */
+
+.project-platform {
+  height: auto;
+  min-height: calc(100vh - 200px);
+}
+
+@media (max-width:1050px) {
+  .project-platform {
+    /* .main-wrapper drops to 104px + 64px at this width */
+    min-height: calc(100vh - 168px);
+  }
+}
+
+
+/* ==========================================
+START BUTTONS — PHONES
+
+LAST + INITIALIZE + NEXT with 30px gaps between them added up
+to about 374px, inside a stage only 339px wide. The row spilled
+out past both edges and the "NEXT" button was cut in half.
+Smaller gaps and padding bring the row back inside.
+========================================== */
+
+@media (max-width:480px) {
+
+  .carousel-controls {
+    margin-top: 22px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .carousel-controls button,
+  .project-initialize {
+    padding: 10px 14px;
+    font-size: .9rem;
+    letter-spacing: .08em;
+  }
+
+  .project-initialize {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+}

@@ -893,3 +893,129 @@ MOBILE PROJECT HUD
     transform: translate(-50%, -50%) scale(.92);
   }
 }
+
+/* ==========================================
+DOCUMENTATION — ONE SCROLLBAR, NOT THREE
+
+The docs panel scrolled inside itself, and the text inside it
+scrolled inside that. So you could end up with a scrollbar
+inside a scrollbar inside the page — confusing, and easy to
+lose your place in.
+
+Both now simply grow as tall as their content and the page
+does the scrolling.
+
+The code snippet keeps its sideways scrollbar, which is normal
+and expected for long lines of code.
+========================================== */
+
+.documentation-system,
+.documentation-viewer,
+.documentation-content {
+  height: auto;
+  max-height: none;
+  overflow-y: visible;
+}
+
+@media (max-width: 1610px) {
+  body.projects-page .documentation-system {
+    height: auto;
+  }
+}
+
+
+/* ==========================================
+PROJECT DOCS — PHONE AND SMALL TABLET LAYOUT
+
+The docs panel is made of boxes inside boxes, each adding its
+own padding. On a 390px phone that stacking ate the width like
+this:
+
+  390 screen -> 354 stage -> 274 panel -> 225 inner panel
+              -> 153px of actual text
+
+153px is only three or four words per line, and because the
+panel was a fixed size, the writing spilled out through its own
+border and collided with the footer.
+
+On small screens the panel now sits in the normal page flow at
+full width and grows as tall as it needs to be. The start
+screen behind it is taken out of the layout once you are in the
+docs, because it was invisible but still holding roughly 240px
+of empty space above them.
+========================================== */
+
+@media (max-width: 900px) {
+
+  .project-platform.online {
+    display: block;
+    height: auto;
+    min-height: 0;
+    padding-top: 8px;
+  }
+
+  /* It was only faded out, not removed, so it still took up space */
+  .project-platform.online .project-launcher {
+    position: absolute;
+    inset: 0;
+  }
+
+  .project-platform.online .project-workspace {
+    position: relative;
+    inset: auto;
+    width: 100%;
+  }
+
+  .project-platform.online .documentation-system {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    padding: 14px 12px 20px;
+  }
+
+  .documentation-viewer {
+    padding: 20px 14px 22px;
+  }
+
+  .documentation-content {
+    max-width: none;
+    padding-right: 0;
+  }
+
+  /* Equal-width columns. The tabs used to be a centred row of
+     different widths (146 / 145 / 126 / 110), which is why they
+     looked ragged and randomly indented once they wrapped. */
+  .category-navigation,
+  .module-navigation {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    justify-content: stretch;
+  }
+
+  .category-navigation {
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+
+  .module-navigation {
+    margin-bottom: 20px;
+  }
+
+  /* If there is an odd number of tabs, the last one stretches across
+     the full row instead of sitting on its own looking lopsided. */
+  .category-navigation > *:last-child:nth-child(odd),
+  .module-navigation > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .project-category,
+  .technology-item {
+    width: 100%;
+    margin-top: 0;
+    padding: 11px 6px;
+    font-size: 1rem;
+    text-align: center;
+  }
+}

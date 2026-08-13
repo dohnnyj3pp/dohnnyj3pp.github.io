@@ -12,12 +12,22 @@ GLOBAL FOUNDATION
 
 html,
 body {
-  height:100%;
-  scroll-behavior:smooth;
+  min-height:100%;
   font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   color:#f5f5f5;
   background:#050509;
-  overflow:hidden;
+  /* The page now scrolls normally, like any other website.
+
+     This used to say "overflow:hidden", which locked every page to
+     exactly one screen tall. Anything taller than the screen was
+     simply unreachable, so each page had to build its own little
+     scrolling box inside itself to cope. That is what caused the
+     cut-off text and the scrollbars-inside-scrollbars.
+
+     "scroll-behavior:smooth" also used to be here. It animated every
+     single notch of the mouse wheel, which is what made scrolling
+     feel slow and floaty. Removed so the wheel responds instantly. */
+  overflow-x:hidden;
 }
 
 @media(pointer:fine) {
@@ -1311,7 +1321,13 @@ MOBILE NAVIGATION
 
   .platform-button {
     position:absolute;
-    top:calc(100% + 288px);
+    /* Sits the "Enter Project" button directly against the bottom of
+       the open menu so they read as one panel. It used to be 288px,
+       but the menu is only 242px tall, so the button floated 46px
+       below it looking disconnected.
+       If you ever add or remove a link from the menu, update this
+       number to match the menu's new height. */
+    top:calc(100% + 242px);
     left:20px;
     right:20px;
     display:none;
@@ -1321,6 +1337,7 @@ MOBILE NAVIGATION
     font-size:1rem;
     background:rgba(5,5,9,.94);
     border:1px solid rgba(255,138,0,.35);
+    border-top:0;
   }
 
   .nav-links.mobile-open ~ .platform-button {
@@ -1368,5 +1385,307 @@ MOBILE PROJECT NAVIGATION
   body.projects-page .documentation-system {
     height: 55vh;
     min-height: 0;
+  }
+}
+
+
+/* ==========================================
+HOME PAGE — STACKING ON SMALL SCREENS
+
+On a wide monitor the three big words sit on the left and the
+three capability lists sit on the right. There is not enough
+room for that side-by-side layout on a laptop or phone, so the
+lists drop underneath the words instead of overlapping them.
+========================================== */
+
+/* Pulls the capability column back inside the screen edge.
+   It normally sits 80px further right than the text, which looks
+   good on a wide monitor but hangs off the side of a laptop screen
+   and gets its text chopped off. Below the stacking size it moves
+   under the titles anyway, so this stops mattering. */
+@media (max-width:1212px) {
+  .hero-capabilities {
+    right:0;
+  }
+}
+
+
+/* The hero used to be told "be exactly one screen tall", but it sits
+   inside a container that already adds 200px of padding, so the page
+   ended up one screen PLUS 200px. On a short laptop window that
+   pushed "CREATOR" and the third capability off the bottom with no
+   way to scroll down to them. */
+@media (min-width:1051px) {
+  body.hero-page .hero-section {
+    height:auto;
+    min-height:calc(100vh - 200px);
+  }
+}
+
+
+@media (max-width:1050px) {
+
+  .main-wrapper {
+    padding:104px 20px 64px;
+  }
+
+  .hero-section {
+    height:auto;
+  }
+
+  .hero-title-stack {
+    top:0;
+  }
+
+  .hero-role {
+    font-size:clamp(3rem,16vw,7rem);
+  }
+
+  .hero-capabilities {
+    position:static;
+    width:100%;
+    margin-top:44px;
+    gap:28px;
+  }
+
+  /* This is the thin orange line that decorates the right-hand edge
+     on a big screen. On small screens the thing it is positioned
+     against shrinks, so the line ends up drawn straight through the
+     middle of the text. It is only decoration, so it is hidden. */
+  .project-beam {
+    display:none;
+  }
+}
+
+
+@media (max-width:560px) {
+
+  .main-wrapper {
+    padding:96px 18px 56px;
+  }
+
+  .hero-capabilities {
+    margin-top:34px;
+    gap:22px;
+  }
+
+  .hero-capability li {
+    font-size:1rem;
+  }
+}
+
+/* ==========================================
+FOOTER
+
+The footer had no styling at all, so it showed up as plain
+default browser text at the very bottom of the page. It now
+matches the rest of the site: small, muted, spaced out, with
+the same orange accent line used elsewhere.
+
+It appears on the contact, projects and resume pages.
+========================================== */
+
+footer {
+  position:relative;
+  z-index:10;
+  padding:36px 24px 44px;
+  text-align:center;
+  font-family:"Space Grotesk",sans-serif;
+  font-size:.75rem;
+  font-weight:400;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:rgba(250,248,246,.36);
+}
+
+footer::before {
+  content:"";
+  display:block;
+  width:min(420px,55%);
+  height:1px;
+  margin:0 auto 28px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,138,0,.32),
+    transparent
+  );
+}
+
+@media (max-width:768px) {
+  footer {
+    padding:28px 18px 36px;
+    letter-spacing:.12em;
+  }
+
+  footer::before {
+    margin-bottom:22px;
+  }
+}
+
+
+/* ==========================================
+KEEP THE REAL MENU ON LAPTOPS
+
+The site used to switch to the mobile hamburger menu on any
+screen under 1610px wide. That meant a normal laptop (1280,
+1366, 1440, 1536 are all very common) showed a phone menu.
+
+The only reason it did not fit was an 80px gap between each
+link. The menu's actual content is about 1090px wide, so
+shrinking that gap on smaller screens lets the real menu stay
+all the way down to 1081px. Below that, the hamburger takes
+over as normal.
+========================================== */
+
+@media (min-width:1081px) and (max-width:1610px) {
+
+  /* The projects page has its own rule that forces the hamburger to
+     show, and that rule is more specific than a plain one, so it has
+     to be named here too or the hamburger appears next to the full
+     menu at the same time. */
+  .mobile-nav-toggle,
+  body.projects-page .mobile-nav-toggle {
+    display:none;
+  }
+
+  .nav-links {
+    position:static;
+    /* the mobile rules hide this until the hamburger is tapped */
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:clamp(24px,3.2vw,80px);
+    padding:0;
+    background:transparent;
+    border:0;
+    box-shadow:none;
+  }
+
+  .nav-links li {
+    width:auto;
+  }
+
+  .nav-links a {
+    display:inline-flex;
+    width:auto;
+    padding:8px 0;
+    font-size:1.05rem;
+  }
+
+  .nav-links a:hover {
+    background:transparent;
+  }
+
+  .platform-button {
+    position:relative;
+    top:auto;
+    left:auto;
+    right:auto;
+    display:flex;
+    justify-content:center;
+    padding:0 8px;
+    font-size:1.4rem;
+    background:transparent;
+    border:0;
+  }
+}
+
+
+/* ==========================================
+INNER PAGE BACKGROUND — PICTURE INSTEAD OF VIDEO
+
+Every page loaded the same 10.4MB background video. On the
+inner pages that video was blurred and dimmed so heavily that
+you could not tell it was moving at all — so visitors were
+downloading 10.4MB, and their phone was decoding video
+non-stop, to show something that looked like a still picture.
+
+It is now an actual still picture: 14KB, and no video work at
+all. The home page still plays the real video, because there
+it is sharp and it is the first thing people see.
+========================================== */
+
+body.subpage::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  background-image:url("../images/video/intro-blur.jpg");
+  background-size:cover;
+  background-position:center;
+  opacity:.78;
+  filter:brightness(.58);
+  pointer-events:none;
+}
+
+/* When you click between pages the site swaps the content without a
+   full reload, which means the home page's video tag is still
+   sitting there. This hides it once you land on an inner page. */
+body.subpage #intro-video {
+  display:none;
+}
+
+
+/* ==========================================
+HAMBURGER MENU — CLEAN BAR
+
+Once the menu collapses to a hamburger there is no room for
+extras, so the "Adam Pace" wordmark and the orange line are
+hidden and the bar carries only the button.
+
+The button is sized in "em" so the bars and the tappable area
+grow together — change the font-size and the whole button
+scales. It is 56x56px, comfortably above the 44px minimum
+that is considered a reliable finger target.
+========================================== */
+
+@media (max-width:1080px) {
+
+  .nav-brand {
+    display:none;
+  }
+
+  .nav-light-trail {
+    display:none;
+  }
+
+  .mobile-nav-toggle {
+    font-size:1.25rem;
+    width:2.8em;
+    height:2.8em;
+    gap:.35em;
+    /* the desktop layout nudges this button left; on a phone we want
+       it sitting properly at the edge of the bar */
+    transform:none;
+    margin-right:-.4em;
+  }
+
+  .mobile-nav-toggle span {
+    width:1.9em;
+    height:.2em;
+  }
+
+  /* The open menu was 94% opaque, which sounds solid but was just
+     see-through enough that big white headings underneath showed
+     through it as ghostly text. Now fully solid. */
+  .nav-links.mobile-open,
+  .nav-links.mobile-open ~ .platform-button {
+    background:#050509;
+  }
+}
+
+
+/* ==========================================
+DESKTOP BAR — SOLID BACKGROUND
+
+The top bar had no background, so as you scrolled, the page
+text slid underneath it and you could read it through the
+menu links. A solid colour keeps the menu readable.
+========================================== */
+
+@media (min-width:1081px) {
+  nav {
+    background:#050509;
   }
 }

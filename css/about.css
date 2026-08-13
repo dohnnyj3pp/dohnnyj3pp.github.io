@@ -353,3 +353,45 @@ ACCESSIBILITY
   }
 
 }
+
+/*
+========================================
+LET THE BIO SCROLL WITH THE PAGE
+
+The bio used to sit in a fixed-height box that scrolled inside
+itself, and its scrollbar was hidden. So on a desktop there was
+about 2,700px of writing with no visible clue you could scroll
+it, and on a phone it could not be scrolled at all — most of the
+story was simply unreachable.
+
+Now the whole page scrolls and the photo stays put beside it.
+
+The text column was also 65% wide while the photo took the right
+50%, so the two overlapped and words ran underneath the picture.
+
+The desktop rules are wrapped in "min-width:901px" so they do not
+clash with the phone rules further up this file.
+========================================
+*/
+
+@media(min-width:901px) {
+
+  .about-layout {
+    position:relative;
+    inset:auto;
+  }
+
+  .about-content {
+    position:relative;
+    top:auto;
+    left:auto;
+    /* was 65%, which overlapped the photo taking up the right 50% */
+    width:54%;
+    height:auto;
+    overflow:visible;
+  }
+
+  .about-content-inner {
+    padding:110px 6vw 160px 8vw;
+  }
+}

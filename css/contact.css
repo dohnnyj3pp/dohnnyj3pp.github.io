@@ -431,3 +431,30 @@ FOCUS STATES
     box-shadow:
         0 0 20px rgba(255,183,75,.5) !important;
 }
+
+/* ==========================================
+CONTACT FORM — SMALL SCREENS
+
+The form is centred inside a box that is exactly one screen
+tall. When the form was taller than the screen — on any phone,
+and on any laptop under about 860px tall — the "Send Message"
+button ended up below the bottom edge and could not be reached
+or clicked. The form was impossible to submit.
+
+Now the page scrolls, and on phones the form starts at the top
+instead of being vertically centred, with tighter side padding
+so the fields are not squeezed into the middle of the screen.
+========================================== */
+
+@media (max-width:768px) {
+
+    .contact-page .main-wrapper {
+        min-height:0;
+        align-items:flex-start;
+        padding:104px 18px 64px;
+    }
+
+    .contact-header {
+        margin-bottom:28px;
+    }
+}

@@ -5,7 +5,12 @@
 <head>
 
 <meta charset="UTF-8" />
-<title>Projects — Adam Pace</title>
+<!-- Tells a phone to lay the page out at the phone's real width.
+     Without this line, phones pretend to be a ~980px desktop and
+     then shrink the whole page down to fit, which makes the text
+     tiny and stops any of the mobile styling from ever applying. -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Resume — Adam Pace</title>
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -21,31 +26,24 @@
 
   <!-- Styles -->
 
-  <link rel="stylesheet" href="css/portfolio.css?v=1.5" />
-  <link rel="stylesheet" href="css/resume.css?v=1.5" />
+  <link rel="stylesheet" href="css/portfolio.css?v=2.2" />
+  <link rel="stylesheet" href="css/resume.css?v=2.2" />
 
   <!-- Scripts -->
 
-  <script defer src="js/main.js?v=1.5"></script>
+  <script defer src="js/main.js?v=2.2"></script>
 
-  <script defer src="js/cursor.js?v=1.5"></script>
+  <script defer src="js/cursor.js?v=2.2"></script>
 
-  <script src="js/nav-orbit.js?v=1.5"></script>
+  <script src="js/nav-orbit.js?v=2.2"></script>
 
 
 </head>
 
 <body class="subpage resume-page">
 
-  <!-- Background Video -->
-
-  <video id="intro-video" autoplay muted loop playsinline>
-
-
-<source src="images/video/intro.mp4" type="video/mp4">
-
-
-  </video>
+  <!-- Background is a pre-blurred still (body.subpage::before).
+       Subpages blurred the 10MB video past recognition. -->
 
   <div id="video-overlay"></div>
 
