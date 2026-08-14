@@ -354,6 +354,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       window.initProjects();
     }
+    if (
+    body.classList.contains("contact-page") &&
+    typeof window.initContact === "function"
+  ) {
+    window.initContact();
+   }
   }
 
   function enterHero() {

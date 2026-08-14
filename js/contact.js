@@ -1,12 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initContact() {
   const form = document.querySelector(".contact-form");
   const button = document.querySelector(".contact-submit");
   const buttonText = button?.querySelector("span");
   const status = document.querySelector(".contact-status");
 
-  if (!form || !button || !buttonText || !status) return;
+  if (!form || !button || !buttonText || !status) {
+    return;
+  }
 
-  form.addEventListener("submit", async (event) => {
+  if (form.dataset.contactBound === "true") {
+    return;
+  }
+
+  form.dataset.contactBound = "true";
+
+  form.addEventListener("submit", async event => {
     event.preventDefault();
 
     button.disabled = true;
@@ -31,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
         button.classList.add("success");
         buttonText.textContent = "MESSAGE SENT";
         status.classList.add("success");
-        status.textContent = "Transmission received. I'll get back to within the next 24 to 48 hours.";
+        status.textContent =
+          "Transmission received. I'll get back to you within the next 24 to 48 hours.";
 
         form.reset();
 
@@ -52,7 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
       button.classList.add("error");
       buttonText.textContent = "SEND FAILED";
       status.classList.add("error");
-      status.textContent = "Something went wrong. Please try again.";
+      status.textContent =
+        "Something went wrong. Please try again.";
 
       setTimeout(() => {
         button.classList.remove("error");
@@ -63,4 +73,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 5000);
     }
   });
-});
+}
+
+window.initContact = initContact;
+
+if (document.readyState !== "loading") {
+  initContact();
+} else {
+  document.addEventListener("DOMContentLoaded", initContact, {
+    once: true
+  });
+}
