@@ -2,34 +2,36 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8" />
-<!-- Tells a phone to lay the page out at the phone's real width.
+  <meta charset="UTF-8" />
+  <!-- Tells a phone to lay the page out at the phone's real width.
      Without this line, phones pretend to be a ~980px desktop and
      then shrink the whole page down to fit, which makes the text
      tiny and stops any of the mobile styling from ever applying. -->
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Projects — Adam Pace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — Adam Pace</title>
 
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-<link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Aladin&family=Eagle+Lake&family=Michroma&family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=VT323&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Aladin&family=Eagle+Lake&family=Michroma&family=Orbitron:wght@400;600&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=VT323&family=ZCOOL+XiaoWei&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="css/portfolio.css?v=2.2">
   <link rel="stylesheet" href="css/projects.css?v=2.2">
   <link rel="stylesheet" href="css/project-platform.css?v=2.2">
 
-<script defer src="js/main.js?v=2.2"></script>
-<script defer src="js/cursor.js?v=2.2"></script>
-<script defer src="js/nav-orbit.js?v=2.2"></script>
-<script defer src="js/project-data.js?v=2.2"></script>
-<script defer src="js/projects.js?v=2.2"></script>
+  <script defer src="js/main.js?v=2.2"></script>
+  <script defer src="js/cursor.js?v=2.2"></script>
+  <script defer src="js/nav-orbit.js?v=2.2"></script>
+  <script defer src="js/project-data.js?v=2.2"></script>
+  <script defer src="js/projects.js?v=2.2"></script>
 
 </head>
 
@@ -45,7 +47,7 @@
   <div id="page-surface"></div>
 
 
- <nav>
+  <nav>
 
     <div class="nav-orbit-ring">
 
@@ -57,17 +59,17 @@
     </div>
     <div class="nav-inner">
 
-    <div class="nav-brand">
-  Adam Pace
-</div>
+      <div class="nav-brand">
+        Adam Pace
+      </div>
 
-<button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav-menu">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+      <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-<ul class="nav-links" id="mobile-nav-menu">
+      <ul class="nav-links" id="mobile-nav-menu">
 
         <li>
           <a href="index.html" class="nav-target">
@@ -76,10 +78,10 @@
         </li>
 
         <li>
-        <a href="https://github.com/dohnnyj3pp" class="nav-target nav-external" target="_blank"
-          rel="noopener noreferrer">
-          <span>G</span><span>I</span><span>T</span><span>H</span><span>U</span><span>B</span>
-        </a>
+          <a href="https://github.com/dohnnyj3pp" class="nav-target nav-external" target="_blank"
+            rel="noopener noreferrer">
+            <span>G</span><span>I</span><span>T</span><span>H</span><span>U</span><span>B</span>
+          </a>
         </li>
 
         <li>
@@ -106,16 +108,16 @@
       </ul>
 
 
-<a href="projects.html" class="platform-button nav-target" id="launch-platform">
-  <span>E</span><span>n</span><span>t</span><span>e</span><span>r</span>
-  <span class="platform-word-gap"></span>
-  <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span>
-</a>
+      <a href="projects.html" class="platform-button nav-target" id="launch-platform">
+        <span>E</span><span>n</span><span>t</span><span>e</span><span>r</span>
+        <span class="platform-word-gap"></span>
+        <span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span>
+      </a>
 
 
     </div>
 
-      </nav>  
+  </nav>
 
 
   <main id="page-content" class="main-wrapper page-content">
@@ -138,14 +140,21 @@
 
 
 
-            <div class="project-card" data-module="unavailable">
 
-              <div class="project-thumbnail">
-                COMING SOON
+            <div class="project-card" data-project="poker-hand-trainer" data-module="available">
+
+              <div class="project-thumbnail poker-thumbnail">
+
+                <div class="poker-title">
+                  <span>POKER</span>
+                  <span>HAND TRAINER</span>
+                </div>
+
+                <img class="poker-card-image" src="images/cards/ace-of-spades.svg" alt="Ace of Spades">
+
               </div>
 
             </div>
-
 
 
 
@@ -168,12 +177,12 @@
 
 
                 <h2>
-                 PORTFOLIO
+                  PORTFOLIO
                 </h2>
 
 
                 <p>
-                DEVELOPMENT
+                  DEVELOPMENT
                 </p>
 
 
@@ -224,7 +233,7 @@
 
 
         </div>
-                <!-- PROJECT WORKSPACE -->
+        <!-- PROJECT WORKSPACE -->
 
 
         <div class="project-workspace">
@@ -247,7 +256,7 @@
 
 
             <h2>
-             portfolio 
+              portfolio
             </h2>
             <p>Development</p>
 
@@ -398,10 +407,7 @@
 
 
 
-                  <button 
-                    type="button"
-                    class="code-modal-close"
-                    aria-label="Close modal">
+                  <button type="button" class="code-modal-close" aria-label="Close modal">
                     ×
                   </button>
 
@@ -420,9 +426,7 @@
 
 
 
-                <div 
-                  class="code-modal-description"
-                  aria-live="polite">
+                <div class="code-modal-description" aria-live="polite">
                 </div>
 
 

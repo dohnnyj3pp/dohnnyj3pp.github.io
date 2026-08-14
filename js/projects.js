@@ -149,6 +149,18 @@ function bootProject() {
         return;
     }
 
+    const card = cards[PLATFORM.project];
+    const project = card?.dataset.project;
+
+    if (project === "poker-hand-trainer") {
+        window.open(
+            "https://dohnnyj3pp.github.io/poker-hand-trainer",
+            "_blank",
+            "noopener,noreferrer"
+        );
+        return;
+    }
+
     setPlatformState("booting");
 
     platform.classList.add("hud-focus");
