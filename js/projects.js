@@ -418,7 +418,7 @@ function buildCategories() {
         button.classList.toggle(
             "active",
             button.dataset.category ===
-                currentCategory
+            currentCategory
         );
     });
 
@@ -434,6 +434,8 @@ function buildCategories() {
                 button.dataset.category;
 
             currentModule = null;
+
+            resetDocumentationScroll();
 
             buildModules();
             loadCategoryIntroduction();
@@ -558,6 +560,8 @@ function buildModules() {
 
                     currentModule = module;
 
+                    resetDocumentationScroll();
+
                     loadDocumentation();
                 };
 
@@ -629,21 +633,21 @@ function highlightCode(code, language) {
             );
     }
 
-  if (language === "css") {
-    return escaped
-        .replace(
-            /(\/\*[\s\S]*?\*\/)/g,
-            `<span class="token comment">$1</span>`
-        )
-        .replace(
-            /([a-zA-Z\-]+)(\s*:\s*)([^;\n]+)(;?)/g,
-            `<span class="token property">$1</span>$2<span class="token value">$3</span>$4`
-        )
-        .replace(
-            /([{}])/g,
-            `<span class="token punctuation">$1</span>`
-        );
-}
+    if (language === "css") {
+        return escaped
+            .replace(
+                /(\/\*[\s\S]*?\*\/)/g,
+                `<span class="token comment">$1</span>`
+            )
+            .replace(
+                /([a-zA-Z\-]+)(\s*:\s*)([^;\n]+)(;?)/g,
+                `<span class="token property">$1</span>$2<span class="token value">$3</span>$4`
+            )
+            .replace(
+                /([{}])/g,
+                `<span class="token punctuation">$1</span>`
+            );
+    }
 
     return escaped
         .replace(
@@ -825,7 +829,7 @@ function openCodeModal(
         highlightCode(
             code || "",
             language ||
-                detectCodeLanguage(code)
+            detectCodeLanguage(code)
         );
 
     descriptionElement.textContent =
@@ -835,6 +839,8 @@ function openCodeModal(
         description
             ? "block"
             : "none";
+
+    modal.scrollTop = 0;
 
     modal.classList.add("visible");
 
@@ -869,7 +875,7 @@ function closeCodeModal() {
     if (
         codeModalPreviousFocus &&
         typeof codeModalPreviousFocus.focus ===
-            "function" &&
+        "function" &&
         document.contains(
             codeModalPreviousFocus
         )
@@ -925,6 +931,16 @@ function bindCodeModalEvents() {
         }
     );
 }
+function resetDocumentationScroll() {
+    const content =
+        document.querySelector(
+            ".documentation-content"
+        );
+
+    if (!content) return;
+
+    content.scrollTop = 0;
+}
 
 function loadDocumentation() {
     const content =
@@ -966,7 +982,7 @@ function loadDocumentation() {
             : dataSource[
                 currentCategory
             ]?.modules?.[
-                currentModule
+            currentModule
             ];
 
     if (!data) {
@@ -990,22 +1006,19 @@ function loadDocumentation() {
             .join("");
 
     content.innerHTML = `
-        ${
-            data.title
-                ? `<h2>${escapeHtml(data.title)}</h2>`
-                : ""
+        ${data.title
+            ? `<h2>${escapeHtml(data.title)}</h2>`
+            : ""
         }
 
-        ${
-            data.overview
-                ? `<div class="typed-overview"></div>`
-                : ""
+        ${data.overview
+            ? `<div class="typed-overview"></div>`
+            : ""
         }
 
-        ${
-            data.intro
-                ? `<div class="examples-label">${escapeHtml(data.intro)}</div>`
-                : ""
+        ${data.intro
+            ? `<div class="examples-label">${escapeHtml(data.intro)}</div>`
+            : ""
         }
 
         ${sections}
@@ -1062,16 +1075,6 @@ function typeWriter(text, target) {
                 0,
                 index
             );
-
-        const viewer =
-            document.querySelector(
-                ".documentation-viewer"
-            );
-
-        if (viewer) {
-            viewer.scrollTop =
-                viewer.scrollHeight;
-        }
 
         index++;
 
